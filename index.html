@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — All Days</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 2rem 1rem 4rem;
+    }
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .stats-bar {
+      max-width: 860px;
+      margin: 0 auto 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.8rem;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .stat-number { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+    .stat-label  { font-size: 0.78rem; color: var(--muted); margin-top: 0.1rem; }
+    .section-title {
+      max-width: 860px;
+      margin: 0 auto 0.8rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .days-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .day-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.1rem 1.2rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .day-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+    .day-card-num  { font-size: 0.72rem; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .day-card-date { font-size: 1.05rem; font-weight: 700; margin: 0.2rem 0; }
+    .day-card-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .tag { font-size: 0.72rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; }
+    .tag-cardio  { background: #fee2e2; color: #b91c1c; }
+    .tag-msk     { background: #dbeafe; color: #1d4ed8; }
+    .tag-neuro   { background: #ede9fe; color: #6d28d9; }
+    .tag-signs   { background: #fef9c3; color: #92400e; }
+    .tag-proc    { background: #dcfce7; color: #15803d; }
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-icon">📚</div>
+  <div class="header-text">
+    <h1>OET Vocabulary — All Days</h1>
+    <p>Leo · AUT Master of Physiotherapy Practice · Target: Late 2026 / Early 2027</p>
+  </div>
+</header>
+
+<div class="stats-bar">
+  <div class="stat-card">
+    <div class="stat-number" id="total-days">1</div>
+    <div class="stat-label">Days Completed</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number" id="total-words">5</div>
+    <div class="stat-label">Words Learned</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">4</div>
+    <div class="stat-label">OET Skills</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">~240</div>
+    <div class="stat-label">Days to Exam</div>
+  </div>
+</div>
+
+<div class="section-title">📅 Vocabulary Days</div>
+
+<div class="days-grid">
+  <a class="day-card" href="2026-04-16_vocabulary.html">
+    <div class="day-card-num">Day 1</div>
+    <div class="day-card-date">16 Apr 2026</div>
+    <div style="font-size:0.82rem;color:var(--muted);margin-top:0.2rem;">dyspnoea · oedema · palpitation · atrophy · ambulate</div>
+    <div class="day-card-tags">
+      <span class="tag tag-cardio">心肺</span>
+      <span class="tag tag-msk">骨科</span>
+      <span class="tag tag-signs">Signs</span>
+      <span class="tag tag-proc">Mobility</span>
+    </div>
+  </a>
+  <!-- New day cards will be added below this line -->
+</div>
+
+<footer class="page-footer">
+  <p>OET Preparation · Updated daily at 21:00 · Leo · AUT Master of Physiotherapy Practice</p>
+</footer>
+
+</body>
+</html>
