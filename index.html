@@ -96,6 +96,25 @@
     .tag-neuro   { background: #ede9fe; color: #6d28d9; }
     .tag-signs   { background: #fef9c3; color: #92400e; }
     .tag-proc    { background: #dcfce7; color: #15803d; }
+    .exam-banner {
+      max-width: 860px;
+      margin: 2rem auto 0.8rem;
+      background: #7c3aed;
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+    }
+    .exam-banner:hover { opacity: 0.92; }
+    .exam-banner-text h2 { font-size: 1.05rem; font-weight: 700; }
+    .exam-banner-text p  { font-size: 0.83rem; opacity: 0.85; margin-top: 0.2rem; }
+    .exam-banner-arrow { font-size: 1.5rem; }
     .page-footer {
       max-width: 860px;
       margin: 2rem auto 0;
@@ -133,6 +152,14 @@
     <div class="stat-label">Days to Exam</div>
   </div>
 </div>
+
+<a class="exam-banner" href="weekly-exams/index.html">
+  <div class="exam-banner-text">
+    <h2>📝 Weekly Practice Exams</h2>
+    <p>Cumulative OET mock exams · Writing · Reading · Speaking · Generated every Sunday 10 PM</p>
+  </div>
+  <div class="exam-banner-arrow">→</div>
+</a>
 
 <div class="section-title">📅 Vocabulary Days</div>
 

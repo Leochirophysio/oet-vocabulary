@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Weekly Exams — All Tests</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #fff; --primary: #1a6fa8; --primary-light: #e8f2fa;
+      --accent: #0d9488; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem 4rem; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: #7c3aed; color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .nav-bar a:hover { background: var(--primary-light); }
+    .info-box { max-width: 860px; margin: 0 auto 1.5rem; background: var(--warn-light); border: 1px solid #fde68a; border-radius: var(--radius); padding: 1rem 1.2rem; font-size: 0.88rem; color: #44310a; }
+    .section-title { max-width: 860px; margin: 0 auto 0.8rem; font-size: 1rem; font-weight: 700; }
+    .exams-grid { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+    .exam-card { background: white; border-radius: var(--radius); padding: 1.2rem; border: 1px solid var(--border); box-shadow: var(--shadow); text-decoration: none; color: var(--text); display: block; transition: transform 0.15s; }
+    .exam-card:hover { transform: translateY(-2px); }
+    .exam-card-week { font-size: 0.72rem; color: #7c3aed; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .exam-card-date { font-size: 1.05rem; font-weight: 700; margin: 0.2rem 0; }
+    .exam-card-meta { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
+    .tag { display: inline-block; font-size: 0.72rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; margin-top: 0.5rem; margin-right: 0.3rem; }
+    .tag-exam { background: #ede9fe; color: #6d28d9; }
+    .empty-state { max-width: 860px; margin: 0 auto; text-align: center; padding: 3rem; color: var(--muted); font-size: 0.95rem; }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+<header class="page-header">
+  <div class="header-icon">📝</div>
+  <div class="header-text">
+    <h1>OET Weekly Practice Exams</h1>
+    <p>Cumulative · Generated every Sunday · Writing · Reading · Speaking</p>
+  </div>
+</header>
+<nav class="nav-bar"><a href="../index.html">← Back to Vocabulary</a></nav>
+<div class="info-box">
+  📌 每週日晚上 10 PM 自動生成 · Each exam covers <strong>current week + all previous vocabulary</strong> · Answers are click-to-reveal · Writing section includes a self-assessment checklist
+</div>
+<div class="section-title">📅 Exam History</div>
+<div class="exams-grid" id="exams-list">
+  <!-- Exam cards will be added here weekly -->
+</div>
+<div class="empty-state" id="empty-msg">
+  First exam will be generated on <strong>Sunday 26 Apr 2026</strong> after one full week of vocabulary.
+</div>
+<footer class="page-footer">OET Weekly Exams · Leo · AUT Master of Physiotherapy Practice</footer>
+</body>
+</html>
