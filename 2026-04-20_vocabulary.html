@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 2 · 2026-04-20</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #ffffff; --primary: #1a6fa8; --primary-light: #e8f2fa;
+      --accent: #0d9488; --accent-light: #e6f7f5; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; padding: 2rem 1rem 4rem; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: var(--primary); color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge { margin-left: auto; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.82rem; font-weight: 600; white-space: nowrap; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .nav-bar a:hover { background: var(--primary-light); }
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge { font-size: 0.74rem; font-weight: 600; padding: 0.2rem 0.65rem; border-radius: 20px; letter-spacing: 0.02em; }
+    .badge-cardio  { background: #fee2e2; color: #b91c1c; }
+    .badge-msk     { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro   { background: #ede9fe; color: #6d28d9; }
+    .badge-signs   { background: #fef9c3; color: #92400e; }
+    .badge-proc    { background: #dcfce7; color: #15803d; }
+    .badge-patient { background: #fce7f3; color: #9d174d; }
+    .cards-grid { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+    .vocab-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+    .card-header { background: var(--primary-light); padding: 1rem 1.4rem 0.8rem; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .card-num { font-size: 0.75rem; color: var(--primary); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+    .card-word { font-size: 1.6rem; font-weight: 800; color: var(--primary); margin: 0.15rem 0; line-height: 1.2; }
+    .card-meta { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.3rem; }
+    .ipa { font-family: 'Courier New', monospace; font-size: 0.92rem; color: var(--muted); background: white; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border); }
+    .pos { font-size: 0.8rem; font-style: italic; color: var(--muted); }
+    .dict-link { font-size: 0.8rem; color: var(--primary); text-decoration: none; }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.3rem; }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item { background: var(--accent-light); color: var(--accent); font-size: 0.8rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 6px; font-style: italic; }
+    .example-sentence { background: var(--warn-light); border-left: 3px solid var(--warn); padding: 0.65rem 0.9rem; border-radius: 0 8px 8px 0; font-size: 0.91rem; font-style: italic; color: #44310a; }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item { background: var(--bg); border: 1px solid var(--border); font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 6px; }
+    .scenario-box { max-width: 860px; margin: 2rem auto 0; background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); border: 2px solid var(--primary); overflow: hidden; }
+    .scenario-header { background: var(--primary); color: white; padding: 0.8rem 1.4rem; font-weight: 700; font-size: 0.95rem; }
+    .scenario-body { padding: 1.2rem 1.4rem; font-size: 0.93rem; }
+    .scenario-text { background: #f8fafc; border-radius: 8px; padding: 1rem 1.1rem; font-style: italic; line-height: 1.8; border: 1px solid var(--border); }
+    .highlight { color: var(--primary); font-weight: 700; font-style: normal; text-decoration: underline dotted; }
+    .scenario-note { margin-top: 0.8rem; font-size: 0.82rem; color: var(--muted); }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 2 · 20 Apr 2026</div>
+</header>
+
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Musculoskeletal + Procedures &amp; Interventions</span>
+</nav>
+
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">crepitus</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈkrɛp.ɪ.təs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/crepitus" target="_blank">🔊 Cambridge</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A grating, crackling, or popping sensation or sound produced by movement of a joint or tendon, caused by rough surfaces moving against each other.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">捻髮音；關節摩擦音</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">audible crepitus</span>
+          <span class="colloc-item">palpable crepitus</span>
+          <span class="colloc-item">crepitus on movement</span>
+          <span class="colloc-item">crepitus at the knee</span>
+          <span class="colloc-item">fine crepitus</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">"On assessment, palpable <strong>crepitus</strong> was noted at the patellofemoral joint bilaterally, consistent with the reported diagnosis of osteoarthritis."</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">crepitation (variant)</span>
+          <span class="related-item">clicking (lay term)</span>
+          <span class="related-item">grinding (lay term)</span>
+          <span class="related-item">crepitant (adj)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">mobilisation</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌməʊ.bɪ.laɪˈzeɪ.ʃən/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/mobilisation" target="_blank">🔊 Cambridge</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A manual therapy technique in which a clinician applies controlled, graded passive movements to a joint or soft tissue to restore range of motion and reduce pain.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">關節鬆動術；活動化治療</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">joint mobilisation</span>
+          <span class="colloc-item">spinal mobilisation</span>
+          <span class="colloc-item">graded mobilisation</span>
+          <span class="colloc-item">early mobilisation</span>
+          <span class="colloc-item">mobilisation techniques</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">"A course of lumbar <strong>mobilisation</strong> was commenced, alongside core stabilisation exercises, with the aim of improving range of motion and reducing the patient's reported pain levels."</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">manipulation (higher velocity)</span>
+          <span class="related-item">mobilise (verb)</span>
+          <span class="related-item">immobilisation (antonym)</span>
+          <span class="related-item">manual therapy</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">proprioception</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌprəʊ.pri.əˈsɛp.ʃən/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/proprioception" target="_blank">🔊 Cambridge</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-neuro">神經 Neurological</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The body's ability to sense its own position, movement, and balance in space without visual input; mediated by receptors in muscles, tendons, and joints.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">本體感覺；本體感知</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">impaired proprioception</span>
+          <span class="colloc-item">proprioception training</span>
+          <span class="colloc-item">proprioceptive deficit</span>
+          <span class="colloc-item">joint proprioception</span>
+          <span class="colloc-item">proprioception exercises</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">"Balance assessment revealed significantly impaired <strong>proprioception</strong> in the left ankle, likely contributing to the patient's recurrent lateral ankle sprains."</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">proprioceptive (adj)</span>
+          <span class="related-item">kinaesthesia (movement sense)</span>
+          <span class="related-item">balance (functional)</span>
+          <span class="related-item">vestibular system</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">subluxation</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌsʌb.lʌkˈseɪ.ʃən/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/subluxation" target="_blank">🔊 Cambridge</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A partial or incomplete dislocation of a joint in which the articulating surfaces remain in partial contact with one another.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">半脫位；不完全脫位</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">glenohumeral subluxation</span>
+          <span class="colloc-item">patellar subluxation</span>
+          <span class="colloc-item">recurrent subluxation</span>
+          <span class="colloc-item">inferior subluxation</span>
+          <span class="colloc-item">subluxation of the shoulder</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">"Imaging confirmed inferior glenohumeral <strong>subluxation</strong> of the hemiplegic shoulder, and a supportive sling was prescribed to reduce the risk of further soft tissue injury."</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">dislocation (complete)</span>
+          <span class="related-item">luxation (synonym)</span>
+          <span class="related-item">subluxed (adj)</span>
+          <span class="related-item">reduction (treatment)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">contracture</div>
+        <div class="card-meta">
+          <span class="ipa">/kənˈtræk.tʃər/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/contracture" target="_blank">🔊 Cambridge</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A permanent shortening and hardening of a muscle, tendon, or joint capsule that results in reduced range of motion and joint deformity, often due to fibrosis, spasticity, or prolonged immobilisation.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">攣縮；肌肉/關節攣縮</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">flexion contracture</span>
+          <span class="colloc-item">hip contracture</span>
+          <span class="colloc-item">prevent contracture</span>
+          <span class="colloc-item">contracture management</span>
+          <span class="colloc-item">soft tissue contracture</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">"A fixed flexion <strong>contracture</strong> of 20° was noted at the right hip, significantly limiting the patient's walking tolerance and functional independence."</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">spasticity (neurological cause)</span>
+          <span class="related-item">fibrosis (tissue cause)</span>
+          <span class="related-item">stretching (treatment)</span>
+          <span class="related-item">splinting (prevention)</span>
+          <span class="related-item">range of motion (ROM)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">✍️ OET Writing Task — Clinical Scenario (Day 2)</div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">Notice how today's vocabulary is used in a realistic OET-style referral context.</p>
+    <div class="scenario-text">
+      Mr. James Tanner, a 72-year-old male with a background of right-sided hemiplegia following a cerebrovascular accident eight months prior, was referred to the outpatient physiotherapy department for ongoing rehabilitation.
+      <br><br>
+      On initial assessment, inferior glenohumeral <span class="highlight">subluxation</span> of the right shoulder was confirmed on palpation, with the patient reporting intermittent aching pain at rest. A fixed elbow flexion <span class="highlight">contracture</span> of approximately 15° was also noted, limiting his ability to perform overhead activities and personal care tasks independently.
+      <br><br>
+      Assessment of the right lower limb revealed palpable <span class="highlight">crepitus</span> at the knee joint on passive range of motion testing. <span class="highlight">Proprioception</span> was markedly impaired in the right ankle, contributing to an unsafe and asymmetrical gait pattern.
+      <br><br>
+      The physiotherapy programme will include <span class="highlight">mobilisation</span> of the right shoulder and elbow to address soft tissue tightness, proprioceptive retraining, and progressive gait rehabilitation.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When describing multiple findings, organise by body region (shoulder → elbow → knee → ankle) for a logical, easy-to-follow structure. Use objective measurements where possible (e.g. "15° flexion contracture").
+    </p>
+  </div>
+</div>
+
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 2 · 2026-04-20 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 骨科 Musculoskeletal · 神經 Neurological · Signs &amp; Symptoms · Procedures</p>
+</footer>
+
+</body>
+</html>
