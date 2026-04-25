@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 8 · 2026-04-26</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 8 · 26 Apr 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Cardiopulmonary · Signs &amp; Symptoms · Procedures</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">haemoptysis</div>
+        <div class="card-meta">
+          <span class="ipa">/hɪˈmɒp.tɪ.sɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/haemoptysis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/hemoptysis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The coughing up of blood or blood-stained mucus originating from the respiratory tract, particularly the lungs or bronchi; a serious sign requiring urgent clinical investigation.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">咳血</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">frank haemoptysis</span>
+          <span class="colloc-item">streaky haemoptysis</span>
+          <span class="colloc-item">massive haemoptysis</span>
+          <span class="colloc-item">recurrent haemoptysis</span>
+          <span class="colloc-item">haemoptysis on exertion</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient was referred urgently following two episodes of frank <strong>haemoptysis</strong> over the preceding 48 hours, each producing approximately 30 mL of blood-stained sputum, and a chest CT has been arranged as a priority."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">haematemesis (vomiting blood — different source)</span>
+          <span class="related-item">haemorrhage (bleeding)</span>
+          <span class="related-item">epistaxis (nosebleed)</span>
+          <span class="related-item">haemoptyse (verb — rare)</span>
+          <span class="related-item">blood-stained sputum (clinical description)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">orthopnoea</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌɔː.θɒpˈniːə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/orthopnoea" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/orthopnea" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Breathlessness that occurs when lying flat, relieved by sitting upright or elevating the head; commonly associated with left heart failure or severe chronic obstructive pulmonary disease. Clinically quantified by the number of pillows required for comfortable sleep.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">端坐呼吸（平臥時呼吸困難）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">two-pillow orthopnoea</span>
+          <span class="colloc-item">three-pillow orthopnoea</span>
+          <span class="colloc-item">severe orthopnoea</span>
+          <span class="colloc-item">orthopnoea at night</span>
+          <span class="colloc-item">reports orthopnoea</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient reported three-pillow <strong>orthopnoea</strong> and was unable to sleep in the supine position, confirming a significant deterioration in his cardiac function since his last review three weeks ago."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">orthopnoeic (adj)</span>
+          <span class="related-item">dyspnoea (breathlessness — broader term)</span>
+          <span class="related-item">paroxysmal nocturnal dyspnoea / PND</span>
+          <span class="related-item">platypnoea (breathless when upright — opposite)</span>
+          <span class="related-item">supine (lying flat)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">bronchospasm</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈbrɒŋ.kəʊ.spæz.əm/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/bronchospasm" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/bronchospasm" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Sudden involuntary contraction of the smooth muscle in the walls of the bronchi and bronchioles, causing airway narrowing, wheezing, and difficulty breathing; a hallmark feature of asthma and exercise-induced reactive airway disease.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">支氣管痙攣</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">exercise-induced bronchospasm</span>
+          <span class="colloc-item">acute bronchospasm</span>
+          <span class="colloc-item">severe bronchospasm</span>
+          <span class="colloc-item">reversible bronchospasm</span>
+          <span class="colloc-item">bronchospasm on exertion</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient experienced exercise-induced <strong>bronchospasm</strong> during the functional capacity assessment, requiring administration of salbutamol via metered-dose inhaler; symptoms resolved within ten minutes and the session was not resumed."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">bronchospastic (adj)</span>
+          <span class="related-item">bronchoconstriction (synonym)</span>
+          <span class="related-item">bronchodilation (antonym)</span>
+          <span class="related-item">bronchodilator (treatment — e.g. salbutamol)</span>
+          <span class="related-item">wheezing (audible sign)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">spirometry</div>
+        <div class="card-meta">
+          <span class="ipa">/spaɪˈrɒm.ɪ.tri/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/spirometry" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/spirometry" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A pulmonary function test that measures the volume and flow rate of air that can be inhaled and exhaled; used to diagnose and monitor obstructive and restrictive respiratory conditions such as asthma and chronic obstructive pulmonary disease (COPD).</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">肺量計測定；肺功能檢查</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">perform spirometry</span>
+          <span class="colloc-item">spirometry results</span>
+          <span class="colloc-item">pre-bronchodilator spirometry</span>
+          <span class="colloc-item">post-bronchodilator spirometry</span>
+          <span class="colloc-item">spirometry findings</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Pre-operative <strong>spirometry</strong> revealed a forced expiratory volume in one second (FEV1) of 62% predicted with a FEV1/FVC ratio of 0.59, indicating moderate obstructive impairment and informing the anaesthetic team's risk assessment."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">spirometer (noun — device)</span>
+          <span class="related-item">spirometric (adj)</span>
+          <span class="related-item">FEV1 (forced expiratory volume in 1 second)</span>
+          <span class="related-item">FVC (forced vital capacity)</span>
+          <span class="related-item">peak flow (simpler bedside test)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">diaphoresis</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌdaɪ.ə.fəˈriː.sɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/diaphoresis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/diaphoresis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Profuse or abnormal sweating; may occur in response to systemic illness, acute cardiac events, fever, autonomic dysfunction, or physiological stress during exercise testing; an important clinical warning sign requiring immediate assessment.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">大量出汗；異常出汗</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">profuse diaphoresis</span>
+          <span class="colloc-item">cold diaphoresis</span>
+          <span class="colloc-item">diaphoresis and pallor</span>
+          <span class="colloc-item">associated diaphoresis</span>
+          <span class="colloc-item">marked diaphoresis</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "During the exercise tolerance assessment, the patient developed marked <strong>diaphoresis</strong>, pallor, and a 15 mmHg drop in systolic blood pressure, prompting immediate cessation of the protocol and urgent medical review."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">diaphoretic (adj / noun)</span>
+          <span class="related-item">perspiration (lay term)</span>
+          <span class="related-item">hyperhidrosis (chronic excessive sweating condition)</span>
+          <span class="related-item">pallor (often co-occurs)</span>
+          <span class="related-item">autonomic response</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 8)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr. David Tran, a 72-year-old retired engineer with a background of ischaemic heart disease and
+      moderate chronic obstructive pulmonary disease (COPD), was reviewed in the cardiopulmonary
+      physiotherapy clinic following a recent hospital admission for acute exacerbation.
+      <br><br>
+      On assessment, Mr. Tran reported <span class="highlight">three-pillow orthopnoea</span> preventing
+      restful sleep in the supine position, and described two episodes of
+      <span class="highlight">haemoptysis</span> producing small quantities of blood-streaked sputum over
+      the preceding week, for which he had been referred for urgent respiratory review.
+      <br><br>
+      Bedside <span class="highlight">spirometry</span> demonstrated a post-bronchodilator FEV1/FVC ratio
+      of 0.58 with an FEV1 of 64% predicted, consistent with moderate obstructive impairment. During
+      a six-minute walk test, the patient developed marked <span class="highlight">diaphoresis</span>
+      and chest tightness at 180 metres, with oxygen saturation declining to 88% on room air,
+      necessitating early termination of the assessment. A brief episode of audible wheeze was noted,
+      suggestive of exertional <span class="highlight">bronchospasm</span>, which resolved following
+      administration of salbutamol via metered-dose inhaler.
+      <br><br>
+      It is recommended that physiotherapy management focus on breathing retraining, positioning
+      strategies to alleviate orthopnoea, and carefully graduated activity pacing, pending further
+      investigation of the haemoptysis by the respiratory team.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When documenting cardiopulmonary symptoms, always quantify where possible — report <em>pillow number</em> for orthopnoea, <em>volume and frequency</em> for haemoptysis, <em>SpO2 values</em> for desaturation, and <em>distance or time</em> for exercise tolerance. Specific data strengthens the clinical handover and demonstrates professional accuracy.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 8 · 2026-04-26 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 心肺 Cardiopulmonary · Signs &amp; Symptoms · Procedures &amp; Interventions</p>
+</footer>
+
+</body>
+</html>
