@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 12 · 2026-04-30</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 12 · 30 Apr 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Musculoskeletal + Signs &amp; Symptoms</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">radiculopathy</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌræd.ɪ.kjʊˈlɒp.ə.θi/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/radiculopathy" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/radiculopathy" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Disease or dysfunction of one or more spinal nerve roots, typically caused by compression from a herniated disc or bony spur, producing pain, weakness, or altered sensation that radiates along the nerve's distribution.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">神經根病變</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">cervical radiculopathy</span>
+          <span class="colloc-item">lumbar radiculopathy</span>
+          <span class="colloc-item">L5 radiculopathy</span>
+          <span class="colloc-item">bilateral radiculopathy</span>
+          <span class="colloc-item">radiculopathy secondary to disc herniation</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "MRI of the lumbar spine confirmed L5–S1 disc herniation consistent with right-sided <strong>radiculopathy</strong>, characterised by shooting pain radiating from the buttock to the dorsum of the right foot."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">radicular pain (adj form)</span>
+          <span class="related-item">nerve root compression (synonym)</span>
+          <span class="related-item">myelopathy (spinal cord involvement)</span>
+          <span class="related-item">sciatica (L4–S1 specific)</span>
+          <span class="related-item">dermatome (nerve root territory)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">impingement</div>
+        <div class="card-meta">
+          <span class="ipa">/ɪmˈpɪndʒ.mənt/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/impingement" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/impingement" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The mechanical compression or trapping of soft tissue — most commonly a tendon or bursa — between bony structures, producing pain, a painful arc of movement, and functional restriction. Most frequently described in the shoulder (subacromial space).</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">夾擠症候群；撞擊徵</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">shoulder impingement</span>
+          <span class="colloc-item">subacromial impingement</span>
+          <span class="colloc-item">impingement syndrome</span>
+          <span class="colloc-item">neural impingement</span>
+          <span class="colloc-item">impingement sign positive</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient was referred with a six-month history of right shoulder <strong>impingement</strong>, presenting with a painful arc between 70° and 120° of abduction and a positive Hawkins–Kennedy test bilaterally."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">impinge (verb)</span>
+          <span class="related-item">rotator cuff (commonly affected structure)</span>
+          <span class="related-item">bursitis (associated condition)</span>
+          <span class="related-item">painful arc (clinical sign)</span>
+          <span class="related-item">decompression (surgical treatment)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">paraesthesia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌpær.ɪsˈθiː.zi.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/paraesthesia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/paresthesia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">An abnormal sensation in the skin — typically described as tingling, prickling, or "pins and needles" — occurring without obvious external stimulus; may be transient or persistent and is commonly associated with nerve compression or peripheral nerve dysfunction.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">感覺異常；麻刺感</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">bilateral paraesthesia</span>
+          <span class="colloc-item">intermittent paraesthesia</span>
+          <span class="colloc-item">paraesthesia in the hands</span>
+          <span class="colloc-item">glove-and-stocking paraesthesia</span>
+          <span class="colloc-item">paraesthesia on exertion</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient reported intermittent <strong>paraesthesia</strong> along the medial border of the left forearm and into the fourth and fifth digits, consistent with a C8 nerve root distribution and exacerbated by sustained cervical flexion."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">paraesthetic (adj)</span>
+          <span class="related-item">paresthesia (American spelling)</span>
+          <span class="related-item">numbness / hypoaesthesia (reduced sensation)</span>
+          <span class="related-item">anaesthesia (absence of sensation)</span>
+          <span class="related-item">dysaesthesia (unpleasant abnormal sensation)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">antalgic</div>
+        <div class="card-meta">
+          <span class="ipa">/ænˈtæl.dʒɪk/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/antalgic" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/antalgic" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Describing a posture, movement pattern, or gait adopted involuntarily to minimise pain; in gait analysis, an antalgic pattern involves a shortened stance phase on the painful side as the patient minimises weight-bearing time to reduce discomfort.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">止痛性的（為減輕疼痛而採取的姿勢或步態）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">antalgic gait</span>
+          <span class="colloc-item">antalgic lean</span>
+          <span class="colloc-item">antalgic posture</span>
+          <span class="colloc-item">antalgic scoliosis</span>
+          <span class="colloc-item">marked antalgic pattern</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "On observational gait analysis, the patient demonstrated a marked <strong>antalgic</strong> gait pattern with a significantly shortened stance phase on the left lower limb, consistent with his reported left hip pain and reduced weight-bearing tolerance."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">analgesic (pain-relieving, related root)</span>
+          <span class="related-item">Trendelenburg gait (different gait pattern)</span>
+          <span class="related-item">pain-avoidance posture (lay description)</span>
+          <span class="related-item">compensatory gait (broader category)</span>
+          <span class="related-item">gait deviation (clinical term)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">stenosis</div>
+        <div class="card-meta">
+          <span class="ipa">/stɪˈnəʊ.sɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/stenosis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/stenosis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Abnormal narrowing of a canal, passage, or hollow structure in the body; in a musculoskeletal context, most commonly refers to narrowing of the spinal canal or intervertebral foramina, compressing neural structures and producing pain, weakness, and neurogenic symptoms in the limbs.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">狹窄；管腔縮小</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">spinal stenosis</span>
+          <span class="colloc-item">lumbar stenosis</span>
+          <span class="colloc-item">cervical stenosis</span>
+          <span class="colloc-item">foraminal stenosis</span>
+          <span class="colloc-item">moderate / severe stenosis</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "MRI findings are consistent with moderate lumbar spinal <strong>stenosis</strong> at L3–L4, producing bilateral lower limb heaviness and neurogenic symptoms that limit comfortable walking distance to approximately 80 metres."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">stenotic (adj)</span>
+          <span class="related-item">narrowing (lay term)</span>
+          <span class="related-item">foraminal narrowing (related descriptor)</span>
+          <span class="related-item">myelopathy (cord compression sequel)</span>
+          <span class="related-item">neurogenic claudication (common presentation)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 12)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr. David Park, a 58-year-old male office worker, was referred to your physiotherapy outpatient
+      clinic by his general practitioner for assessment and management of lower back and right leg
+      symptoms of approximately four months' duration.
+      <br><br>
+      MRI of the lumbar spine completed two weeks prior confirmed moderate lumbar spinal
+      <span class="highlight">stenosis</span> at L4–L5, with associated foraminal narrowing producing
+      right-sided <span class="highlight">radiculopathy</span>. The patient reported constant aching
+      in the right buttock with intermittent <span class="highlight">paraesthesia</span> extending to
+      the dorsum of the right foot, rated 6/10 at rest and 9/10 on prolonged standing or walking.
+      <br><br>
+      Observational gait analysis on initial assessment revealed a pronounced <span class="highlight">antalgic</span>
+      gait pattern, with markedly reduced stance phase on the right and a flexed lumbar posture adopted to
+      decompress the affected nerve root. Walking tolerance was limited to approximately 70 metres on level
+      ground before onset of leg heaviness necessitated rest.
+      <br><br>
+      Goals of physiotherapy include neural desensitisation, graded walking rehabilitation, lumbar
+      stabilisation exercises, and education regarding posture and activity modification to reduce
+      ongoing <span class="highlight">impingement</span> of the affected nerve root.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When documenting neurological symptoms in a referral, always specify the
+      <em>distribution</em> (e.g. "dorsum of the right foot"), the <em>nature</em> (e.g. "paraesthesia" vs "pain"),
+      and <em>aggravating/relieving factors</em> (e.g. "worse on prolonged standing, relieved by flexion").
+      This precision demonstrates clinical reasoning and is rewarded in OET writing tasks.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 12 · 2026-04-30 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 骨科 Musculoskeletal · Signs &amp; Symptoms</p>
+</footer>
+
+</body>
+</html>
