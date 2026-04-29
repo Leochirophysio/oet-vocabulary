@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 11 · 2026-04-29</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 11 · 29 Apr 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Paediatric + Signs &amp; Symptoms</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">spasticity</div>
+        <div class="card-meta">
+          <span class="ipa">/spæˈstɪs.ɪ.ti/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/spasticity" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/spasticity" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A velocity-dependent increase in muscle tone with exaggerated tendon reflexes, resulting from hyperexcitability of the stretch reflex; a component of upper motor neurone syndrome commonly seen in cerebral palsy, stroke, and spinal cord injury.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">痙攣（肌肉張力過高）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">lower limb spasticity</span>
+          <span class="colloc-item">manage spasticity</span>
+          <span class="colloc-item">spasticity assessment</span>
+          <span class="colloc-item">reduce spasticity</span>
+          <span class="colloc-item">spasticity graded on the Modified Ashworth Scale</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The child presented with bilateral lower limb <strong>spasticity</strong> graded 2 on the Modified Ashworth Scale, significantly impacting his gait pattern and functional mobility on level surfaces."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">hypertonia (increased tone)</span>
+          <span class="related-item">spastic (adj)</span>
+          <span class="related-item">spastic diplegia</span>
+          <span class="related-item">Modified Ashworth Scale</span>
+          <span class="related-item">clonus (associated sign)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">dyskinesia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌdɪs.kɪˈniː.zi.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/dyskinesia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/dyskinesia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Abnormal involuntary movements such as chorea, athetosis, or dystonia; may result from basal ganglia dysfunction, prolonged dopamine-blocking medication (tardive dyskinesia), or neurological conditions such as cerebral palsy.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">運動障礙（不自主運動）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">tardive dyskinesia</span>
+          <span class="colloc-item">orofacial dyskinesia</span>
+          <span class="colloc-item">drug-induced dyskinesia</span>
+          <span class="colloc-item">dyskinesia management</span>
+          <span class="colloc-item">dyskinetic movements</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "James, aged 14, was referred for physiotherapy assessment of <strong>dyskinesia</strong> characterised by repetitive writhing movements of the upper limbs, which were significantly impacting his ability to participate in classroom activities and self-care tasks."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">bradykinesia (slowness of movement)</span>
+          <span class="related-item">akinesia (absence of movement)</span>
+          <span class="related-item">dyskinetic (adj)</span>
+          <span class="related-item">dystonia (sustained abnormal posture)</span>
+          <span class="related-item">choreoathetosis (writhing + jerking)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">plagiocephaly</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌpleɪ.dʒi.əʊˈsɛf.ə.li/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/plagiocephaly" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/plagiocephaly" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Asymmetrical distortion or flattening of the skull, most commonly a flattening of one side of the occiput in infants (positional or deformational plagiocephaly); frequently associated with congenital muscular torticollis and managed with physiotherapy and positional advice.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">斜頭畸形（頭顱不對稱）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">positional plagiocephaly</span>
+          <span class="colloc-item">deformational plagiocephaly</span>
+          <span class="colloc-item">posterior plagiocephaly</span>
+          <span class="colloc-item">plagiocephaly with torticollis</span>
+          <span class="colloc-item">mild / moderate / severe plagiocephaly</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Emma, aged 3 months, was referred to physiotherapy with a diagnosis of right-sided positional <strong>plagiocephaly</strong> and associated congenital muscular torticollis, presenting with marked occipital flattening on the right and a preference for right cervical rotation."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">torticollis (associated condition)</span>
+          <span class="related-item">brachycephaly (shortened skull)</span>
+          <span class="related-item">scaphocephaly (elongated skull)</span>
+          <span class="related-item">craniosynostosis (premature skull fusion)</span>
+          <span class="related-item">repositioning therapy</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">hypermobility</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌhaɪ.pəˌməʊˈbɪl.ɪ.ti/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/hypermobility" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/hypermobility" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Excessive range of motion in one or more joints beyond the normal physiological limit, due to laxity of the supporting ligaments and connective tissue; may be generalised or localised and predisposes to joint instability, pain, and recurrent injury, particularly in children.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">關節過度活動（關節鬆弛）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">joint hypermobility</span>
+          <span class="colloc-item">generalised hypermobility</span>
+          <span class="colloc-item">hypermobility syndrome</span>
+          <span class="colloc-item">symptomatic hypermobility</span>
+          <span class="colloc-item">hypermobility of the fingers</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient, an 8-year-old female, was referred with suspected generalised <strong>hypermobility</strong>, scoring 7 out of 9 on the Beighton Scale, and presenting with recurrent ankle sprains and bilateral knee pain following participation in gymnastics."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">hypermobile (adj)</span>
+          <span class="related-item">Beighton Score (assessment tool)</span>
+          <span class="related-item">Ehlers-Danlos syndrome (associated)</span>
+          <span class="related-item">joint laxity (lay/clinical)</span>
+          <span class="related-item">instability (consequence)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">clonus</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈkləʊ.nəs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/clonus" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/clonus" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A series of rhythmic, involuntary muscular contractions and relaxations elicited by sudden passive stretching of a muscle group; a sign of an upper motor neurone lesion indicating hyperreflexia, most commonly assessed at the ankle.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">陣攣</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">ankle clonus</span>
+          <span class="colloc-item">sustained clonus</span>
+          <span class="colloc-item">unsustained clonus</span>
+          <span class="colloc-item">elicit clonus</span>
+          <span class="colloc-item">beats of clonus</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Neurological examination revealed three beats of ankle <strong>clonus</strong> on the right, consistent with an upper motor neurone lesion; this finding was documented and referred to the treating paediatrician for further investigation."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">hyperreflexia (associated sign)</span>
+          <span class="related-item">spasticity (associated feature)</span>
+          <span class="related-item">upper motor neurone syndrome</span>
+          <span class="related-item">myoclonus (sudden muscle jerks)</span>
+          <span class="related-item">clonic (adj)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 11)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Dear Dr. Patel,<br><br>
+      Thank you for referring Master Liam Chen, aged 6 years, to our paediatric physiotherapy service.
+      Liam was diagnosed with spastic diplegic cerebral palsy at 18 months of age and has been reviewed
+      at our clinic for ongoing management of his neuromotor presentation.<br><br>
+      On assessment, Liam demonstrated bilateral lower limb <span class="highlight">spasticity</span> graded
+      1+ on the Modified Ashworth Scale at the hamstrings and gastrocnemius bilaterally. Of note,
+      three beats of <span class="highlight">clonus</span> were elicited at the right ankle on dorsiflexion,
+      which represents an increase from his previous assessment six months ago and warrants medical review.<br><br>
+      Gait analysis identified a crouch gait pattern with bilateral hip and knee flexion during mid-stance.
+      There were no features of <span class="highlight">dyskinesia</span> observed during the assessment.
+      Functional mobility has improved, with Liam now able to ambulate independently on level surfaces
+      over short distances using bilateral ankle-foot orthoses.<br><br>
+      Goals for the coming six months include progressive strengthening of the lower limb extensors,
+      gait retraining, and review of orthotic prescription in consultation with the orthotist.
+      I would be grateful for your review regarding the increase in right ankle clonus and to
+      discuss whether botulinum toxin therapy may be appropriate at this stage.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> In paediatric referral letters, always specify the child's
+      <em>age and diagnosis</em>, use objective measurement scales (e.g. Modified Ashworth Scale, Beighton Score),
+      describe any <em>changes from previous assessments</em>, and clearly state the reason for referral.
+      Avoid vague terms like "stiff" — use precise clinical language such as "spasticity graded 1+ MAS."
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 11 · 2026-04-29 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 神經 Neurological · 骨科 Musculoskeletal · Signs &amp; Symptoms · Paediatric</p>
+</footer>
+
+</body>
+</html>
