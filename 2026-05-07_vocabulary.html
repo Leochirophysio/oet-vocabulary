@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 18 · 2026-05-07</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 18 · 07 May 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Paediatric + Signs &amp; Symptoms</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">equinus</div>
+        <div class="card-meta">
+          <span class="ipa">/ɪˈkwaɪ.nəs/</span>
+          <span class="pos">adjective / noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/equinus" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/equinus" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-neuro">神經 Neurological</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A foot deformity in which the foot is held in permanent plantarflexion (toes pointing downward), preventing normal heel strike during gait; frequently associated with spastic cerebral palsy, stroke, and other upper motor neurone conditions.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">馬蹄足（足部跖屈畸形）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">equinus deformity</span>
+          <span class="colloc-item">equinus gait</span>
+          <span class="colloc-item">equinus contracture</span>
+          <span class="colloc-item">bilateral equinus</span>
+          <span class="colloc-item">spastic equinus</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Kaito, a 6-year-old with spastic diplegia secondary to cerebral palsy, presents with bilateral <strong>equinus</strong> deformity affecting his gait pattern and limiting safe independent ambulation on uneven terrain."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">plantarflexion (foot movement)</span>
+          <span class="related-item">equinovarus (combined deformity)</span>
+          <span class="related-item">ankle-foot orthosis / AFO (treatment)</span>
+          <span class="related-item">toe walking (lay description)</span>
+          <span class="related-item">calcaneus (opposite position)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">pyrexia</div>
+        <div class="card-meta">
+          <span class="ipa">/paɪˈrek.si.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/pyrexia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/pyrexia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Elevation of body temperature above the normal range (typically &gt;37.5°C); a common systemic response to infection, inflammation, or tissue injury, mediated by pyrogens acting on the hypothalamus.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">發燒；發熱</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">low-grade pyrexia</span>
+          <span class="colloc-item">high-grade pyrexia</span>
+          <span class="colloc-item">persistent pyrexia</span>
+          <span class="colloc-item">pyrexia of unknown origin</span>
+          <span class="colloc-item">post-operative pyrexia</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient developed a low-grade <strong>pyrexia</strong> of 38.2°C on day two post-operatively; physiotherapy was deferred pending medical review and blood culture results."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">fever (lay term)</span>
+          <span class="related-item">febrile (adj — having a fever)</span>
+          <span class="related-item">afebrile (antonym — no fever)</span>
+          <span class="related-item">hyperthermia (heat-related, non-infective)</span>
+          <span class="related-item">pyrexial (adj)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">bradycardia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌbræd.ɪˈkɑː.di.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/bradycardia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/bradycardia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">An abnormally slow heart rate, defined as fewer than 60 beats per minute in adults; may be physiological (e.g. in trained athletes) or pathological, causing symptoms such as dizziness, fatigue, and syncope.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">心跳過緩；心動過緩</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">sinus bradycardia</span>
+          <span class="colloc-item">symptomatic bradycardia</span>
+          <span class="colloc-item">relative bradycardia</span>
+          <span class="colloc-item">bradycardia at rest</span>
+          <span class="colloc-item">exercise-induced bradycardia</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mobilisation was suspended when the patient developed symptomatic <strong>bradycardia</strong> during the sit-to-stand transfer, with heart rate dropping to 44 bpm and associated light-headedness; the treating physiotherapist notified the ward nurse immediately."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">tachycardia (antonym — fast heart rate)</span>
+          <span class="related-item">bradycardic (adj)</span>
+          <span class="related-item">arrhythmia (irregular rhythm)</span>
+          <span class="related-item">heart rate / HR (clinical shorthand)</span>
+          <span class="related-item">pacemaker (treatment for severe cases)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">pallor</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈpæl.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/pallor" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/pallor" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Abnormal paleness or loss of colour from the skin or mucous membranes, typically indicating reduced blood flow, anaemia, shock, or vasovagal response; assessed clinically at the face, conjunctivae, and nail beds.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">面色蒼白；膚色蒼白</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">facial pallor</span>
+          <span class="colloc-item">marked pallor</span>
+          <span class="colloc-item">pallor and diaphoresis</span>
+          <span class="colloc-item">conjunctival pallor</span>
+          <span class="colloc-item">sudden onset pallor</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "During the initial mobilisation attempt, the patient exhibited marked <strong>pallor</strong>, diaphoresis, and reported feeling faint; the session was terminated and the patient returned to supine with legs elevated."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">pallid (adj)</span>
+          <span class="related-item">cyanosis (blue discolouration)</span>
+          <span class="related-item">erythema (redness — opposite)</span>
+          <span class="related-item">anaemia (common cause)</span>
+          <span class="related-item">vasovagal response (mechanism)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">macrocephaly</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌmæk.rəʊˈsef.ə.li/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/macrocephaly" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/macrocephaly" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+        <span class="badge badge-neuro">神經 Neurological</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">An abnormally large head circumference, defined as a measurement greater than two standard deviations above the mean for age and sex; causes include hydrocephalus, megalencephaly, metabolic storage disorders, and benign familial variation.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">巨頭症；頭圍過大</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">benign familial macrocephaly</span>
+          <span class="colloc-item">progressive macrocephaly</span>
+          <span class="colloc-item">macrocephaly with hydrocephalus</span>
+          <span class="colloc-item">isolated macrocephaly</span>
+          <span class="colloc-item">macrocephaly on centile chart</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The referring paediatrician documented progressive <strong>macrocephaly</strong> with a head circumference tracking above the 99th percentile and requested physiotherapy assessment in the context of associated gross motor developmental delay."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">microcephaly (antonym — small head)</span>
+          <span class="related-item">macrocephalic (adj)</span>
+          <span class="related-item">hydrocephalus (common cause)</span>
+          <span class="related-item">head circumference / HC (measurement)</span>
+          <span class="related-item">plagiocephaly (asymmetric flattening)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 18)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Aroha, a 72-year-old female with a background of severe aortic stenosis and iron-deficiency anaemia,
+      was referred to the inpatient physiotherapy service for post-operative rehabilitation following
+      elective aortic valve replacement.
+      <br><br>
+      On initial assessment, the patient demonstrated marked <span class="highlight">pallor</span> of
+      the conjunctivae and nail beds, consistent with her known anaemia. Vital signs monitoring during
+      the initial sit-to-stand transfer revealed <span class="highlight">symptomatic bradycardia</span>,
+      with heart rate dropping from 58 bpm at rest to 41 bpm on standing, accompanied by dizziness
+      and diaphoresis. The session was terminated and the patient returned to supine with legs elevated;
+      the ward nurse was notified immediately.
+      <br><br>
+      The patient also reported a <span class="highlight">low-grade pyrexia</span> of 37.8°C earlier
+      that morning, which had been documented by nursing staff. In light of these findings, physiotherapy
+      was deferred pending cardiology review and optimisation of the patient's haemodynamic status.
+      <br><br>
+      Goals upon medical clearance include progressive seated exercise, lower limb strengthening, and
+      a graded return to ambulation with close haemodynamic monitoring throughout.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When documenting an adverse event during physiotherapy,
+      clearly record the <em>specific observation</em> (e.g. "HR dropped to 41 bpm"), the <em>patient's
+      symptoms</em> (e.g. "dizziness and diaphoresis"), the <em>action taken</em> (e.g. "session terminated,
+      returned to supine"), and <em>who was notified</em>. This protects the patient and demonstrates
+      professional accountability.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 18 · 2026-05-07 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 骨科 Musculoskeletal · 神經 Neurological · 心肺 Cardiopulmonary · Signs &amp; Symptoms · Paediatric</p>
+</footer>
+
+</body>
+</html>
