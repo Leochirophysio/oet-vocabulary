@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 19 · 2026-05-08</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 19 · 08 May 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Musculoskeletal + Signs &amp; Symptoms</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">valgus</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈvæl.ɡəs/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/valgus" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/valgus" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Describing a deformity in which the distal part of a limb or body segment is angled outward (away from the midline) relative to the proximal joint; for example, a lateral deviation of the knee or great toe.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">外翻（的）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">hallux valgus</span>
+          <span class="colloc-item">valgus deformity</span>
+          <span class="colloc-item">knee valgus</span>
+          <span class="colloc-item">valgus stress</span>
+          <span class="colloc-item">valgus alignment</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mrs Johnson was referred for physiotherapy management of a painful <strong>hallux valgus</strong> deformity of the right great toe, causing significant difficulty with prolonged weight-bearing and appropriate footwear selection."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">varus (antonym — inward deviation)</span>
+          <span class="related-item">genu valgum (knock-knee)</span>
+          <span class="related-item">cubitus valgus (elbow)</span>
+          <span class="related-item">hallux valgus (great toe)</span>
+          <span class="related-item">angulation</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">myofascial</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌmaɪ.əʊˈfæʃ.əl/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/myofascial" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/myofascial" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to or involving both the muscle tissue and the surrounding connective tissue (fascia); most commonly encountered in the context of myofascial pain syndrome, where trigger points within the muscle and fascia produce localised or referred pain.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">肌筋膜的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">myofascial pain</span>
+          <span class="colloc-item">myofascial trigger point</span>
+          <span class="colloc-item">myofascial release</span>
+          <span class="colloc-item">myofascial tension</span>
+          <span class="colloc-item">myofascial syndrome</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient presents with chronic <strong>myofascial</strong> pain affecting the upper trapezius and levator scapulae bilaterally, with multiple active trigger points eliciting referred pain to the occiput on palpation."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">fascia (connective tissue)</span>
+          <span class="related-item">trigger point</span>
+          <span class="related-item">myofascial release (therapy)</span>
+          <span class="related-item">myofascial pain syndrome (MPS)</span>
+          <span class="related-item">referred pain</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">erythema</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌer.ɪˈθiː.mə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/erythema" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/erythema" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Superficial redness of the skin caused by dilation and congestion of the superficial capillaries, commonly associated with inflammation, infection, injury, or irritation.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">紅斑；皮膚發紅</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">localised erythema</span>
+          <span class="colloc-item">erythema and warmth</span>
+          <span class="colloc-item">periwound erythema</span>
+          <span class="colloc-item">erythema around the wound</span>
+          <span class="colloc-item">erythema and swelling</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Inspection of the surgical site revealed marked <strong>erythema</strong> and localised warmth extending approximately 3 cm from the wound margin, raising clinical concern for early superficial wound infection."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">erythematous (adjective)</span>
+          <span class="related-item">hyperaemia (increased blood flow)</span>
+          <span class="related-item">redness (lay term)</span>
+          <span class="related-item">inflammation</span>
+          <span class="related-item">rubor (Latin — cardinal sign of inflammation)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">allodynia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌæl.əʊˈdɪn.i.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/allodynia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/allodynia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+        <span class="badge badge-neuro">神經 Neurological</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Pain elicited by a stimulus that does not normally provoke pain, such as light touch, gentle pressure, or temperature change; a hallmark feature of central sensitisation and neuropathic pain conditions.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">觸痛（異位痛）；正常無痛刺激引發的疼痛</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">mechanical allodynia</span>
+          <span class="colloc-item">tactile allodynia</span>
+          <span class="colloc-item">thermal allodynia</span>
+          <span class="colloc-item">allodynia to light touch</span>
+          <span class="colloc-item">allodynia in the affected area</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient demonstrated marked mechanical <strong>allodynia</strong> over the anterior thigh and medial knee, with light touch consistently triggering pain rated 7/10 on the Numeric Rating Scale, consistent with a presentation of central sensitisation."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">hyperalgesia (exaggerated pain to painful stimulus)</span>
+          <span class="related-item">central sensitisation</span>
+          <span class="related-item">neuropathic pain</span>
+          <span class="related-item">allodynic (adjective)</span>
+          <span class="related-item">pain sensitisation</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">guarding</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈɡɑː.dɪŋ/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/guarding" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/guarding" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Involuntary or voluntary contraction of muscles to protect an underlying painful or injured structure from movement or palpation; a protective motor response observed during physical examination or movement assessment.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">防衛性肌肉收縮；護痛反應</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">muscle guarding</span>
+          <span class="colloc-item">lumbar guarding</span>
+          <span class="colloc-item">involuntary guarding</span>
+          <span class="colloc-item">guarding on palpation</span>
+          <span class="colloc-item">guarding and rigidity</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Assessment of the lumbar spine revealed significant bilateral paraspinal muscle <strong>guarding</strong>, markedly restricting active range of motion in all planes and necessitating a modified treatment approach during the initial physiotherapy session."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">muscle spasm</span>
+          <span class="related-item">rigidity (sustained resistance to passive movement)</span>
+          <span class="related-item">splinting (protective immobilisation)</span>
+          <span class="related-item">protective movement behaviour</span>
+          <span class="related-item">guard (verb)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 19)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr David Park, a 34-year-old male tradesman, was referred to your physiotherapy department following
+      a right knee injury sustained during a football match three weeks ago. MRI confirmed a grade II medial
+      collateral ligament sprain with associated joint effusion.
+      <br><br>
+      On initial assessment, Mr Park presented with a resting posture demonstrating mild dynamic
+      <span class="highlight">knee valgus</span> during single-leg stance on the right, indicative of
+      gluteal weakness and altered lower limb biomechanics. He reported moderate pain (6/10 NRS) on
+      weight-bearing activities, with notable <span class="highlight">guarding</span> of the right
+      quadriceps and hamstrings on passive range of motion testing, limiting knee flexion to 85 degrees.
+      <br><br>
+      Palpation of the medial joint line revealed localised <span class="highlight">erythema</span>
+      and warmth consistent with the subacute inflammatory phase of healing. The patient also reported
+      <span class="highlight">allodynia</span> to light touch over the proximal medial tibia, suggesting
+      a degree of peripheral sensitisation that will need to be considered in pain management planning.
+      <br><br>
+      In addition, palpation of the right iliotibial band and gluteus medius identified significant
+      <span class="highlight">myofascial</span> trigger points producing referred pain to the lateral
+      knee. Treatment will incorporate progressive neuromuscular rehabilitation, trigger point therapy,
+      and a graduated return-to-sport programme.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When documenting musculoskeletal findings, specify the <em>degree</em> of deformity or restriction (e.g. "85 degrees of flexion"), the <em>nature</em> of signs (e.g. "erythema and warmth"), and any <em>neurological overlay</em> (e.g. allodynia suggesting sensitisation). This level of clinical detail is expected in OET Writing Task referral letters.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 19 · 2026-05-08 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 骨科 Musculoskeletal · Signs &amp; Symptoms · 神經 Neurological</p>
+</footer>
+
+</body>
+</html>
