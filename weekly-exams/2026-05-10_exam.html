@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Weekly Exam — Week 1 · 2026-05-10</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #fff; --primary: #7c3aed; --primary-light: #ede9fe;
+      --accent: #0d9488; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+      --green: #15803d; --green-light: #dcfce7;
+      --red: #b91c1c; --red-light: #fee2e2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem 4rem; line-height: 1.65; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: var(--primary); color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); flex-wrap: wrap; }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .week-badge { margin-left: auto; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.82rem; font-weight: 600; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .nav-bar a:hover { background: var(--primary-light); }
+    .instructions { max-width: 860px; margin: 0 auto 1.5rem; background: var(--primary-light); border: 1px solid #c4b5fd; border-radius: var(--radius); padding: 1rem 1.2rem; font-size: 0.88rem; }
+    .instructions h3 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .instructions ul { padding-left: 1.2rem; }
+    .instructions li { margin-bottom: 0.3rem; }
+    .section-block { max-width: 860px; margin: 0 auto 2rem; background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+    .section-header { padding: 1rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border); }
+    .section-num { width: 2rem; height: 2rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .section-title-text h2 { font-size: 1.05rem; font-weight: 700; }
+    .section-title-text p { font-size: 0.8rem; color: var(--muted); }
+    .timer-badge { margin-left: auto; background: var(--warn-light); color: var(--warn); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+    .section-body { padding: 1.4rem; }
+    .question { margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .q-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.4rem; }
+    .q-text { font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 500; }
+    .q-options { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.7rem; }
+    .q-option { font-size: 0.9rem; padding: 0.4rem 0.7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+    details { margin-top: 0.5rem; }
+    summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--primary); user-select: none; padding: 0.3rem 0; }
+    summary:hover { text-decoration: underline; }
+    .answer-box { margin-top: 0.5rem; background: var(--green-light); border-left: 3px solid var(--green); padding: 0.6rem 0.9rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #14532d; }
+    .reading-passage { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; }
+    .highlight { color: var(--primary); font-weight: 700; font-style: normal; text-decoration: underline dotted; }
+    .case-notes { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.88rem; font-family: 'Courier New', monospace; line-height: 1.9; margin-bottom: 1.2rem; }
+    .writing-task-box { background: var(--warn-light); border-left: 3px solid var(--warn); padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; margin-bottom: 1rem; }
+    .checklist { margin-top: 1rem; }
+    .checklist h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--green); }
+    .checklist ul { padding-left: 0; list-style: none; }
+    .checklist li { font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .checklist li::before { content: '☐'; font-size: 1rem; flex-shrink: 0; }
+    .role-play-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+    .role-play-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 0.4rem; }
+    .role-play-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .key-phrases { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .phrase { background: white; border: 1px solid #86efac; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px; font-style: italic; }
+    .word-bank { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .word-chip { font-size: 0.78rem; padding: 0.2rem 0.7rem; border-radius: 20px; font-weight: 600; }
+    .chip-this { background: #ede9fe; color: #6d28d9; border: 1px solid #c4b5fd; }
+    .chip-prev { background: #dbeafe; color: #1d4ed8; border: 1px solid #93c5fd; }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+    .score-bar { max-width: 860px; margin: 0 auto 1.5rem; background: white; border-radius: var(--radius); padding: 1rem 1.4rem; border: 1px solid var(--border); box-shadow: var(--shadow); display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .score-item { text-align: center; }
+    .score-item .score-num { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+    .score-item .score-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .tag-this { display: inline-block; background: #ede9fe; color: #6d28d9; font-size: 0.68rem; padding: 0.1rem 0.5rem; border-radius: 20px; font-weight: 700; margin-left: 0.4rem; vertical-align: middle; }
+    .tag-prev { display: inline-block; background: #dbeafe; color: #1d4ed8; font-size: 0.68rem; padding: 0.1rem 0.5rem; border-radius: 20px; font-weight: 700; margin-left: 0.4rem; vertical-align: middle; }
+  </style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="header-icon">📝</div>
+  <div class="header-text">
+    <h1>OET Weekly Practice Exam — Week 1</h1>
+    <p>Vocabulary · Reading · Writing · Speaking · 20 words tested across all sections</p>
+  </div>
+  <div class="week-badge">10 May 2026</div>
+</header>
+
+<!-- NAV BAR -->
+<nav class="nav-bar">
+  <a href="../index.html">← Vocabulary Home</a>
+  <a href="index.html">All Exams</a>
+  <a href="#section-1">§1 Vocabulary</a>
+  <a href="#section-2">§2 Reading</a>
+  <a href="#section-3">§3 Writing</a>
+  <a href="#section-4">§4 Speaking</a>
+</nav>
+
+<!-- EXAM INSTRUCTIONS -->
+<div class="instructions">
+  <h3>📋 How to use this exam</h3>
+  <ul>
+    <li>Work through each section in order, or jump using the navigation links above.</li>
+    <li>For MCQ sections, choose your answer <em>before</em> clicking "Show Answer".</li>
+    <li>For the Writing section, write your full letter before revealing the self-assessment checklist.</li>
+    <li>For Speaking, practise each role play aloud for 5 minutes before revealing the model outline.</li>
+    <li><span style="background:#ede9fe;color:#6d28d9;font-weight:700;padding:0.1rem 0.5rem;border-radius:20px;font-size:0.78rem;">THIS WEEK</span> = 3–10 May 2026 &nbsp;|&nbsp; <span style="background:#dbeafe;color:#1d4ed8;font-weight:700;padding:0.1rem 0.5rem;border-radius:20px;font-size:0.78rem;">PREVIOUS</span> = before 3 May 2026</li>
+  </ul>
+</div>
+
+<!-- SCORE OVERVIEW -->
+<div class="score-bar">
+  <div class="score-item"><div class="score-num">20</div><div class="score-label">Words Tested</div></div>
+  <div class="score-item"><div class="score-num">10</div><div class="score-label">Vocab Q's</div></div>
+  <div class="score-item"><div class="score-num">5</div><div class="score-label">Reading Q's</div></div>
+  <div class="score-item"><div class="score-num">1</div><div class="score-label">Writing Task</div></div>
+  <div class="score-item"><div class="score-num">2</div><div class="score-label">Role Plays</div></div>
+  <div class="score-item"><div class="score-num">~60</div><div class="score-label">Minutes Total</div></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 1 — VOCABULARY -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="section-block" id="section-1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-text">
+      <h2>Vocabulary</h2>
+      <p>10 questions — 6 from this week · 4 from previous weeks · Fill-in-blank, Definition match &amp; Collocation</p>
+    </div>
+    <div class="timer-badge">⏱ 15 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Q1 -->
+    <div class="question">
+      <div class="q-label">Q1 · Fill-in-the-blank <span class="tag-this">THIS WEEK</span> · Tests: <strong>allodynia</strong></div>
+      <div class="q-text">The patient reported severe pain when the physiotherapist lightly stroked the affected limb with a cotton swab — a phenomenon clinically referred to as ___.</div>
+      <div class="q-options">
+        <div class="q-option">A) Nociception</div>
+        <div class="q-option">B) Allodynia</div>
+        <div class="q-option">C) Hyperreflexia</div>
+        <div class="q-option">D) Paraesthesia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>B) Allodynia</strong> — Allodynia is pain provoked by a stimulus that would not normally be painful (e.g. light touch). It is distinct from <em>nociception</em> (normal pain processing), <em>hyperreflexia</em> (exaggerated reflexes), and <em>paraesthesia</em> (abnormal tingling/numbness).
+        </div>
+      </details>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+      <div class="q-label">Q2 · Definition match <span class="tag-this">THIS WEEK</span> · Tests: <strong>fibrillation</strong></div>
+      <div class="q-text">Which term best describes rapid, uncoordinated electrical activation of the cardiac muscle resulting in an irregular, ineffective heartbeat?</div>
+      <div class="q-options">
+        <div class="q-option">A) Tachycardia</div>
+        <div class="q-option">B) Bradycardia</div>
+        <div class="q-option">C) Fibrillation</div>
+        <div class="q-option">D) Syncope</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>C) Fibrillation</strong> — Fibrillation refers to chaotic, uncoordinated electrical impulses in cardiac muscle (atrial or ventricular). Tachycardia = fast but organised; bradycardia = slow but organised; syncope = transient loss of consciousness.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+      <div class="q-label">Q3 · Fill-in-the-blank <span class="tag-this">THIS WEEK</span> · Tests: <strong>bradykinesia</strong></div>
+      <div class="q-text">A cardinal feature of Parkinson's disease, ___ presents as progressive slowness of voluntary movement and is particularly evident during repetitive tasks such as finger-tapping.</div>
+      <div class="q-options">
+        <div class="q-option">A) Dystonia</div>
+        <div class="q-option">B) Ataxia</div>
+        <div class="q-option">C) Bradykinesia</div>
+        <div class="q-option">D) Tremor</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>C) Bradykinesia</strong> — Bradykinesia (brady- = slow; -kinesia = movement) is a hallmark of Parkinson's disease. Dystonia = sustained abnormal postures; ataxia = incoordination (cerebellar); tremor = rhythmic oscillation (also Parkinson's, but the question specifies slowness).
+        </div>
+      </details>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question">
+      <div class="q-label">Q4 · Fill-in-the-blank <span class="tag-this">THIS WEEK</span> · Tests: <strong>osteoporosis</strong></div>
+      <div class="q-text">Following DEXA scanning, Mrs Clarke was diagnosed with ___, indicating significantly reduced bone mineral density and placing her at elevated risk of fragility fractures.</div>
+      <div class="q-options">
+        <div class="q-option">A) Osteophyte formation</div>
+        <div class="q-option">B) Osteoporosis</div>
+        <div class="q-option">C) Chondromalacia</div>
+        <div class="q-option">D) Kyphosis</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>B) Osteoporosis</strong> — Osteoporosis is a metabolic bone disease characterised by low bone density (T-score ≤ −2.5 on DEXA) and increased fracture risk. Osteophytes = bony spurs; chondromalacia = cartilage softening; kyphosis = spinal curvature — none are detected by DEXA in this context.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question">
+      <div class="q-label">Q5 · Definition match <span class="tag-this">THIS WEEK</span> · Tests: <strong>adherence</strong></div>
+      <div class="q-text">Which term refers to the degree to which a patient follows the agreed treatment plan — including attending appointments, completing home exercises, and taking prescribed medication — as discussed with their clinician?</div>
+      <div class="q-options">
+        <div class="q-option">A) Prognosis</div>
+        <div class="q-option">B) Concordance</div>
+        <div class="q-option">C) Adherence</div>
+        <div class="q-option">D) Compliance</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>C) Adherence</strong> — In modern OET/clinical language, <em>adherence</em> captures the patient's active engagement with an agreed plan. <em>Concordance</em> refers to the shared decision-making process itself; <em>compliance</em> is an older, paternalistic term; <em>prognosis</em> = predicted outcome.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question">
+      <div class="q-label">Q6 · Collocation complete <span class="tag-this">THIS WEEK</span> · Tests: <strong>pneumothorax</strong></div>
+      <div class="q-text">A ___ pneumothorax occurs without an obvious precipitating cause in an otherwise healthy individual, most commonly in tall, thin young men.</div>
+      <div class="q-options">
+        <div class="q-option">A) Spontaneous</div>
+        <div class="q-option">B) Peripheral</div>
+        <div class="q-option">C) Consolidative</div>
+        <div class="q-option">D) Vascular</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>A) Spontaneous</strong> — "Spontaneous pneumothorax" is a fixed clinical collocation. Pneumothorax is air in the pleural space causing lung collapse; the spontaneous type arises without trauma. The other options are not standard collocations with pneumothorax.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question">
+      <div class="q-label">Q7 · Fill-in-the-blank <span class="tag-prev">PREVIOUS</span> · Tests: <strong>crepitus</strong></div>
+      <div class="q-text">On passive flexion and extension of the knee, the physiotherapist detected ___ — a grating or crackling sensation beneath the patella consistent with degenerative joint changes.</div>
+      <div class="q-options">
+        <div class="q-option">A) Effusion</div>
+        <div class="q-option">B) Crepitus</div>
+        <div class="q-option">C) Subluxation</div>
+        <div class="q-option">D) Contracture</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>B) Crepitus</strong> — Crepitus is the audible or palpable grating/crackling sensation produced by roughened articular surfaces. Effusion = fluid accumulation; subluxation = partial dislocation; contracture = fixed shortening of soft tissue.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question">
+      <div class="q-label">Q8 · Definition match <span class="tag-prev">PREVIOUS</span> · Tests: <strong>spasticity</strong></div>
+      <div class="q-text">Which term describes a velocity-dependent increase in tonic stretch reflexes resulting in increased resistance to passive movement, typically associated with an upper motor neurone lesion?</div>
+      <div class="q-options">
+        <div class="q-option">A) Hypotonia</div>
+        <div class="q-option">B) Rigidity</div>
+        <div class="q-option">C) Spasticity</div>
+        <div class="q-option">D) Contracture</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>C) Spasticity</strong> — Spasticity is velocity-dependent (resistance increases with faster movement) and a sign of upper motor neurone (UMN) lesion. Rigidity (e.g. Parkinson's) is not velocity-dependent; hypotonia = reduced tone; contracture = fixed structural shortening.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question">
+      <div class="q-label">Q9 · Fill-in-the-blank <span class="tag-prev">PREVIOUS</span> · Tests: <strong>dyspnoea</strong></div>
+      <div class="q-text">The patient reported significant ___ on exertion, becoming noticeably breathless after walking no more than 50 metres on flat ground.</div>
+      <div class="q-options">
+        <div class="q-option">A) Orthopnoea</div>
+        <div class="q-option">B) Tachypnoea</div>
+        <div class="q-option">C) Dyspnoea</div>
+        <div class="q-option">D) Apnoea</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>C) Dyspnoea</strong> — Dyspnoea = subjective sensation of breathlessness/difficult breathing. Orthopnoea = breathlessness lying flat; tachypnoea = objectively rapid breathing rate; apnoea = cessation of breathing. "On exertion" is a classic modifier for dyspnoea.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question">
+      <div class="q-label">Q10 · Collocation complete <span class="tag-prev">PREVIOUS</span> · Tests: <strong>radiculopathy</strong></div>
+      <div class="q-text">___ radiculopathy, caused by nerve root compression at the lower spinal levels, typically presents with leg pain, numbness, and weakness distributed along a dermatomal pattern.</div>
+      <div class="q-options">
+        <div class="q-option">A) Cervical</div>
+        <div class="q-option">B) Lumbar</div>
+        <div class="q-option">C) Vascular</div>
+        <div class="q-option">D) Peripheral</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>B) Lumbar</strong> — "Lumbar radiculopathy" is the correct clinical collocation for nerve root compression in the lower spine (L1–S1), causing symptoms in the leg (sciatica). Cervical radiculopathy affects the arm; vascular and peripheral are not standard collocations with radiculopathy.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 2 — READING -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="section-block" id="section-2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="section-title-text">
+      <h2>OET Reading</h2>
+      <p>1 clinical passage (approx. 230 words) + 5 comprehension questions — 2 factual · 2 inferential · 1 vocabulary in context</p>
+    </div>
+    <div class="timer-badge">⏱ 15 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="word-bank">
+      <span style="font-size:0.78rem;font-weight:600;color:var(--muted);align-self:center;">Words embedded:</span>
+      <span class="word-chip chip-this">tremor</span>
+      <span class="word-chip chip-this">bradykinesia</span>
+      <span class="word-chip chip-this">hemiparesis</span>
+      <span class="word-chip chip-this">guarding</span>
+      <span class="word-chip chip-this">myofascial</span>
+    </div>
+
+    <div class="reading-passage">
+      <p style="font-weight:700;margin-bottom:0.6rem;">Clinical Case Summary: Post-Stroke Neurological Rehabilitation</p>
+      <p>Mr David Chen, a 67-year-old retired schoolteacher, was referred to the physiotherapy outpatient department six weeks following a right-sided ischaemic stroke. The referring neurologist documented significant left-sided <span class="highlight">hemiparesis</span>, with manual muscle testing revealing grade 3/5 strength across the left upper and lower limb. Initial neurological assessment also identified a low-amplitude resting <span class="highlight">tremor</span> of the left hand; however, this was attributed to a pre-existing diagnosis of mild Parkinson's disease rather than the cerebrovascular event itself.</p>
+      <br>
+      <p>Functional mobility was substantially impaired. Mr Chen required moderate physical assistance for all transfers and was unable to mobilise independently over any distance. Gait analysis revealed marked <span class="highlight">guarding</span> of the left lower limb during the stance phase of walking, suggesting ongoing pain sensitivity and reduced weight-bearing confidence. Soft tissue assessment identified significant <span class="highlight">myofascial</span> tightness throughout the left cervical and periscapular musculature, likely contributing to the restricted left shoulder range of motion noted on examination.</p>
+      <br>
+      <p>Cognitive screening indicated mild executive dysfunction affecting the patient's capacity for motor learning. Notably, <span class="highlight">bradykinesia</span> was evident during self-care tasks, including dressing and handwriting. The interdisciplinary team agreed on a rehabilitation programme incorporating progressive upper limb functional retraining, assisted gait rehabilitation, and structured patient education focusing on fall prevention strategies and home safety.</p>
+    </div>
+
+    <!-- Reading Q1 -->
+    <div class="question">
+      <div class="q-label">Reading Q1 · Factual</div>
+      <div class="q-text">What was the manual muscle testing grade recorded for Mr Chen's left upper and lower limb?</div>
+      <div class="q-options">
+        <div class="q-option">A) Grade 2/5</div>
+        <div class="q-option">B) Grade 3/5</div>
+        <div class="q-option">C) Grade 4/5</div>
+        <div class="q-option">D) Grade 5/5</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>B) Grade 3/5</strong> — The passage states: "manual muscle testing revealing grade 3/5 strength across the left upper and lower limb." Grade 3/5 = muscle can move the limb against gravity but not against additional resistance.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q2 -->
+    <div class="question">
+      <div class="q-label">Reading Q2 · Factual</div>
+      <div class="q-text">How long after the onset of his stroke was Mr Chen referred to the physiotherapy outpatient department?</div>
+      <div class="q-options">
+        <div class="q-option">A) Two weeks</div>
+        <div class="q-option">B) Four weeks</div>
+        <div class="q-option">C) Six weeks</div>
+        <div class="q-option">D) Eight weeks</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>C) Six weeks</strong> — The passage explicitly states "six weeks following a right-sided ischaemic stroke." No inference required.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q3 -->
+    <div class="question">
+      <div class="q-label">Reading Q3 · Inferential</div>
+      <div class="q-text">Why did the physiotherapist specifically assess the cervical and periscapular soft tissue in Mr Chen's left side?</div>
+      <div class="q-options">
+        <div class="q-option">A) To screen for signs of vertebral artery compromise</div>
+        <div class="q-option">B) To identify myofascial tightness that may be contributing to restricted shoulder range of motion</div>
+        <div class="q-option">C) To assess the severity of the patient's tremor</div>
+        <div class="q-option">D) To rule out thoracic outlet syndrome</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>B)</strong> — The passage directly links myofascial tightness in the cervical/periscapular region to "restricted left shoulder range of motion noted on examination." The other options are not supported by the text.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q4 -->
+    <div class="question">
+      <div class="q-label">Reading Q4 · Inferential</div>
+      <div class="q-text">Based on the passage, what is the most likely explanation for the resting tremor observed in Mr Chen's left hand?</div>
+      <div class="q-options">
+        <div class="q-option">A) It is a direct consequence of the ischaemic stroke</div>
+        <div class="q-option">B) It results from left-sided hemiparesis</div>
+        <div class="q-option">C) It is attributable to a co-existing diagnosis of Parkinson's disease</div>
+        <div class="q-option">D) It is caused by myofascial tightness in the periscapular region</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>C)</strong> — The passage explicitly states the tremor "was attributed to a pre-existing diagnosis of mild Parkinson's disease rather than the cerebrovascular event itself." Clinical reasoning: resting tremor is a cardinal feature of Parkinson's, not typically of stroke.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q5 -->
+    <div class="question">
+      <div class="q-label">Reading Q5 · Vocabulary in context</div>
+      <div class="q-text">In the context of the passage, the word <strong>"guarding"</strong> most closely means:</div>
+      <div class="q-options">
+        <div class="q-option">A) Protective muscular contraction and movement restriction in response to pain or perceived threat of pain</div>
+        <div class="q-option">B) A security or supervision measure taken by hospital staff</div>
+        <div class="q-option">C) Exaggerated deep tendon reflexes following neurological injury</div>
+        <div class="q-option">D) Complete loss of voluntary motor control in the lower limb</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          ✅ <strong>A)</strong> — In clinical physiotherapy, <em>guarding</em> refers to voluntary or involuntary muscle splinting/protective posturing to avoid pain. Here it describes cautious, limited weight-bearing on the affected limb during walking. Options B–D are unrelated to this clinical context.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 3 — WRITING -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="section-block" id="section-3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="section-title-text">
+      <h2>OET Writing Task</h2>
+      <p>Referral letter — approx. 180–200 words · 45 minutes recommended</p>
+    </div>
+    <div class="timer-badge">⏱ 45 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="word-bank">
+      <span style="font-size:0.78rem;font-weight:600;color:var(--muted);align-self:center;">Words to use:</span>
+      <span class="word-chip chip-this">valgus</span>
+      <span class="word-chip chip-this">erythema</span>
+      <span class="word-chip chip-this">tenosynovitis</span>
+      <span class="word-chip chip-this">osteoporosis</span>
+      <span class="word-chip chip-this">orthosis</span>
+    </div>
+
+    <div class="writing-task-box">
+      <strong>Task Instruction:</strong> Using the case notes below, write a referral letter from yourself as the treating physiotherapist at <strong>Central City Physiotherapy, 45 Willis Street, Wellington 6011</strong> to <strong>Dr James Harrington, Orthopaedic Specialist, Wellington Regional Hospital</strong>. Your letter should summarise the patient's key clinical findings, current physiotherapy management, and the reasons for specialist referral. Write approximately 180–200 words. Do not use a bullet-point format; write in continuous prose.
+    </div>
+
+    <div class="case-notes">
+PATIENT:  Mrs Patricia Nguyen  |  DOB: 12/03/1968 (58F)
+REF FROM: Central City Physiotherapy
+DATE:     10/05/2026
+
+DX:
+  - L knee valgus deformity (progressive)
+  - R wrist: suspected De Quervain's tenosynovitis
+
+PMHx:
+  - Osteoporosis (confirmed DEXA 2024, T-score −2.8 L hip)
+  - Type 2 DM · Hypertension
+  - No previous orthopaedic surgery
+
+MEDS:    Alendronate 70mg weekly · Metformin 1g BD · Ramipril 5mg OD
+
+SOCIAL:  Retired nurse · Lives alone · Independent ADLs (currently)
+
+PC (6/52):
+  - Bilateral knee pain (L >> R) — insidious onset, worsening
+  - R wrist/thumb pain with gripping and pinching
+
+OBJ FINDINGS:
+  - L knee: valgus alignment ~12°, joint line tenderness ++
+               moderate erythema over medial aspect
+               ROM: flex 0–95°, ext lag 8°
+  - R wrist: Finkelstein's test +ve, tenderness at radial styloid
+  - BMI: 29 · No systemic S/S
+
+FUNCTIONAL LIMITATIONS:
+  - Descending stairs: requires rail, 1 step at a time
+  - Prolonged standing > 20 min not tolerated
+  - Difficulty with jar-opening, handwriting (R wrist)
+
+CURRENT Rx (6/52 conservative Mx):
+  - Physiotherapy: quad strengthening, knee taping, wrist splinting
+  - Patient commenced on R wrist orthosis (2/52 ago) — partial relief
+  - Self-managed: intermittent ice, OTC ibuprofen
+
+REASON FOR REFERRAL:
+  - L knee valgus not improving despite conservative Rx × 6/52
+  - Query: surgical review / specialist Mx advice for both joints
+  - Osteoporosis — relevant for any planned intervention
+    </div>
+
+    <details>
+      <summary>Show Self-Assessment Checklist (reveal AFTER writing your letter)</summary>
+      <div class="answer-box">
+        <div class="checklist">
+          <h4>✅ OET Writing Self-Assessment — 10 Criteria</h4>
+          <ul>
+            <li>Format is correct: date, sender address, recipient address, and appropriate salutation (e.g. "Dear Dr Harrington,")</li>
+            <li>Opening sentence clearly states the purpose: referring Mrs Nguyen and why (e.g. "I am writing to refer…")</li>
+            <li>Patient demographics included: full name, age/DOB, and relevant background (retired nurse, lives alone)</li>
+            <li>Relevant medical history summarised: osteoporosis, T2DM, hypertension — without excessive detail</li>
+            <li>Key clinical findings reported accurately: valgus alignment, erythema, positive Finkelstein's test, ROM deficit</li>
+            <li>All five target vocabulary words used correctly in context: <em>valgus, erythema, tenosynovitis, osteoporosis, orthosis</em></li>
+            <li>Current physiotherapy management summarised before stating the referral reason</li>
+            <li>Specific referral reason clearly articulated: what you need the specialist to address (surgical review, management advice)</li>
+            <li>Professional, formal register maintained throughout — no contractions, no abbreviations unexplained, no bullet points</li>
+            <li>Appropriate closing: offers availability for further information, provides contact details, professional sign-off</li>
+          </ul>
+        </div>
+        <p style="margin-top:0.8rem;font-size:0.82rem;"><strong>Model opening (for reference):</strong><br><em>"I am writing to refer Mrs Patricia Nguyen (DOB 12/03/1968), a 58-year-old retired nurse currently under my care, for specialist orthopaedic review. Mrs Nguyen presents with a progressive left knee valgus deformity and suspected right De Quervain's tenosynovitis, which have failed to resolve following six weeks of conservative physiotherapy management…"</em></p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 4 — SPEAKING -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="section-block" id="section-4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="section-title-text">
+      <h2>OET Speaking — 2 Role Plays</h2>
+      <p>Practise aloud for 5 min each · Reveal model outline only after your attempt</p>
+    </div>
+    <div class="timer-badge">⏱ 10 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- ROLE PLAY 1 -->
+    <div class="role-play-card">
+      <h4>Role Play 1 — Chronic Pain Assessment</h4>
+      <p><strong>Setting:</strong> Outpatient physiotherapy clinic, Wellington Hospital</p>
+      <p><strong>Roles:</strong> You = physiotherapist &nbsp;|&nbsp; Examiner = Mr Tom Baxter, 44-year-old male, 6-month history of chronic lower back and left leg pain</p>
+      <p><strong>Key task:</strong> Explain the nature of the patient's pain symptoms to him in lay terms — specifically the difference between <em>nociceptive</em> pain and pain that has become altered by the nervous system. Explore his understanding of why he experiences pain even from light touch (allodynia). Address his concern that his reflexes seem "too jumpy" (hyperreflexia). Assess his goals and begin building rapport.</p>
+      <div class="word-bank">
+        <span style="font-size:0.78rem;font-weight:600;color:var(--muted);align-self:center;">Words to use:</span>
+        <span class="word-chip chip-this">nociception</span>
+        <span class="word-chip chip-this">allodynia</span>
+        <span class="word-chip chip-this">hyperreflexia</span>
+      </div>
+      <p><strong>Suggested opening:</strong> <em>"Mr Baxter, thank you for coming in today. I've had a look at the notes your GP sent through — I'd like to start by asking you to describe what the pain feels like for you day to day, so I can get a clear picture…"</em></p>
+      <div class="key-phrases">
+        <span class="phrase">"Your nervous system has become sensitised…"</span>
+        <span class="phrase">"This is called allodynia — pain from a normally harmless touch…"</span>
+        <span class="phrase">"Nociception is the body's normal alarm system…"</span>
+        <span class="phrase">"The hyperreflexia your GP noted suggests the nerve pathways are overactive…"</span>
+        <span class="phrase">"The good news is that this type of pain responds well to…"</span>
+      </div>
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Model Structure — Role Play 1:</strong>
+          <ol style="padding-left:1.2rem;margin-top:0.4rem;font-size:0.86rem;line-height:1.8;">
+            <li><strong>Opening / rapport:</strong> Warm greeting, confirm name and reason for visit. Express empathy regarding 6-month duration.</li>
+            <li><strong>History:</strong> Open question about pain quality, location, aggravating/relieving factors, and impact on daily life. Ask specifically about the light-touch sensitivity.</li>
+            <li><strong>Education — nociception:</strong> <em>"Your body has a warning system called nociception — it's the normal process that tells your brain when tissue is at risk of damage. That's healthy and protective."</em></li>
+            <li><strong>Education — allodynia:</strong> <em>"What's happening with you is that this alarm system has become over-sensitive — even a light touch on your back triggers a pain response. In medical terms we call this allodynia. It doesn't mean there's more damage; it means the volume on your pain system has been turned up."</em></li>
+            <li><strong>Education — hyperreflexia:</strong> <em>"The jumpy reflexes your GP noticed — that's called hyperreflexia. It's a sign that your nervous system is in a heightened state of alert. We'll assess this carefully today."</em></li>
+            <li><strong>Goal-setting &amp; plan:</strong> Ask about functional goals (return to work, sport). Explain that treatment will include graded movement, pain education, and gradually exposing the nervous system to safe activity.</li>
+            <li><strong>Closing:</strong> Summarise, check understanding, invite questions, confirm next steps.</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <!-- ROLE PLAY 2 -->
+    <div class="role-play-card">
+      <h4>Role Play 2 — Discharge Planning &amp; Home Exercise Programme</h4>
+      <p><strong>Setting:</strong> Inpatient neurological rehabilitation ward</p>
+      <p><strong>Roles:</strong> You = physiotherapist &nbsp;|&nbsp; Examiner = Mrs Linda Fraser, 62-year-old female, recovering from a left-sided ischaemic stroke 8 weeks ago; preparing for discharge home in 3 days</p>
+      <p><strong>Key task:</strong> Discuss Mrs Fraser's home exercise programme, emphasising the importance of adherence. Explain the ongoing impact of her right-sided hemiparesis on function and what to expect at home. Address her worry that the slowness (bradykinesia-like symptoms from spasticity) she experiences when getting dressed will prevent her from managing independently. Confirm community physiotherapy referral and safety strategies.</p>
+      <div class="word-bank">
+        <span style="font-size:0.78rem;font-weight:600;color:var(--muted);align-self:center;">Words to use:</span>
+        <span class="word-chip chip-this">adherence</span>
+        <span class="word-chip chip-this">hemiparesis</span>
+        <span class="word-chip chip-this">bradykinesia</span>
+      </div>
+      <p><strong>Suggested opening:</strong> <em>"Mrs Fraser, it's wonderful news that you're nearly ready to go home. I wanted to sit down with you today to go through your exercise programme and make sure you feel confident about what to do once you're back in your own environment…"</em></p>
+      <div class="key-phrases">
+        <span class="phrase">"The weakness on your right side — your hemiparesis — will continue to improve with consistent exercise…"</span>
+        <span class="phrase">"Adherence to your home programme is one of the most important factors in your recovery…"</span>
+        <span class="phrase">"The slowness you notice when dressing is related to how your right side is working after the stroke…"</span>
+        <span class="phrase">"Would it help if we practised the exercises together right now?"</span>
+        <span class="phrase">"Your community physiotherapist will continue to monitor your progress…"</span>
+      </div>
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Model Structure — Role Play 2:</strong>
+          <ol style="padding-left:1.2rem;margin-top:0.4rem;font-size:0.86rem;line-height:1.8;">
+            <li><strong>Opening / celebration:</strong> Acknowledge the patient's progress and affirm the good news of discharge. Establish a collaborative, warm tone.</li>
+            <li><strong>Explore concerns:</strong> Ask open questions — <em>"How are you feeling about going home?"</em> — to elicit her worry about slowness with self-care tasks.</li>
+            <li><strong>Explain hemiparesis:</strong> <em>"After a stroke, the weakness on one side of the body — called hemiparesis — is very common. Your right arm and leg are still recovering, which is why some tasks take more effort and feel slower."</em></li>
+            <li><strong>Address slowness of movement:</strong> <em>"The slowness you experience during dressing is your brain and muscles re-learning to work together. It will improve with practice — it's not permanent, and it doesn't mean you can't manage at home."</em> (Use bradykinesia to name the symptom if appropriate at her level of understanding.)</li>
+            <li><strong>Adherence education:</strong> <em>"The single most important thing you can do to keep improving is to stick to your home exercise programme. Research shows that adherence — doing your exercises consistently, even on days when it feels difficult — is one of the biggest drivers of recovery after stroke."</em></li>
+            <li><strong>Practical plan:</strong> Hand over written exercise programme. Discuss fatigue management, safe environment at home, fall prevention. Confirm community physiotherapy follow-up appointment.</li>
+            <li><strong>Check understanding:</strong> Ask teach-back — <em>"Could you tell me back in your own words what the most important exercises are?"</em></li>
+            <li><strong>Closing:</strong> Express confidence in her recovery, provide contact number for questions, confirm next appointment.</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<!-- PAGE FOOTER -->
+<footer class="page-footer">
+  OET Weekly Exam · Week 1 · 10 May 2026 · Leo · AUT Master of Physiotherapy Practice<br>
+  <span style="font-size:0.75rem;">20 unique words tested · Pool: 100 words total (40 this week + 60 previous)</span>
+</footer>
+
+</body>
+</html>
