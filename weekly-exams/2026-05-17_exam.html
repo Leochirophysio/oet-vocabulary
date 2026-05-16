@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Weekly Exam — Week 2 · 2026-05-17</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #fff; --primary: #7c3aed; --primary-light: #ede9fe;
+      --accent: #0d9488; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+      --green: #15803d; --green-light: #dcfce7;
+      --red: #b91c1c; --red-light: #fee2e2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem 4rem; line-height: 1.65; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: var(--primary); color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); flex-wrap: wrap; }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .week-badge { margin-left: auto; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.82rem; font-weight: 600; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .instructions { max-width: 860px; margin: 0 auto 1.5rem; background: var(--primary-light); border: 1px solid #c4b5fd; border-radius: var(--radius); padding: 1rem 1.2rem; font-size: 0.88rem; }
+    .instructions h3 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .instructions ul { padding-left: 1.2rem; }
+    .instructions li { margin-bottom: 0.3rem; }
+    .section-block { max-width: 860px; margin: 0 auto 2rem; background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+    .section-header { padding: 1rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border); }
+    .section-num { width: 2rem; height: 2rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .section-title-text h2 { font-size: 1.05rem; font-weight: 700; }
+    .section-title-text p { font-size: 0.8rem; color: var(--muted); }
+    .timer-badge { margin-left: auto; background: var(--warn-light); color: var(--warn); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+    .section-body { padding: 1.4rem; }
+    .question { margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .q-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.4rem; }
+    .q-text { font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 500; }
+    .q-options { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.7rem; }
+    .q-option { font-size: 0.9rem; padding: 0.4rem 0.7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+    details { margin-top: 0.5rem; }
+    summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--primary); user-select: none; padding: 0.3rem 0; }
+    summary:hover { text-decoration: underline; }
+    .answer-box { margin-top: 0.5rem; background: var(--green-light); border-left: 3px solid var(--green); padding: 0.6rem 0.9rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #14532d; }
+    .reading-passage { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; font-style: italic; }
+    .highlight { color: var(--primary); font-weight: 700; font-style: normal; text-decoration: underline dotted; }
+    .case-notes { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.88rem; font-family: 'Courier New', monospace; line-height: 1.9; margin-bottom: 1.2rem; }
+    .writing-task-box { background: var(--warn-light); border-left: 3px solid var(--warn); padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; margin-bottom: 1rem; }
+    .checklist { margin-top: 1rem; }
+    .checklist h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--green); }
+    .checklist ul { padding-left: 0; list-style: none; }
+    .checklist li { font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .checklist li::before { content: '☐'; font-size: 1rem; flex-shrink: 0; }
+    .role-play-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+    .role-play-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 0.4rem; }
+    .role-play-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .key-phrases { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .phrase { background: white; border: 1px solid #86efac; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px; font-style: italic; }
+    .rp-label { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.15rem 0.5rem; border-radius: 20px; margin-bottom: 0.5rem; }
+    .rp-label-1 { background: #dbeafe; color: #1d4ed8; }
+    .rp-label-2 { background: #fef9c3; color: #854d0e; }
+    .vocab-tag { display: inline-block; font-size: 0.72rem; padding: 0.1rem 0.45rem; border-radius: 10px; font-weight: 600; margin: 0.1rem; }
+    .tag-this { background: #ede9fe; color: #6d28d9; }
+    .tag-prev { background: #e0f2fe; color: #0369a1; }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+<header class="page-header">
+  <div class="header-icon">📝</div>
+  <div class="header-text">
+    <h1>OET Weekly Practice Exam — Week 2</h1>
+    <p>17 May 2026 · Physiotherapy · 21 words tested · Pool: 130 words</p>
+  </div>
+  <div class="week-badge">Week 2</div>
+</header>
+
+<nav class="nav-bar">
+  <a href="../index.html">← Vocabulary Home</a>
+  <a href="index.html">All Exams</a>
+  <a href="#section-1">1 · Vocabulary</a>
+  <a href="#section-2">2 · Reading</a>
+  <a href="#section-3">3 · Writing</a>
+  <a href="#section-4">4 · Speaking</a>
+</nav>
+
+<div class="instructions">
+  <h3>📋 Exam Instructions</h3>
+  <ul>
+    <li>Work through each section in order, as in the real OET.</li>
+    <li>Attempt every question before clicking <em>Show Answer</em>.</li>
+    <li>This week's words are labelled <span class="vocab-tag tag-this">THIS WEEK</span>; revision words are <span class="vocab-tag tag-prev">PREVIOUS</span>.</li>
+    <li>Allocate roughly: Vocab 10 min · Reading 15 min · Writing 25 min · Speaking 15 min.</li>
+    <li>For the Writing section, write your letter fully before checking the checklist.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════ SECTION 1 ═══════════════════════════ -->
+<section class="section-block" id="section-1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-text">
+      <h2>Vocabulary</h2>
+      <p>10 questions · 6 from this week · 4 from previous weeks</p>
+    </div>
+    <div class="timer-badge">⏱ ~10 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Q1 -->
+    <div class="question">
+      <div class="q-label">Question 1 · Fill-in-the-blank · <span class="vocab-tag tag-this">THIS WEEK</span> · exacerbation</div>
+      <div class="q-text">The patient reported a sudden ___ of her lumbar symptoms following an episode of heavy lifting, with pain now radiating into the left lower limb.</div>
+      <div class="q-options">
+        <div class="q-option">A) remission</div>
+        <div class="q-option">B) exacerbation</div>
+        <div class="q-option">C) haematoma</div>
+        <div class="q-option">D) contracture</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: B) exacerbation</strong><br>
+          An <em>exacerbation</em> is a sudden worsening or flare-up of a pre-existing condition. In clinical documentation it often appears as "acute exacerbation of chronic low back pain." Remission = improvement; haematoma = blood collection; contracture = permanent shortening of muscle/tendon.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+      <div class="q-label">Question 2 · Fill-in-the-blank · <span class="vocab-tag tag-this">THIS WEEK</span> · spondylosis</div>
+      <div class="q-text">MRI of the cervical spine confirmed significant ___, with disc height loss and posterior osteophyte formation at C5/6 and C6/7, consistent with the patient's age-related degenerative changes.</div>
+      <div class="q-options">
+        <div class="q-option">A) arthroplasty</div>
+        <div class="q-option">B) myelopathy</div>
+        <div class="q-option">C) spondylosis</div>
+        <div class="q-option">D) stenosis</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: C) spondylosis</strong><br>
+          <em>Spondylosis</em> refers to age-related degenerative changes of the vertebral column, including disc degeneration and osteophyte formation. Myelopathy (B) is the resulting spinal cord dysfunction — a complication of spondylosis, not the condition itself. Stenosis (D) refers specifically to canal narrowing.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+      <div class="q-label">Question 3 · Fill-in-the-blank · <span class="vocab-tag tag-this">THIS WEEK</span> · neuroplasticity</div>
+      <div class="q-text">The post-stroke rehabilitation programme was designed to harness ___, encouraging the brain to reorganise and form new neural pathways through intensive task-specific training.</div>
+      <div class="q-options">
+        <div class="q-option">A) neuropathy</div>
+        <div class="q-option">B) neuroplasticity</div>
+        <div class="q-option">C) proprioception</div>
+        <div class="q-option">D) dyskinesia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: B) neuroplasticity</strong><br>
+          <em>Neuroplasticity</em> is the brain's ability to reorganise its structure and function in response to experience, learning, or injury. It underpins much of neurorehabilitation. Neuropathy = nerve damage/disease; dyskinesia = impaired voluntary movement.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question">
+      <div class="q-label">Question 4 · Fill-in-the-blank · <span class="vocab-tag tag-this">THIS WEEK</span> · hemiparesis</div>
+      <div class="q-text">Following the cerebrovascular accident, the patient presented with right-sided ___, demonstrating reduced grip strength and impaired lower limb function, but retained some voluntary motor control on the affected side.</div>
+      <div class="q-options">
+        <div class="q-option">A) hemiplegia</div>
+        <div class="q-option">B) hemiparesis</div>
+        <div class="q-option">C) apraxia</div>
+        <div class="q-option">D) ataxia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: B) hemiparesis</strong><br>
+          <em>Hemiparesis</em> = partial (incomplete) weakness affecting one side of the body. The key clue is "retained some voluntary motor control" — if movement were completely absent, the correct term would be <em>hemiplegia</em> (A). Apraxia = difficulty with motor planning; ataxia = incoordination.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question">
+      <div class="q-label">Question 5 · Fill-in-the-blank · <span class="vocab-tag tag-this">THIS WEEK</span> · vertigo</div>
+      <div class="q-text">The patient described episodic ___, reporting a sensation that the room was spinning around her, consistently triggered by sudden changes in head position, particularly when rolling over in bed.</div>
+      <div class="q-options">
+        <div class="q-option">A) malaise</div>
+        <div class="q-option">B) pruritus</div>
+        <div class="q-option">C) lethargy</div>
+        <div class="q-option">D) vertigo</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: D) vertigo</strong><br>
+          <em>Vertigo</em> is the false sensation of rotational movement — either the patient feels they are spinning or their surroundings are. The description of positional triggering (worse on head movement, rolling in bed) is classic for Benign Paroxysmal Positional Vertigo (BPPV), a common condition in physiotherapy practice.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question">
+      <div class="q-label">Question 6 · Definition match · <span class="vocab-tag tag-this">THIS WEEK</span> · haematoma</div>
+      <div class="q-text">Which word best describes: <em>"A localised collection of blood that has leaked outside blood vessels, typically caused by trauma to the vessel wall, presenting clinically as a firm, discoloured swelling that may be tender to palpation."</em></div>
+      <div class="q-options">
+        <div class="q-option">A) effusion</div>
+        <div class="q-option">B) oedema</div>
+        <div class="q-option">C) haematoma</div>
+        <div class="q-option">D) bursitis</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: C) haematoma</strong><br>
+          A <em>haematoma</em> is a collection of blood outside vessels. Compare: <em>effusion</em> = excess fluid in a joint cavity; <em>oedema</em> = excess fluid in interstitial tissue; <em>bursitis</em> = inflammation of a bursa. Clinically, haematomas may require aspiration or can be managed conservatively with RICE.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question">
+      <div class="q-label">Question 7 · Definition match · <span class="vocab-tag tag-prev">PREVIOUS</span> · radiculopathy</div>
+      <div class="q-text">Which word best describes: <em>"A clinical syndrome caused by compression or irritation of a spinal nerve root, resulting in pain, weakness, or altered sensation distributed along the dermatome and myotome of that nerve."</em></div>
+      <div class="q-options">
+        <div class="q-option">A) neuropathy</div>
+        <div class="q-option">B) radiculopathy</div>
+        <div class="q-option">C) myelopathy</div>
+        <div class="q-option">D) stenosis</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: B) radiculopathy</strong><br>
+          <em>Radiculopathy</em> specifically involves nerve root (radix) pathology. Compare: <em>neuropathy</em> = peripheral nerve disease (more diffuse); <em>myelopathy</em> = spinal cord dysfunction; <em>stenosis</em> = narrowing (a structural cause, not the syndrome itself). Clinically: L4/L5 radiculopathy causes dermatomal leg pain, often called "sciatica."
+        </div>
+      </details>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question">
+      <div class="q-label">Question 8 · Definition match · <span class="vocab-tag tag-prev">PREVIOUS</span> · proprioception</div>
+      <div class="q-text">Which word best describes: <em>"The body's ability to sense its own position, movement, and acceleration in space without relying on visual input, mediated by specialised receptors in muscles, tendons, and joint capsules."</em></div>
+      <div class="q-options">
+        <div class="q-option">A) kinaesthesia</div>
+        <div class="q-option">B) nociception</div>
+        <div class="q-option">C) proprioception</div>
+        <div class="q-option">D) allodynia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: C) proprioception</strong><br>
+          <em>Proprioception</em> is the sense of body position. Note: <em>kinaesthesia</em> (A) is closely related — it refers specifically to the sense of movement — and some sources use the terms interchangeably, but proprioception is the broader and more clinically common term. <em>Nociception</em> = pain sensing; <em>allodynia</em> = pain from normally non-painful stimuli.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question">
+      <div class="q-label">Question 9 · Collocation complete · <span class="vocab-tag tag-prev">PREVIOUS</span> · spasticity</div>
+      <div class="q-text">Complete the clinical collocation: "___ management in patients with upper motor neurone lesions typically involves a combination of stretching, positioning, and pharmacological intervention."</div>
+      <div class="q-options">
+        <div class="q-option">A) Spasticity</div>
+        <div class="q-option">B) Contracture</div>
+        <div class="q-option">C) Dystonia</div>
+        <div class="q-option">D) Clonus</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: A) Spasticity</strong><br>
+          <em>Spasticity</em> is velocity-dependent increased muscle tone characteristic of upper motor neurone (UMN) lesions. "Spasticity management" is the standard clinical phrase. <em>Contracture</em> (B) is a complication of unmanaged spasticity (permanent shortening). <em>Clonus</em> (D) is a sign of spasticity but not a management collocation.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question">
+      <div class="q-label">Question 10 · Collocation complete · <span class="vocab-tag tag-prev">PREVIOUS</span> · contracture</div>
+      <div class="q-text">Complete the clinical collocation: "___ prevention through regular passive range of motion exercises and appropriate positioning is a priority in the acute care of immobilised patients."</div>
+      <div class="q-options">
+        <div class="q-option">A) Subluxation</div>
+        <div class="q-option">B) Contracture</div>
+        <div class="q-option">C) Rigidity</div>
+        <div class="q-option">D) Atrophy</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: B) Contracture</strong><br>
+          <em>Contracture prevention</em> is a standard clinical phrase in physiotherapy. A contracture is an abnormal, often permanent shortening of muscle or connective tissue, leading to reduced joint range of motion. <em>Atrophy prevention</em> (D) is also valid but uses a different collocation — "muscle atrophy prevention" or "disuse atrophy prevention."
+        </div>
+      </details>
+    </div>
+
+  </div><!-- /section-body -->
+</section>
+
+<!-- ═══════════════════════════ SECTION 2 ═══════════════════════════ -->
+<section class="section-block" id="section-2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="section-title-text">
+      <h2>OET Reading</h2>
+      <p>1 clinical passage · 5 comprehension questions</p>
+    </div>
+    <div class="timer-badge">⏱ ~15 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="reading-passage">
+      <strong style="font-style:normal; display:block; margin-bottom:0.6rem; font-size:0.92rem; color:var(--text);">Post-operative Physiotherapy Following Total Knee Arthroplasty: A Clinical Case Overview</strong>
+
+      A 68-year-old male, Mr. Graham, was referred to the outpatient physiotherapy department six weeks following a right total knee <span class="highlight">arthroplasty</span>. His pre-operative history included long-standing osteoarthritis with associated shoulder <span class="highlight">capsulitis</span>, which had significantly limited his functional mobility during the months preceding surgery. Intraoperatively, the orthopaedic surgeon identified a small chondral <span class="highlight">avulsion</span> at the posterolateral aspect of the joint, which was addressed at the time of the procedure.
+
+      On initial assessment, Mr. Graham demonstrated restricted right ankle <span class="highlight">dorsiflexion</span>, measuring only 5° in non-weight-bearing, which the physiotherapist attributed to prolonged disuse and soft tissue tightening during the post-operative period. Passive range of motion at the operated knee was 0–85°, and the patient reported moderate pain (VAS 4/10) with active flexion.
+
+      Of additional clinical significance, a pre-operative MRI of the cervical spine had identified early cervical <span class="highlight">myelopathy</span> secondary to multilevel spondylosis. In view of this finding, the treating team maintained close interdisciplinary communication to monitor for any neurological deterioration throughout the rehabilitation period.
+
+      By week eight, Mr. Graham had achieved 0–110° active knee flexion and reported substantial improvement in walking tolerance, successfully completing a 200-metre walk without a gait aid. Discharge planning included a home exercise programme and an orthopaedic review at three months.
+    </div>
+
+    <!-- R Q1 -->
+    <div class="question">
+      <div class="q-label">Reading Q1 · Factual</div>
+      <div class="q-text">What did the orthopaedic surgeon identify during the operation on Mr. Graham's knee?</div>
+      <div class="q-options">
+        <div class="q-option">A) Significant cartilage hypertrophy requiring debridement</div>
+        <div class="q-option">B) A small chondral avulsion at the posterolateral aspect of the joint</div>
+        <div class="q-option">C) Complete rupture of the anterior cruciate ligament</div>
+        <div class="q-option">D) Synovial inflammation requiring lavage</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: B)</strong><br>
+          The passage states: "the orthopaedic surgeon identified a small chondral <em>avulsion</em> at the posterolateral aspect of the joint." This is a direct factual retrieval question — the answer is stated explicitly in paragraph one.
+        </div>
+      </details>
+    </div>
+
+    <!-- R Q2 -->
+    <div class="question">
+      <div class="q-label">Reading Q2 · Factual</div>
+      <div class="q-text">What was Mr. Graham's active knee flexion range at the eight-week follow-up?</div>
+      <div class="q-options">
+        <div class="q-option">A) 0–85°</div>
+        <div class="q-option">B) 0–95°</div>
+        <div class="q-option">C) 0–105°</div>
+        <div class="q-option">D) 0–110°</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: D) 0–110°</strong><br>
+          The passage clearly states "By week eight, Mr. Graham had achieved 0–110° active knee flexion." The initial range (0–85°) is a distractor from paragraph two — do not confuse the <em>initial</em> assessment with the <em>week-eight</em> outcome.
+        </div>
+      </details>
+    </div>
+
+    <!-- R Q3 -->
+    <div class="question">
+      <div class="q-label">Reading Q3 · Inferential</div>
+      <div class="q-text">Why did the treating team maintain close interdisciplinary communication throughout Mr. Graham's rehabilitation?</div>
+      <div class="q-options">
+        <div class="q-option">A) Because Mr. Graham's pain was not responding to physiotherapy intervention</div>
+        <div class="q-option">B) Due to concerns about potential neurological deterioration related to his pre-operative cervical spine finding</div>
+        <div class="q-option">C) Because his shoulder capsulitis required concurrent specialist management</div>
+        <div class="q-option">D) To coordinate the patient's discharge to a residential care facility</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: B)</strong><br>
+          Paragraph three explains the rationale: "the treating team maintained close interdisciplinary communication to monitor for any neurological deterioration" — this was directly linked to the cervical myelopathy identified pre-operatively. This requires inference because you must link the <em>reason</em> (myelopathy) to the <em>action</em> (interdisciplinary monitoring).
+        </div>
+      </details>
+    </div>
+
+    <!-- R Q4 -->
+    <div class="question">
+      <div class="q-label">Reading Q4 · Inferential</div>
+      <div class="q-text">What is the most likely reason the physiotherapist included ankle dorsiflexion in the rehabilitation programme?</div>
+      <div class="q-options">
+        <div class="q-option">A) To address pruritus related to post-operative wound healing</div>
+        <div class="q-option">B) To improve the patient's cardiovascular endurance</div>
+        <div class="q-option">C) To restore ankle mobility that had been reduced by prolonged disuse and soft tissue tightening</div>
+        <div class="q-option">D) To correct the chondral avulsion identified intraoperatively</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: C)</strong><br>
+          The passage states the physiotherapist "attributed [restricted dorsiflexion] to prolonged disuse and soft tissue tightening during the post-operative period." It is logical to infer that rehabilitation would target the identified impairment. Option D is incorrect — an avulsion is an orthopaedic finding addressed surgically, not via ankle mobility exercises.
+        </div>
+      </details>
+    </div>
+
+    <!-- R Q5 -->
+    <div class="question">
+      <div class="q-label">Reading Q5 · Vocabulary in context</div>
+      <div class="q-text">In the context of the passage, "myelopathy" most accurately refers to:</div>
+      <div class="q-options">
+        <div class="q-option">A) Degeneration of the intervertebral discs in the lumbar spine</div>
+        <div class="q-option">B) Dysfunction of the spinal cord caused by compression from cervical spondylosis</div>
+        <div class="q-option">C) Inflammation of the bone marrow requiring antibiotic treatment</div>
+        <div class="q-option">D) A hereditary condition affecting myelin production in peripheral nerves</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Answer: B)</strong><br>
+          In the passage, "early cervical myelopathy secondary to multilevel spondylosis" means the spinal cord (<em>myelo-</em>) is being affected (-<em>pathy</em>) as a result of spondylotic compression in the cervical spine. Myelopathy = pathology of the spinal cord. It is distinct from radiculopathy (nerve root) and neuropathy (peripheral nerve).
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 3 ═══════════════════════════ -->
+<section class="section-block" id="section-3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="section-title-text">
+      <h2>OET Writing</h2>
+      <p>GP referral letter · Lumbar spondylosis with stenosis · 180–200 words</p>
+    </div>
+    <div class="timer-badge">⏱ ~25 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="writing-task-box">
+      <strong>Task:</strong> Using the case notes below, write a referral letter from <strong>Dr. A. Patel</strong> (Pakuranga Medical Centre) to the <strong>Outpatient Physiotherapy Department, Auckland City Hospital</strong>. Your letter should be <strong>180–200 words</strong>, use appropriate clinical language, and be written in a formal register suitable for inter-professional communication.
+    </div>
+
+    <div class="case-notes">
+PATIENT:   Mrs. Rania Yuen · F · 61 yrs · DOB: 14/03/1965<br>
+NHI:       ZCB7421<br>
+GP:        Dr. A. Patel · Pakuranga Medical Centre<br>
+REFERRAL DATE: 14/05/2026<br>
+<br>
+PMHx:<br>
+  - Type 2 DM (well-controlled, HbA1c 48 mmol/mol)<br>
+  - Hypertension<br>
+  - Bilateral <span style="font-weight:700">chondromalacia</span> patellae (confirmed X-ray 01/05/26)<br>
+<br>
+MEDICATIONS: Metformin 500mg BD · Ramipril 5mg OD · Paracetamol 1g PRN<br>
+<br>
+PRESENTING COMPLAINT:<br>
+  - 4/12 Hx bilateral lower limb <span style="font-weight:700">paraesthesia</span> (L > R)<br>
+  - Low back pain: VAS 5/10 rest · 8/10 prolonged standing<br>
+  - Sx consistent w/ lumbar <span style="font-weight:700">stenosis</span> 2° to <span style="font-weight:700">spondylosis</span><br>
+  - <span style="font-weight:700">Exacerbation</span> w/ walking &gt;100m; relieved sitting<br>
+<br>
+INVESTIGATIONS:<br>
+  - MRI lumbar spine (12/05/26): moderate L4/5 central stenosis;<br>
+    posterior <span style="font-weight:700">osteophyte</span> formation L3–S1; mild L4/5 disc prolapse;<br>
+    no cord compromise identified<br>
+  - X-ray (01/05/26): bilateral chondromalacia patellae<br>
+<br>
+EXAMINATION:<br>
+  - SLR: negative bilaterally<br>
+  - Neurology: ↓ sensation L4 dermatome bilat; power 4/5 hip flexors<br>
+  - Gait: antalgic; ↓ stride length<br>
+  - Ankle dorsiflexion: R 8° · L 10° (both reduced)<br>
+<br>
+PATIENT GOALS:<br>
+  - Return to daily 30-min walk<br>
+  - Independent pain management<br>
+  - Understand condition and self-management<br>
+<br>
+PHYSIOTHERAPY REQUEST:<br>
+  - Assess + treat: lumbar stabilisation, aquatic therapy (consider),<br>
+    posture education, gait retraining<br>
+  - Ongoing neurological review<br>
+    </div>
+
+    <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1rem;">Write your letter in full before checking the checklist below.</p>
+
+    <details>
+      <summary>Show Self-Assessment Checklist (10 criteria)</summary>
+      <div class="answer-box" style="background: #f0fdf4; border-color: var(--green); color: var(--text);">
+        <div class="checklist">
+          <h4>✅ Self-Assessment Checklist — Referral Letter</h4>
+          <ul>
+            <li>Formal salutation used (e.g., "Dear Physiotherapy Team," or "To the Outpatient Physiotherapy Department,")</li>
+            <li>Patient fully identified: name, age, gender, and date of referral stated in the opening paragraph</li>
+            <li>Purpose of referral clearly stated in the first or second sentence</li>
+            <li>Relevant past medical history included (Type 2 DM, hypertension, chondromalacia patellae)</li>
+            <li>Current symptoms described accurately: bilateral paraesthesia, low back pain, exacerbation with walking, and relief with sitting</li>
+            <li>Investigation findings summarised: MRI (stenosis, osteophyte formation, disc prolapse) and X-ray findings</li>
+            <li>Specific physiotherapy goals or requests mentioned (e.g., lumbar stabilisation, gait retraining)</li>
+            <li>Clinical vocabulary used correctly: at minimum <em>spondylosis, stenosis, paraesthesia, osteophyte, exacerbation</em></li>
+            <li>Formal and professional register maintained throughout — no casual phrasing</li>
+            <li>Appropriate closing (e.g., "Yours sincerely," followed by doctor's name, position, and contact details)</li>
+          </ul>
+        </div>
+        <div style="margin-top:1rem; padding-top:0.8rem; border-top:1px solid #86efac; font-size:0.82rem; color:#14532d;">
+          <strong>Model Opening (for comparison):</strong><br>
+          <em>"I am writing to refer Mrs. Rania Yuen, a 61-year-old female, for outpatient physiotherapy assessment and management. Mrs. Yuen has a four-month history of bilateral lower limb paraesthesia, greater on the left, associated with chronic low back pain that is significantly exacerbated by walking more than 100 metres. Recent MRI of the lumbar spine confirmed moderate L4/5 stenosis secondary to lumbar spondylosis, with posterior osteophyte formation noted at L3–S1."</em>
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SECTION 4 ═══════════════════════════ -->
+<section class="section-block" id="section-4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="section-title-text">
+      <h2>OET Speaking</h2>
+      <p>2 role plays · Physiotherapy scenarios</p>
+    </div>
+    <div class="timer-badge">⏱ ~15 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- ROLE PLAY 1 -->
+    <div class="role-play-card">
+      <span class="rp-label rp-label-1">Role Play 1</span>
+      <h4>Post-Stroke Rehabilitation Consultation</h4>
+
+      <p><strong>Setting:</strong> Outpatient neurological physiotherapy clinic, Auckland City Hospital</p>
+      <p><strong>Clinician (you):</strong> Physiotherapy student on placement</p>
+      <p><strong>Patient:</strong> Mr. David Chen, 55-year-old male, three weeks post-ischaemic stroke. Presenting with right-sided <strong>hemiparesis</strong> affecting upper and lower limb. Has attended two prior sessions. Today's goal: discuss rehabilitation plan and address anxiety about long-term recovery.</p>
+
+      <p><strong>Key task:</strong> Explain what the rehabilitation programme involves, why task-specific training is used (<em>link to neuroplasticity</em>), set realistic goals, and build therapeutic <em>rapport</em> by acknowledging the patient's emotional concerns.</p>
+
+      <p><strong>Words to use naturally:</strong>
+        <span class="vocab-tag tag-this">hemiparesis</span>
+        <span class="vocab-tag tag-this">neuroplasticity</span>
+        <span class="vocab-tag tag-this">rapport</span>
+      </p>
+
+      <p><strong>Suggested opening:</strong> <em>"Good morning, Mr. Chen. It's good to see you again. I know these past few weeks have been quite challenging — I'd like to take some time today to talk through what your rehabilitation will look like and answer any questions you have."</em></p>
+
+      <div class="key-phrases">
+        <span class="phrase">"The weakness you're experiencing on your right side is called hemiparesis…"</span>
+        <span class="phrase">"Your brain has a remarkable ability to adapt — this is called neuroplasticity…"</span>
+        <span class="phrase">"The exercises we're doing are specifically designed to encourage your brain to form new pathways…"</span>
+        <span class="phrase">"I want to make sure you feel comfortable raising any concerns with me…"</span>
+        <span class="phrase">"Recovery does take time, but the progress you've already made is very encouraging…"</span>
+      </div>
+
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Opening (rapport-building):</strong> Greet warmly, acknowledge the patient's experience, express genuine interest in their concerns. Do NOT launch straight into clinical information.<br><br>
+          <strong>Explain the condition:</strong> "The weakness on your right side is called hemiparesis — it's partial muscle weakness caused by the stroke affecting the left side of your brain."<br><br>
+          <strong>Explain the treatment rationale (neuroplasticity):</strong> "Research shows that the brain can reorganise itself — this is called neuroplasticity. By practising specific movements repeatedly, we're essentially training your brain to create new pathways to control your right side."<br><br>
+          <strong>Goal-setting:</strong> Collaboratively identify two short-term goals (e.g., independent walking with a walking frame to the letterbox; dressing upper body independently). Frame goals positively.<br><br>
+          <strong>Address concerns:</strong> Ask open questions: "What worries you most about your recovery?" Validate feelings, provide realistic reassurance without over-promising.<br><br>
+          <strong>Closing:</strong> Summarise the plan, confirm the patient understands, and invite questions. "Is there anything I've said that you'd like me to go over again?"
+        </div>
+      </details>
+    </div>
+
+    <!-- ROLE PLAY 2 -->
+    <div class="role-play-card">
+      <span class="rp-label rp-label-2">Role Play 2</span>
+      <h4>Acute Ward: Post-Surgical Mobility Assessment</h4>
+
+      <p><strong>Setting:</strong> Orthopaedic ward, day two post-surgery</p>
+      <p><strong>Clinician (you):</strong> Physiotherapist</p>
+      <p><strong>Patient:</strong> Ms. Sione Pita, 34-year-old female. Underwent emergency right knee surgery yesterday following a sports injury. A <strong>haematoma</strong> was evacuated intraoperatively. The orthopaedic team is now discussing the possibility of future knee <strong>arthroplasty</strong> depending on long-term joint health. Ms. Pita is anxious about mobilising and is requesting <em>reassurance</em> before attempting to stand.</p>
+
+      <p><strong>Key task:</strong> Conduct a brief pre-mobilisation assessment, explain what the haematoma was and why mobilisation is important now, provide reassurance, and assist the patient to stand safely for the first time post-operatively.</p>
+
+      <p><strong>Words to use naturally:</strong>
+        <span class="vocab-tag tag-this">haematoma</span>
+        <span class="vocab-tag tag-this">arthroplasty</span>
+        <span class="vocab-tag tag-this">reassurance</span>
+      </p>
+
+      <p><strong>Suggested opening:</strong> <em>"Hello, Ms. Pita. I'm Leo, the physiotherapist. I know you've just come out of surgery and things feel a bit overwhelming — I'm here to help you take your first steps safely, and I'll be with you the whole time."</em></p>
+
+      <div class="key-phrases">
+        <span class="phrase">"The surgery removed a collection of blood called a haematoma from your knee…"</span>
+        <span class="phrase">"I can completely understand why you might feel nervous about moving your leg…"</span>
+        <span class="phrase">"Getting up today is actually important — it helps prevent complications like blood clots…"</span>
+        <span class="phrase">"We'll go at your pace — you're in control, and I'll support you throughout…"</span>
+        <span class="phrase">"The team mentioned that a knee replacement — called an arthroplasty — might be discussed in future, but right now the focus is just on getting you moving safely…"</span>
+      </div>
+
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Pre-mobilisation check:</strong> Ask about pain level (VAS), dizziness, nausea; check that analgesia has been given; review post-operative notes for weight-bearing status (likely partial weight-bearing with crutches).<br><br>
+          <strong>Explain the haematoma:</strong> "During your surgery, the team found and removed a collection of blood — called a haematoma — that had built up around the joint after your injury. The wound is now closed and healing." Use plain language, avoid jargon overload.<br><br>
+          <strong>Provide reassurance:</strong> Acknowledge anxiety as normal. Explain the benefit of early mobilisation (venous thrombosis prevention, muscle activation, oedema reduction). Emphasise patient control: "We won't push through pain."<br><br>
+          <strong>Mobilisation:</strong> Instruct sit-to-stand sequence, place crutches, demonstrate partial weight-bearing, take first steps together. Give clear verbal cues ("Nice and slow," "Breathe normally").<br><br>
+          <strong>Future arthroplasty:</strong> If the patient raises this, briefly normalise the discussion: "The team will talk with you about what options might be best for your joint in the long run, including possibly a knee replacement — called an arthroplasty. That conversation will come later; today is just about getting you moving."<br><br>
+          <strong>Close:</strong> Praise the patient's effort, document weight-bearing achieved, plan the next session.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<footer class="page-footer">
+  OET Weekly Exam · Week 2 · 17 May 2026 · Leo · AUT Master of Physiotherapy Practice<br>
+  <span style="font-size:0.75rem;">Words this week (30): tremor · bradykinesia · hemiparesis · osteophyte · chondromalacia · haemothorax · ischaemia · arrhythmia · malaise · pruritus · meniscus · arthroplasty · haematoma · pronation · capsulitis · neuroplasticity · vertigo · apraxia · rapport · reassurance · fontanelle · hyporeflexia · febrile · talipes · lethargy · spondylosis · avulsion · exacerbation · dorsiflexion · myelopathy</span>
+</footer>
+
+</body>
+</html>
