@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 31 · 2026-05-22</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 31 · 22 May 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Neurological + Patient Communication Phrases</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">encephalopathy</div>
+        <div class="card-meta">
+          <span class="ipa">/ɪnˌsɛf.ə.ˈlɒp.ə.θi/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/encephalopathy" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/encephalopathy" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A general term for any disease or disorder that affects the structure or function of the brain, resulting in altered consciousness, cognition, or behaviour. May be caused by metabolic disturbances, toxins, infection, hypoxia, or trauma.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">腦病變；腦功能障礙</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">hypoxic encephalopathy</span>
+          <span class="colloc-item">hepatic encephalopathy</span>
+          <span class="colloc-item">metabolic encephalopathy</span>
+          <span class="colloc-item">Wernicke's encephalopathy</span>
+          <span class="colloc-item">acute encephalopathy</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mr. Tui was admitted with features consistent with hypoxic <strong>encephalopathy</strong> following cardiac arrest, including a Glasgow Coma Scale score of 10, marked disorientation, and impaired short-term memory."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">encephalopathic (adj)</span>
+          <span class="related-item">encephalitis (inflammation of the brain)</span>
+          <span class="related-item">myelopathy (spinal cord disease)</span>
+          <span class="related-item">neuropathy (peripheral nerve disease)</span>
+          <span class="related-item">altered consciousness (clinical sign)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">flaccidity</div>
+        <div class="card-meta">
+          <span class="ipa">/fləˈsɪd.ɪ.ti/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/flaccidity" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/flaccidity" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Decreased or absent muscle tone, causing limpness of a muscle or limb. Typically associated with lower motor neurone lesions, peripheral nerve injury, or the acute phase following spinal cord injury or stroke. Contrasted with spasticity, which involves increased tone.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">肌肉鬆弛；弛緩性（肌張力低下）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">flaccidity of the limb</span>
+          <span class="colloc-item">marked flaccidity</span>
+          <span class="colloc-item">post-stroke flaccidity</span>
+          <span class="colloc-item">flaccid paralysis</span>
+          <span class="colloc-item">flaccid muscle tone</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Initial neurological assessment post-stroke revealed <strong>flaccidity</strong> of the left upper limb, with absent voluntary movement against gravity and reduced deep tendon reflexes throughout."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">flaccid (adj)</span>
+          <span class="related-item">spasticity (antonym — increased tone)</span>
+          <span class="related-item">hypotonia (low tone, broader term)</span>
+          <span class="related-item">lower motor neurone lesion (cause)</span>
+          <span class="related-item">flaccid paralysis</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">dysmetria</div>
+        <div class="card-meta">
+          <span class="ipa">/dɪsˈmiː.tri.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/dysmetria" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/dysmetria" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A cerebellar sign characterised by an inability to accurately judge the distance or amplitude of a movement, resulting in overshooting (hypermetria) or undershooting (hypometria) of a target. Classically assessed with the finger-nose test or heel-shin test.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">辨距不良；測距障礙（小腦症狀）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">upper limb dysmetria</span>
+          <span class="colloc-item">cerebellar dysmetria</span>
+          <span class="colloc-item">bilateral dysmetria</span>
+          <span class="colloc-item">dysmetria on finger-nose testing</span>
+          <span class="colloc-item">truncal dysmetria</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Cerebellar function testing revealed bilateral upper limb <strong>dysmetria</strong>, with consistent past-pointing on the finger-nose test and an associated intention tremor, indicating cerebellar pathway involvement."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">ataxia (broader coordination disorder)</span>
+          <span class="related-item">intention tremor (associated sign)</span>
+          <span class="related-item">hypermetria (overshooting)</span>
+          <span class="related-item">hypometria (undershooting)</span>
+          <span class="related-item">dysdiadochokinesia (impaired alternating movements)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">elicit</div>
+        <div class="card-meta">
+          <span class="ipa">/ɪˈlɪs.ɪt/</span>
+          <span class="pos">verb</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/elicit" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/elicit" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-patient">Patient Communication</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">To draw out or obtain information, a response, or a clinical sign from a patient through skilled questioning, examination, or testing. A core skill in history-taking, patient assessment, and clinical communication.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">引出；獲取（病史、反應或體徵）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">elicit a history</span>
+          <span class="colloc-item">elicit patient concerns</span>
+          <span class="colloc-item">elicit a response</span>
+          <span class="colloc-item">elicit symptoms</span>
+          <span class="colloc-item">elicit a reflex</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The physiotherapist was able to <strong>elicit</strong> a comprehensive pain history during the initial consultation, identifying the patient's primary concerns regarding return to work and participation in recreational sport."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">elicitation (noun)</span>
+          <span class="related-item">history-taking (clinical process)</span>
+          <span class="related-item">probe (clinical synonym)</span>
+          <span class="related-item">draw out (lay equivalent)</span>
+          <span class="related-item">collateral history (from a third party)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">comprehension</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌkɒm.prɪˈhɛn.ʃən/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/comprehension" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/comprehension" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-patient">Patient Communication</span>
+        <span class="badge badge-neuro">神經 Neurological</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The ability to understand and process spoken or written information. Clinically, it refers to a patient's capacity to understand instructions, diagnoses, and treatment plans. Also used in neurological assessment to evaluate receptive language function, particularly following stroke or acquired brain injury.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">理解力；語言理解能力</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">verbal comprehension</span>
+          <span class="colloc-item">impaired comprehension</span>
+          <span class="colloc-item">reading comprehension</span>
+          <span class="colloc-item">patient comprehension</span>
+          <span class="colloc-item">comprehension deficits</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Neurological language assessment indicated markedly impaired verbal <strong>comprehension</strong>, with the patient unable to follow two-step commands reliably, consistent with receptive aphasia secondary to left hemisphere infarction."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">comprehend (verb)</span>
+          <span class="related-item">comprehensible (adj)</span>
+          <span class="related-item">receptive aphasia (neurological — impaired comprehension)</span>
+          <span class="related-item">health literacy (patient education context)</span>
+          <span class="related-item">understanding (lay synonym)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 31)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr. James Tui, a 55-year-old male, was admitted to the acute neurology ward following a right-hemisphere
+      ischaemic stroke. He was referred to physiotherapy for inpatient neurological assessment and early
+      rehabilitation.
+      <br><br>
+      Initial neurological screening identified features consistent with <span class="highlight">encephalopathy</span>
+      secondary to post-ictal hypoxia, including marked disorientation, fluctuating consciousness, and a
+      Glasgow Coma Scale score of 12/15. The physiotherapist was able to <span class="highlight">elicit</span>
+      a limited clinical history via collateral information provided by the patient's wife, as the patient's
+      verbal <span class="highlight">comprehension</span> was significantly impaired; he was unable to follow
+      simple one-step commands consistently, suggesting concurrent receptive aphasia.
+      <br><br>
+      Upper limb assessment revealed <span class="highlight">flaccidity</span> of the left upper limb, with
+      absent voluntary movement against gravity and reduced deep tendon reflexes throughout. Cerebellar
+      function testing of the right upper limb demonstrated bilateral <span class="highlight">dysmetria</span>
+      on the finger-nose test, with consistent past-pointing and an associated intention tremor, indicating
+      involvement beyond the primary motor cortex.
+      <br><br>
+      Short-term rehabilitation goals include positioning to prevent soft tissue complications associated with
+      upper limb flaccidity, facilitation of early mobilisation as medical stability allows, and ongoing
+      neurological monitoring. Family education was initiated regarding the patient's communication difficulties
+      and strategies to support comprehension during therapy sessions.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When documenting neurological findings in a referral or handover,
+      always specify the <em>side affected</em> (e.g. "left upper limb"), the <em>nature of the tone deficit</em>
+      (flaccidity vs spasticity), and any <em>functional implications</em> (e.g. "unable to follow one-step commands").
+      Quantify where possible — use the GCS score rather than "confused," and name specific tests performed
+      (e.g. "finger-nose test") to demonstrate clinical rigour.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 31 · 2026-05-22 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 神經 Neurological · Patient Communication · Signs &amp; Symptoms</p>
+</footer>
+
+</body>
+</html>
