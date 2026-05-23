@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Weekly Exam — Week 3 · 2026-05-24</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #fff; --primary: #7c3aed; --primary-light: #ede9fe;
+      --accent: #0d9488; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+      --green: #15803d; --green-light: #dcfce7;
+      --red: #b91c1c; --red-light: #fee2e2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem 4rem; line-height: 1.65; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: var(--primary); color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); flex-wrap: wrap; }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .week-badge { margin-left: auto; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.82rem; font-weight: 600; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .instructions { max-width: 860px; margin: 0 auto 1.5rem; background: var(--primary-light); border: 1px solid #c4b5fd; border-radius: var(--radius); padding: 1rem 1.2rem; font-size: 0.88rem; }
+    .instructions h3 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .instructions ul { padding-left: 1.2rem; }
+    .instructions li { margin-bottom: 0.3rem; }
+    .section-block { max-width: 860px; margin: 0 auto 2rem; background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+    .section-header { padding: 1rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border); }
+    .section-num { width: 2rem; height: 2rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .section-title-text h2 { font-size: 1.05rem; font-weight: 700; }
+    .section-title-text p { font-size: 0.8rem; color: var(--muted); }
+    .timer-badge { margin-left: auto; background: var(--warn-light); color: var(--warn); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+    .section-body { padding: 1.4rem; }
+    .question { margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .q-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.4rem; }
+    .q-text { font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 500; }
+    .q-options { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.7rem; }
+    .q-option { font-size: 0.9rem; padding: 0.4rem 0.7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+    details { margin-top: 0.5rem; }
+    summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--primary); user-select: none; padding: 0.3rem 0; }
+    summary:hover { text-decoration: underline; }
+    .answer-box { margin-top: 0.5rem; background: var(--green-light); border-left: 3px solid var(--green); padding: 0.6rem 0.9rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #14532d; }
+    .reading-passage { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; font-style: italic; }
+    .highlight { color: var(--primary); font-weight: 700; font-style: normal; text-decoration: underline dotted; }
+    .case-notes { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.88rem; font-family: 'Courier New', monospace; line-height: 1.9; margin-bottom: 1.2rem; }
+    .writing-task-box { background: var(--warn-light); border-left: 3px solid var(--warn); padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; margin-bottom: 1rem; }
+    .checklist { margin-top: 1rem; }
+    .checklist h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--green); }
+    .checklist ul { padding-left: 0; list-style: none; }
+    .checklist li { font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .checklist li::before { content: '☐'; font-size: 1rem; flex-shrink: 0; }
+    .role-play-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+    .role-play-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 0.4rem; }
+    .role-play-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .key-phrases { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .phrase { background: white; border: 1px solid #86efac; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px; font-style: italic; }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+    .word-source { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 10px; margin-left: 0.4rem; vertical-align: middle; }
+    .word-this-week { background: #ede9fe; color: #6d28d9; }
+    .word-previous { background: #dbeafe; color: #1d4ed8; }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-icon">📝</div>
+  <div class="header-text">
+    <h1>OET Weekly Practice Exam</h1>
+    <p>24 May 2026 · Vocabulary · Reading · Writing · Speaking · 155-word pool</p>
+  </div>
+  <div class="week-badge">Week 3</div>
+</header>
+
+<nav class="nav-bar">
+  <a href="../index.html">← Vocabulary Home</a>
+  <a href="index.html">All Exams</a>
+  <a href="#section1">1. Vocabulary</a>
+  <a href="#section2">2. Reading</a>
+  <a href="#section3">3. Writing</a>
+  <a href="#section4">4. Speaking</a>
+</nav>
+
+<div class="instructions">
+  <h3>Instructions for this exam</h3>
+  <ul>
+    <li>This exam covers words learned from <strong>18–22 May 2026</strong> (this week, 25 words) plus <strong>4 revision words</strong> from previous weeks.</li>
+    <li>Work through each section in order; answers are click-to-reveal — attempt before checking.</li>
+    <li>Recommended total time: <strong>60–75 minutes</strong> (Vocab 15 min · Reading 20 min · Writing 25 min · Speaking 15 min)</li>
+    <li>British English spelling is used throughout — note differences from American English (e.g. <em>haemorrhage</em>, <em>oedema</em>, <em>anaemia</em>).</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 1 — VOCABULARY                                  -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section-block" id="section1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-text">
+      <h2>Vocabulary — 10 Questions</h2>
+      <p>Fill-in-the-blank · Definition match · Collocation complete</p>
+    </div>
+    <div class="timer-badge">⏱ 15 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Q1 -->
+    <div class="question">
+      <div class="q-label">Question 1 · Fill-in-the-blank · <span class="word-source word-this-week">THIS WEEK</span></div>
+      <div class="q-text">The patient's ___ status was closely monitored following cardiac surgery, with particular attention to arterial blood pressure, cardiac output, and peripheral oxygen saturation.</div>
+      <div class="q-options">
+        <div class="q-option">A) haematological</div>
+        <div class="q-option">B) haemostatic</div>
+        <div class="q-option">C) haemodynamic</div>
+        <div class="q-option">D) haemopoietic</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) haemodynamic</strong><br>
+          <em>Haemodynamic</em> relates to the forces and mechanics of blood circulation, including blood pressure, cardiac output, and vascular resistance. It is the standard clinical term used when monitoring cardiovascular function in acute or post-operative patients. The other options relate to blood cell formation (haemopoietic), blood clotting (haemostatic), and blood composition (haematological).
+        </div>
+      </details>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+      <div class="q-label">Question 2 · Definition match · <span class="word-source word-this-week">THIS WEEK</span></div>
+      <div class="q-text">Which term describes the forward (anterior) displacement of one vertebral body over the vertebra below it, most commonly occurring at the L4–L5 or L5–S1 level, and often causing low back pain with or without lower limb radiculopathy?</div>
+      <div class="q-options">
+        <div class="q-option">A) spondylosis</div>
+        <div class="q-option">B) spondylolisthesis</div>
+        <div class="q-option">C) kyphosis</div>
+        <div class="q-option">D) stenosis</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B) spondylolisthesis</strong><br>
+          <em>Spondylolisthesis</em> specifically refers to vertebral slippage. <em>Spondylosis</em> is degenerative spinal joint disease; <em>kyphosis</em> is an abnormal posterior spinal curvature; <em>stenosis</em> is narrowing of the spinal canal. Grading of spondylolisthesis uses the Meyerding classification (I–V based on percentage of slip).
+        </div>
+      </details>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+      <div class="q-label">Question 3 · Fill-in-the-blank · <span class="word-source word-this-week">THIS WEEK</span></div>
+      <div class="q-text">Following the brainstem stroke, the patient developed ___, requiring a speech pathology assessment, videofluoroscopic swallow study, and a modified texture diet to reduce the risk of aspiration pneumonia.</div>
+      <div class="q-options">
+        <div class="q-option">A) dysarthria</div>
+        <div class="q-option">B) dyspnoea</div>
+        <div class="q-option">C) dysphagia</div>
+        <div class="q-option">D) dyskinesia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) dysphagia</strong><br>
+          <em>Dysphagia</em> means difficulty swallowing and is a common complication of brainstem or bilateral cortical strokes due to impaired cranial nerve function. <em>Dysarthria</em> is difficulty articulating speech; <em>dyspnoea</em> is difficulty breathing; <em>dyskinesia</em> refers to impaired voluntary movement. All four share the prefix <em>dys-</em> (difficulty/abnormal) but apply to different functions.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question">
+      <div class="q-label">Question 4 · Fill-in-the-blank · <span class="word-source word-this-week">THIS WEEK</span></div>
+      <div class="q-text">The physiotherapist assessed the ___ joint using the FABER (Flexion, ABduction, External Rotation) test and a posterior shear provocation manoeuvre to identify the source of the patient's right-sided low back and buttock pain.</div>
+      <div class="q-options">
+        <div class="q-option">A) acromioclavicular</div>
+        <div class="q-option">B) costovertebral</div>
+        <div class="q-option">C) sternoclavicular</div>
+        <div class="q-option">D) sacroiliac</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>D) sacroiliac</strong><br>
+          The <em>sacroiliac (SI) joint</em> lies between the sacrum and ilium and is a common source of low back and buttock pain. The FABER test and posterior shear test (also called the thigh thrust test) are both validated provocation tests for SI joint dysfunction. The other joints listed are upper limb and thoracic joints, unrelated to this presentation.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question">
+      <div class="q-label">Question 5 · Collocation complete · <span class="word-source word-this-week">THIS WEEK</span></div>
+      <div class="q-text">The patient was admitted with hepatic ___, a serious neurological complication of end-stage liver disease characterised by confusion, asterixis, and progressive deterioration in consciousness level.</div>
+      <div class="q-options">
+        <div class="q-option">A) neuropathy</div>
+        <div class="q-option">B) myopathy</div>
+        <div class="q-option">C) encephalopathy</div>
+        <div class="q-option">D) ischaemia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) encephalopathy</strong><br>
+          <em>Hepatic encephalopathy</em> is the standard clinical collocation — it refers to brain dysfunction caused by liver failure (accumulation of ammonia and other toxins). <em>Encephalopathy</em> (from Greek <em>enkephalos</em> = brain) can also collocate with: hypertensive, ischaemic, hypoxic, Wernicke's, and septic. This is a key OET term for both medicine and physiotherapy contexts.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question">
+      <div class="q-label">Question 6 · Definition match · <span class="word-source word-this-week">THIS WEEK</span></div>
+      <div class="q-text">Which term identifies the deep external rotator muscle of the hip, situated within the gluteal region, that passes from the anterior sacrum to the greater trochanter — and which, when hypertonic or inflamed, may compress the sciatic nerve and produce buttock pain radiating down the posterior thigh?</div>
+      <div class="q-options">
+        <div class="q-option">A) obturator internus</div>
+        <div class="q-option">B) quadratus femoris</div>
+        <div class="q-option">C) gluteus medius</div>
+        <div class="q-option">D) piriformis</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>D) piriformis</strong><br>
+          The <em>piriformis</em> is clinically important because the sciatic nerve typically passes below it (and in ~15% of individuals, through or above it). Hypertension or spasm of the piriformis — so-called <em>piriformis syndrome</em> — can mimic or coexist with lumbar disc radiculopathy. Assessment includes the piriformis stretch test and FAIR (Flexion, Adduction, Internal Rotation) test.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question">
+      <div class="q-label">Question 7 · Fill-in-the-blank · <span class="word-source word-previous">PREVIOUS</span></div>
+      <div class="q-text">Following a right-sided stroke, the patient developed ___ of the left lower limb, characterised by velocity-dependent resistance to passive movement and exaggerated deep tendon reflexes — graded 2 on the Modified Ashworth Scale.</div>
+      <div class="q-options">
+        <div class="q-option">A) flaccidity</div>
+        <div class="q-option">B) rigidity</div>
+        <div class="q-option">C) spasticity</div>
+        <div class="q-option">D) ataxia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) spasticity</strong><br>
+          <em>Spasticity</em> is the defining upper motor neurone (UMN) sign — its velocity-dependent nature (resistance increases at faster speeds) distinguishes it from <em>rigidity</em> (constant resistance, seen in Parkinson's disease) and <em>flaccidity</em> (absent tone, lower motor neurone). The <em>Modified Ashworth Scale</em> (0–4) is the standard clinical tool for grading spasticity in physiotherapy practice.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question">
+      <div class="q-label">Question 8 · Definition match · <span class="word-source word-previous">PREVIOUS</span></div>
+      <div class="q-text">Which term describes abnormal spontaneous or evoked cutaneous sensations — such as tingling, pins and needles, numbness, or a "burning" quality — typically arising from peripheral nerve compression, entrapment, or damage?</div>
+      <div class="q-options">
+        <div class="q-option">A) allodynia</div>
+        <div class="q-option">B) nociception</div>
+        <div class="q-option">C) paraesthesia</div>
+        <div class="q-option">D) dysaesthesia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) paraesthesia</strong><br>
+          <em>Paraesthesia</em> (note British spelling) refers to abnormal but not necessarily unpleasant sensations. Compare with <em>dysaesthesia</em> (unpleasant abnormal sensations), <em>allodynia</em> (pain from a stimulus that doesn't normally cause pain), and <em>nociception</em> (the neural process of detecting tissue-damaging stimuli). Distinguishing these terms is essential in the OET neurological examination context.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question">
+      <div class="q-label">Question 9 · Fill-in-the-blank · <span class="word-source word-previous">PREVIOUS</span></div>
+      <div class="q-text">The MRI lumbar spine confirmed L5 nerve root compression at the L4–L5 level, consistent with a diagnosis of L5 ___, presenting as radiating leg pain, foot dorsiflexion weakness, and reduced sensation over the lateral calf and dorsum of the foot.</div>
+      <div class="q-options">
+        <div class="q-option">A) myelopathy</div>
+        <div class="q-option">B) neuropathy</div>
+        <div class="q-option">C) plexopathy</div>
+        <div class="q-option">D) radiculopathy</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>D) radiculopathy</strong><br>
+          <em>Radiculopathy</em> = dysfunction of a nerve root (radix). <em>Myelopathy</em> = dysfunction of the spinal cord (typically UMN signs). <em>Neuropathy</em> = peripheral nerve disease (not specific to a root level). <em>Plexopathy</em> = brachial or lumbosacral plexus dysfunction. L5 radiculopathy classically presents with foot drop, weakness of great toe extension, and sensory changes in the L5 dermatome.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question">
+      <div class="q-label">Question 10 · Collocation complete · <span class="word-source word-previous">PREVIOUS</span></div>
+      <div class="q-text">Following functional ankle reconstruction, the patient commenced ___ training to restore joint position sense, reduce re-injury risk, and improve dynamic balance on single-leg stance tasks.</div>
+      <div class="q-options">
+        <div class="q-option">A) endurance</div>
+        <div class="q-option">B) isometric</div>
+        <div class="q-option">C) proprioception</div>
+        <div class="q-option">D) plyometric</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) proprioception</strong><br>
+          <em>Proprioception training</em> (also called somatosensory or neuromuscular training) is a core component of ankle rehabilitation, targeting the mechanoreceptors in joint capsule and ligament tissue that provide afferent joint position feedback. Tools include wobble boards, BOSU balls, and single-leg balance progressions. This is distinct from endurance (cardiovascular), isometric (static muscle contraction), or plyometric (power/jump) training.
+        </div>
+      </details>
+    </div>
+
+  </div><!-- /section-body -->
+</div><!-- /section-block -->
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 2 — OET READING                                 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section-block" id="section2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="section-title-text">
+      <h2>OET Reading — Clinical Passage &amp; 5 Questions</h2>
+      <p>Read the extract, then answer all five questions · Words from this week are underlined</p>
+    </div>
+    <div class="timer-badge">⏱ 20 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="reading-passage">
+      <strong style="font-style:normal; display:block; margin-bottom:0.6rem; color:var(--text);">Multidisciplinary Management Following Pontine Haemorrhage: A Physiotherapy Perspective</strong>
+
+      A 72-year-old male was admitted to the neurosciences ward following an acute left-sided pontine <span class="highlight">haemorrhage</span>. On initial physiotherapy assessment, the patient demonstrated significant impairment in his <span class="highlight">gait</span>, requiring a two-person assist for ambulation owing to right-sided weakness and severe truncal instability. Cerebral <span class="highlight">perfusion</span> imaging confirmed markedly reduced blood flow to the affected brainstem region, consistent with the observed neurological deterioration.
+
+      Respiratory assessment revealed laboured <span class="highlight">intercostal</span> breathing with paradoxical chest wall movement. The patient was unable to generate adequate inspiratory volumes on bedside spirometry, and arterial blood gas analysis indicated type II respiratory failure. Given the pontine involvement, <span class="highlight">dysphagia</span> was also identified as a significant concern; a videofluoroscopic swallow study confirmed silent aspiration on thin liquids, and a modified texture diet was implemented in accordance with the speech pathologist's recommendations.
+
+      Over the subsequent four weeks, the patient exhibited progressive <span class="highlight">cachexia</span>, with a documented weight loss of 8.4 kg attributed to severely reduced oral intake and the hypermetabolic demands of acute neurological injury. The physiotherapy programme focused on graduated mobilisation, targeted respiratory exercises, and compensatory gait retraining using a four-wheeled frame. This case illustrates the complex interplay of neurological, respiratory, and nutritional factors following pontine haemorrhage, and underscores the essential role of early, goal-directed physiotherapy intervention in preventing secondary complications.
+    </div>
+
+    <!-- R-Q1 -->
+    <div class="question">
+      <div class="q-label">Reading Question 1 · Factual</div>
+      <div class="q-text">What was identified during the videofluoroscopic swallow study?</div>
+      <div class="q-options">
+        <div class="q-option">A) Oesophageal stricture with delayed bolus transit</div>
+        <div class="q-option">B) Silent aspiration on thin liquids</div>
+        <div class="q-option">C) Pharyngeal dysmotility without aspiration risk</div>
+        <div class="q-option">D) Laryngeal oedema preventing swallowing attempts</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B) Silent aspiration on thin liquids</strong><br>
+          The passage explicitly states: "a videofluoroscopic swallow study confirmed silent aspiration on thin liquids." <em>Silent aspiration</em> means material enters the airway below the vocal cords without triggering a cough reflex — particularly dangerous as it may not be clinically apparent without instrumental assessment.
+        </div>
+      </details>
+    </div>
+
+    <!-- R-Q2 -->
+    <div class="question">
+      <div class="q-label">Reading Question 2 · Factual</div>
+      <div class="q-text">How much weight did the patient lose over the four-week period following admission?</div>
+      <div class="q-options">
+        <div class="q-option">A) 5.6 kg</div>
+        <div class="q-option">B) 6.9 kg</div>
+        <div class="q-option">C) 8.4 kg</div>
+        <div class="q-option">D) 10.2 kg</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) 8.4 kg</strong><br>
+          The passage states "a documented weight loss of 8.4 kg attributed to severely reduced oral intake and the hypermetabolic demands of acute neurological injury." This degree of weight loss (over 10% body weight in four weeks) is clinically significant cachexia and would require urgent dietetic review and consideration of enteral nutrition.
+        </div>
+      </details>
+    </div>
+
+    <!-- R-Q3 -->
+    <div class="question">
+      <div class="q-label">Reading Question 3 · Inferential</div>
+      <div class="q-text">Why was a modified texture diet implemented for this patient?</div>
+      <div class="q-options">
+        <div class="q-option">A) To address the patient's stated preference for softer foods</div>
+        <div class="q-option">B) To compensate for poor dentition identified on oral assessment</div>
+        <div class="q-option">C) To reduce the risk of aspiration and associated aspiration pneumonia</div>
+        <div class="q-option">D) To manage the hypermetabolic demands of neurological injury</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) To reduce the risk of aspiration and associated aspiration pneumonia</strong><br>
+          The passage links the swallow study finding (silent aspiration on thin liquids) directly to the dietary modification. Thickened fluids and modified textures reduce the speed of bolus transit, allowing more time for airway protection. The passage also identifies aspiration pneumonia as a specific secondary complication the physiotherapy programme aimed to prevent.
+        </div>
+      </details>
+    </div>
+
+    <!-- R-Q4 -->
+    <div class="question">
+      <div class="q-label">Reading Question 4 · Inferential</div>
+      <div class="q-text">What does the finding of reduced cerebral perfusion to the brainstem region most likely indicate about the patient's clinical course?</div>
+      <div class="q-options">
+        <div class="q-option">A) That full neurological recovery is expected within six weeks</div>
+        <div class="q-option">B) That surgical decompression is urgently required</div>
+        <div class="q-option">C) That the haemorrhage is rapidly resolving without further intervention</div>
+        <div class="q-option">D) That ongoing neurological deterioration is consistent with the clinical picture</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>D) That ongoing neurological deterioration is consistent with the clinical picture</strong><br>
+          The passage directly states that reduced perfusion was "consistent with the observed neurological deterioration." Inferentially, reduced cerebral perfusion means inadequate blood supply to neural tissue, which is associated with ongoing or worsening neurological deficit rather than recovery. The passage describes a patient requiring significant rehabilitation input across multiple domains.
+        </div>
+      </details>
+    </div>
+
+    <!-- R-Q5 -->
+    <div class="question">
+      <div class="q-label">Reading Question 5 · Vocabulary in context</div>
+      <div class="q-text">In the passage, the term <strong>cachexia</strong> most closely refers to which of the following?</div>
+      <div class="q-options">
+        <div class="q-option">A) Muscle rigidity resulting from upper motor neurone damage</div>
+        <div class="q-option">B) Reduced sensation in the extremities following nerve injury</div>
+        <div class="q-option">C) Progressive weight loss and muscle wasting secondary to underlying disease</div>
+        <div class="q-option">D) Increased appetite as a compensatory response to neurological insult</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) Progressive weight loss and muscle wasting secondary to underlying disease</strong><br>
+          <em>Cachexia</em> (from Greek <em>kakos</em> = bad, <em>hexis</em> = condition) is a complex metabolic syndrome characterised by involuntary weight loss, muscle wasting, fatigue, and anorexia, driven by the underlying pathology (here, acute neurological injury with reduced oral intake). It differs from simple malnutrition — cachexia involves inflammatory cytokines that accelerate catabolism and cannot be fully reversed by nutritional supplementation alone.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 3 — OET WRITING                                 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section-block" id="section3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="section-title-text">
+      <h2>OET Writing Task</h2>
+      <p>Read the case notes · Write a referral letter · ~180–200 words</p>
+    </div>
+    <div class="timer-badge">⏱ 25 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="writing-task-box">
+      <strong>YOUR TASK:</strong> Using the case notes below, write a referral letter from physiotherapist <strong>Leo Chiro</strong> (AUT Community Physiotherapy Clinic, 55 Wellesley St, Auckland) to <strong>Dr Sarah Nguyen (GP, Grafton Medical Centre)</strong>, requesting onward referral to a spinal orthopaedic surgeon. Your letter should summarise the patient's history, examination findings, physiotherapy management, and provide a clear clinical justification for specialist assessment. <strong>Do not use bullet points in the letter.</strong>
+    </div>
+
+    <div class="case-notes">
+PATIENT: Mr Thomas Reid · DOB: 14/03/1981 (45 y/o) · Male
+OCCUPATION: Construction site foreman
+GP: Dr S. Nguyen, Grafton Medical Centre
+REFERRAL DATE: 24/05/2026
+────────────────────────────────────────────────
+PRESENTING COMPLAINT
+  - 6/52 Hx right-sided low back pain radiating to R buttock &amp; post. thigh
+  - Onset: heavy lifting (concrete slabs) at work; gradual onset → acute exacerbation at 2/52
+  - Pain: 6/10 at rest; 8/10 with bending/lifting; 5/10 with walking &gt;200m
+  - No saddle anaesthesia; no bladder/bowel dysfunction (red flags excluded)
+
+PMHx: Nil significant  |  Medications: Ibuprofen 400mg PRN  |  Allergies: NKDA
+
+OBJECTIVE FINDINGS (22/05/2026)
+  - Posture: antalgic lean to left; limited lumbar flexion (FTF 22cm ↓ from 0cm norm.)
+  - Sacroiliac joint: +ve FABER R; +ve posterior shear provocation → concordant pain R SIJ
+  - Piriformis: R piriformis tightness; FAIR test +ve → reproduces posterior thigh sx
+  - Neuro screen: sensation intact L4/L5/S1; reflexes normal; no clonus; no UMN signs
+  - Straight leg raise: R 45° (concordant radicular pain); L 75° (NAD)
+
+IMAGING
+  - MRI Lumbar Spine (18/05/2026): L4/L5 broad-based disc protrusion; R L5 nerve root
+    compression consistent with L5 radiculopathy (reported by Dr A. Park, Radiologist)
+
+PHYSIOTHERAPY Rx (4 sessions over 3 weeks)
+  - Sacroiliac joint manipulation ×3 — moderate short-term relief
+  - Cryotherapy to lumbar region post-session
+  - Home programme: piriformis stretching, lumbar stabilisation exercises
+  - OUTCOME: Minimal sustained improvement; unable to return to work; worsening
+    neurological irritability on repeated SLR
+
+CLINICAL IMPRESSION
+  - Persistent L5 radiculopathy with SIJ dysfunction and piriformis involvement
+  - Inadequate response to conservative physiotherapy management
+  - Functional limitation: off work 4/52; significant ADL impairment
+  - REQUEST: Onward referral to spinal orthopaedic surgeon for specialist assessment
+    and consideration of surgical/interventional management of L4/L5 disc protrusion
+    </div>
+
+    <details>
+      <summary>Show Self-Assessment Checklist (reveal after writing)</summary>
+      <div class="checklist">
+        <h4>Checklist — 10 Criteria for an OET Band B+ Referral Letter</h4>
+        <ul>
+          <li>Correct formal letter format: date, full addresses, salutation ("Dear Dr Nguyen"), professional closing</li>
+          <li>Clear purpose stated in opening sentence (who you are, who you are referring, and why)</li>
+          <li>Relevant patient details included: name, age, occupation, presenting complaint in own words</li>
+          <li>Key objective findings summarised accurately and concisely (do not list every detail from notes)</li>
+          <li>Correct use of clinical terminology: <em>sacroiliac</em>, <em>piriformis</em>, <em>radiculopathy</em>, <em>manipulation</em>, <em>cryotherapy</em></li>
+          <li>Physiotherapy management clearly described with outcome/response to treatment stated</li>
+          <li>Specific and clinically justified reason for referral — not vague ("please see and advise")</li>
+          <li>Appropriate professional tone: objective, formal, not emotional or prescriptive to the specialist</li>
+          <li>Concise and well-organised: no repetition, no unnecessary abbreviations unexplained, flows logically</li>
+          <li>Appropriate closing: "I would be grateful for your assessment…" / sign-off with name, designation, and contact details</li>
+        </ul>
+      </div>
+    </details>
+
+    <details style="margin-top:1rem;">
+      <summary>Show Model Letter Outline (reveal after self-marking)</summary>
+      <div class="answer-box">
+        <strong>Model outline structure:</strong><br><br>
+        <strong>Para 1 (Purpose):</strong> "I am writing to refer Mr Thomas Reid (DOB 14/03/1981), a 45-year-old construction site foreman, for specialist orthopaedic assessment regarding persistent L5 radiculopathy secondary to an L4/L5 disc protrusion."<br><br>
+        <strong>Para 2 (History &amp; Examination):</strong> Summarise the 6-week history, mechanism of injury, key findings — concordant sacroiliac provocation, positive piriformis FAIR test, restricted SLR at 45° right reproducing radicular symptoms, MRI confirmed L5 nerve root compression.<br><br>
+        <strong>Para 3 (Management &amp; Response):</strong> Four physiotherapy sessions including sacroiliac joint manipulation, cryotherapy, and a home programme of piriformis stretching and lumbar stabilisation resulted in minimal sustained improvement. The patient has been unable to return to work for four weeks with worsening neurological irritability.<br><br>
+        <strong>Para 4 (Request):</strong> "I would be grateful if you could arrange an onward referral to a spinal orthopaedic surgeon for further assessment and consideration of interventional or surgical management of the confirmed L4/L5 disc protrusion."
+      </div>
+    </details>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 4 — OET SPEAKING                                -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section-block" id="section4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="section-title-text">
+      <h2>OET Speaking — 2 Role Plays</h2>
+      <p>Practise aloud · Aim for natural, professional language · Key vocabulary highlighted</p>
+    </div>
+    <div class="timer-badge">⏱ 15 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="role-play-card">
+      <h4>Role Play 1 — Stroke Rehabilitation: Positioning Education</h4>
+      <p><strong>Setting:</strong> Acute inpatient rehabilitation ward, Day 3 post right-hemisphere ischaemic stroke</p>
+      <p><strong>Your role:</strong> Physiotherapist (Leo) &nbsp;|&nbsp; <strong>Patient:</strong> Mr James Davidson, 68 y/o, retired teacher</p>
+      <p><strong>Key task:</strong> Educate Mr Davidson about the importance of correct bed and chair positioning to prevent shoulder subluxation, contracture, and pressure injuries in his affected (ipsilateral) left upper limb. Address his concern that "lying on my bad side feels uncomfortable."</p>
+      <p><strong>Vocabulary to use:</strong>
+        <span class="word-source word-this-week">ipsilateral</span>
+        <span class="word-source word-this-week">paresis</span>
+        <span class="word-source word-this-week">positioning</span>
+      </p>
+      <p><strong>Suggested opening:</strong> "Good morning, Mr Davidson. I'm Leo, one of the physiotherapists here. I can see from your chart that you've been asking the nurses about how to lie in bed — I'd like to explain the importance of correct positioning, and I'll also address the discomfort you've been experiencing on your affected side."</p>
+      <div class="key-phrases">
+        <span class="phrase">"The weakness on your left side — what we call paresis — means the muscles cannot protect the joint the way they normally would."</span>
+        <span class="phrase">"Ipsilateral positioning means lying on your affected left side, and when done correctly, it's actually very beneficial."</span>
+        <span class="phrase">"We use pillows to support your left arm in the correct position to prevent the shoulder from being pulled downwards."</span>
+        <span class="phrase">"Without proper positioning, the shoulder can develop a painful subluxation — that's where the joint partially dislocates due to the muscle weakness."</span>
+        <span class="phrase">"Would you like me to show you on the bed how we'd position your arm? I'll do it slowly and check in with you about comfort."</span>
+      </div>
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Structure for a Band B+ response:</strong><br>
+          1. <strong>Establish rapport and acknowledge concern:</strong> Validate that the discomfort is understandable, reassure that positioning will be explained clearly.<br>
+          2. <strong>Explain the rationale:</strong> The paresis (muscle weakness on the ipsilateral/affected side) means the shoulder, wrist, and hand joints are not actively protected — gravity and poor positioning can cause subluxation, contracture, and pressure injury over time.<br>
+          3. <strong>Demonstrate the correct positions:</strong> (a) Lying on the affected (ipsilateral) side: shoulder protracted, arm extended with pillow under forearm, hip slightly flexed — stimulates proprioception and helps reduce spasticity. (b) Lying on the unaffected side: pillow between knees, affected arm forward on pillow, not internally rotated behind back. (c) Sitting: arm supported on pillow or arm trough to prevent dependent oedema.<br>
+          4. <strong>Address the discomfort concern:</strong> Explain that with correct pillow support, lying on the affected side should not cause pain — if it does, adjust positioning or use a softer pillow under the arm.<br>
+          5. <strong>Check understanding:</strong> "Can you show me how you'd position your left arm before going to sleep tonight?"
+        </div>
+      </details>
+    </div>
+
+    <div class="role-play-card">
+      <h4>Role Play 2 — Cerebellar Dysfunction: Explaining Assessment Findings</h4>
+      <p><strong>Setting:</strong> Outpatient neurology physiotherapy clinic, initial assessment appointment</p>
+      <p><strong>Your role:</strong> Physiotherapist (Leo) &nbsp;|&nbsp; <strong>Patient:</strong> Mrs Mei Wong, 54 y/o, accountant, referred following cerebellar infarct 6 weeks ago</p>
+      <p><strong>Key task:</strong> Explain the physiotherapy assessment findings to Mrs Wong in plain language. She is anxious and wants to understand why her arm "keeps missing" when she reaches for objects and feels "floppy." Explain the findings, what they mean, and outline the rehabilitation approach. Use clinical terms but explain them clearly.</p>
+      <p><strong>Vocabulary to use:</strong>
+        <span class="word-source word-this-week">flaccidity</span>
+        <span class="word-source word-this-week">dysmetria</span>
+        <span class="word-source word-this-week">elicit</span>
+      </p>
+      <p><strong>Suggested opening:</strong> "Mrs Wong, thank you for coming in today. I've now finished the assessment, and I'd like to go through what I found with you — I'll use some medical terms but I'll explain each one in plain language as I go, so please stop me at any time if something isn't clear."</p>
+      <div class="key-phrases">
+        <span class="phrase">"During the assessment, I was able to elicit — that is, bring out or detect — a few specific movement patterns that tell us about how the cerebellum is functioning."</span>
+        <span class="phrase">"The 'floppy' feeling you've described is what we call flaccidity — the muscle tone is lower than normal, which is why your arm feels heavy and doesn't hold positions easily."</span>
+        <span class="phrase">"The 'missing' when you reach — that's called dysmetria. It means the brain is slightly misjudging the distance and speed needed to complete the movement accurately."</span>
+        <span class="phrase">"Neither of these findings means your arm won't improve — in fact, the brain has remarkable capacity to adapt, which we call neuroplasticity."</span>
+        <span class="phrase">"Our sessions will focus on repetitive, targeted reaching and coordination exercises to retrain the movement pathways."</span>
+      </div>
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Structure for a Band B+ response:</strong><br>
+          1. <strong>Acknowledge anxiety and set expectations:</strong> Briefly reassure that the findings are consistent with the known diagnosis and that rehabilitation is effective. Signal that you will explain things clearly.<br>
+          2. <strong>Explain flaccidity:</strong> "Flaccidity means the muscle tone in your left arm is lower than normal. After a cerebellar infarct, the muscles sometimes feel softer and struggle to hold their position against gravity. You described it as 'floppy' — that's exactly right." Explain this is expected and improves with targeted exercise.<br>
+          3. <strong>Explain dysmetria:</strong> "Dysmetria is the clinical term for what you notice when you reach for your cup and your hand overshoots or undershoots. Normally the cerebellum fine-tunes every movement — after the infarct, this 'autopilot' adjustment isn't working as well. Your arm knows roughly where to go, but the fine-tuning is temporarily off." Use a car analogy if helpful: "It's like the steering is slightly loose."<br>
+          4. <strong>Explain elicit (in context):</strong> "When I 'elicit' a sign, it means I use a specific test to bring out and measure that symptom. The finger-nose test and the heel-shin test both help us elicit dysmetria so we can grade its severity and track your progress."<br>
+          5. <strong>Outline the rehabilitation plan:</strong> Task-specific repetitive reaching exercises, coordination tasks of increasing complexity, progressing to functional tasks (writing, pouring, typing). Reassure that neuroplasticity supports recovery — especially with daily practice.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<footer class="page-footer">
+  OET Weekly Exam · Week 3 · 24 May 2026 · 22 words tested · 155-word pool<br>
+  Leo · AUT Master of Physiotherapy Practice · Target: OET Grade B+
+</footer>
+
+</body>
+</html>
