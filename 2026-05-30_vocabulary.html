@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 39 · 2026-05-30</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 39 · 30 May 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Paediatric + Signs &amp; Symptoms</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">hyperbilirubinaemia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌhaɪ.pə.ˌbɪl.ɪ.ˌruː.bɪˈniː.mi.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/hyperbilirubinaemia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/hyperbilirubinemia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">小兒 Paediatric</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">An abnormally elevated level of bilirubin in the bloodstream, most commonly presenting in neonates as visible jaundice; may be physiological (resolving within days) or pathological, requiring phototherapy or exchange transfusion.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">高膽紅素血症</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">neonatal hyperbilirubinaemia</span>
+          <span class="colloc-item">physiological hyperbilirubinaemia</span>
+          <span class="colloc-item">pathological hyperbilirubinaemia</span>
+          <span class="colloc-item">severe hyperbilirubinaemia</span>
+          <span class="colloc-item">treat hyperbilirubinaemia</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Baby Mitchell, born at 37+2 weeks gestation, was commenced on phototherapy on day 2 of life for neonatal <strong>hyperbilirubinaemia</strong>; physiotherapy input was requested to monitor positional tolerance and support developmental handling."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">jaundice (clinical sign)</span>
+          <span class="related-item">bilirubin (the substance)</span>
+          <span class="related-item">hyperbilirubinaemic (adj)</span>
+          <span class="related-item">kernicterus (severe complication)</span>
+          <span class="related-item">phototherapy (treatment)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">diplegia</div>
+        <div class="card-meta">
+          <span class="ipa">/daɪˈpliː.dʒi.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/diplegia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/diplegia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">小兒 Paediatric</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Paralysis or significant motor weakness affecting corresponding parts on both sides of the body; in cerebral palsy, spastic diplegia most commonly involves the lower limbs with relative sparing of the upper limbs.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">雙側癱瘓；雙癱</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">spastic diplegia</span>
+          <span class="colloc-item">lower limb diplegia</span>
+          <span class="colloc-item">diplegia secondary to</span>
+          <span class="colloc-item">bilateral diplegia</span>
+          <span class="colloc-item">manage diplegia</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Liam, aged 4, has been diagnosed with spastic <strong>diplegia</strong> secondary to periventricular leukomalacia and is receiving twice-weekly physiotherapy to improve his gait pattern and functional mobility on level surfaces."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">hemiplegia (one side)</span>
+          <span class="related-item">tetraplegia (all four limbs)</span>
+          <span class="related-item">monoplegia (one limb)</span>
+          <span class="related-item">diplegic (adj)</span>
+          <span class="related-item">cerebral palsy (common cause)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">petechiae</div>
+        <div class="card-meta">
+          <span class="ipa">/pɪˈtiː.ki.iː/</span>
+          <span class="pos">noun (plural)</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/petechia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/petechiae" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Small (1–2 mm), flat, pinpoint haemorrhages on the skin or mucous membranes that do not blanch on pressure; a clinically important sign that may indicate thrombocytopaenia, vasculitis, or serious infection such as meningococcaemia.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">瘀點；點狀出血</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">non-blanching petechiae</span>
+          <span class="colloc-item">petechiae on the trunk</span>
+          <span class="colloc-item">petechiae and purpura</span>
+          <span class="colloc-item">note petechiae</span>
+          <span class="colloc-item">widespread petechiae</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "On assessment, the child presented with high-grade pyrexia and widespread non-blanching <strong>petechiae</strong> across the trunk and lower limbs; urgent medical review was requested and physiotherapy was deferred pending investigation."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">petechia (singular)</span>
+          <span class="related-item">petechial (adj)</span>
+          <span class="related-item">purpura (larger lesions)</span>
+          <span class="related-item">ecchymosis (bruising)</span>
+          <span class="related-item">thrombocytopaenia (cause)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">hydrocephalus</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌhaɪ.drəʊˈsɛf.ə.ləs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/hydrocephalus" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/hydrocephalus" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">小兒 Paediatric</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">An abnormal accumulation of cerebrospinal fluid within the cerebral ventricles, leading to raised intracranial pressure; in infants it may cause progressive head enlargement, whereas in older children and adults it presents with headache, vomiting, and altered conscious state.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">腦積水</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">congenital hydrocephalus</span>
+          <span class="colloc-item">shunted hydrocephalus</span>
+          <span class="colloc-item">communicating hydrocephalus</span>
+          <span class="colloc-item">hydrocephalus secondary to</span>
+          <span class="colloc-item">manage hydrocephalus</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Emma, aged 6 months, has been referred to the physiotherapy department following insertion of a ventriculoperitoneal shunt for congenital <strong>hydrocephalus</strong>; current treatment goals include facilitating head control and supporting developmental milestone acquisition."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">macrocephaly (enlarged head)</span>
+          <span class="related-item">ventriculomegaly (enlarged ventricles)</span>
+          <span class="related-item">VP shunt (treatment)</span>
+          <span class="related-item">intracranial pressure (consequence)</span>
+          <span class="related-item">hydrocephalic (adj)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">rigidity</div>
+        <div class="card-meta">
+          <span class="ipa">/rɪˈdʒɪd.ɪ.ti/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/rigidity" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/rigidity" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Increased muscle tone characterised by resistance throughout the entire range of passive movement, independent of movement velocity; distinguished from spasticity (velocity-dependent). Presents as lead-pipe rigidity or cogwheel rigidity (with superimposed tremor), classically associated with Parkinson's disease.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">強直；肌肉僵硬</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">cogwheel rigidity</span>
+          <span class="colloc-item">lead-pipe rigidity</span>
+          <span class="colloc-item">truncal rigidity</span>
+          <span class="colloc-item">bilateral rigidity</span>
+          <span class="colloc-item">rigidity of the upper limbs</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mr. Tran, aged 72, presents with bilateral upper limb cogwheel <strong>rigidity</strong> and bradykinesia consistent with Parkinson's disease; physiotherapy is aimed at improving mobility, reducing falls risk, and maintaining functional independence."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">spasticity (velocity-dependent, contrast)</span>
+          <span class="related-item">hypertonia (increased tone, broader)</span>
+          <span class="related-item">cogwheel (type with tremor)</span>
+          <span class="related-item">lead-pipe (uniform type)</span>
+          <span class="related-item">rigid (adj)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 39)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Dear Dr. Patel,
+      <br><br>
+      I am writing to refer Oscar Chen, a 5-year-old male with a background of congenital
+      <span class="highlight">hydrocephalus</span> managed with a ventriculoperitoneal shunt, for
+      ongoing physiotherapy review.
+      <br><br>
+      Oscar was diagnosed with spastic <span class="highlight">diplegia</span> at 18 months of age
+      following periventricular leukomalacia identified on MRI. He currently ambulates independently
+      over short distances indoors but requires a posterior walker for community mobility. His lower
+      limb tone is increased bilaterally, with scissoring gait pattern noted on assessment.
+      <br><br>
+      Of note, Oscar presented to our department last week with a febrile illness. On examination,
+      non-blanching <span class="highlight">petechiae</span> were identified across his anterior chest
+      wall, prompting immediate referral to the emergency department. Physiotherapy was suspended
+      pending medical clearance, which has since been obtained.
+      <br><br>
+      Current physiotherapy goals include improving gait quality, strengthening hip abductors and
+      ankle dorsiflexors, and monitoring shunt function through regular neurological screening.
+      Please find enclosed the most recent functional assessment and school physiotherapy reports.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> In paediatric referral letters, always document the child's <em>background diagnosis</em>,
+      <em>current functional level</em>, and any <em>acute clinical concerns</em> (such as non-blanching petechiae) that altered
+      the treatment plan. Use passive constructions sparingly — prefer active, concise clinical language.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 39 · 2026-05-30 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 神經 Neurological · 小兒 Paediatric · Signs &amp; Symptoms</p>
+</footer>
+
+</body>
+</html>
