@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Weekly Exam — Week 4 · 2026-05-31</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #fff; --primary: #7c3aed; --primary-light: #ede9fe;
+      --accent: #0d9488; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+      --green: #15803d; --green-light: #dcfce7;
+      --red: #b91c1c; --red-light: #fee2e2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem 4rem; line-height: 1.65; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: var(--primary); color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); flex-wrap: wrap; }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .week-badge { margin-left: auto; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.82rem; font-weight: 600; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .instructions { max-width: 860px; margin: 0 auto 1.5rem; background: var(--primary-light); border: 1px solid #c4b5fd; border-radius: var(--radius); padding: 1rem 1.2rem; font-size: 0.88rem; }
+    .instructions h3 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .instructions ul { padding-left: 1.2rem; }
+    .instructions li { margin-bottom: 0.3rem; }
+    .section-block { max-width: 860px; margin: 0 auto 2rem; background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+    .section-header { padding: 1rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border); }
+    .section-num { width: 2rem; height: 2rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .section-title-text h2 { font-size: 1.05rem; font-weight: 700; }
+    .section-title-text p { font-size: 0.8rem; color: var(--muted); }
+    .timer-badge { margin-left: auto; background: var(--warn-light); color: var(--warn); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+    .section-body { padding: 1.4rem; }
+    .question { margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .q-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.4rem; }
+    .q-text { font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 500; }
+    .q-options { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.7rem; }
+    .q-option { font-size: 0.9rem; padding: 0.4rem 0.7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+    details { margin-top: 0.5rem; }
+    summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--primary); user-select: none; padding: 0.3rem 0; }
+    summary:hover { text-decoration: underline; }
+    .answer-box { margin-top: 0.5rem; background: var(--green-light); border-left: 3px solid var(--green); padding: 0.6rem 0.9rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #14532d; }
+    .reading-passage { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; font-style: italic; }
+    .highlight { color: var(--primary); font-weight: 700; font-style: normal; text-decoration: underline dotted; }
+    .case-notes { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.88rem; font-family: 'Courier New', monospace; line-height: 1.9; margin-bottom: 1.2rem; }
+    .writing-task-box { background: var(--warn-light); border-left: 3px solid var(--warn); padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; margin-bottom: 1rem; }
+    .checklist { margin-top: 1rem; }
+    .checklist h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--green); }
+    .checklist ul { padding-left: 0; list-style: none; }
+    .checklist li { font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .checklist li::before { content: '☐'; font-size: 1rem; flex-shrink: 0; }
+    .role-play-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+    .role-play-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 0.4rem; }
+    .role-play-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .key-phrases { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .phrase { background: white; border: 1px solid #86efac; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px; font-style: italic; }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+    .word-source-tag { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 10px; vertical-align: middle; margin-left: 0.4rem; }
+    .tag-thisweek { background: #ede9fe; color: #6d28d9; }
+    .tag-previous { background: #e0f2fe; color: #0369a1; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ PAGE HEADER ═══════════════════════════ -->
+<header class="page-header">
+  <div class="header-icon">📝</div>
+  <div class="header-text">
+    <h1>OET Weekly Practice Exam — Week 4</h1>
+    <p>31 May 2026 · 21 words tested · ~200-word vocabulary pool · Sections 1–4</p>
+  </div>
+  <div class="week-badge">Week 4</div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a href="../index.html">← Vocabulary Home</a>
+  <a href="index.html">All Exams</a>
+  <a href="#section1">1 · Vocabulary</a>
+  <a href="#section2">2 · Reading</a>
+  <a href="#section3">3 · Writing</a>
+  <a href="#section4">4 · Speaking</a>
+</nav>
+
+<!-- INSTRUCTIONS -->
+<div class="instructions">
+  <h3>How to use this exam</h3>
+  <ul>
+    <li>Work through each section under timed conditions — suggested times are shown on each section header.</li>
+    <li>For MCQ questions, select your answer <em>before</em> clicking "Show Answer".</li>
+    <li>This week's words are tagged <span class="word-source-tag tag-thisweek">THIS WEEK</span>; review words are tagged <span class="word-source-tag tag-previous">PREVIOUS</span>.</li>
+    <li>Section 3 (Writing): write your letter first, then open the self-assessment checklist.</li>
+    <li>Section 4 (Speaking): practise aloud before opening the model answer outline.</li>
+  </ul>
+</div>
+
+
+<!-- ═══════════════════ SECTION 1 — VOCABULARY ═══════════════════ -->
+<div class="section-block" id="section1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-text">
+      <h2>Vocabulary</h2>
+      <p>10 questions · 6 from this week · 4 from previous weeks · Fill-in-blank, definition match &amp; collocation</p>
+    </div>
+    <div class="timer-badge">⏱ 15 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Q1 -->
+    <div class="question">
+      <div class="q-label">Question 1 · Fill-in-the-blank <span class="word-source-tag tag-thisweek">THIS WEEK</span> — stridor (25 May)</div>
+      <div class="q-text">During the respiratory assessment, the physiotherapist noted a high-pitched, harsh ________ sound on inspiration, indicating partial upper airway obstruction secondary to laryngeal oedema.</div>
+      <div class="q-options">
+        <div class="q-option">A) rhonchi</div>
+        <div class="q-option">B) stridor</div>
+        <div class="q-option">C) wheeze</div>
+        <div class="q-option">D) murmur</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) stridor.</strong> Stridor is a high-pitched, monophonic sound heard on inspiration (or both phases) caused by turbulent airflow through a narrowed upper airway. It differs from wheeze (lower airway, expiratory) and rhonchi (secretion-related, coarse sounds in larger airways).</div>
+      </details>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+      <div class="q-label">Question 2 · Fill-in-the-blank <span class="word-source-tag tag-thisweek">THIS WEEK</span> — ventilation (25 May)</div>
+      <div class="q-text">Incentive spirometry was prescribed post-operatively to promote deep breathing, improve ________, and reduce the risk of basal atelectasis in this high-risk patient.</div>
+      <div class="q-options">
+        <div class="q-option">A) defibrillation</div>
+        <div class="q-option">B) secretion clearance</div>
+        <div class="q-option">C) ventilation</div>
+        <div class="q-option">D) perfusion</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) ventilation.</strong> Ventilation refers to the mechanical process of moving air into and out of the lungs. Incentive spirometry specifically targets alveolar ventilation by encouraging sustained maximal inspiration, which helps prevent collapse of lung segments post-operatively.</div>
+      </details>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+      <div class="q-label">Question 3 · Definition Match <span class="word-source-tag tag-thisweek">THIS WEEK</span> — confabulation (29 May)</div>
+      <div class="q-text">Which of the following best describes <em>confabulation</em>?</div>
+      <div class="q-options">
+        <div class="q-option">A) The inability to perform purposeful movements despite intact motor function and comprehension</div>
+        <div class="q-option">B) The fabrication of detailed but false memories without conscious intent to deceive, commonly associated with frontal lobe or Korsakoff's pathology</div>
+        <div class="q-option">C) The failure to recognise familiar objects, faces, or sounds despite intact primary sensory function</div>
+        <div class="q-option">D) The loss of voluntary initiation of movement in the absence of paralysis</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) Confabulation</strong> is the spontaneous production of fabricated, distorted, or misinterpreted memories about oneself or the world, without the intention to deceive. It is commonly seen in Wernicke-Korsakoff syndrome, TBI, and some dementias. Compare: apraxia (A), agnosia (C), akinesia (D).</div>
+      </details>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question">
+      <div class="q-label">Question 4 · Fill-in-the-blank <span class="word-source-tag tag-thisweek">THIS WEEK</span> — nociceptive (28 May)</div>
+      <div class="q-text">The patient's knee pain was classified as ________ in origin, arising from structural damage to the medial meniscus following a twisting injury, with no evidence of nerve root compromise.</div>
+      <div class="q-options">
+        <div class="q-option">A) discogenic</div>
+        <div class="q-option">B) neurogenic</div>
+        <div class="q-option">C) nociceptive</div>
+        <div class="q-option">D) referred</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) nociceptive.</strong> Nociceptive pain arises from actual or threatened tissue damage, activating specialised peripheral pain receptors (nociceptors). It is localised and proportionate to injury. Neurogenic/neuropathic pain (B) involves nerve dysfunction; discogenic (A) is a subtype of nociceptive pain specific to intervertebral disc pathology.</div>
+      </details>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question">
+      <div class="q-label">Question 5 · Definition Match <span class="word-source-tag tag-thisweek">THIS WEEK</span> — lymphoedema (31 May)</div>
+      <div class="q-text">Which of the following best describes <em>lymphoedema</em>?</div>
+      <div class="q-options">
+        <div class="q-option">A) Bilateral lower limb swelling due to right-sided cardiac failure and venous hypertension</div>
+        <div class="q-option">B) Chronic swelling of one or more limbs caused by impaired lymphatic drainage, resulting in protein-rich fluid accumulation in the interstitium</div>
+        <div class="q-option">C) Acute inflammatory joint swelling with erythema and warmth secondary to gout or septic arthritis</div>
+        <div class="q-option">D) Transient peripheral oedema caused by prolonged immobility or dependent positioning</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) lymphoedema</strong> is chronic swelling resulting from lymphatic insufficiency. Unlike cardiac oedema (A) or dependent oedema (D), lymphoedema involves protein-rich fluid that leads to progressive tissue fibrosis and <em>induration</em> if untreated. It is commonly secondary to axillary node dissection, radiotherapy, or infection (filariasis).</div>
+      </details>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question">
+      <div class="q-label">Question 6 · Collocation Complete <span class="word-source-tag tag-thisweek">THIS WEEK</span> — ankylosis (31 May)</div>
+      <div class="q-text">The radiograph confirmed complete bony ________ of the proximal interphalangeal joint, with loss of the joint space and osseous fusion of the articular surfaces following chronic inflammatory arthropathy.</div>
+      <div class="q-options">
+        <div class="q-option">A) contracture</div>
+        <div class="q-option">B) rigidity</div>
+        <div class="q-option">C) ankylosis</div>
+        <div class="q-option">D) arthralgia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) ankylosis</strong> is the pathological stiffening or immobility of a joint, either through bony (true/osseous ankylosis) or fibrous fusion. It is the hallmark feature of advanced ankylosing spondylitis and certain post-traumatic or post-infective joint conditions. Contracture (A) involves soft tissue shortening without osseous union; rigidity (B) is a neurological sign of increased muscle tone.</div>
+      </details>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question">
+      <div class="q-label">Question 7 · Fill-in-the-blank <span class="word-source-tag tag-previous">PREVIOUS</span> — dysphagia</div>
+      <div class="q-text">Following the patient's brainstem stroke, the speech pathologist confirmed severe ________, with unsafe swallowing of all consistencies and high risk of aspiration pneumonia requiring nil-by-mouth status and enteral feeding.</div>
+      <div class="q-options">
+        <div class="q-option">A) dysphonia</div>
+        <div class="q-option">B) dysarthria</div>
+        <div class="q-option">C) dysphagia</div>
+        <div class="q-option">D) dyspnoea</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) dysphagia</strong> is difficulty swallowing, commonly resulting from neurological lesions affecting the swallowing centres in the brainstem. Dysphonia (A) is impaired voice quality; dysarthria (B) is impaired motor speech articulation; dyspnoea (D) is breathlessness. All four share the prefix <em>dys-</em> (difficulty/impairment) — context and the associated organ system distinguish them.</div>
+      </details>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question">
+      <div class="q-label">Question 8 · Fill-in-the-blank <span class="word-source-tag tag-previous">PREVIOUS</span> — spasticity</div>
+      <div class="q-text">The upper motor neurone lesion resulted in marked ________ of the right lower limb, characterised by velocity-dependent increased muscle tone and a clasp-knife response on rapid passive dorsiflexion of the ankle.</div>
+      <div class="q-options">
+        <div class="q-option">A) flaccidity</div>
+        <div class="q-option">B) spasticity</div>
+        <div class="q-option">C) hypotonia</div>
+        <div class="q-option">D) atrophy</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) spasticity</strong> is a feature of upper motor neurone (UMN) syndrome characterised by <em>velocity-dependent</em> increased muscle tone. This distinguishes it from rigidity (lead-pipe or cogwheel, seen in Parkinson's disease) which is not velocity-dependent. Flaccidity (A) and hypotonia (C) occur in lower motor neurone lesions. The clasp-knife response is pathognomonic of spasticity.</div>
+      </details>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question">
+      <div class="q-label">Question 9 · Definition Match <span class="word-source-tag tag-previous">PREVIOUS</span> — proprioception</div>
+      <div class="q-text">Which of the following best describes <em>proprioception</em>?</div>
+      <div class="q-options">
+        <div class="q-option">A) The conscious awareness of pain and temperature arising from peripheral nociceptors</div>
+        <div class="q-option">B) The sense of body position, movement, and spatial orientation provided by mechanoreceptors in muscles, tendons, and joint capsules</div>
+        <div class="q-option">C) The ability to modulate neural pathways in response to training or injury (neural adaptability)</div>
+        <div class="q-option">D) The perception of vibration transmitted via large-diameter myelinated A-beta fibres</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) proprioception</strong> is the body's intrinsic sense of its own position and movement. Key receptors include muscle spindles (Ia &amp; II afferents), Golgi tendon organs (Ib), and joint mechanoreceptors. Proprioception is commonly impaired in peripheral neuropathy, ligamentous injury, and following joint replacement, making balance and coordination training a critical component of physiotherapy rehabilitation.</div>
+      </details>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question">
+      <div class="q-label">Question 10 · Collocation Complete <span class="word-source-tag tag-previous">PREVIOUS</span> — atelectasis</div>
+      <div class="q-text">Post-operative chest X-ray revealed basal ________ of the left lower lobe, prompting urgent physiotherapy referral for airway clearance techniques and breathing exercises.</div>
+      <div class="q-options">
+        <div class="q-option">A) consolidation</div>
+        <div class="q-option">B) effusion</div>
+        <div class="q-option">C) atelectasis</div>
+        <div class="q-option">D) pneumothorax</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) atelectasis</strong> is the collapse or incomplete expansion of lung tissue, commonly seen post-operatively due to shallow breathing, mucus plugging, or compression. Physiotherapy is first-line management. Consolidation (A) involves alveolar filling with fluid/pus (e.g. pneumonia); effusion (B) is fluid in the pleural space; pneumothorax (D) is air in the pleural space.</div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════ SECTION 2 — OET READING ═══════════════════ -->
+<div class="section-block" id="section2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="section-title-text">
+      <h2>OET Reading</h2>
+      <p>1 clinical passage (~220 words) · 5 comprehension questions · 6 target words highlighted</p>
+    </div>
+    <div class="timer-badge">⏱ 20 min</div>
+  </div>
+  <div class="section-body">
+
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.8rem;">Read the passage carefully, then answer the five questions that follow. Highlighted words are target vocabulary from this week.</p>
+
+    <div class="reading-passage">
+      <strong style="font-style:normal;font-size:0.8rem;color:var(--muted);display:block;margin-bottom:0.6rem;">CLINICAL CASE SUMMARY — Respiratory &amp; Musculoskeletal Co-presentation</strong>
+      Mrs Eleanor Hart, a 52-year-old secondary school teacher, was admitted to the respiratory ward at Auckland City Hospital following an acute exacerbation of asthma complicated by bilateral lower lobe pneumonia. On initial physiotherapy assessment, an audible <span class="highlight">wheeze</span> was noted on expiration bilaterally, and the patient had copious respiratory <span class="highlight">secretions</span> she was unable to clear independently. Active cycle of breathing techniques combined with postural drainage were commenced to support <span class="highlight">ventilation</span> and facilitate secretion clearance, with significant improvement noted within 48 hours.
+      <br><br>
+      Alongside her respiratory presentation, Mrs Hart described a three-month history of right-sided <span class="highlight">sciatica</span>, with lancinating pain radiating from the buttock to the dorsum of the foot. The pain was consistent with <span class="highlight">neurogenic</span> irritation at the L5 nerve root, exacerbated by the Valsalva manoeuvre during coughing episodes. The treating physiotherapist demonstrated considerable <span class="highlight">empathy</span> throughout the assessment, acknowledging the patient's distress and the significant impact of her dual diagnosis on her professional and personal life.
+      <br><br>
+      A comprehensive rehabilitation programme was developed to address both presentations concurrently, incorporating breathing retraining, graduated mobilisation, and neural tension management strategies tailored to Mrs Hart's functional capacity and pain tolerance.
+    </div>
+
+    <!-- Reading Q1 -->
+    <div class="question">
+      <div class="q-label">Reading Question 1 · Factual</div>
+      <div class="q-text">Which physiotherapy techniques were used to manage Mrs Hart's respiratory secretions?</div>
+      <div class="q-options">
+        <div class="q-option">A) Nebulisation with hypertonic saline and chest percussion</div>
+        <div class="q-option">B) Active cycle of breathing techniques and postural drainage</div>
+        <div class="q-option">C) Pursed-lip breathing and incentive spirometry</div>
+        <div class="q-option">D) Intermittent positive pressure breathing and suctioning</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B)</strong> The passage explicitly states: "Active cycle of breathing techniques combined with postural drainage were commenced to support ventilation and facilitate secretion clearance." The other options are valid physiotherapy interventions but are not mentioned in the passage.</div>
+      </details>
+    </div>
+
+    <!-- Reading Q2 -->
+    <div class="question">
+      <div class="q-label">Reading Question 2 · Factual</div>
+      <div class="q-text">At which spinal level was Mrs Hart's nerve root irritation consistent?</div>
+      <div class="q-options">
+        <div class="q-option">A) L3/L4</div>
+        <div class="q-option">B) L4/L5</div>
+        <div class="q-option">C) L5</div>
+        <div class="q-option">D) S1</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) L5.</strong> The passage states the pain was "consistent with neurogenic irritation at the L5 nerve root." Pain radiating from the buttock to the dorsum of the foot is a classic L5 dermatomal distribution, distinguishing it from S1 (lateral foot/heel) or L4 (medial shin/foot) patterns.</div>
+      </details>
+    </div>
+
+    <!-- Reading Q3 -->
+    <div class="question">
+      <div class="q-label">Reading Question 3 · Inferential</div>
+      <div class="q-text">Why would coughing episodes be expected to aggravate Mrs Hart's sciatic pain?</div>
+      <div class="q-options">
+        <div class="q-option">A) Coughing causes direct compression of lumbar vertebrae through axial loading</div>
+        <div class="q-option">B) Coughing triggers a Valsalva manoeuvre that transiently raises intrathecal pressure, increasing mechanical stress on the irritated nerve root</div>
+        <div class="q-option">C) Coughing causes involuntary hip flexion that stretches the sciatic nerve</div>
+        <div class="q-option">D) Coughing reduces perfusion to the lumbar nerve roots via arterial compression</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B)</strong> The passage notes the pain was "exacerbated by the Valsalva manoeuvre during coughing episodes." Forced expiration against a closed glottis (Valsalva) raises intra-abdominal and intrathecal pressure, which in the presence of disc herniation or nerve root inflammation temporarily increases mechanical irritation of the compressed nerve root — a key clinical sign of discogenic or neurogenic pathology.</div>
+      </details>
+    </div>
+
+    <!-- Reading Q4 -->
+    <div class="question">
+      <div class="q-label">Reading Question 4 · Inferential</div>
+      <div class="q-text">What does the physiotherapist's demonstration of empathy in this case primarily reflect?</div>
+      <div class="q-options">
+        <div class="q-option">A) A requirement to complete formal psychological screening tools</div>
+        <div class="q-option">B) Acknowledgement that the patient's psychosocial context is clinically relevant and influences rehabilitation outcomes</div>
+        <div class="q-option">C) A sign that the physiotherapist was uncertain about the management plan</div>
+        <div class="q-option">D) A legal obligation to document the patient's emotional state</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B)</strong> In OET and clinical practice, empathy is a cornerstone of patient-centred care. By acknowledging "the significant impact of her dual diagnosis on her professional and personal life," the physiotherapist recognises that psychosocial factors — including fear-avoidance, work-related anxiety, and identity — directly influence engagement with rehabilitation and functional outcomes.</div>
+      </details>
+    </div>
+
+    <!-- Reading Q5 -->
+    <div class="question">
+      <div class="q-label">Reading Question 5 · Vocabulary in Context</div>
+      <div class="q-text">In the passage, the term <em>neurogenic</em> most closely means:</div>
+      <div class="q-options">
+        <div class="q-option">A) Arising from structural damage to bone or cartilage</div>
+        <div class="q-option">B) Originating from or caused by dysfunction or irritation of the nervous system</div>
+        <div class="q-option">C) Related to a psychological or somatic response without identifiable tissue pathology</div>
+        <div class="q-option">D) Caused by impaired vascular supply to the peripheral nerves</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B)</strong> In context, <em>neurogenic</em> describes pain arising from irritation or dysfunction of the nervous system — specifically the L5 nerve root. This distinguishes it from nociceptive pain (tissue damage, option A) or psychogenic pain (option C). Option D describes ischaemic neuropathy, which is a specific subtype. In clinical OET documentation, "neurogenic pain" specifically indicates neural tissue involvement.</div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════ SECTION 3 — OET WRITING ═══════════════════ -->
+<div class="section-block" id="section3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="section-title-text">
+      <h2>OET Writing Task</h2>
+      <p>Write a formal referral letter · ~180–200 words · Target vocabulary included in case notes</p>
+    </div>
+    <div class="timer-badge">⏱ 45 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="writing-task-box">
+      <strong>TASK:</strong> Using the case notes below, write a referral letter from <strong>Dr Aroha Patel, Palmerston North Medical Centre</strong>, to the <strong>Outpatient Physiotherapy Department, MidCentral District Health Board, Palmerston North Hospital</strong>. Your letter should include all clinically relevant information to assist the physiotherapist in planning appropriate treatment. Write approximately <strong>180–200 words</strong>.
+    </div>
+
+    <div class="case-notes">
+PATIENT CASE NOTES
+
+Pt:          TAUFA, James Hemi
+DOB:         14/07/1978  |  M  |  NHI: ZYQ8821
+Address:     22 Rimu Road, Palmerston North 4410
+GP:          Dr A. Patel — Palmerston North Medical Centre
+Date:        27/05/2026
+
+DIAGNOSES:
+  1. R lateral epicondylitis (3/12 duration)
+  2. L upper limb lymphoedema (post-axillary node dissection, 18/12 ago)
+  3. R 2nd PIP ankylosis (post-fracture 2022; no surgical Rx)
+  4. Fibromyalgia (Dx 2019; medically managed — stable)
+
+PRESENTING COMPLAINT:
+  - R elbow pain 7/10 rest, 9/10 gripping/lifting
+  - L arm/hand swelling ↑ end of day; induration noted periforearm
+  - Diffuse myositis-pattern myalgia consistent w/ fibromyalgia flare
+  - Fatigue, disturbed sleep (pain-related)
+
+INVESTIGATIONS:
+  - USS R elbow (12/05/26): lateral epicondyle tendinopathy confirmed
+  - Lymphoscintigraphy (03/2025): L axillary lymph insufficiency confirmed
+  - XR R hand (2022): osseous fusion R 2nd PIP — no further intervention
+
+MEDICATIONS:
+  - Duloxetine 30 mg daily  |  Ibuprofen 400 mg PRN
+  - Compression bandaging L UE (self-managed)
+
+FUNCTIONAL LIMITATIONS:
+  - ↓ grip strength bilaterally; unable to write &gt;5 min
+  - Difficulty lifting &gt;500 g; unable to return to work (IT technician)
+  - L shoulder flex limited to 100° (lymphoedema bulk)
+
+REFERRAL GOALS:
+  - Pain management: R elbow epicondylitis
+  - Lymphoedema education + manual lymphatic drainage
+  - R PIP ROM — within ankylosis constraints
+  - Graded return-to-work programme
+    </div>
+
+    <p style="font-size:0.85rem;margin-bottom:1rem;">Write your letter now. Aim to use at least three of the following vocabulary words correctly: <strong>epicondylitis · lymphoedema · ankylosis · fibromyalgia · induration · myositis</strong></p>
+
+    <details>
+      <summary>Show Self-Assessment Checklist (open after writing)</summary>
+      <div class="checklist">
+        <h4>✅ Self-Assessment Checklist — 10 Criteria</h4>
+        <ul>
+          <li>1. Letter includes today's date, recipient's full name and department, and an appropriate salutation (e.g. "Dear Physiotherapy Team,")</li>
+          <li>2. Patient's full name, date of birth, and address are clearly stated in the opening paragraph</li>
+          <li>3. All four diagnoses are listed clearly, in clinical priority order, with duration or onset where relevant</li>
+          <li>4. Pain severity and functional impact are quantified or described specifically (e.g. pain scores, activity limitations)</li>
+          <li>5. Key investigation results are included with dates and clinically relevant findings (USS, lymphoscintigraphy, XR)</li>
+          <li>6. Current medications are listed with doses (Duloxetine, Ibuprofen, compression bandaging)</li>
+          <li>7. Specific functional limitations described with concrete examples (grip strength, return to work, shoulder ROM)</li>
+          <li>8. All four referral goals are clearly stated to guide physiotherapy planning</li>
+          <li>9. Formal, professional register maintained throughout — no colloquialisms, abbreviations without expansion on first use, or personal opinion</li>
+          <li>10. At least three target vocabulary words (epicondylitis, lymphoedema, ankylosis, fibromyalgia, induration, myositis) used accurately and in appropriate clinical context</li>
+        </ul>
+      </div>
+      <div class="answer-box" style="margin-top:0.8rem;">
+        <strong>Model opening paragraph:</strong> "I am writing to refer Mr James Hemi Taufa, date of birth 14 July 1978, of 22 Rimu Road, Palmerston North, for outpatient physiotherapy assessment and management. Mr Taufa presents with four concurrent diagnoses requiring specialist physiotherapy input: right lateral epicondylitis of three months' duration, left upper limb lymphoedema secondary to axillary node dissection eighteen months ago, post-traumatic ankylosis of the right second proximal interphalangeal joint, and fibromyalgia diagnosed in 2019."
+        <br><br>
+        <strong>Key features to include:</strong> (1) USS confirming tendinopathy; (2) induration noted periforearm consistent with lymphoedema fibrosis; (3) myositis-pattern myalgia as a fibromyalgia flare feature; (4) inability to return to work as primary functional goal; (5) specific ROM limitation at L shoulder (100° flexion). Close with: "I would be grateful for your assessment and input. Please do not hesitate to contact me should you require further information."
+      </div>
+    </details>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════ SECTION 4 — OET SPEAKING ═══════════════════ -->
+<div class="section-block" id="section4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="section-title-text">
+      <h2>OET Speaking</h2>
+      <p>2 role plays · Practise aloud · Focus on patient-centred communication + target vocabulary</p>
+    </div>
+    <div class="timer-badge">⏱ 2 × 5 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- ROLE PLAY 1 -->
+    <div class="role-play-card">
+      <h4>Role Play 1 — Outpatient Physiotherapy Clinic, Auckland</h4>
+      <p><strong>Setting:</strong> You are a physiotherapist in an outpatient clinic. Your patient, Mrs Wei Chen (45F), has been referred with right lateral epicondylitis of six weeks' duration. Conservative management including exercises has produced only partial relief. You are recommending a course of iontophoresis.</p>
+      <p><strong>Your task:</strong> Explain what iontophoresis is and why you are recommending it for her epicondylitis, describe what she can expect during treatment, and address her concern that she has heard "electrical treatments can be painful."</p>
+      <p><strong>Target vocabulary to use:</strong>
+        <span class="word-source-tag tag-thisweek">iontophoresis</span>
+        <span class="word-source-tag tag-thisweek">epicondylitis</span>
+        <span class="word-source-tag tag-thisweek">nociceptive</span>
+      </p>
+      <p><strong>Suggested opening:</strong> <em>"Mrs Chen, thank you for coming in today. I've reviewed your progress and I'd like to discuss an additional treatment option that I think could be very helpful — it's called iontophoresis. Have you come across this before?"</em></p>
+      <div class="key-phrases">
+        <div class="phrase">"Your elbow pain is due to a condition called lateral epicondylitis — sometimes called tennis elbow..."</div>
+        <div class="phrase">"Iontophoresis uses a mild, low-level electrical current to drive anti-inflammatory medication directly into the tendon..."</div>
+        <div class="phrase">"The pain is nociceptive in nature — it's coming from the tendon tissue itself..."</div>
+        <div class="phrase">"You may feel a gentle tingling sensation, but the current is very low and should not be uncomfortable..."</div>
+        <div class="phrase">"Most patients notice significant improvement after four to six sessions..."</div>
+      </div>
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Model answer outline:</strong><br>
+          1. <strong>Greet and establish rapport</strong> — use the patient's name, acknowledge her ongoing discomfort.<br>
+          2. <strong>Explain the diagnosis</strong> — describe lateral epicondylitis in lay terms: overuse injury to the tendon attaching the forearm extensor muscles to the lateral epicondyle of the humerus. Avoid excessive jargon; check understanding.<br>
+          3. <strong>Explain iontophoresis</strong> — a non-invasive electrotherapy technique using a weak direct electrical current to deliver ionised medication (typically corticosteroid or anti-inflammatory agent) transdermally into the target tissue. Explain it does not involve needles or shock.<br>
+          4. <strong>Explain the pain rationale</strong> — the pain is nociceptive, arising from localised tissue inflammation; iontophoresis targets this by reducing inflammation directly at the site.<br>
+          5. <strong>Address the concern</strong> — reassure that the current used is very low (microamperes), the sensation is a mild tingling, and the treatment is stopped immediately if discomfort occurs. Many patients find it relaxing.<br>
+          6. <strong>Check understanding and gain consent</strong> — ask if she has any questions, confirm she is happy to proceed, and outline the plan (frequency, number of sessions, expected outcome).
+        </div>
+      </details>
+    </div>
+
+    <!-- ROLE PLAY 2 -->
+    <div class="role-play-card">
+      <h4>Role Play 2 — Community Physiotherapy Centre, Christchurch</h4>
+      <p><strong>Setting:</strong> You are a physiotherapist in a community clinic. Mr David Rangi (38M) has been referred by his GP for physiotherapy management of fibromyalgia. He arrives reluctant and frustrated, stating: "I've tried exercise before and it just makes everything worse — I don't see the point."</p>
+      <p><strong>Your task:</strong> Acknowledge his frustration with empathy, explain the evidence base for graded exercise in fibromyalgia management, and discuss ergonomic modifications to his daily routine that may reduce his overall pain burden. Agree on a shared plan.</p>
+      <p><strong>Target vocabulary to use:</strong>
+        <span class="word-source-tag tag-thisweek">fibromyalgia</span>
+        <span class="word-source-tag tag-thisweek">ergonomic</span>
+        <span class="word-source-tag tag-thisweek">empathy</span>
+      </p>
+      <p><strong>Suggested opening:</strong> <em>"Mr Rangi, I really appreciate you coming in today — I can hear that you've had a difficult time with this, and I want to start by saying that your concerns make complete sense. Could you tell me a bit more about what happened when you tried exercising before?"</em></p>
+      <div class="key-phrases">
+        <div class="phrase">"Fibromyalgia causes widespread pain and fatigue, which can make exercise feel counterintuitive..."</div>
+        <div class="phrase">"What you experienced is called post-exertional discomfort — it's very common and we can work around it..."</div>
+        <div class="phrase">"The research consistently shows that a gentle, graded programme reduces pain over time..."</div>
+        <div class="phrase">"Making ergonomic adjustments — like your workstation set-up and how you carry loads — can significantly reduce your daily pain..."</div>
+        <div class="phrase">"We'll start very gently — even five minutes of walking — and increase only when you feel ready..."</div>
+        <div class="phrase">"I want us to set goals together so this programme feels achievable, not overwhelming..."</div>
+      </div>
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Model answer outline:</strong><br>
+          1. <strong>Open with empathy</strong> — validate his experience directly; do not dismiss or minimise his concerns. Use empathic language: "That sounds really difficult," "It makes sense you'd feel that way."<br>
+          2. <strong>Explore his previous experience</strong> — ask open questions about what type of exercise he tried, at what intensity, and what the aftermath felt like. Normalise post-exertional discomfort as a known feature of fibromyalgia rather than a sign of harm.<br>
+          3. <strong>Explain the evidence</strong> — graded aerobic exercise and resistance training are first-line non-pharmacological treatments for fibromyalgia. The key is starting below his symptom threshold and progressing slowly; aggressive early exercise is contraindicated.<br>
+          4. <strong>Discuss ergonomic modifications</strong> — explain that ergonomic changes to workstation height, seating, load distribution, and sleep posture reduce cumulative physical strain and can meaningfully lower his baseline pain level, making exercise more accessible.<br>
+          5. <strong>Collaborative goal-setting</strong> — negotiate a starting point he feels confident about (e.g. 5-minute daily walks), agree on a review point, and emphasise that the programme is entirely adjustable based on his response.<br>
+          6. <strong>Close positively</strong> — thank him for engaging, affirm his autonomy, and provide written information about fibromyalgia self-management to reinforce the session.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  OET Weekly Exam · Week 4 · 31 May 2026 · Leo · AUT Master of Physiotherapy Practice<br>
+  <span style="font-size:0.75rem;">21 words tested · 200-word vocabulary pool · Sections 1–4 complete</span>
+</footer>
+
+</body>
+</html>
