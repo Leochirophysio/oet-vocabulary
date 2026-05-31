@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 41 · 2026-06-01</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 41 · 01 Jun 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: 心肺 Cardiopulmonary · Procedures &amp; Interventions</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">pericarditis</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌper.ɪ.kɑːˈdaɪ.tɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/pericarditis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/pericarditis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Inflammation of the pericardium — the fibrous sac enclosing the heart — typically presenting with sharp pleuritic chest pain that worsens on inspiration and lying flat, and is relieved by sitting forward.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">心包炎</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">acute pericarditis</span>
+          <span class="colloc-item">viral pericarditis</span>
+          <span class="colloc-item">recurrent pericarditis</span>
+          <span class="colloc-item">pericarditis with effusion</span>
+          <span class="colloc-item">constrictive pericarditis</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mr. Nguyen, a 34-year-old male, presented with acute onset sharp pleuritic chest pain and a low-grade pyrexia; echocardiography confirmed <strong>pericarditis</strong> with a small pericardial effusion, and he was commenced on a course of NSAIDs and colchicine."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">pericardium (noun — the sac)</span>
+          <span class="related-item">pericardial (adj)</span>
+          <span class="related-item">myocarditis (inflammation of heart muscle)</span>
+          <span class="related-item">cardiac tamponade (complication)</span>
+          <span class="related-item">pericardial effusion</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">embolism</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈem.bə.lɪ.z(ə)m/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/embolism" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/embolism" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The sudden obstruction of a blood vessel by an embolus — typically a thrombus, air bubble, or fat droplet — transported in the bloodstream; most clinically significant is pulmonary embolism, which blocks blood flow to the lungs.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">栓塞（血管阻塞）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">pulmonary embolism</span>
+          <span class="colloc-item">venous thromboembolism</span>
+          <span class="colloc-item">fat embolism</span>
+          <span class="colloc-item">air embolism</span>
+          <span class="colloc-item">suspected embolism</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Given the patient's recent prolonged immobilisation following right total knee replacement, she was referred urgently to the emergency department with a suspected pulmonary <strong>embolism</strong>, presenting with acute dyspnoea, pleuritic chest pain, and tachycardia."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">embolus (noun — the obstructing particle)</span>
+          <span class="related-item">embolise (verb)</span>
+          <span class="related-item">thrombus (blood clot)</span>
+          <span class="related-item">deep vein thrombosis / DVT</span>
+          <span class="related-item">anticoagulation (treatment)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">cardioversion</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌkɑː.di.əʊˈvɜː.ʒən/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/cardioversion" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/cardioversion" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A procedure used to restore a normal heart rhythm in patients with certain arrhythmias, achieved either by delivering a controlled, synchronised electrical shock (DC cardioversion) or through pharmacological agents (chemical cardioversion).</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">心臟電擊復律（心律轉復）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">DC cardioversion</span>
+          <span class="colloc-item">electrical cardioversion</span>
+          <span class="colloc-item">pharmacological cardioversion</span>
+          <span class="colloc-item">synchronised cardioversion</span>
+          <span class="colloc-item">successful cardioversion</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Following an unsuccessful pharmacological <strong>cardioversion</strong>, Mr. Chen underwent synchronised DC <strong>cardioversion</strong> under procedural sedation, with restoration of sinus rhythm confirmed on post-procedure ECG monitoring."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">defibrillation (unsynchronised shock)</span>
+          <span class="related-item">atrial fibrillation (common indication)</span>
+          <span class="related-item">sinus rhythm (target rhythm)</span>
+          <span class="related-item">arrhythmia</span>
+          <span class="related-item">cardiovert (verb)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">bronchoscopy</div>
+        <div class="card-meta">
+          <span class="ipa">/brɒŋˈkɒs.kə.pi/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/bronchoscopy" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/bronchoscopy" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A diagnostic and therapeutic procedure in which a flexible fibre-optic bronchoscope is passed through the nose or mouth into the trachea and bronchi to visually examine the airways, obtain tissue biopsies, or aspirate retained secretions.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">支氣管鏡檢查</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">fibreoptic bronchoscopy</span>
+          <span class="colloc-item">flexible bronchoscopy</span>
+          <span class="colloc-item">bronchoscopy and lavage</span>
+          <span class="colloc-item">bronchoscopy-guided biopsy</span>
+          <span class="colloc-item">diagnostic bronchoscopy</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "A fibreoptic <strong>bronchoscopy</strong> was performed to obtain bronchoalveolar lavage samples and assess the extent of the endobronchial lesion; findings will guide the multidisciplinary team's decision regarding further oncological management."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">bronchoscope (noun — the instrument)</span>
+          <span class="related-item">bronchoscopic (adj)</span>
+          <span class="related-item">laryngoscopy (upper airway)</span>
+          <span class="related-item">bronchoalveolar lavage / BAL</span>
+          <span class="related-item">endoscopy (general term)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">haemostasis</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌhiː.məʊˈsteɪ.sɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/haemostasis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/hemostasis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The physiological or clinically assisted process of arresting bleeding, involving vasoconstriction, platelet aggregation, and coagulation cascade activation; also refers to the surgical achievement of a bloodless operative field.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">止血（凝血過程）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">haemostasis achieved</span>
+          <span class="colloc-item">adequate haemostasis</span>
+          <span class="colloc-item">primary haemostasis</span>
+          <span class="colloc-item">haemostasis maintained</span>
+          <span class="colloc-item">haemostasis secured</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Intraoperatively, <strong>haemostasis</strong> was achieved via bipolar diathermy to the wound margins; the wound was subsequently closed in layers and a firm pressure dressing applied to support ongoing <strong>haemostasis</strong> in the immediate post-operative period."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">haemostatic (adj)</span>
+          <span class="related-item">haemostat (instrument)</span>
+          <span class="related-item">coagulation (clotting process)</span>
+          <span class="related-item">haemorrhage (antonym event)</span>
+          <span class="related-item">diathermy (cauterisation method)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 41)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr. David Park, a 58-year-old male with a background of hypertension and persistent atrial fibrillation,
+      was admitted to the cardiology ward following a two-day history of worsening dyspnoea and pleuritic right-sided
+      chest pain.
+      <br><br>
+      A CT pulmonary angiogram confirmed a right-sided pulmonary <span class="highlight">embolism</span>, and
+      anticoagulation therapy was commenced without delay. He was also noted to have developed sharp anterior chest
+      pain radiating to the left shoulder, and echocardiography subsequently demonstrated features consistent with
+      <span class="highlight">pericarditis</span>, with a small pericardial effusion measuring 8 mm.
+      <br><br>
+      Regarding his atrial fibrillation, the cardiology team elected to proceed with elective DC
+      <span class="highlight">cardioversion</span> once therapeutic anticoagulation had been maintained for a minimum
+      of four weeks, with the aim of restoring sinus rhythm and improving functional capacity.
+      <br><br>
+      Physiotherapy was consulted to assist with early mobilisation and respiratory management. Airway clearance
+      techniques were initiated, and a fibreoptic <span class="highlight">bronchoscopy</span> was performed by the
+      respiratory team to aspirate retained secretions from the right lower lobe. Post-procedurally, adequate
+      <span class="highlight">haemostasis</span> was confirmed and the patient tolerated the procedure well.
+      <br><br>
+      Goals of physiotherapy include progressive ambulation, breathing exercises, and patient education regarding
+      anticoagulation precautions and early warning signs of re-embolism.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> In cardiopulmonary referrals, specify the <em>imaging or test</em> that confirmed the diagnosis (e.g. "CT pulmonary angiogram confirmed"), the <em>intervention performed</em> (e.g. "DC cardioversion planned"), and the <em>patient's functional response</em> (e.g. "tolerated the procedure well"). Precise procedural language demonstrates clinical fluency.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 41 · 2026-06-01 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 心肺 Cardiopulmonary · Procedures &amp; Interventions · Signs &amp; Symptoms</p>
+</footer>
+
+</body>
+</html>
