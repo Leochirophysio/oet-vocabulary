@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 42 · 2026-06-02</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 42 · 02 Jun 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: 神經 Neurological · 骨科 Musculoskeletal · Patient Communication</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">perseveration</div>
+        <div class="card-meta">
+          <span class="ipa">/pəˌsev.əˈreɪ.ʃən/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/perseveration" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/perseveration" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The uncontrollable, involuntary repetition of a word, phrase, gesture, or action beyond the point at which it is appropriate; a neurological sign commonly observed following stroke, traumatic brain injury, or in dementia, reflecting impaired inhibitory control in the frontal lobes.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">持續重複症（固執症）— 無法停止重複某一言語、動作或思維，見於腦損傷或失智症</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">verbal perseveration</span>
+          <span class="colloc-item">motor perseveration</span>
+          <span class="colloc-item">marked perseveration</span>
+          <span class="colloc-item">perseveration of speech</span>
+          <span class="colloc-item">demonstrate perseveration</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "On cognitive assessment, Mr. Tran demonstrated marked verbal <strong>perseveration</strong>, repeatedly returning to topics already addressed and unable to redirect his responses, consistent with his documented left frontal lobe lesion following ischaemic stroke."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">perseverate (verb)</span>
+          <span class="related-item">perseverative (adj)</span>
+          <span class="related-item">confabulation (false memory filling)</span>
+          <span class="related-item">aphasia (language impairment)</span>
+          <span class="related-item">perseverance (antonym — positive continued effort)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">glenohumeral</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌɡliː.nəʊˈhjuː.mər.əl/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/glenohumeral" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/glenohumeral" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to the glenoid fossa of the scapula and the head of the humerus; pertaining to the true shoulder joint, which is a ball-and-socket synovial joint providing the greatest range of motion of any joint in the body.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">盂肱的（肩關節的）— 指肩胛骨關節盂與肱骨頭所構成的肩關節</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">glenohumeral joint</span>
+          <span class="colloc-item">glenohumeral instability</span>
+          <span class="colloc-item">glenohumeral range of motion</span>
+          <span class="colloc-item">glenohumeral ligament</span>
+          <span class="colloc-item">glenohumeral arthritis</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Assessment revealed restricted <strong>glenohumeral</strong> external rotation of 30° on the right compared with 80° on the left, with a painful arc between 60° and 120° of abduction, findings consistent with rotator cuff impingement at the <strong>glenohumeral</strong> joint."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">glenoid (adj/noun — the socket)</span>
+          <span class="related-item">humeral (adj — relating to humerus)</span>
+          <span class="related-item">scapulohumeral (broader shoulder complex)</span>
+          <span class="related-item">acromioclavicular (AC joint)</span>
+          <span class="related-item">capsulitis (adhesive capsulitis — frozen shoulder)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">kinesiophobia</div>
+        <div class="card-meta">
+          <span class="ipa">/kɪˌniː.zi.əˈfəʊ.bi.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/kinesiophobia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/kinesiophobia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-patient">Patient Communication</span>
+        <span class="badge badge-neuro">神經 Neurological</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">An excessive, irrational fear of movement or physical activity, driven by the belief that movement will cause re-injury or worsening of pain; commonly assessed using the Tampa Scale for Kinesiophobia and strongly associated with chronic pain, fear-avoidance behaviour, and poor rehabilitation outcomes.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">運動恐懼症 — 對運動或活動的過度恐懼，害怕動作會導致再受傷，常見於慢性疼痛患者</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">significant kinesiophobia</span>
+          <span class="colloc-item">kinesiophobia screening</span>
+          <span class="colloc-item">address kinesiophobia</span>
+          <span class="colloc-item">Tampa Scale for Kinesiophobia</span>
+          <span class="colloc-item">kinesiophobia score</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mrs. Patel scored 44 out of 68 on the Tampa Scale for Kinesiophobia, indicating high levels of movement-related fear; graded exposure therapy and pain neuroscience education have been incorporated into her physiotherapy programme to address her <strong>kinesiophobia</strong> and reduce avoidance behaviour."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">fear-avoidance model (theoretical framework)</span>
+          <span class="related-item">Tampa Scale (TSK — assessment tool)</span>
+          <span class="related-item">catastrophising (cognitive pattern)</span>
+          <span class="related-item">pain neuroscience education / PNE</span>
+          <span class="related-item">graded exposure (treatment approach)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">monoplegia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌmɒn.əˈpliː.dʒi.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/monoplegia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/monoplegia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Complete paralysis or total loss of voluntary movement affecting a single limb; may result from cortical lesions, peripheral nerve injury, or brachial plexus damage, and is distinguished from hemiplegia by its isolated involvement of one extremity.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">單肢癱瘓 — 單一肢體（一隻手或一隻腳）完全喪失自主運動能力</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">right upper limb monoplegia</span>
+          <span class="colloc-item">monoplegia secondary to stroke</span>
+          <span class="colloc-item">complete monoplegia</span>
+          <span class="colloc-item">monoplegia following TBI</span>
+          <span class="colloc-item">flaccid monoplegia</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient was admitted following a haemorrhagic stroke affecting the right motor cortex, presenting with right upper limb <strong>monoplegia</strong> and intact strength in all remaining extremities; physiotherapy assessment confirmed complete absence of voluntary motor function in the affected arm, with MRC grade 0 throughout."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">hemiplegia (one-sided paralysis)</span>
+          <span class="related-item">paraplegia (both lower limbs)</span>
+          <span class="related-item">tetraplegia (all four limbs)</span>
+          <span class="related-item">diplegia (bilateral same-region paralysis)</span>
+          <span class="related-item">-plegia suffix (paralysis)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">osteomalacia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌɒs.ti.əʊ.məˈleɪ.ʃ.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/osteomalacia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/osteomalacia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Softening of the bones in adults due to defective mineralisation of newly formed osteoid, most commonly caused by vitamin D deficiency or malabsorption; presents with diffuse bone pain, proximal muscle weakness, and an increased risk of fragility fractures. The paediatric equivalent is rickets.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">骨軟化症 — 成人因維生素D缺乏致骨骼礦化不足，導致骨骼軟化、骨痛及近端肌無力</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">vitamin D-related osteomalacia</span>
+          <span class="colloc-item">present with osteomalacia</span>
+          <span class="colloc-item">confirmed osteomalacia</span>
+          <span class="colloc-item">osteomalacia and fracture risk</span>
+          <span class="colloc-item">osteomalacia secondary to malabsorption</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Biochemical investigations confirmed <strong>osteomalacia</strong> with serum 25-hydroxyvitamin D of 12 nmol/L; the patient was commenced on high-dose vitamin D supplementation and calcium, and physiotherapy was recommended to address the associated proximal muscle weakness, balance deficits, and elevated falls risk."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">rickets (paediatric equivalent)</span>
+          <span class="related-item">osteoporosis (reduced bone density — different mechanism)</span>
+          <span class="related-item">osteoid (unmineralised bone matrix)</span>
+          <span class="related-item">mineralisation (bone hardening process)</span>
+          <span class="related-item">osteomalacic (adj)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 42)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr. James Wu, a 62-year-old male with a background of ischaemic stroke (three months prior) and recently
+      confirmed vitamin D deficiency, was referred to the outpatient physiotherapy department for comprehensive
+      rehabilitation.
+      <br><br>
+      Neuropsychological assessment identified marked verbal <span class="highlight">perseveration</span> during
+      standardised cognitive testing, with Mr. Wu unable to shift topic or task despite repeated redirection.
+      This is consistent with his documented left frontal lobe infarct and has significant implications for the
+      delivery of patient education and rehabilitation instructions.
+      <br><br>
+      On musculoskeletal assessment, he demonstrated restricted <span class="highlight">glenohumeral</span> range
+      of motion on the affected right side, with active abduction limited to 45° and external rotation to 20°,
+      attributable to prolonged disuse and capsular tightening following his neurological event. Additionally,
+      biochemical results confirmed <span class="highlight">osteomalacia</span> (serum vitamin D 14 nmol/L), and
+      he reported diffuse lower limb bone pain and proximal muscle weakness contributing to balance impairment.
+      <br><br>
+      Screening using the Tampa Scale for Kinesiophobia revealed a score of 46, indicating significant
+      <span class="highlight">kinesiophobia</span>; Mr. Wu expressed reluctance to bear weight through his
+      right lower limb for fear of falling. He currently presents with right upper limb
+      <span class="highlight">monoplegia</span>, with MRC grade 0 throughout the right arm; all other
+      extremities demonstrate antigravity strength.
+      <br><br>
+      Physiotherapy goals include graded exposure to address kinesiophobia, glenohumeral mobilisation,
+      proximal strengthening to counter the effects of osteomalacia, falls prevention education, and
+      strategies to support communication given perseveration.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When documenting neurological and musculoskeletal findings together, use precise anatomical descriptors (e.g. "glenohumeral range of motion"), quantify deficits where possible (e.g. "MRC grade 0", "TSK score 46"), and link psychosocial factors (e.g. kinesiophobia) directly to functional outcomes. This demonstrates the clinical reasoning examiners expect in OET referral letters.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 42 · 2026-06-02 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 神經 Neurological · 骨科 Musculoskeletal · Signs &amp; Symptoms · Patient Communication</p>
+</footer>
+
+</body>
+</html>
