@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Weekly Exam — Week 5 · 2026-06-07</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #fff; --primary: #7c3aed; --primary-light: #ede9fe;
+      --accent: #0d9488; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+      --green: #15803d; --green-light: #dcfce7;
+      --red: #b91c1c; --red-light: #fee2e2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem 4rem; line-height: 1.65; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: var(--primary); color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); flex-wrap: wrap; }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .week-badge { margin-left: auto; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.82rem; font-weight: 600; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .instructions { max-width: 860px; margin: 0 auto 1.5rem; background: var(--primary-light); border: 1px solid #c4b5fd; border-radius: var(--radius); padding: 1rem 1.2rem; font-size: 0.88rem; }
+    .instructions h3 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .instructions ul { padding-left: 1.2rem; }
+    .instructions li { margin-bottom: 0.3rem; }
+    .section-block { max-width: 860px; margin: 0 auto 2rem; background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+    .section-header { padding: 1rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border); }
+    .section-num { width: 2rem; height: 2rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .section-title-text h2 { font-size: 1.05rem; font-weight: 700; }
+    .section-title-text p { font-size: 0.8rem; color: var(--muted); }
+    .timer-badge { margin-left: auto; background: var(--warn-light); color: var(--warn); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+    .section-body { padding: 1.4rem; }
+    .question { margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .q-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.4rem; }
+    .q-text { font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 500; }
+    .q-options { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.7rem; }
+    .q-option { font-size: 0.9rem; padding: 0.4rem 0.7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+    details { margin-top: 0.5rem; }
+    summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--primary); user-select: none; padding: 0.3rem 0; }
+    summary:hover { text-decoration: underline; }
+    .answer-box { margin-top: 0.5rem; background: var(--green-light); border-left: 3px solid var(--green); padding: 0.6rem 0.9rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #14532d; }
+    .reading-passage { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; }
+    .highlight { color: var(--primary); font-weight: 700; font-style: normal; text-decoration: underline dotted; }
+    .case-notes { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.88rem; font-family: 'Courier New', monospace; line-height: 1.9; margin-bottom: 1.2rem; }
+    .writing-task-box { background: var(--warn-light); border-left: 3px solid var(--warn); padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; margin-bottom: 1rem; }
+    .checklist { margin-top: 1rem; }
+    .checklist h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--green); }
+    .checklist ul { padding-left: 0; list-style: none; }
+    .checklist li { font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .checklist li::before { content: '\2610'; font-size: 1rem; flex-shrink: 0; }
+    .role-play-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+    .role-play-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 0.4rem; }
+    .role-play-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .key-phrases { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .phrase { background: white; border: 1px solid #86efac; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px; font-style: italic; }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+    .week-tag { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 4px; margin-left: 0.4rem; vertical-align: middle; }
+    .this-week { background: #ede9fe; color: #6d28d9; }
+    .prev-week { background: #fef3c7; color: #92400e; }
+    .passage-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.7rem; color: var(--text); }
+    .q-subheading { font-size: 0.82rem; font-weight: 700; color: var(--accent); margin: 1rem 0 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-icon">📝</div>
+  <div class="header-text">
+    <h1>OET Weekly Practice Exam</h1>
+    <p>Week 5 · 7 June 2026 · 22 words tested · ~270-word vocabulary pool</p>
+  </div>
+  <div class="week-badge">Week 5</div>
+</header>
+
+<nav class="nav-bar">
+  <a href="../index.html">← Vocabulary Home</a>
+  <a href="index.html">All Exams</a>
+  <a href="#section1">1 · Vocabulary</a>
+  <a href="#section2">2 · Reading</a>
+  <a href="#section3">3 · Writing</a>
+  <a href="#section4">4 · Speaking</a>
+</nav>
+
+<div class="instructions">
+  <h3>Instructions &amp; Word Key</h3>
+  <ul>
+    <li>This exam covers vocabulary from <strong>1–7 June 2026</strong> (this week) and selected words from previous weeks.</li>
+    <li><span class="week-tag this-week">THIS WEEK</span> = learned 1–7 June 2026 &nbsp;|&nbsp; <span class="week-tag prev-week">PREVIOUS</span> = from earlier sessions</li>
+    <li>Click <em>Show Answer</em> under any question to reveal the correct response.</li>
+    <li>British English spelling applies throughout. Time suggestions are for exam simulation.</li>
+  </ul>
+</div>
+
+<!-- ===================== SECTION 1 ===================== -->
+<div class="section-block" id="section1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-text">
+      <h2>Vocabulary in Clinical Context</h2>
+      <p>10 questions · 6 from this week · 4 from previous weeks</p>
+    </div>
+    <div class="timer-badge">⏱ 15 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="q-subheading">Fill in the Blank (Questions 1–5)</div>
+
+    <!-- Q1 -->
+    <div class="question">
+      <div class="q-label">Question 1 · Fill in the Blank <span class="week-tag this-week">THIS WEEK</span> · glenohumeral</div>
+      <div class="q-text">The physiotherapist assessed the patient for _______ instability following a traumatic shoulder dislocation sustained during a rugby tackle, noting apprehension on external rotation at 90° of abduction.</div>
+      <div class="q-options">
+        <div class="q-option">A) patellofemoral</div>
+        <div class="q-option">B) acromioclavicular</div>
+        <div class="q-option">C) glenohumeral</div>
+        <div class="q-option">D) sacroiliac</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) glenohumeral.</strong> The glenohumeral joint is the ball-and-socket joint of the shoulder. Instability here refers to excessive or symptomatic translation of the humeral head within the glenoid fossa, commonly following traumatic dislocation. The other options refer to different joints: patellofemoral (knee cap), acromioclavicular (shoulder tip), and sacroiliac (pelvis).</div>
+      </details>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+      <div class="q-label">Question 2 · Fill in the Blank <span class="week-tag this-week">THIS WEEK</span> · hypoxaemia</div>
+      <div class="q-text">The post-operative patient developed _______ overnight, with SpO₂ dropping to 88% on room air, necessitating the commencement of supplemental oxygen via nasal cannulae.</div>
+      <div class="q-options">
+        <div class="q-option">A) hypertension</div>
+        <div class="q-option">B) hypoxaemia</div>
+        <div class="q-option">C) hypercapnia</div>
+        <div class="q-option">D) haemostasis</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) hypoxaemia.</strong> Hypoxaemia is an abnormally low level of oxygen in the blood, reflected by a reduced SpO₂. It is a common post-operative complication managed with supplemental oxygen. Hypercapnia (option C) refers to elevated carbon dioxide — a related but distinct condition. Haemostasis (D) is the arrest of bleeding and is unrelated.</div>
+      </details>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+      <div class="q-label">Question 3 · Fill in the Blank <span class="week-tag this-week">THIS WEEK</span> · vestibular</div>
+      <div class="q-text">Following a mild traumatic brain injury, the patient was referred for _______ rehabilitation to address persistent dizziness, nystagmus, and difficulty maintaining postural stability during functional tasks.</div>
+      <div class="q-options">
+        <div class="q-option">A) cardiac</div>
+        <div class="q-option">B) pulmonary</div>
+        <div class="q-option">C) vestibular</div>
+        <div class="q-option">D) cognitive</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) vestibular.</strong> The vestibular system, located in the inner ear, regulates balance and spatial orientation. Vestibular rehabilitation is a specialist physiotherapy programme targeting dizziness, nystagmus, and postural instability. The symptoms described — particularly nystagmus and dizziness post-head injury — are hallmark vestibular presentations.</div>
+      </details>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question">
+      <div class="q-label">Question 4 · Fill in the Blank <span class="week-tag prev-week">PREVIOUS</span> · lymphoedema</div>
+      <div class="q-text">The patient presented with unilateral left upper limb _______ six months following axillary lymph node dissection for breast cancer, requiring fitting for a graduated compression garment.</div>
+      <div class="q-options">
+        <div class="q-option">A) oedema</div>
+        <div class="q-option">B) lymphoedema</div>
+        <div class="q-option">C) induration</div>
+        <div class="q-option">D) ecchymosis</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) lymphoedema.</strong> Lymphoedema is chronic swelling caused by impaired lymphatic drainage, commonly developing after lymph node removal. It is distinct from general oedema (A), which has broader causes. Induration (C) refers to abnormal tissue hardening; ecchymosis (D) is bruising — neither fits the clinical picture described.</div>
+      </details>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question">
+      <div class="q-label">Question 5 · Fill in the Blank <span class="week-tag prev-week">PREVIOUS</span> · nociceptive</div>
+      <div class="q-text">The treating physiotherapist differentiated _______ pain, arising from ongoing peripheral tissue damage, from central sensitisation as the primary mechanism driving the patient's chronic low back pain presentation.</div>
+      <div class="q-options">
+        <div class="q-option">A) neuropathic</div>
+        <div class="q-option">B) discogenic</div>
+        <div class="q-option">C) nociceptive</div>
+        <div class="q-option">D) visceral</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) nociceptive.</strong> Nociceptive pain results from activation of nociceptors in response to actual or threatened tissue damage. It is one of the three primary pain mechanisms assessed in physiotherapy (alongside neuropathic and nociplastic/central sensitisation). Discogenic (B) refers specifically to disc-related pain — a subtype, not a broad mechanism.</div>
+      </details>
+    </div>
+
+    <div class="q-subheading">Definition Match (Questions 6–8)</div>
+
+    <!-- Q6 -->
+    <div class="question">
+      <div class="q-label">Question 6 · Definition Match <span class="week-tag this-week">THIS WEEK</span> · kinesiophobia</div>
+      <div class="q-text">Which of the following terms describes an excessive, irrational fear of movement or physical activity, typically arising after injury, that leads to avoidance behaviour and perpetuates functional disability?</div>
+      <div class="q-options">
+        <div class="q-option">A) nociception</div>
+        <div class="q-option">B) perseveration</div>
+        <div class="q-option">C) kinesiophobia</div>
+        <div class="q-option">D) monoplegia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) kinesiophobia.</strong> From the Greek <em>kinesis</em> (movement) + <em>phobia</em> (fear). It is measured clinically using the Tampa Scale of Kinesiophobia (TSK). Scores above 37 indicate high kinesiophobia and are associated with poorer rehabilitation outcomes. Perseveration (B) is repetitive behaviour seen in neurological conditions; monoplegia (D) is paralysis of one limb.</div>
+      </details>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question">
+      <div class="q-label">Question 7 · Definition Match <span class="week-tag this-week">THIS WEEK</span> · arthroscopy</div>
+      <div class="q-text">Which term refers to a minimally invasive surgical procedure in which a fibre-optic camera (arthroscope) is inserted into a joint to directly visualise, diagnose, and treat internal structures such as the meniscus or articular cartilage?</div>
+      <div class="q-options">
+        <div class="q-option">A) electromyography</div>
+        <div class="q-option">B) arthroscopy</div>
+        <div class="q-option">C) bronchoscopy</div>
+        <div class="q-option">D) acupuncture</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) arthroscopy.</strong> Arthroscopy (from Greek <em>arthron</em> = joint, <em>skopein</em> = to look) is widely used in physiotherapy practice for post-operative rehabilitation contexts, including knee (meniscal repair, ACL reconstruction) and shoulder procedures. Bronchoscopy (C) is visualisation of the airways — same technique, different anatomical site.</div>
+      </details>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question">
+      <div class="q-label">Question 8 · Definition Match <span class="week-tag prev-week">PREVIOUS</span> · sciatica</div>
+      <div class="q-text">Which of the following describes radiating pain that travels along the distribution of the sciatic nerve, typically originating in the lumbar spine and extending through the buttock and down the posterior or lateral aspect of the leg?</div>
+      <div class="q-options">
+        <div class="q-option">A) neuralgia</div>
+        <div class="q-option">B) monoplegia</div>
+        <div class="q-option">C) sciatica</div>
+        <div class="q-option">D) fibromyalgia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) sciatica.</strong> Sciatica is caused by irritation or compression of the sciatic nerve, most commonly due to lumbar disc herniation at L4/5 or L5/S1. The distribution of symptoms — buttock to posterior leg — is the key differentiator. Neuralgia (A) is a broader term for nerve pain; fibromyalgia (D) is a central sensitisation syndrome with widespread pain.</div>
+      </details>
+    </div>
+
+    <div class="q-subheading">Collocation Complete (Questions 9–10)</div>
+
+    <!-- Q9 -->
+    <div class="question">
+      <div class="q-label">Question 9 · Collocation <span class="week-tag this-week">THIS WEEK</span> · fasciitis</div>
+      <div class="q-text">A 44-year-old recreational runner presented with inferior heel pain, worst with the first steps in the morning. Examination revealed point tenderness at the calcaneal insertion. The physiotherapist documented a diagnosis of _______ fasciitis.</div>
+      <div class="q-options">
+        <div class="q-option">A) plantar</div>
+        <div class="q-option">B) iliotibial</div>
+        <div class="q-option">C) calcaneal</div>
+        <div class="q-option">D) tibial</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>A) plantar.</strong> "Plantar fasciitis" is the correct clinical collocation — inflammation of the plantar fascia at its calcaneal origin. It is the most common cause of heel pain in active adults. "Plantar" describes the sole of the foot. The other options do not form standard clinical collocations with "fasciitis" in this context.</div>
+      </details>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question">
+      <div class="q-label">Question 10 · Collocation <span class="week-tag prev-week">PREVIOUS</span> · epicondylitis</div>
+      <div class="q-text">A 38-year-old office worker presented with pain over the outer aspect of the elbow, aggravated by gripping and wrist extension. Resisted wrist extension reproduced symptoms. The physiotherapist recorded _______ epicondylitis as the working diagnosis.</div>
+      <div class="q-options">
+        <div class="q-option">A) lateral</div>
+        <div class="q-option">B) medial</div>
+        <div class="q-option">C) distal</div>
+        <div class="q-option">D) proximal</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>A) lateral.</strong> "Lateral epicondylitis" (colloquially known as tennis elbow) affects the common extensor origin at the lateral humeral epicondyle. The classic presentation is pain on the outer elbow worsened by gripping and resisted wrist/finger extension. Medial epicondylitis (B) — golfer's elbow — involves the flexor-pronator origin and causes medial elbow pain.</div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== SECTION 2 ===================== -->
+<div class="section-block" id="section2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="section-title-text">
+      <h2>OET Reading Comprehension</h2>
+      <p>1 clinical passage (~230 words) · 5 questions</p>
+    </div>
+    <div class="timer-badge">⏱ 20 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="reading-passage">
+      <div class="passage-title">Kinesiophobia and Its Influence on Recovery Following Glenohumeral Instability Repair</div>
+      <p>Patients undergoing surgical stabilisation for recurrent <span class="highlight">glenohumeral</span> instability frequently face significant psychological barriers to recovery. A prospective cohort study conducted across three New Zealand orthopaedic units evaluated 54 patients at six and twelve weeks following Bankart repair. Assessors screened participants for <span class="highlight">kinesiophobia</span> using the Tampa Scale of Kinesiophobia (TSK) at the initial post-operative physiotherapy appointment.</p>
+      <br>
+      <p>Of the cohort, 58% scored above 37 on the TSK, indicating clinically significant kinesiophobia. These patients reported <span class="highlight">paroxysmal</span> episodes of sharp, catching pain during even guided passive range-of-motion exercises, which reinforced their avoidance of movement. Physiotherapists noted that patients with high TSK scores demonstrated measurably reduced shoulder <span class="highlight">inflammation</span> resolution rates at six weeks, attributed in part to reduced participation in hydrotherapy and active rehabilitation.</p>
+      <br>
+      <p>Two participants experienced transient <span class="highlight">desaturation</span> during early aquatic sessions, likely secondary to breath-holding associated with pain anticipation; both resolved with coaching around breathing technique. A further complication arose in three patients who developed mild <span class="highlight">hypoxaemia</span> during anaesthetic recovery but were discharged without ongoing respiratory concerns.</p>
+      <br>
+      <p>The study concluded that physiotherapists should routinely screen for kinesiophobia post-operatively and integrate graded exposure therapy into the rehabilitation pathway. Addressing the cognitive and emotional dimensions of recovery was found to be as clinically important as optimising biomechanical outcomes.</p>
+    </div>
+
+    <!-- Reading Q1 -->
+    <div class="question">
+      <div class="q-label">Reading Question 1 · Factual</div>
+      <div class="q-text">Which assessment tool was used to screen participants for kinesiophobia in the study?</div>
+      <div class="q-options">
+        <div class="q-option">A) Visual Analogue Scale (VAS)</div>
+        <div class="q-option">B) Tampa Scale of Kinesiophobia (TSK)</div>
+        <div class="q-option">C) DASH Questionnaire</div>
+        <div class="q-option">D) Oswestry Disability Index (ODI)</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) Tampa Scale of Kinesiophobia (TSK).</strong> The passage explicitly states: "Assessors screened participants for kinesiophobia using the Tampa Scale of Kinesiophobia (TSK)." The VAS measures pain intensity, the DASH measures upper limb function, and the ODI measures low back pain disability — none are kinesiophobia-specific tools.</div>
+      </details>
+    </div>
+
+    <!-- Reading Q2 -->
+    <div class="question">
+      <div class="q-label">Reading Question 2 · Factual</div>
+      <div class="q-text">What percentage of participants demonstrated clinically significant kinesiophobia at their initial post-operative physiotherapy appointment?</div>
+      <div class="q-options">
+        <div class="q-option">A) 37%</div>
+        <div class="q-option">B) 54%</div>
+        <div class="q-option">C) 58%</div>
+        <div class="q-option">D) 62%</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) 58%.</strong> The passage states "58% scored above 37 on the TSK, indicating clinically significant kinesiophobia." Note: 54 is the total number of patients in the cohort, and 37 is the TSK cut-off score — these are distractors drawn directly from the text.</div>
+      </details>
+    </div>
+
+    <!-- Reading Q3 -->
+    <div class="question">
+      <div class="q-label">Reading Question 3 · Inferential</div>
+      <div class="q-text">The passage implies that reduced inflammation resolution at six weeks in high-TSK patients was primarily due to:</div>
+      <div class="q-options">
+        <div class="q-option">A) surgical complications from the Bankart repair</div>
+        <div class="q-option">B) inadequate post-operative analgesia</div>
+        <div class="q-option">C) reduced engagement in active rehabilitation and hydrotherapy</div>
+        <div class="q-option">D) respiratory complications during recovery</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) reduced engagement in active rehabilitation and hydrotherapy.</strong> The passage states inflammation resolution was reduced "attributed in part to reduced participation in hydrotherapy and active rehabilitation" — a direct consequence of kinesiophobia-driven avoidance. The respiratory complications (D) affected a different and smaller subgroup and were not linked to inflammation.</div>
+      </details>
+    </div>
+
+    <!-- Reading Q4 -->
+    <div class="question">
+      <div class="q-label">Reading Question 4 · Inferential</div>
+      <div class="q-text">Why did two participants experience transient desaturation during aquatic sessions?</div>
+      <div class="q-options">
+        <div class="q-option">A) They had undiagnosed asthma exacerbated by pool chlorine</div>
+        <div class="q-option">B) They held their breath due to anticipatory pain anxiety</div>
+        <div class="q-option">C) They had residual hypoxaemia from the anaesthetic</div>
+        <div class="q-option">D) They exercised at an intensity exceeding their cardiorespiratory capacity</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) they held their breath due to anticipatory pain anxiety.</strong> The passage specifies the cause as "breath-holding associated with pain anticipation" — a behavioural consequence of kinesiophobia during exercise. Both cases resolved with breathing coaching, further supporting a behavioural rather than pathological cause.</div>
+      </details>
+    </div>
+
+    <!-- Reading Q5 -->
+    <div class="question">
+      <div class="q-label">Reading Question 5 · Vocabulary in Context</div>
+      <div class="q-text">In the second paragraph, the word <em>paroxysmal</em> most closely means:</div>
+      <div class="q-options">
+        <div class="q-option">A) persistent and constant throughout the day</div>
+        <div class="q-option">B) sudden in onset, intense, and intermittent</div>
+        <div class="q-option">C) gradual and progressive over several weeks</div>
+        <div class="q-option">D) deep, aching, and difficult to localise</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) sudden in onset, intense, and intermittent.</strong> Paroxysmal (from Greek <em>paroxysmos</em> = sudden fit) describes events that occur abruptly and episodically — the opposite of constant. In the passage, the "catching" quality and occurrence "during even guided passive range-of-motion" supports this — unexpected, sharp, episodic pain rather than a continuous background ache.</div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== SECTION 3 ===================== -->
+<div class="section-block" id="section3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="section-title-text">
+      <h2>OET Writing — Referral Letter</h2>
+      <p>Case notes provided · Write a formal referral letter · ~180–200 words</p>
+    </div>
+    <div class="timer-badge">⏱ 45 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="writing-task-box">
+      <strong>Task:</strong> Using the case notes below, write a letter FROM <strong>Leo Chiro, Physiotherapist, Tāmaki Community Health Centre, Auckland</strong> TO the <strong>MSK Specialist Physiotherapy Service, Auckland City Hospital</strong>, requesting specialist assessment and ongoing management of Mr David Chen. Your letter should be approximately 180–200 words, written in formal clinical English, and must address the key concerns outlined in the case notes. Do <strong>not</strong> include unnecessary information or reproduce every abbreviation from the notes.
+    </div>
+
+    <div class="case-notes">
+PATIENT:        David Chen &nbsp; DOB: 14/03/1974 &nbsp; NHI: CBX7731
+DATE:           07/06/2026
+DIAGNOSIS:      R glenohumeral instability + R plantar fasciitis (concurrent)
+&nbsp;
+PRESENTING Hx:  Sustained R shoulder dislocation 4/12 ago — tackled during
+                touch rugby. Relocated in ED. No prior shoulder Hx.
+&nbsp;
+PMHx:           Nil significant. Non-smoker. Builder (overhead work ++).
+&nbsp;
+INVESTIGATIONS: EMG (electromyography) — mild supraspinatus denervation
+                MRI R shoulder — partial thickness supraspinatus tear,
+                Hill-Sachs lesion confirmed
+&nbsp;
+CURRENT Rx:     4 x PT sessions — manual therapy + eccentric strengthening
+                programme commenced. Limited progress.
+&nbsp;
+SYMPTOMS:       Paroxysmal pain on overhead loading (NRS 7/10)
+                Significant neuralgia radiating to lateral elbow — ?C5/6
+                Kinesiophobia confirmed: TSK score = 44 (high)
+&nbsp;
+ROM (R):        Flex 110° (pain-limited), Abd 90°, IR 40°, ER 55°
+STRENGTH:       Shoulder flex 3+/5, IR 4/5 (vs. normal L side)
+&nbsp;
+FUNCTION:       Unable to perform overhead tasks — significant occupational
+                impact. Off work 6/52.
+&nbsp;
+GOALS:          Return to work (overhead duties) + return to sport
+&nbsp;
+REQUEST:        Specialist assessment — ?surgical review re: instability
+                Management of kinesiophobia (psychologically informed Rx)
+                Cervical spine screen — ? referred neuralgia component
+    </div>
+
+    <details>
+      <summary>Show Self-Assessment Checklist (click after writing)</summary>
+      <div class="checklist">
+        <h4>Writing Self-Assessment — 10 Criteria</h4>
+        <ul>
+          <li>Correct formal letter format: date, full addresses, salutation, closing</li>
+          <li>Purpose stated clearly in the opening paragraph (referral for specialist assessment)</li>
+          <li>Relevant medical history included (mechanism of injury, investigations, current treatment)</li>
+          <li>Key clinical findings reported accurately (ROM, strength, EMG findings, TSK score)</li>
+          <li>Used the word <strong>glenohumeral</strong> correctly in clinical context</li>
+          <li>Used at least one of: <strong>electromyography</strong>, <strong>neuralgia</strong>, or <strong>kinesiophobia</strong> accurately</li>
+          <li>Functional impact on occupation clearly communicated</li>
+          <li>Specific requests made to the specialist (surgical review, kinesiophobia management, cervical screen)</li>
+          <li>British English spelling throughout (e.g. <em>physiotherapy</em>, <em>haemorrhage</em>, <em>programme</em>)</li>
+          <li>Appropriate clinical register: formal, objective, no colloquial language</li>
+        </ul>
+      </div>
+    </details>
+
+    <details style="margin-top:1rem;">
+      <summary>Show Model Letter Outline</summary>
+      <div class="answer-box">
+        <strong>Opening paragraph:</strong> Identify yourself, your role, and the purpose of the letter. State the patient's name, age, and the primary diagnosis (glenohumeral instability following traumatic dislocation).<br><br>
+        <strong>Background paragraph:</strong> Briefly outline the mechanism of injury (rugby dislocation, 4 months ago), relevant investigations (MRI findings — partial tear, Hill-Sachs lesion; electromyography showing mild supraspinatus denervation), and current treatment to date.<br><br>
+        <strong>Current status paragraph:</strong> Describe current symptoms — paroxysmal overhead pain, neuralgia to the lateral elbow, and high kinesiophobia (TSK 44). Outline ROM and strength deficits. Note the significant occupational impact (builder, unable to work overhead for 6 weeks).<br><br>
+        <strong>Request paragraph:</strong> Clearly specify the three requests — specialist assessment regarding possible surgical intervention, psychologically informed management of kinesiophobia, and cervical spine screening to clarify the neuralgia component.<br><br>
+        <strong>Closing:</strong> Thank the specialist, offer to discuss further, sign off with your full name and designation.
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- ===================== SECTION 4 ===================== -->
+<div class="section-block" id="section4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="section-title-text">
+      <h2>OET Speaking — Role Plays</h2>
+      <p>2 role plays · Physiotherapist role · 5 minutes each</p>
+    </div>
+    <div class="timer-badge">⏱ 5 min each</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Role Play 1 -->
+    <div class="role-play-card">
+      <h4>Role Play 1 — Addressing Kinesiophobia After Knee Reconstruction</h4>
+      <p><strong>Setting:</strong> Outpatient physiotherapy clinic, Auckland. You are the treating physiotherapist.</p>
+      <p><strong>Patient:</strong> Ms Sarah Park, 34-year-old secondary school teacher. She is 14 weeks post-ACL reconstruction and has stalled significantly in her rehabilitation. She scored 45 on the TSK. She is reluctant to perform landing and jumping tasks, stating: <em>"Every time I try to jump or run, I'm terrified I'll snap it again."</em></p>
+      <p><strong>Your task:</strong></p>
+      <ul style="padding-left:1.2rem; font-size:0.88rem; margin-bottom:0.6rem;">
+        <li>Validate Ms Park's concerns about re-injury in an empathetic, non-dismissive way</li>
+        <li>Explain what kinesiophobia is and how it affects her recovery</li>
+        <li>Introduce the concept of graded exposure therapy and reassure her about the process</li>
+        <li>Avoid escalating her anxiety — use reassuring, patient-centred language</li>
+      </ul>
+      <p><strong>Vocabulary to use:</strong> <span class="week-tag this-week">THIS WEEK</span> <strong>kinesiophobia</strong>, <strong>validate</strong>, <strong>escalate</strong></p>
+      <p><strong>Suggested opening:</strong> <em>"Ms Park, I can hear how anxious you've been feeling about your knee, and I want to take some time today to really address what's going on — because I think what you're experiencing actually has a name, and it's something we can work through together."</em></p>
+      <div class="key-phrases">
+        <span class="phrase">"What you're feeling is completely understandable..."</span>
+        <span class="phrase">"This fear of movement is actually called kinesiophobia..."</span>
+        <span class="phrase">"We want to validate your concerns, not dismiss them..."</span>
+        <span class="phrase">"We'll progress gradually so we don't escalate your anxiety..."</span>
+        <span class="phrase">"The evidence shows that graded exposure is very effective..."</span>
+      </div>
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>1. Acknowledge and validate (1 min):</strong> Open by normalising her fear. Acknowledge that ACL re-rupture is a real risk that many patients think about, and that her feelings make sense after a serious injury. Use <em>"I want to validate what you're feeling — this is a very common experience after reconstructive surgery."</em><br><br>
+          <strong>2. Explain kinesiophobia (1 min):</strong> Describe it as a recognised pattern where fear of pain or re-injury leads to movement avoidance, which paradoxically slows healing and weakens the joint. Use simple, non-threatening language: <em>"The brain can become overly protective after an injury — it sends strong pain or fear signals even when the knee is structurally healed and safe to load."</em><br><br>
+          <strong>3. Introduce graded exposure (2 min):</strong> Explain that you will start with low-threat movements she already finds manageable, then very gradually introduce higher-load tasks, only progressing when she feels ready. Emphasise that you will never escalate the programme faster than her confidence allows.<br><br>
+          <strong>4. Set a collaborative goal (1 min):</strong> Ask her what activity she most wants to return to. Build motivation around her personal goal (e.g. returning to recreational sport, keeping up with students). Finish with a clear plan for today's session — starting with something well within her comfort zone.
+        </div>
+      </details>
+    </div>
+
+    <!-- Role Play 2 -->
+    <div class="role-play-card">
+      <h4>Role Play 2 — Post-Arthroscopy Rehabilitation Education</h4>
+      <p><strong>Setting:</strong> Orthopaedic outpatient physiotherapy, Middlemore Hospital. You are the physiotherapist conducting the first post-operative consultation.</p>
+      <p><strong>Patient:</strong> Mr James Watkins, 26-year-old electrician. He is 8 days post right knee arthroscopy for a medial meniscal repair. He is anxious about the swelling around his knee and frustrated about the slow recovery. He says: <em>"The surgeon said the op went fine, but my knee is still really swollen and hot — is that normal? When can I go back to work and start running again?"</em></p>
+      <p><strong>Your task:</strong></p>
+      <ul style="padding-left:1.2rem; font-size:0.88rem; margin-bottom:0.6rem;">
+        <li>Explain what the arthroscopy involved and reassure him that residual inflammation is expected</li>
+        <li>Address his concerns about the swelling and heat in the joint</li>
+        <li>Outline a realistic rehabilitation timeline, including return-to-work and return-to-running milestones</li>
+        <li>Discuss the importance of avoiding joint instability during early rehabilitation</li>
+      </ul>
+      <p><strong>Vocabulary to use:</strong> <span class="week-tag this-week">THIS WEEK</span> <strong>arthroscopy</strong>, <strong>inflammation</strong>, <strong>instability</strong></p>
+      <p><strong>Suggested opening:</strong> <em>"Mr Watkins, thank you for coming in. It sounds like you have some really important questions — let me start by explaining exactly what happened during the arthroscopy and why you're experiencing those symptoms right now."</em></p>
+      <div class="key-phrases">
+        <span class="phrase">"The arthroscopy involved small incisions called portals..."</span>
+        <span class="phrase">"Some degree of inflammation is expected and normal at this stage..."</span>
+        <span class="phrase">"The swelling and warmth are signs that healing is taking place..."</span>
+        <span class="phrase">"We need to avoid any activities that create joint instability..."</span>
+        <span class="phrase">"Return to running is typically around 12 weeks for meniscal repair..."</span>
+      </div>
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>1. Explain the arthroscopy (1 min):</strong> Briefly describe what arthroscopy involved — small portals, a camera inserted into the joint, and the meniscal repair technique (sutures or anchors). Emphasise it was minimally invasive but still involves healing tissues. <em>"Although the arthroscopy is keyhole surgery, the repair inside the joint still requires significant healing time — the meniscus has poor blood supply and needs protecting."</em><br><br>
+          <strong>2. Normalise the inflammation (1 min):</strong> Explain that warmth, swelling, and stiffness at 8 days are entirely expected signs of the body's healing response. Inflammation is the first phase of tissue repair. Reassure him the joint is not infected. Advise continuing RICE (rest, ice, compression, elevation) and elevating at night.<br><br>
+          <strong>3. Address instability risk (1 min):</strong> Explain why avoiding loaded pivoting, twisting, and deep squatting is critical during early recovery — the repaired meniscus cannot yet withstand forces that create joint instability, which could re-tear the repair. <em>"If you were to return to work too soon doing ladder work or kneeling, the forces on the joint could create instability and damage the repair."</em><br><br>
+          <strong>4. Outline timeline (2 min):</strong> Provide realistic milestones — light walking: now; desk work: 2 weeks; light duties (no kneeling or squatting): 4–6 weeks; full manual work: 10–12 weeks; return to running: 12 weeks; sport: 4–6 months. Emphasise these are approximate and depend on his progress in physiotherapy.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<footer class="page-footer">
+  OET Weekly Exam · Week 5 · 7 June 2026 · Leo · AUT Master of Physiotherapy Practice<br>
+  <span style="opacity:0.6;">Words tested: glenohumeral · hypoxaemia · vestibular · kinesiophobia · arthroscopy · fasciitis · paroxysmal · desaturation · inflammation · instability · validate · escalate · lymphoedema · nociceptive · sciatica · epicondylitis · neuralgia · electromyography · perseveration · osteomalacia · eccentric · perturbation</span>
+</footer>
+
+</body>
+</html>
