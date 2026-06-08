@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 49 · 2026-06-09</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 49 · 09 Jun 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Neurological + Musculoskeletal · Signs &amp; Symptoms + Procedures</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">somnolence</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈsɒm.nə.ləns/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/somnolence" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/somnolence" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Excessive drowsiness or sleepiness; a state of abnormal, difficult-to-resist drowsiness that may indicate neurological compromise, medication side effects, or systemic illness.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">嗜睡；過度困倦</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">post-ictal somnolence</span>
+          <span class="colloc-item">daytime somnolence</span>
+          <span class="colloc-item">drug-induced somnolence</span>
+          <span class="colloc-item">profound somnolence</span>
+          <span class="colloc-item">somnolence following TBI</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient demonstrated marked <strong>somnolence</strong> following commencement of high-dose opioid analgesia, necessitating close neurological monitoring and a review of the prescribed regimen."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">somnolent (adj)</span>
+          <span class="related-item">drowsiness (lay term)</span>
+          <span class="related-item">obtundation (deeper impairment)</span>
+          <span class="related-item">stupor (more severe)</span>
+          <span class="related-item">hypersomnia (excessive sleep)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">hypertonia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌhaɪ.pəˈtəʊ.ni.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/hypertonia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/hypertonia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Abnormally increased muscle tone or tension; a condition in which muscles resist passive movement and are in a state of excessive stiffness, most commonly seen following upper motor neuron lesions such as stroke or spinal cord injury.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">肌張力過高；肌肉張力亢進</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">upper limb hypertonia</span>
+          <span class="colloc-item">bilateral hypertonia</span>
+          <span class="colloc-item">hypertonia secondary to stroke</span>
+          <span class="colloc-item">manage hypertonia</span>
+          <span class="colloc-item">hypertonia associated with spasticity</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Physiotherapy was requested for the management of lower limb <strong>hypertonia</strong> secondary to a recent cerebrovascular accident, with the primary goals of preventing contracture formation and improving functional mobility."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">hypotonia (antonym — low tone)</span>
+          <span class="related-item">spasticity (velocity-dependent hypertonia)</span>
+          <span class="related-item">rigidity (non-velocity-dependent hypertonia)</span>
+          <span class="related-item">hypertonic (adj)</span>
+          <span class="related-item">tone (general term)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">osteotomy</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌɒs.tiˈɒt.ə.mi/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/osteotomy" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/osteotomy" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A surgical procedure in which a bone is cut to realign, shorten, or lengthen it, or to correct a structural deformity; commonly performed at the knee, hip, or foot to redistribute mechanical load or restore normal alignment.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">截骨術；骨切除術</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">high tibial osteotomy</span>
+          <span class="colloc-item">corrective osteotomy</span>
+          <span class="colloc-item">peri-acetabular osteotomy</span>
+          <span class="colloc-item">valgus-producing osteotomy</span>
+          <span class="colloc-item">post-osteotomy rehabilitation</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mr. Thompson is a 52-year-old male referred for physiotherapy rehabilitation following a right high tibial <strong>osteotomy</strong> performed three weeks ago to address medial compartment osteoarthritis and varus malalignment."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">arthroplasty (joint replacement)</span>
+          <span class="related-item">osteoplasty (bone reshaping)</span>
+          <span class="related-item">corrective surgery (general)</span>
+          <span class="related-item">tibial osteotomy</span>
+          <span class="related-item">femoral osteotomy</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">synovial</div>
+        <div class="card-meta">
+          <span class="ipa">/sɪˈnəʊ.vi.əl/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/synovial" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/synovial" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to or produced by the synovium; the synovial membrane lines the inner surface of joint capsules and tendon sheaths, secreting synovial fluid that lubricates articular cartilage and provides joint nutrition.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">滑液的；滑膜的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">synovial fluid</span>
+          <span class="colloc-item">synovial joint</span>
+          <span class="colloc-item">synovial membrane</span>
+          <span class="colloc-item">synovial inflammation</span>
+          <span class="colloc-item">synovial hypertrophy</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Ultrasound-guided aspiration of the right knee was performed, yielding 15 mL of turbid <strong>synovial</strong> fluid consistent with inflammatory arthropathy; the sample was sent for microbiological analysis and crystal identification."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">synovium (noun — the membrane)</span>
+          <span class="related-item">synovitis (inflammation of synovium)</span>
+          <span class="related-item">intra-articular (within the joint)</span>
+          <span class="related-item">joint capsule</span>
+          <span class="related-item">bursa (similar fluid-filled sac)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">refractory</div>
+        <div class="card-meta">
+          <span class="ipa">/rɪˈfræk.tər.i/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/refractory" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/refractory" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Resistant to treatment or management; used to describe a condition, symptom, or patient that does not respond satisfactorily to standard therapeutic interventions, necessitating escalation or alternative management strategies.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">難治性的；頑固性的；治療抵抗的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">refractory pain</span>
+          <span class="colloc-item">refractory to treatment</span>
+          <span class="colloc-item">refractory epilepsy</span>
+          <span class="colloc-item">refractory muscle spasm</span>
+          <span class="colloc-item">refractory period</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Despite an eight-week course of conservative physiotherapy and oral analgesia, the patient's lumbar pain remained <strong>refractory</strong> to treatment, and he was subsequently referred for specialist orthopaedic assessment."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">intractable (synonym)</span>
+          <span class="related-item">treatment-resistant (synonym)</span>
+          <span class="related-item">recalcitrant (synonym)</span>
+          <span class="related-item">responsive (antonym)</span>
+          <span class="related-item">refractory period (cardiac/neural)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 49)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr. James Park, a 58-year-old male with a background of bilateral knee osteoarthritis, is referred to
+      your physiotherapy department following a left high tibial <span class="highlight">osteotomy</span>
+      performed six weeks ago to correct varus malalignment.
+      <br><br>
+      Pre-operatively, Mr. Park had undergone twelve months of conservative management including physiotherapy,
+      activity modification, and oral analgesia; however, his pain remained <span class="highlight">refractory</span>
+      to these measures, precipitating the surgical intervention. On initial post-operative assessment,
+      mild <span class="highlight">hypertonia</span> was noted in the left quadriceps, likely attributable to
+      pain inhibition and prolonged weight-bearing restriction rather than any neurological cause.
+      <br><br>
+      Imaging has also confirmed a residual <span class="highlight">synovial</span> effusion in the operative
+      knee, which is being managed conservatively with elevation and compression. Mr. Park is otherwise alert
+      and cooperative, with no evidence of post-anaesthetic <span class="highlight">somnolence</span> at
+      the time of assessment.
+      <br><br>
+      Physiotherapy goals include progressive weight-bearing mobilisation, restoration of knee range of motion,
+      lower limb strengthening, and patient education regarding activity pacing and warning signs of
+      post-operative complications.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When writing referral letters following orthopaedic procedures,
+      always document the <em>indication for surgery</em> (e.g. "refractory to conservative management"),
+      current <em>functional status</em>, and any <em>concurrent findings</em> (e.g. synovial effusion, hypertonia)
+      that may influence the rehabilitation plan. Use precise anatomical and clinical language rather than
+      general descriptors.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 49 · 2026-06-09 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 神經 Neurological · 骨科 Musculoskeletal · Signs &amp; Symptoms · Procedures &amp; Interventions</p>
+</footer>
+
+</body>
+</html>
