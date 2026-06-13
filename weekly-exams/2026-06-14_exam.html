@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Weekly Exam — Week 6 · 2026-06-14</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #fff; --primary: #7c3aed; --primary-light: #ede9fe;
+      --accent: #0d9488; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+      --green: #15803d; --green-light: #dcfce7;
+      --red: #b91c1c; --red-light: #fee2e2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem 4rem; line-height: 1.65; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: var(--primary); color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); flex-wrap: wrap; }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .week-badge { margin-left: auto; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.82rem; font-weight: 600; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .nav-bar a:hover { background: var(--primary-light); }
+    .instructions { max-width: 860px; margin: 0 auto 1.5rem; background: var(--primary-light); border: 1px solid #c4b5fd; border-radius: var(--radius); padding: 1rem 1.2rem; font-size: 0.88rem; }
+    .instructions h3 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .instructions ul { padding-left: 1.2rem; }
+    .instructions li { margin-bottom: 0.3rem; }
+    .section-block { max-width: 860px; margin: 0 auto 2rem; background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+    .section-header { padding: 1rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border); }
+    .section-num { width: 2rem; height: 2rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .section-title-text h2 { font-size: 1.05rem; font-weight: 700; }
+    .section-title-text p { font-size: 0.8rem; color: var(--muted); }
+    .timer-badge { margin-left: auto; background: var(--warn-light); color: var(--warn); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+    .section-body { padding: 1.4rem; }
+    .question { margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .q-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.4rem; }
+    .q-text { font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 500; }
+    .q-options { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.7rem; }
+    .q-option { font-size: 0.9rem; padding: 0.4rem 0.7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+    details { margin-top: 0.5rem; }
+    summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--primary); user-select: none; padding: 0.3rem 0; }
+    summary:hover { text-decoration: underline; }
+    .answer-box { margin-top: 0.5rem; background: var(--green-light); border-left: 3px solid var(--green); padding: 0.6rem 0.9rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #14532d; }
+    .reading-passage { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; }
+    .highlight { color: var(--primary); font-weight: 700; font-style: normal; text-decoration: underline dotted; }
+    .case-notes { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.88rem; font-family: 'Courier New', monospace; line-height: 1.9; margin-bottom: 1.2rem; }
+    .writing-task-box { background: var(--warn-light); border-left: 3px solid var(--warn); padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; margin-bottom: 1rem; }
+    .checklist { margin-top: 1rem; }
+    .checklist h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--green); }
+    .checklist ul { padding-left: 0; list-style: none; }
+    .checklist li { font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .checklist li::before { content: '\2610'; font-size: 1rem; flex-shrink: 0; }
+    .role-play-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+    .role-play-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 0.4rem; }
+    .role-play-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .key-phrases { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .phrase { background: white; border: 1px solid #86efac; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px; font-style: italic; }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+    .week-tag { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 4px; margin-left: 0.4rem; vertical-align: middle; }
+    .this-week { background: #ede9fe; color: #6d28d9; }
+    .prev-week { background: #fef3c7; color: #92400e; }
+    .passage-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.7rem; color: var(--text); }
+    .q-subheading { font-size: 0.82rem; font-weight: 700; color: var(--accent); margin: 1rem 0 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-icon">📝</div>
+  <div class="header-text">
+    <h1>OET Weekly Practice Exam</h1>
+    <p>Week 6 · 14 June 2026 · 20 words tested · ~275-word vocabulary pool</p>
+  </div>
+  <div class="week-badge">Week 6</div>
+</header>
+
+<nav class="nav-bar">
+  <a href="../index.html">← Vocabulary Home</a>
+  <a href="index.html">All Exams</a>
+  <a href="#section1">Section 1: Vocab</a>
+  <a href="#section2">Section 2: Reading</a>
+  <a href="#section3">Section 3: Writing</a>
+  <a href="#section4">Section 4: Speaking</a>
+</nav>
+
+<div class="instructions">
+  <h3>📋 Exam Instructions</h3>
+  <ul>
+    <li>Work through each section in order. Attempt each question before revealing the answer.</li>
+    <li>Vocabulary tags: <span class="week-tag this-week">THIS WEEK</span> = 8–14 Jun 2026 &nbsp; <span class="week-tag prev-week">PREVIOUS</span> = before 8 Jun 2026</li>
+    <li>Section 3 (Writing): Write your full letter before opening the self-assessment checklist.</li>
+    <li>Section 4 (Speaking): Practise aloud for at least 5 minutes per role play before reviewing the model outline.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ SECTION 1 -->
+<div class="section-block" id="section1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-text">
+      <h2>Vocabulary</h2>
+      <p>10 questions · Fill-in-the-blank, Definition match &amp; Collocation · 6 this-week words + 4 from previous weeks</p>
+    </div>
+    <div class="timer-badge">⏱ ~15 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Q1 -->
+    <div class="question">
+      <div class="q-label">Q1 · Fill-in-the-blank · <span class="week-tag this-week">THIS WEEK</span> cardiomyopathy (10 Jun)</div>
+      <div class="q-text">The cardiologist confirmed a diagnosis of dilated ___, explaining to the patient that the ventricles were enlarged and contracting with significantly reduced efficiency.</div>
+      <div class="q-options">
+        <div class="q-option">A. pericarditis</div>
+        <div class="q-option">B. arrhythmia</div>
+        <div class="q-option">C. cardiomyopathy</div>
+        <div class="q-option">D. cardiomegaly</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: C — cardiomyopathy</strong><br>
+          Cardiomyopathy is disease of the heart muscle itself. Dilated cardiomyopathy specifically describes enlargement of the cardiac chambers with impaired systolic function. Cardiomegaly (D) refers to an enlarged heart on imaging but is a sign, not a diagnosis; pericarditis (A) is inflammation of the pericardium; arrhythmia (B) is a disorder of cardiac rhythm.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+      <div class="q-label">Q2 · Fill-in-the-blank · <span class="week-tag this-week">THIS WEEK</span> deconditioning (14 Jun)</div>
+      <div class="q-text">After three weeks of hospitalisation and enforced bed rest, Mr Singh demonstrated signs of profound physical ___, including bilateral proximal muscle weakness and a markedly reduced tolerance to any form of exercise.</div>
+      <div class="q-options">
+        <div class="q-option">A. spasticity</div>
+        <div class="q-option">B. atrophy</div>
+        <div class="q-option">C. dystonia</div>
+        <div class="q-option">D. deconditioning</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: D — deconditioning</strong><br>
+          Deconditioning describes the multi-system physiological deterioration resulting from prolonged immobility or reduced physical activity, encompassing cardiovascular, musculoskeletal and respiratory systems. Atrophy (B) refers specifically to muscle wasting; spasticity (A) is an upper motor neurone sign; dystonia (C) is an involuntary movement disorder.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+      <div class="q-label">Q3 · Fill-in-the-blank · <span class="week-tag this-week">THIS WEEK</span> diuresis (10 Jun)</div>
+      <div class="q-text">The patient was commenced on high-dose intravenous furosemide to promote ___ and reduce the fluid overload that had developed in the context of her decompensated heart failure.</div>
+      <div class="q-options">
+        <div class="q-option">A. haemostasis</div>
+        <div class="q-option">B. diuresis</div>
+        <div class="q-option">C. ascites</div>
+        <div class="q-option">D. perfusion</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: B — diuresis</strong><br>
+          Diuresis is the increased production and excretion of urine. Loop diuretics such as furosemide act on the loop of Henle to inhibit sodium and water reabsorption, thereby promoting diuresis and reducing preload. Ascites (C) is peritoneal fluid accumulation — a consequence of fluid overload, not a treatment.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question">
+      <div class="q-label">Q4 · Fill-in-the-blank · <span class="week-tag prev-week">PREVIOUS</span> crepitus (20 Apr)</div>
+      <div class="q-text">On passive flexion and extension of the left knee, the physiotherapist noted palpable and audible ___, which the patient described as a grinding sensation, consistent with degenerative articular cartilage changes.</div>
+      <div class="q-options">
+        <div class="q-option">A. effusion</div>
+        <div class="q-option">B. atrophy</div>
+        <div class="q-option">C. crepitus</div>
+        <div class="q-option">D. contracture</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: C — crepitus</strong><br>
+          Crepitus is the crackling, grating or popping sensation perceived on palpation or auscultation during joint movement. It is commonly caused by roughened articular surfaces, bony changes or gas within a joint. Effusion (A) is fluid within a joint; contracture (D) is fixed shortening of soft tissue.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question">
+      <div class="q-label">Q5 · Fill-in-the-blank · <span class="week-tag prev-week">PREVIOUS</span> atelectasis (2 May)</div>
+      <div class="q-text">The post-operative chest radiograph demonstrated bibasal ___ in both lower lobes, attributed to inadequate tidal volume and diaphragmatic splinting following upper abdominal surgery.</div>
+      <div class="q-options">
+        <div class="q-option">A. consolidation</div>
+        <div class="q-option">B. haemothorax</div>
+        <div class="q-option">C. emphysema</div>
+        <div class="q-option">D. atelectasis</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: D — atelectasis</strong><br>
+          Atelectasis is partial or complete collapse of lung segments, a common post-operative complication due to shallow breathing, mucus plugging or extrinsic compression. Consolidation (A) implies alveolar filling (e.g. pneumonia) rather than collapse; haemothorax (B) is blood in the pleural space; emphysema (C) is permanent alveolar destruction.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question">
+      <div class="q-label">Q6 · Definition match · <span class="week-tag this-week">THIS WEEK</span> synovial (9 Jun)</div>
+      <div class="q-text">Which term best describes: <em>"Relating to the viscous lubricating fluid and the membrane that produces it, found lining the inner surface of joint capsules and tendon sheaths"?</em></div>
+      <div class="q-options">
+        <div class="q-option">A. osseous</div>
+        <div class="q-option">B. periosteal</div>
+        <div class="q-option">C. synovial</div>
+        <div class="q-option">D. fascial</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: C — synovial</strong><br>
+          Synovial structures relate to the synovium. Synovial fluid (synovia) is secreted by the synovial membrane to lubricate articulating surfaces and nourish avascular cartilage. Osseous (A) = relating to bone; periosteal (B) = relating to the periosteum; fascial (D) = relating to fascia.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question">
+      <div class="q-label">Q7 · Definition match · <span class="week-tag this-week">THIS WEEK</span> hyperaesthesia (12 Jun)</div>
+      <div class="q-text">Which term describes: <em>"An abnormal increase in sensory sensitivity, particularly to touch or pain stimuli, in which ordinarily innocuous sensations are perceived as unusually intense or distressing"?</em></div>
+      <div class="q-options">
+        <div class="q-option">A. allodynia</div>
+        <div class="q-option">B. paraesthesia</div>
+        <div class="q-option">C. nociception</div>
+        <div class="q-option">D. hyperaesthesia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: D — hyperaesthesia</strong><br>
+          Hyperaesthesia is exaggerated or heightened sensitivity to sensory stimulation. It differs from allodynia (A), where a normally non-painful stimulus causes pain; and from paraesthesia (B), which is an abnormal spontaneous sensation (e.g. tingling) without a stimulus. Nociception (C) is simply the neural process of encoding noxious stimuli.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question">
+      <div class="q-label">Q8 · Definition match · <span class="week-tag prev-week">PREVIOUS</span> spasticity (29 Apr)</div>
+      <div class="q-text">Which term refers to: <em>"A velocity-dependent increase in muscle tone resulting from an upper motor neurone lesion, characterised by a sudden catch or release during passive muscle stretch"?</em></div>
+      <div class="q-options">
+        <div class="q-option">A. flaccidity</div>
+        <div class="q-option">B. hypertonia</div>
+        <div class="q-option">C. rigidity</div>
+        <div class="q-option">D. spasticity</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: D — spasticity</strong><br>
+          The hallmark of spasticity is its velocity-dependence — resistance increases with the speed of passive stretch. Rigidity (C) shows constant resistance throughout the range regardless of speed (as in Parkinson's disease). Hypertonia (B) is a broader term encompassing any increase in muscle tone. Flaccidity (A) is decreased tone, seen in lower motor neurone lesions.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question">
+      <div class="q-label">Q9 · Collocation complete · <span class="week-tag this-week">THIS WEEK</span> callus (11 Jun)</div>
+      <div class="q-text">Bony ___ formation was evident on the four-week follow-up X-ray, bridging the fracture gap and indicating that the healing process was progressing as expected.</div>
+      <div class="q-options">
+        <div class="q-option">A. periosteum</div>
+        <div class="q-option">B. callus</div>
+        <div class="q-option">C. labrum</div>
+        <div class="q-option">D. avulsion</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: B — callus</strong><br>
+          Fracture callus (bony callus) is the provisional healing tissue that forms at a fracture site during the reparative phase. It begins as a soft fibrocartilaginous callus and progressively mineralises into hard bone. The periosteum (A) is the membrane surrounding bone; a labrum (C) is a fibrocartilaginous rim around a joint socket; avulsion (D) is a fracture where bone is pulled away by a tendon or ligament.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question">
+      <div class="q-label">Q10 · Collocation complete · <span class="week-tag prev-week">PREVIOUS</span> oedema (16 Apr)</div>
+      <div class="q-text">On examination, bilateral pitting ___ was documented to the mid-shin bilaterally, indicating significant fluid accumulation in the interstitial tissue of the lower limbs.</div>
+      <div class="q-options">
+        <div class="q-option">A. effusion</div>
+        <div class="q-option">B. ascites</div>
+        <div class="q-option">C. diuresis</div>
+        <div class="q-option">D. oedema</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: D — oedema</strong><br>
+          "Pitting oedema" is the clinical term for soft-tissue swelling that retains a temporary indentation when firm pressure is applied, indicating fluid in the interstitial space. Effusion (A) specifically refers to fluid within a joint or body cavity; ascites (B) is peritoneal fluid accumulation; diuresis (C) is the therapeutic process of promoting urine excretion.
+        </div>
+      </details>
+    </div>
+
+  </div><!-- /section-body -->
+</div><!-- /section-block -->
+
+<!-- ═══════════════════════════════════════════════════════ SECTION 2 -->
+<div class="section-block" id="section2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="section-title-text">
+      <h2>OET Reading</h2>
+      <p>Clinical passage (~230 words) with 5 comprehension questions · 5 highlighted vocabulary words</p>
+    </div>
+    <div class="timer-badge">⏱ ~20 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="reading-passage">
+      <div class="passage-title">Management of Decompensated Heart Failure in a Community Hospital Setting</div>
+      <p>A 67-year-old male with a longstanding background of ischaemic <span class="highlight">cardiomyopathy</span> was admitted to the cardiology ward following a three-day history of worsening exertional breathlessness and progressive bilateral lower-limb swelling. On admission, clinical examination revealed bilateral basal crackles consistent with pulmonary oedema, and <span class="highlight">alveolar</span> flooding was evident on the chest radiograph, appearing as diffuse opacification of both lower zones.</p>
+      <p>Abdominal assessment demonstrated distension with shifting dullness on percussion, consistent with <span class="highlight">ascites</span>, which was subsequently confirmed by bedside ultrasound revealing significant free fluid within the peritoneal cavity. Initial blood tests demonstrated a haemoglobin of 78 g/L, confirming severe <span class="highlight">anaemia</span>, likely secondary to chronic disease and reduced erythropoietin production in the context of concomitant renal impairment. The renal profile also highlighted an acute kidney injury (creatinine 245 µmol/L), which complicated the titration of diuretic therapy.</p>
+      <p>The treating cardiologist commenced high-dose intravenous loop diuretics to promote <span class="highlight">diuresis</span> and reduce cardiac preload. Strict fluid balance charts were maintained alongside daily weight measurements to monitor treatment response. The inpatient physiotherapy team was involved from day two, providing low-intensity respiratory techniques to maintain ventilation and prevent further lung collapse. By day five, the patient had lost 4.2 kg of excess fluid, breathlessness had improved substantially, and oxygen saturation had risen from 88% to 95% on 2 L per minute of supplemental oxygen.</p>
+    </div>
+
+    <div class="q-subheading">Reading Comprehension Questions</div>
+
+    <!-- RQ1 -->
+    <div class="question">
+      <div class="q-label">Reading Q1 · Factual</div>
+      <div class="q-text">How was the presence of ascites confirmed in this patient?</div>
+      <div class="q-options">
+        <div class="q-option">A. Chest radiography</div>
+        <div class="q-option">B. Blood tests showing elevated creatinine</div>
+        <div class="q-option">C. Bedside ultrasound revealing free peritoneal fluid</div>
+        <div class="q-option">D. Abdominal percussion alone</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: C</strong><br>
+          The passage states: "which was subsequently confirmed by bedside ultrasound revealing significant free fluid within the peritoneal cavity." Shifting dullness on percussion raised the clinical suspicion, but the diagnosis was confirmed by ultrasound imaging.
+        </div>
+      </details>
+    </div>
+
+    <!-- RQ2 -->
+    <div class="question">
+      <div class="q-label">Reading Q2 · Factual</div>
+      <div class="q-text">What was the patient's haemoglobin level on admission, and how was this classified?</div>
+      <div class="q-options">
+        <div class="q-option">A. 88 g/L — moderate anaemia</div>
+        <div class="q-option">B. 78 g/L — severe anaemia</div>
+        <div class="q-option">C. 245 g/L — polycythaemia</div>
+        <div class="q-option">D. 78 g/L — mild anaemia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: B</strong><br>
+          The passage states: "a haemoglobin of 78 g/L, confirming severe anaemia." Note that 245 is the creatinine level (renal function marker), not the haemoglobin.
+        </div>
+      </details>
+    </div>
+
+    <!-- RQ3 -->
+    <div class="question">
+      <div class="q-label">Reading Q3 · Inferential</div>
+      <div class="q-text">Why was diuretic management described as "complicated" in this patient?</div>
+      <div class="q-options">
+        <div class="q-option">A. The patient refused intravenous medication</div>
+        <div class="q-option">B. Liver failure impaired drug metabolism</div>
+        <div class="q-option">C. A concomitant acute kidney injury made titration difficult</div>
+        <div class="q-option">D. The ascites prevented adequate drug absorption</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: C</strong><br>
+          The passage notes "acute kidney injury (creatinine 245 µmol/L), which complicated the titration of diuretic therapy." Diuretics can exacerbate renal impairment by reducing glomerular filtration pressure, so their use must be carefully balanced against worsening kidney function.
+        </div>
+      </details>
+    </div>
+
+    <!-- RQ4 -->
+    <div class="question">
+      <div class="q-label">Reading Q4 · Inferential</div>
+      <div class="q-text">What was the primary clinical purpose of the physiotherapy team's involvement from day two?</div>
+      <div class="q-options">
+        <div class="q-option">A. To facilitate early discharge planning</div>
+        <div class="q-option">B. To maintain ventilation and prevent lung collapse</div>
+        <div class="q-option">C. To manage the patient's lower-limb oedema with compression</div>
+        <div class="q-option">D. To monitor daily weight and fluid balance</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: B</strong><br>
+          The passage states physiotherapy was involved "providing low-intensity respiratory techniques to maintain ventilation and prevent further lung collapse." The term "lung collapse" corresponds to atelectasis, a common complication in bed-bound patients with pulmonary oedema.
+        </div>
+      </details>
+    </div>
+
+    <!-- RQ5 -->
+    <div class="question">
+      <div class="q-label">Reading Q5 · Vocabulary in context</div>
+      <div class="q-text">In this passage, the term <strong>alveolar</strong> (paragraph 1) most closely relates to which anatomical structure?</div>
+      <div class="q-options">
+        <div class="q-option">A. The peritoneal cavity</div>
+        <div class="q-option">B. The cardiac chambers</div>
+        <div class="q-option">C. The air sacs within the lungs responsible for gas exchange</div>
+        <div class="q-option">D. The renal tubules</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>Correct answer: C</strong><br>
+          "Alveolar" relates to the alveoli — the microscopic air sacs at the terminal branches of the bronchial tree where gas exchange occurs. "Alveolar flooding" describes the accumulation of fluid within these air sacs, resulting in impaired oxygenation, as seen in pulmonary oedema.
+        </div>
+      </details>
+    </div>
+
+  </div><!-- /section-body -->
+</div><!-- /section-block -->
+
+<!-- ═══════════════════════════════════════════════════════ SECTION 3 -->
+<div class="section-block" id="section3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="section-title-text">
+      <h2>OET Writing</h2>
+      <p>Orthopaedic referral · ~180–200 words · Post-operative physiotherapy</p>
+    </div>
+    <div class="timer-badge">⏱ ~45 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="writing-task-box">
+      <strong>Task:</strong> Using the case notes below, write a referral letter to the Outpatient Physiotherapy Department at AUT Millennium Institute. Write on behalf of <strong>Mr D. Rajan, Orthopaedic Consultant</strong>, addressed to <strong>The Physiotherapy Coordinator, Outpatient Department, AUT Millennium Institute</strong>. Your letter should introduce the patient, summarise the surgical procedure and key operative findings, describe current functional status, and make a specific request for physiotherapy intervention. Write approximately <strong>180–200 words</strong>.
+    </div>
+
+    <div class="case-notes">
+PATIENT:    Mrs Amelia Parata, DOB: 14/08/1972 (53 yrs)
+UNIT:       Orthopaedic Ward 7B, City Hospital
+CONSULTANT: Mr D. Rajan, Orthopaedic Surgeon
+ADMIT:      28/05/2026 · SURGERY: 02/06/2026 · NOTES: 14/06/2026
+
+Dx:         R hip labral tear → arthroscopic labral repair (02/06/2026)
+
+PMHx:       Nil significant. Non-smoker. Works as secondary school teacher.
+
+SURGICAL FINDINGS (02/06/2026):
+- Full-thickness tear at anterosuperior aspect of right labrum
+- Osseous impingement consistent with femoroacetabular impingement (FAI, cam-type)
+- Mild avascular changes to femoral head (Grade I) — noted, monitoring advised
+- Bony callus identified at site of prior undiagnosed stress fracture (greater trochanter)
+- Arthroscopic repair performed; 3 x suture anchors inserted; fluoroscopic guidance used
+
+POST-OP COURSE:
+- Day 1–3: Non-weight-bearing (NWB) R lower limb; post-surgical muscle spasm managed with analgesia
+- Day 4–12: Full weight-bearing with crutches; VAS pain 3/10; progressing well
+- Discharge planned: 14/06/2026
+
+CURRENT STATUS:
+- Significant deconditioning — 6 wks activity restriction pre-op + 12 days inpatient
+- R hip ROM: Flexion 40° (pain-limited); Ext 15°; Abd 20°
+- Hip abductor strength: 3/5 bilaterally (Medical Research Council scale)
+- Nil neurovascular deficit distally
+
+PATIENT GOALS: Return to recreational running (community fun runs). Anxious re recovery timeline.
+
+FOR: Outpatient post-surgical physiotherapy rehabilitation programme
+    </div>
+
+    <details>
+      <summary>Show Self-Assessment Checklist (open AFTER completing your letter)</summary>
+      <div class="checklist">
+        <h4>Writing Self-Assessment — 10 Criteria</h4>
+        <ul>
+          <li>Opening sentence clearly identifies patient (name, DOB) and states the purpose of the referral without unnecessary preamble.</li>
+          <li>Diagnosis and surgical procedure are accurately named (right hip labral tear; arthroscopic labral repair).</li>
+          <li>Key operative findings are summarised: osseous impingement, avascular changes to femoral head, bony callus at stress fracture site.</li>
+          <li>Post-operative course is described concisely, including weight-bearing progression and current pain level.</li>
+          <li>Current functional limitations are stated with objective data (ROM figures and MRC strength grade) — not vague generalisations.</li>
+          <li>Deconditioning secondary to prolonged activity restriction is mentioned as a significant rehabilitation consideration.</li>
+          <li>Patient's personal goals and emotional concerns (return to running, anxiety re timeline) are acknowledged in the letter.</li>
+          <li>The specific request is explicit — e.g. "I would be grateful if you could arrange a post-surgical rehabilitation programme" — rather than implied.</li>
+          <li>Formal OET register is maintained throughout: no colloquial language, no first-person patient voice, appropriate hedging language (e.g. "I would appreciate…").</li>
+          <li>Letter is appropriately formatted: correct addressee, professional salutation, signatory block, and word count is approximately 180–200 words.</li>
+        </ul>
+      </div>
+    </details>
+
+  </div><!-- /section-body -->
+</div><!-- /section-block -->
+
+<!-- ═══════════════════════════════════════════════════════ SECTION 4 -->
+<div class="section-block" id="section4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="section-title-text">
+      <h2>OET Speaking</h2>
+      <p>2 physiotherapy role plays · Practise aloud before reviewing model outlines</p>
+    </div>
+    <div class="timer-badge">⏱ ~30 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- ROLE PLAY 1 -->
+    <div class="role-play-card">
+      <h4>Role Play 1 — Post-Hip Labral Repair Patient Education</h4>
+      <p><strong>Setting:</strong> Outpatient physiotherapy clinic, AUT Millennium Institute. Day of first post-discharge appointment.</p>
+      <p><strong>Roles:</strong> You are the physiotherapist. The interlocutor plays Mrs Amelia Parata (53 years), who had a right hip arthroscopic labral repair 12 days ago and has just been discharged from hospital.</p>
+      <p><strong>Key tasks:</strong></p>
+      <ul style="font-size:0.88rem; padding-left:1.2rem; margin-bottom:0.5rem;">
+        <li>Explain what deconditioning means and why it has occurred</li>
+        <li>Reassure her about the mild avascular changes noted to her femoral head</li>
+        <li>Describe the initial rehabilitation goals and precautions for the first two weeks</li>
+        <li>Address her concerns about returning to running</li>
+      </ul>
+      <p><strong>Vocabulary to use:</strong> <span class="week-tag this-week">deconditioning</span> &nbsp; <span class="week-tag this-week">avascular</span> &nbsp; <span class="week-tag this-week">spasm</span></p>
+      <p><strong>Suggested opening:</strong> <em>"Good morning, Mrs Parata. It's great to meet you in the outpatient setting. How have you been feeling since you went home? … Thank you for letting me know. Today I'd like to start by explaining what to expect over the next few weeks of your recovery…"</em></p>
+      <div class="key-phrases">
+        <div class="phrase">"Because of the time you've spent resting, you've developed some deconditioning…"</div>
+        <div class="phrase">"The surgeon noted some avascular changes, which means the blood supply to part of the bone needs monitoring…"</div>
+        <div class="phrase">"The muscle spasm you're feeling is quite normal at this stage…"</div>
+        <div class="phrase">"We'll progress your exercises gradually — your body needs time to adapt…"</div>
+        <div class="phrase">"Most patients with a similar repair return to running between four and six months — we'll get you there safely."</div>
+      </div>
+    </div>
+
+    <details>
+      <summary>Show Model Answer Outline — Role Play 1</summary>
+      <div class="answer-box">
+        <strong>Model structure for Role Play 1:</strong><br><br>
+        <strong>1. Build rapport &amp; elicit concerns (30 sec):</strong> Welcome, open question about how she has been managing at home, acknowledge her anxiety about recovery.<br><br>
+        <strong>2. Explain deconditioning (60 sec):</strong> "Because of the six weeks of restricted activity before surgery, and then twelve days in hospital, your body has undergone what we call deconditioning — this means your muscles, cardiovascular system and overall fitness have all reduced. It's completely expected, and it's one of the main things we'll address in rehabilitation."<br><br>
+        <strong>3. Address avascular changes (45 sec):</strong> "Mr Rajan noted some mild avascular changes to your femoral head — avascular means the blood supply to a small area of bone was slightly reduced. This is Grade One, which is the mildest level, and is being monitored. It means we need to be careful with high-impact loading initially, which is another reason we won't rush straight back to running."<br><br>
+        <strong>4. Reassure about muscle spasm (30 sec):</strong> "The spasm you're feeling around the hip is your muscles reacting to the surgery — it's a protective response and will settle as the tissues heal and you begin gentle movement."<br><br>
+        <strong>5. Outline initial rehabilitation plan (60 sec):</strong> Range of motion exercises, gentle hip muscle activation, hydrotherapy if available, gradual weight-bearing progression, no pivoting or high-impact for 12 weeks.<br><br>
+        <strong>6. Respond to running concern (30 sec):</strong> Validate her goal, provide realistic timeline (4–6 months), explain that safe progression reduces re-injury risk.
+      </div>
+    </details>
+
+    <!-- ROLE PLAY 2 -->
+    <div class="role-play-card">
+      <h4>Role Play 2 — Parent Education: Paediatric Hypertonia</h4>
+      <p><strong>Setting:</strong> Community paediatric physiotherapy clinic. Initial assessment appointment.</p>
+      <p><strong>Roles:</strong> You are the paediatric physiotherapist. The interlocutor plays Ms Rosa Kim, mother of Liam (18 months), who has been referred by the paediatrician following concerns about increased muscle tone in his lower limbs. The mother appears anxious and has not received a clear explanation from the referring doctor.</p>
+      <p><strong>Key tasks:</strong></p>
+      <ul style="font-size:0.88rem; padding-left:1.2rem; margin-bottom:0.5rem;">
+        <li>Explain what hypertonia means in plain language</li>
+        <li>Describe the physiotherapy assessment you have completed and your initial findings</li>
+        <li>Outline the management plan, including what to watch for if treatment is initially ineffective</li>
+        <li>Address the mother's concern about whether Liam will walk normally</li>
+      </ul>
+      <p><strong>Vocabulary to use:</strong> <span class="week-tag this-week">hypertonia</span> &nbsp; <span class="week-tag this-week">refractory</span> &nbsp; <span class="week-tag this-week">somnolence</span></p>
+      <p><strong>Suggested opening:</strong> <em>"Hello, Ms Kim. Thank you for coming in today. I understand this has been a worrying time. I've had a chance to review Liam's referral and spend some time assessing him this morning — would it be helpful if I explained what I've found and what we're planning to do?"</em></p>
+      <div class="key-phrases">
+        <div class="phrase">"Hypertonia means that the muscles in Liam's legs have a higher-than-normal resting tone…"</div>
+        <div class="phrase">"We'll start with stretching and movement exercises — most children respond well to this…"</div>
+        <div class="phrase">"If his tone proves refractory to physiotherapy — that is, if it doesn't respond as we hope — we may involve the paediatrician to consider other options…"</div>
+        <div class="phrase">"One thing to watch for at home is unusual sleepiness or somnolence, which can sometimes be a sign that we need to reassess…"</div>
+        <div class="phrase">"Many children with Liam's presentation do learn to walk — our goal is to give his development the best possible support."</div>
+      </div>
+    </div>
+
+    <details>
+      <summary>Show Model Answer Outline — Role Play 2</summary>
+      <div class="answer-box">
+        <strong>Model structure for Role Play 2:</strong><br><br>
+        <strong>1. Acknowledge concerns &amp; gain consent to explain (30 sec):</strong> Empathise with mother's anxiety, check she is comfortable to hear the findings, use inclusive language ("we" / "together").<br><br>
+        <strong>2. Explain hypertonia in plain language (60 sec):</strong> "Hypertonia means that Liam's muscles are working at a higher level of tension than would be typical for his age. Think of it like a rubber band that's being held a little too tight. This makes it harder for him to move his legs freely and can affect how he stands and eventually walks. It doesn't mean he can't get better — it means we need to work on relaxing and stretching those muscles."<br><br>
+        <strong>3. Share assessment findings (45 sec):</strong> Describe tone assessment results, developmental milestones, any asymmetry noted, and that you've ruled out pain as a contributing factor.<br><br>
+        <strong>4. Outline management plan (60 sec):</strong> Weekly physiotherapy sessions, home stretching programme taught to parent, positioning strategies, developmental play activities. Emphasise parent involvement as key.<br><br>
+        <strong>5. Explain what to do if refractory (30 sec):</strong> "If Liam's tone proves refractory — meaning it doesn't improve with our physiotherapy — we won't simply continue the same approach. I'll refer back to the paediatrician, who may consider other assessments or treatments such as oral medication or specialist review."<br><br>
+        <strong>6. Somnolence &amp; red flags (30 sec):</strong> "At home, please contact us or your GP if you notice unusual somnolence — excessive sleepiness or difficulty rousing Liam — or any changes in his feeding or breathing, as these can sometimes indicate the need for urgent reassessment."<br><br>
+        <strong>7. Address walking concern &amp; close (30 sec):</strong> Validate the question honestly, avoid making firm promises, emphasise early intervention improves outcomes, invite further questions.
+      </div>
+    </details>
+
+  </div><!-- /section-body -->
+</div><!-- /section-block -->
+
+<footer class="page-footer">
+  OET Weekly Exam — Week 6 · 14 June 2026 · Leo · AUT Master of Physiotherapy Practice<br>
+  <span style="color:#a78bfa">Words tested: cardiomyopathy · deconditioning · diuresis · synovial · hyperaesthesia · callus · alveolar · ascites · anaemia · labrum · osseous · avascular · spasm · hypertonia · refractory · somnolence + crepitus · atelectasis · spasticity · oedema</span>
+</footer>
+
+</body>
+</html>
