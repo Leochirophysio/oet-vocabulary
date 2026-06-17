@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 58 · 2026-06-18</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 58 · 18 Jun 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Musculoskeletal + Procedures &amp; Interventions</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">aponeurosis</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌæp.ə.njʊˈrəʊ.sɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/aponeurosis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/aponeurosis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A flat, sheet-like layer of fibrous connective tissue that functions as a broad tendon, attaching muscle to bone or joining muscles to adjacent structures; commonly found on the plantar surface of the foot (plantar aponeurosis) and the palm of the hand (palmar aponeurosis).</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">腱膜（扁平的纖維結締組織，功能如肌腱，連接肌肉與骨骼）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">plantar aponeurosis</span>
+          <span class="colloc-item">palmar aponeurosis</span>
+          <span class="colloc-item">aponeurosis attachment</span>
+          <span class="colloc-item">aponeurosis tear</span>
+          <span class="colloc-item">aponeurosis contracture</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "MRI findings confirmed a partial tear of the plantar <strong>aponeurosis</strong> at its calcaneal attachment, consistent with the patient's complaint of sharp, weight-bearing heel pain that was most severe upon taking the first steps in the morning."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">plantar fascia (clinical synonym)</span>
+          <span class="related-item">aponeurotic (adj)</span>
+          <span class="related-item">fasciitis (inflammation)</span>
+          <span class="related-item">fasciotomy (surgical release)</span>
+          <span class="related-item">tendon (similar structure)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">arthrocentesis</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌɑː.θrəʊ.senˈtiː.sɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/arthrocentesis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/arthrocentesis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A clinical procedure in which a sterile needle is inserted into a joint space to aspirate (withdraw) synovial fluid; performed for diagnostic analysis of the fluid (e.g. to exclude infection or gout) or for therapeutic relief of a painful, distended joint effusion.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">關節穿刺術（用針穿入關節腔抽取滑液，用於診斷或治療）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">perform arthrocentesis</span>
+          <span class="colloc-item">diagnostic arthrocentesis</span>
+          <span class="colloc-item">therapeutic arthrocentesis</span>
+          <span class="colloc-item">arthrocentesis of the knee</span>
+          <span class="colloc-item">ultrasound-guided arthrocentesis</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Following <strong>arthrocentesis</strong> of the left knee, approximately 35 mL of straw-coloured synovial fluid was aspirated; this significantly reduced the patient's reported pain and restored terminal knee extension, enabling commencement of active rehabilitation."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">joint aspiration (clinical synonym)</span>
+          <span class="related-item">synovial fluid (aspirated substance)</span>
+          <span class="related-item">effusion (joint fluid accumulation)</span>
+          <span class="related-item">arthroscopy (visual joint examination)</span>
+          <span class="related-item">thoracocentesis (analogous chest procedure)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">metatarsal</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌmet.əˈtɑː.səl/</span>
+          <span class="pos">adjective / noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/metatarsal" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/metatarsal" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to or denoting the five long bones (metatarsals, numbered I–V from medial to lateral) of the forefoot, situated between the tarsal bones of the ankle and the proximal phalanges of the toes; a common site of stress fractures in runners and dancers.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">蹠骨（足部前段連接踝骨與趾骨的五根長骨）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">metatarsal stress fracture</span>
+          <span class="colloc-item">fifth metatarsal</span>
+          <span class="colloc-item">metatarsal head</span>
+          <span class="colloc-item">metatarsal pain</span>
+          <span class="colloc-item">metatarsophalangeal joint</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Plain X-ray revealed a non-displaced stress fracture of the second <strong>metatarsal</strong> shaft, consistent with the patient's reported increase in training load and localised dorsal foot pain worsened by weight-bearing activity."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">metatarsalgia (forefoot pain syndrome)</span>
+          <span class="related-item">phalanges (toe bones)</span>
+          <span class="related-item">tarsals (ankle bones)</span>
+          <span class="related-item">forefoot (anatomical region)</span>
+          <span class="related-item">stress fracture (common pathology)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">supination</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌsuː.pɪˈneɪ.ʃən/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/supination" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/supination" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">In the forearm: rotation at the radioulnar joint so that the palm faces anteriorly (upward when the arm is at the side), performed by the supinator and biceps brachii muscles. In the foot: a combined movement of inversion, plantarflexion, and adduction, raising the medial arch and directing the sole laterally. The opposite of pronation.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">旋後（前臂旋轉使掌心向上；足部向外側翻轉，使足底朝外）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">forearm supination</span>
+          <span class="colloc-item">restricted supination</span>
+          <span class="colloc-item">pain on supination</span>
+          <span class="colloc-item">supination range of motion</span>
+          <span class="colloc-item">supination deformity</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Active range of motion assessment revealed significantly restricted forearm <strong>supination</strong> on the right, measuring 40° compared with 85° on the left, and this limitation was attributed to adhesions at the distal radioulnar joint following a previous Colles' fracture."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">pronation (antonym)</span>
+          <span class="related-item">supinate (verb)</span>
+          <span class="related-item">supinator (muscle)</span>
+          <span class="related-item">radioulnar joint (site of movement)</span>
+          <span class="related-item">range of motion / ROM (assessment)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">thermotherapy</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌθɜː.məʊˈθer.ə.pi/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/thermotherapy" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/thermotherapy" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The therapeutic application of heat to body tissues using superficial modalities (e.g. moist hot packs, paraffin wax baths, infrared lamps) or deep-heating agents (e.g. therapeutic ultrasound, shortwave diathermy), with the aim of reducing pain, increasing collagen extensibility, decreasing muscle guarding, and promoting local circulation.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">熱療法（以熱能治療疼痛、改善組織伸展性及促進血液循環）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">apply thermotherapy</span>
+          <span class="colloc-item">superficial thermotherapy</span>
+          <span class="colloc-item">moist heat thermotherapy</span>
+          <span class="colloc-item">thermotherapy modalities</span>
+          <span class="colloc-item">thermotherapy contraindications</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Superficial <strong>thermotherapy</strong> via a moist hot pack was applied to the lumbar region for 20 minutes prior to manual therapy, with the aim of increasing soft tissue extensibility, reducing muscle guarding, and preparing the tissues for subsequent joint mobilisation."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">cryotherapy (cold therapy — antonym)</span>
+          <span class="related-item">diathermy (deep thermotherapy)</span>
+          <span class="related-item">paraffin wax bath (modality)</span>
+          <span class="related-item">heat pack / hot pack (lay term)</span>
+          <span class="related-item">vasodilation (physiological effect)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 58)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr. James Tran, a 34-year-old recreational distance runner, was referred to the physiotherapy
+      department by his orthopaedic surgeon following surgical repair of a ruptured plantar
+      <span class="highlight">aponeurosis</span> of the right foot, sustained during a competitive marathon
+      six weeks ago.
+      <br><br>
+      Intraoperatively, the surgeon also identified a concurrent non-displaced stress fracture of the third
+      <span class="highlight">metatarsal</span> shaft, which was managed conservatively with a cam boot for
+      four weeks post-operatively. X-ray review at the six-week mark confirmed satisfactory callus formation
+      at the fracture site, and the patient has since been cleared for progressive weight-bearing.
+      <br><br>
+      On initial physiotherapy assessment, Mr. Tran demonstrated reduced ankle dorsiflexion and restricted
+      forearm <span class="highlight">supination</span> on the right (55°, compared with 90° on the left),
+      the latter attributed to altered load distribution during crutch use over the preceding weeks. A
+      moderate effusion of the right ankle was noted, and following orthopaedic review, diagnostic
+      <span class="highlight">arthrocentesis</span> was performed, yielding 12 mL of clear synovial fluid
+      with no evidence of infection or crystal deposition.
+      <br><br>
+      Treatment commenced with <span class="highlight">thermotherapy</span> to the plantar surface of the
+      foot and distal forearm prior to stretching and joint mobilisation, followed by a graded
+      weight-bearing exercise programme. Goals include restoring full range of motion, improving proprioception,
+      and enabling a safe return to running within twelve weeks.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When documenting surgical or procedural history, specify the
+      <em>structure involved</em> (e.g. "plantar aponeurosis"), the <em>mechanism</em> (e.g. "during a
+      competitive marathon"), and the <em>current functional status</em>. This gives the receiving clinician
+      a clear, actionable picture without requiring them to review the full medical record.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 58 · 2026-06-18 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 骨科 Musculoskeletal · Procedures &amp; Interventions · Signs &amp; Symptoms</p>
+</footer>
+
+</body>
+</html>
