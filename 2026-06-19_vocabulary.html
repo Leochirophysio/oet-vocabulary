@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 59 · 2026-06-19</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 59 · 19 Jun 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Neurological · Patient Communication</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">anomia</div>
+        <div class="card-meta">
+          <span class="ipa">/æˈnəʊ.mi.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/anomia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/anomia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A form of aphasia in which the patient has specific difficulty retrieving the names of objects, people, or places, despite intact understanding and ability to describe the item; also called anomic aphasia or word-finding difficulty.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">命名障礙（失名症）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">severe anomia</span>
+          <span class="colloc-item">anomia secondary to stroke</span>
+          <span class="colloc-item">anomic aphasia</span>
+          <span class="colloc-item">word-finding difficulty</span>
+          <span class="colloc-item">persistent anomia</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "On language assessment, the patient demonstrated significant <strong>anomia</strong>, being unable to name common household objects despite intact comprehension, consistent with a left hemisphere lesion identified on recent MRI."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">aphasia (broader term)</span>
+          <span class="related-item">anomic aphasia (specific type)</span>
+          <span class="related-item">dysphasia (mild form)</span>
+          <span class="related-item">word-finding difficulty (lay term)</span>
+          <span class="related-item">anomic (adj)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">myoclonus</div>
+        <div class="card-meta">
+          <span class="ipa">/maɪˈɒk.lə.nəs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/myoclonus" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/myoclonus" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A sudden, brief, involuntary muscle jerk or twitch affecting one or more muscles; may occur in isolation in healthy individuals (e.g. hypnic jerks on falling asleep) or as a sign of neurological disease, metabolic disturbance, or medication toxicity.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">肌陣攣</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">nocturnal myoclonus</span>
+          <span class="colloc-item">myoclonic jerks</span>
+          <span class="colloc-item">cortical myoclonus</span>
+          <span class="colloc-item">multifocal myoclonus</span>
+          <span class="colloc-item">myoclonus at rest</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "During physiotherapy assessment, episodes of <strong>myoclonus</strong> were observed in the bilateral lower limbs, particularly on initiation of movement, necessitating close monitoring and modified task progression during gait retraining."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">myoclonic (adj)</span>
+          <span class="related-item">clonus (rhythmic, sustained)</span>
+          <span class="related-item">tremor (rhythmic oscillation)</span>
+          <span class="related-item">fasciculation (muscle fibre twitch)</span>
+          <span class="related-item">asterixis (flapping tremor)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">chorea</div>
+        <div class="card-meta">
+          <span class="ipa">/kəˈriː.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/chorea" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/chorea" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A hyperkinetic movement disorder characterised by random, rapid, irregular, involuntary movements that flow unpredictably from one body part to another, resembling a dance-like pattern; commonly associated with Huntington's disease, rheumatic fever (Sydenham's chorea), or medications.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">舞蹈症</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">Huntington's chorea</span>
+          <span class="colloc-item">choreiform movements</span>
+          <span class="colloc-item">Sydenham's chorea</span>
+          <span class="colloc-item">chorea gravidarum</span>
+          <span class="colloc-item">progressive chorea</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient presents with progressive <strong>chorea</strong> predominantly affecting the bilateral upper limbs and trunk, which significantly impairs her functional independence, safety during transfers, and ability to self-care."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">choreiform (adj — chorea-like)</span>
+          <span class="related-item">hemiballismus (large-amplitude chorea)</span>
+          <span class="related-item">athetosis (slow writhing movements)</span>
+          <span class="related-item">hyperkinesia (excessive movement)</span>
+          <span class="related-item">dystonia (sustained muscle contractions)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">autonomy</div>
+        <div class="card-meta">
+          <span class="ipa">/ɔːˈtɒn.ə.mi/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/autonomy" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/autonomy" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-patient">Patient Communication</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A patient's right and capacity to make informed, voluntary decisions about their own healthcare and treatment, free from undue pressure or coercion; one of the four core principles of biomedical ethics (alongside beneficence, non-maleficence, and justice).</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">自主性（患者自主決策權）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">patient autonomy</span>
+          <span class="colloc-item">respect autonomy</span>
+          <span class="colloc-item">preserve autonomy</span>
+          <span class="colloc-item">functional autonomy</span>
+          <span class="colloc-item">promote autonomy</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "In accordance with the principle of patient <strong>autonomy</strong>, treatment goals and management options were discussed thoroughly with Mr. Patel, and his expressed preferences regarding the frequency and setting of physiotherapy sessions were incorporated into the care plan."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">autonomous (adj)</span>
+          <span class="related-item">informed consent (practical expression)</span>
+          <span class="related-item">shared decision-making</span>
+          <span class="related-item">paternalism (antonym — clinician overrides patient)</span>
+          <span class="related-item">self-determination</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">psychoeducation</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌsaɪ.kəʊˌedʒ.ʊˈkeɪ.ʃən/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/psychoeducation" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/psychoeducation" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-patient">Patient Communication</span>
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A structured therapeutic approach in which clinicians educate patients and their families about a medical condition, its mechanisms, treatment options, and self-management strategies, with the aim of improving understanding, reducing fear, and empowering active participation in care; in physiotherapy this frequently includes pain neuroscience education (PNE).</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">心理教育／衛教（病患教育）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">pain neuroscience psychoeducation</span>
+          <span class="colloc-item">group psychoeducation</span>
+          <span class="colloc-item">structured psychoeducation</span>
+          <span class="colloc-item">psychoeducation session</span>
+          <span class="colloc-item">psychoeducation programme</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "A <strong>psychoeducation</strong> session was conducted to address the patient's catastrophic beliefs surrounding chronic low back pain, incorporating pain neuroscience education to reduce fear-avoidance and facilitate graded return to activity."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">pain neuroscience education / PNE</span>
+          <span class="related-item">patient education (broader term)</span>
+          <span class="related-item">health literacy</span>
+          <span class="related-item">self-management</span>
+          <span class="related-item">cognitive-behavioural approach</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 59)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mrs Nguyen, a 71-year-old woman with a confirmed diagnosis of Huntington's disease (early-to-moderate
+      stage), was referred by her neurologist for inpatient physiotherapy following a recent unwitnessed fall
+      at home. She was accompanied by her daughter, who acts as her primary carer.
+      <br><br>
+      On presentation, Mrs Nguyen demonstrated progressive <span class="highlight">chorea</span> predominantly
+      affecting the bilateral upper limbs, trunk, and oro-facial musculature, with associated postural
+      instability and a wide-based, irregular gait pattern. Involuntary episodes of
+      <span class="highlight">myoclonus</span> were also observed at rest and on initiation of voluntary
+      movement, further compromising her balance and functional mobility during transfers and ambulation.
+      <br><br>
+      Cognitive assessment revealed mild-to-moderate impairment, including significant
+      <span class="highlight">anomia</span> for common objects and reduced short-term recall. Communication
+      was adapted accordingly, with simplified language, visual cues, and closed-ended questions used
+      throughout the assessment to optimise Mrs Nguyen's participation and ensure accurate history-taking.
+      <br><br>
+      A structured <span class="highlight">psychoeducation</span> session was conducted with both Mrs Nguyen
+      and her daughter, addressing falls risk, safe transfer techniques, appropriate assistive device use,
+      and home environment modifications. In line with the principle of patient
+      <span class="highlight">autonomy</span>, Mrs Nguyen's strongly expressed preference to remain at home
+      for as long as possible was central to goal-setting discussions, and the physiotherapy management plan
+      was tailored accordingly to optimise functional independence and carer confidence.
+      <br><br>
+      Ongoing physiotherapy goals include: (1) improving postural stability and reducing fall risk through
+      targeted balance and strengthening exercises; (2) optimising upper limb function for activities of
+      daily living despite progressive choreiform movements; and (3) continuing psychoeducation to prepare
+      the family for anticipated functional decline and future care planning needs.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When writing referral letters for patients with complex neurological conditions,
+      document <em>specific movement disorder characteristics</em> (distribution, triggers, severity), note
+      <em>communication adaptations</em> used during assessment, and always record the patient's own
+      goals and preferences to demonstrate respect for <em>patient autonomy</em>.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 59 · 2026-06-19 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 神經 Neurological · Signs &amp; Symptoms · Patient Communication · Procedures &amp; Interventions</p>
+</footer>
+
+</body>
+</html>
