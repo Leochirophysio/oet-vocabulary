@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Weekly Exam — Week 7 · 2026-06-21</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #fff; --primary: #7c3aed; --primary-light: #ede9fe;
+      --accent: #0d9488; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+      --green: #15803d; --green-light: #dcfce7;
+      --red: #b91c1c; --red-light: #fee2e2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem 4rem; line-height: 1.65; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: var(--primary); color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); flex-wrap: wrap; }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .week-badge { margin-left: auto; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.82rem; font-weight: 600; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .instructions { max-width: 860px; margin: 0 auto 1.5rem; background: var(--primary-light); border: 1px solid #c4b5fd; border-radius: var(--radius); padding: 1rem 1.2rem; font-size: 0.88rem; }
+    .instructions h3 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .instructions ul { padding-left: 1.2rem; }
+    .instructions li { margin-bottom: 0.3rem; }
+    .section-block { max-width: 860px; margin: 0 auto 2rem; background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+    .section-header { padding: 1rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border); }
+    .section-num { width: 2rem; height: 2rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .section-title-text h2 { font-size: 1.05rem; font-weight: 700; }
+    .section-title-text p { font-size: 0.8rem; color: var(--muted); }
+    .timer-badge { margin-left: auto; background: var(--warn-light); color: var(--warn); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+    .section-body { padding: 1.4rem; }
+    .question { margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .q-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.4rem; }
+    .q-text { font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 500; }
+    .q-options { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.7rem; }
+    .q-option { font-size: 0.9rem; padding: 0.4rem 0.7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+    details { margin-top: 0.5rem; }
+    summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--primary); user-select: none; padding: 0.3rem 0; }
+    summary:hover { text-decoration: underline; }
+    .answer-box { margin-top: 0.5rem; background: var(--green-light); border-left: 3px solid var(--green); padding: 0.6rem 0.9rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #14532d; }
+    .reading-passage { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; }
+    .reading-passage h4 { font-style: normal; font-size: 0.85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+    .highlight { color: var(--primary); font-weight: 700; font-style: normal; text-decoration: underline dotted; }
+    .case-notes { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.88rem; font-family: 'Courier New', monospace; line-height: 1.9; margin-bottom: 1.2rem; }
+    .case-notes .cn-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.6rem; }
+    .writing-task-box { background: var(--warn-light); border-left: 3px solid var(--warn); padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; margin-bottom: 1rem; }
+    .writing-task-box strong { display: block; margin-bottom: 0.3rem; }
+    .checklist { margin-top: 1rem; }
+    .checklist h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--green); }
+    .checklist ul { padding-left: 0; list-style: none; }
+    .checklist li { font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .checklist li::before { content: '\2610'; font-size: 1rem; flex-shrink: 0; }
+    .role-play-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+    .role-play-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 0.4rem; }
+    .role-play-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .role-play-card dl { font-size: 0.88rem; }
+    .role-play-card dt { font-weight: 700; margin-top: 0.4rem; }
+    .role-play-card dd { margin-left: 0.8rem; color: var(--text); }
+    .key-phrases { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .phrase { background: white; border: 1px solid #86efac; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px; font-style: italic; }
+    .vocab-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 4px; vertical-align: middle; margin-left: 0.4rem; }
+    .tag-this { background: #ede9fe; color: #6d28d9; }
+    .tag-prev { background: #fef3c7; color: #92400e; }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+    .word-pool-note { max-width: 860px; margin: 0 auto 1.5rem; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius); padding: 0.8rem 1.2rem; font-size: 0.82rem; color: #14532d; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+    .pool-label { font-weight: 700; margin-right: 0.3rem; }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-icon">📝</div>
+  <div class="header-text">
+    <h1>OET Weekly Practice Exam</h1>
+    <p>Week 7 · 21 June 2026 · Physiotherapy · ~310-word cumulative pool</p>
+  </div>
+  <div class="week-badge">Week 7 of 52</div>
+</header>
+
+<nav class="nav-bar">
+  <a href="../index.html">← Vocabulary</a>
+  <a href="index.html">All Exams</a>
+  <a href="#section-1">1 · Vocab</a>
+  <a href="#section-2">2 · Reading</a>
+  <a href="#section-3">3 · Writing</a>
+  <a href="#section-4">4 · Speaking</a>
+</nav>
+
+<div class="instructions">
+  <h3>📋 Exam Instructions</h3>
+  <ul>
+    <li>This exam tests <strong>35 new words from 15–21 June 2026</strong> plus selected review from the ~275-word previous pool.</li>
+    <li>Section 1 features 6 this-week words and 4 review words. Sections 2–4 embed additional vocabulary in context.</li>
+    <li>Complete each section under timed conditions. Click <em>Show Answer</em> only after attempting each question.</li>
+    <li>Target: OET Band B performance (reading comprehension ≥ 60%, writing ≥ 350). Estimated time: <strong>90–100 minutes</strong>.</li>
+  </ul>
+</div>
+
+<div class="word-pool-note">
+  <span class="pool-label">This week's words (15–21 Jun):</span>
+  thoracotomy · capnography · lobectomy · hypoventilation · tamponade · anosognosia · dermatome · neurodynamics · calcaneal · plantarflexion · hypertension · angina · crackles · vasodilatation · orthostatic · aponeurosis · arthrocentesis · metatarsal · supination · thermotherapy · anomia · myoclonus · chorea · autonomy · psychoeducation · microcephaly · coryza · purpura · incontinence · regression · quadriceps · tenderness · haemarthrosis · contralateral · rehabilitation
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 1 — VOCABULARY                                      -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<section class="section-block" id="section-1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-text">
+      <h2>Vocabulary in Clinical Context</h2>
+      <p>10 questions · 6 this week · 4 review · Fill-in-blank, Definition match, Collocation</p>
+    </div>
+    <div class="timer-badge">⏱ 15 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Q1 -->
+    <div class="question">
+      <div class="q-label">Q1 · Fill-in-the-blank · <span class="vocab-tag tag-this">THIS WEEK</span> quadriceps (21 Jun · Musculoskeletal)</div>
+      <div class="q-text">Following anterior knee surgery, the patient demonstrated significant weakness of the <strong>___</strong> muscle group, with particular atrophy noted in the vastus medialis oblique. The treating physiotherapist prescribed targeted strengthening exercises to restore full knee extension power.</div>
+      <div class="q-options">
+        <div class="q-option">A) hamstrings</div>
+        <div class="q-option">B) quadriceps</div>
+        <div class="q-option">C) gastrocnemius</div>
+        <div class="q-option">D) tibialis anterior</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B) quadriceps</strong> — The quadriceps muscle group, comprising the four muscles on the anterior thigh (rectus femoris, vastus lateralis, vastus medialis, and vastus intermedius), is the primary knee extensor and is commonly weakened following knee surgery or prolonged immobilisation.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+      <div class="q-label">Q2 · Fill-in-the-blank · <span class="vocab-tag tag-this">THIS WEEK</span> thermotherapy (18 Jun · Procedures)</div>
+      <div class="q-text">The physiotherapist applied <strong>___</strong> in the form of a heated wheat bag to the patient's lower back for 15 minutes prior to commencing soft tissue mobilisation, aiming to reduce muscle guarding and improve tissue extensibility.</div>
+      <div class="q-options">
+        <div class="q-option">A) cryotherapy</div>
+        <div class="q-option">B) hydrotherapy</div>
+        <div class="q-option">C) thermotherapy</div>
+        <div class="q-option">D) electrotherapy</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) thermotherapy</strong> — Thermotherapy is the therapeutic application of heat to tissues. It promotes vasodilatation, reduces muscle spasm, and increases collagen extensibility, making it useful as a preparatory modality before manual therapy or exercise.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+      <div class="q-label">Q3 · Fill-in-the-blank · <span class="vocab-tag tag-this">THIS WEEK</span> orthostatic (17 Jun · Cardiopulmonary)</div>
+      <div class="q-text">Following six days of bed rest post-operatively, the patient reported dizziness on rising from a sitting position. Blood pressure monitoring confirmed a drop of 28 mmHg in systolic pressure on standing, consistent with <strong>___</strong> hypotension.</div>
+      <div class="q-options">
+        <div class="q-option">A) systolic</div>
+        <div class="q-option">B) diastolic</div>
+        <div class="q-option">C) orthostatic</div>
+        <div class="q-option">D) neurogenic</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) orthostatic</strong> — Orthostatic (postural) hypotension is defined as a sustained reduction in systolic blood pressure of ≥ 20 mmHg or diastolic BP of ≥ 10 mmHg within three minutes of assuming an upright position. It is a recognised risk during early mobilisation following prolonged bed rest.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question">
+      <div class="q-label">Q4 · Fill-in-the-blank · <span class="vocab-tag tag-this">THIS WEEK</span> hypoventilation (15 Jun · Cardiopulmonary)</div>
+      <div class="q-text">Post-operative monitoring revealed <strong>___</strong>, with the patient's respiratory rate falling to 7 breaths per minute and SpO₂ declining to 89%. The recovery nurse administered supplemental oxygen via Hudson mask and alerted the on-call registrar.</div>
+      <div class="q-options">
+        <div class="q-option">A) hyperventilation</div>
+        <div class="q-option">B) hypoventilation</div>
+        <div class="q-option">C) tachypnoea</div>
+        <div class="q-option">D) apnoea</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B) hypoventilation</strong> — Hypoventilation refers to an inadequate rate or depth of breathing, resulting in insufficient alveolar gas exchange, carbon dioxide retention (hypercapnia), and hypoxaemia. It is distinct from apnoea (complete cessation of breathing) and commonly occurs as a side effect of opioid analgesia post-operatively.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question">
+      <div class="q-label">Q5 · Fill-in-the-blank · <span class="vocab-tag tag-prev">REVIEW</span> deconditioning (14 Jun · Signs &amp; Symptoms)</div>
+      <div class="q-text">Following a prolonged hospitalisation of seven weeks, Mr Tane presented with marked <strong>___</strong>, characterised by reduced exercise tolerance, generalised muscle weakness, decreased bone density, and poor cardiovascular endurance — all attributable to sustained physical inactivity.</div>
+      <div class="q-options">
+        <div class="q-option">A) sarcopaenia</div>
+        <div class="q-option">B) malnutrition</div>
+        <div class="q-option">C) deconditioning</div>
+        <div class="q-option">D) fatigue syndrome</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) deconditioning</strong> — Deconditioning is the physiological deterioration across multiple organ systems resulting from prolonged inactivity or bed rest. It differs from sarcopaenia (age-related muscle loss) in that it is primarily activity-related and potentially reversible through targeted rehabilitation.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question">
+      <div class="q-label">Q6 · Definition match · <span class="vocab-tag tag-this">THIS WEEK</span> haemarthrosis (21 Jun · Musculoskeletal)</div>
+      <div class="q-text">Which term describes the <strong>accumulation of blood within a joint cavity</strong>, occurring as a consequence of traumatic injury (e.g., anterior cruciate ligament rupture) or as a complication of anticoagulant therapy?</div>
+      <div class="q-options">
+        <div class="q-option">A) arthralgia</div>
+        <div class="q-option">B) synovitis</div>
+        <div class="q-option">C) haemarthrosis</div>
+        <div class="q-option">D) bursitis</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) haemarthrosis</strong> — Haemarthrosis specifically denotes bleeding into the joint space, presenting with rapid joint swelling, warmth, and restricted movement. It is distinguished from a general joint effusion, which may contain synovial fluid, purulent material, or other fluid. ACL tears and tibial plateau fractures are common traumatic causes.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question">
+      <div class="q-label">Q7 · Definition match · <span class="vocab-tag tag-this">THIS WEEK</span> plantarflexion (16 Jun · Musculoskeletal)</div>
+      <div class="q-text">Which term describes the ankle and foot movement in which the <strong>toes point downward away from the body</strong>, increasing the angle between the plantar surface of the foot and the posterior leg — as occurs when standing on tiptoe or depressing a car accelerator pedal?</div>
+      <div class="q-options">
+        <div class="q-option">A) dorsiflexion</div>
+        <div class="q-option">B) inversion</div>
+        <div class="q-option">C) plantarflexion</div>
+        <div class="q-option">D) pronation</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) plantarflexion</strong> — Plantarflexion decreases the angle at the anterior ankle (i.e., the foot moves away from the shin). The primary plantarflexors are the gastrocnemius and soleus. Normal range is approximately 40–50°. It is the opposite of dorsiflexion, which brings the dorsum of the foot toward the shin.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question">
+      <div class="q-label">Q8 · Definition match · <span class="vocab-tag tag-prev">REVIEW</span> anaemia (10 Jun · Signs &amp; Symptoms)</div>
+      <div class="q-text">Which condition is characterised by a <strong>reduction in circulating erythrocytes or haemoglobin concentration</strong>, resulting in diminished oxygen-carrying capacity and presenting with fatigue, pallor, dyspnoea on exertion, and tachycardia?</div>
+      <div class="q-options">
+        <div class="q-option">A) polycythaemia</div>
+        <div class="q-option">B) thrombocytopaenia</div>
+        <div class="q-option">C) leucocytosis</div>
+        <div class="q-option">D) anaemia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>D) anaemia</strong> — Anaemia is defined in adults as haemoglobin &lt; 130 g/L (males) or &lt; 120 g/L (females). Common causes include iron deficiency, chronic disease, vitamin B12 deficiency, and blood loss. In physiotherapy, anaemia is a key precaution for exercise prescription, as it limits aerobic capacity.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question">
+      <div class="q-label">Q9 · Collocation · <span class="vocab-tag tag-prev">REVIEW</span> synovial (9 Jun · Musculoskeletal)</div>
+      <div class="q-text">Complete the clinical collocation: "<strong>___</strong> fluid" — the viscous, egg-white–like substance secreted by the inner lining of joint capsules, which lubricates articular cartilage and provides nutrients to avascular structures within the joint.</div>
+      <div class="q-options">
+        <div class="q-option">A) articular</div>
+        <div class="q-option">B) interstitial</div>
+        <div class="q-option">C) synovial</div>
+        <div class="q-option">D) pleural</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) synovial</strong> — "Synovial fluid" is the correct and specific term. It is produced by type B synoviocytes in the synovial membrane. Analysis of synovial fluid (viscosity, cell count, crystals) aids in differentiating inflammatory arthritis, infection, and crystal arthropathy. Articular fluid is a non-specific lay term.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question">
+      <div class="q-label">Q10 · Collocation · <span class="vocab-tag tag-this">THIS WEEK</span> calcaneal (16 Jun · Musculoskeletal)</div>
+      <div class="q-text">Complete the clinical collocation: "<strong>calcaneal ___</strong>" — referring to the thick fibrous cord that connects the calf muscles to the heel bone, the strongest tendon in the human body and a common site of overuse injury in runners.</div>
+      <div class="q-options">
+        <div class="q-option">A) calcaneal ligament</div>
+        <div class="q-option">B) calcaneal tendon</div>
+        <div class="q-option">C) calcaneal bursa</div>
+        <div class="q-option">D) calcaneal spur</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B) calcaneal tendon</strong> — The calcaneal tendon (formally <em>tendo calcaneus</em>, commonly called the Achilles tendon) attaches the gastrocnemius and soleus to the posterior calcaneus. "Calcaneal tendon" is the preferred anatomical term in formal clinical documentation. A calcaneal spur and calcaneal bursa are related but distinct structures.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 2 — OET READING                                     -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<section class="section-block" id="section-2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="section-title-text">
+      <h2>OET Reading — Clinical Case Summary</h2>
+      <p>Read the passage then answer 5 questions · Vocabulary highlighted in purple</p>
+    </div>
+    <div class="timer-badge">⏱ 20 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="reading-passage">
+      <h4>Clinical Case Summary — Physiotherapy Outpatient Department</h4>
+      <p>Mr James Ngata, a 68-year-old retired schoolteacher, was referred to the physiotherapy outpatient department three weeks following right total knee arthroplasty (TKA). His past medical history included well-controlled <span class="highlight">hypertension</span> managed with amlodipine, and mild chronic obstructive pulmonary disease (COPD). On auscultation, bilateral basal <span class="highlight">crackles</span> were noted, consistent with his known respiratory history.</p>
+
+      <p>Initial assessment revealed marked <span class="highlight">tenderness</span> along the medial joint line of the operative knee, with palpation eliciting a verbal pain score of 6/10. Active range of motion was limited to 0–82° of flexion. Notably, strength testing of the <span class="highlight">contralateral</span> (left) limb demonstrated relatively preserved quadriceps function at 4+/5, providing a useful functional benchmark for goal-setting and symmetry targets.</p>
+
+      <p>The treating physiotherapist identified signs consistent with <span class="highlight">orthostatic</span> hypotension during the initial standing transfer: Mr Ngata reported dizziness on rising, and blood pressure monitoring confirmed a 26 mmHg drop in systolic pressure. This was attributed to prolonged bed rest and impaired <span class="highlight">vasodilatation</span> responses in the peripheral vasculature — a recognised consequence of inactivity in older adults with pre-existing vascular comorbidities.</p>
+
+      <p>A structured <span class="highlight">rehabilitation</span> programme was commenced, incorporating progressive weight-bearing, cardiovascular reconditioning, and targeted lower limb strengthening. Short- and long-term goals were established in collaboration with Mr Ngata and his family, with return to independent community ambulation targeted within six weeks.</p>
+    </div>
+
+    <!-- Reading Q1 -->
+    <div class="question">
+      <div class="q-label">Q1 · Factual</div>
+      <div class="q-text">Why were bilateral basal crackles noted on auscultation?</div>
+      <div class="q-options">
+        <div class="q-option">A) Due to post-operative pneumonia developing after the procedure</div>
+        <div class="q-option">B) As a result of a pleural effusion related to heart failure</div>
+        <div class="q-option">C) Consistent with his known chronic obstructive pulmonary disease</div>
+        <div class="q-option">D) Caused by aspiration of gastric contents during surgery</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C)</strong> — The passage explicitly states crackles were "consistent with his known respiratory history" of COPD. No other respiratory pathology is mentioned; the other options introduce conditions not described in the text.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q2 -->
+    <div class="question">
+      <div class="q-label">Q2 · Factual</div>
+      <div class="q-text">What specific measurement confirmed orthostatic hypotension in Mr Ngata?</div>
+      <div class="q-options">
+        <div class="q-option">A) SpO₂ dropped to below 90% on standing</div>
+        <div class="q-option">B) Heart rate increased by more than 30 beats per minute</div>
+        <div class="q-option">C) Systolic blood pressure fell by 26 mmHg on standing</div>
+        <div class="q-option">D) Diastolic blood pressure rose by 15 mmHg on standing</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C)</strong> — The passage states "blood pressure monitoring confirmed a 26 mmHg drop in systolic pressure." A ≥ 20 mmHg systolic drop on standing meets the clinical definition of orthostatic hypotension.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q3 -->
+    <div class="question">
+      <div class="q-label">Q3 · Inferential</div>
+      <div class="q-text">Why did the physiotherapist assess quadriceps strength in the <em>contralateral</em> limb?</div>
+      <div class="q-options">
+        <div class="q-option">A) Because the left knee had also been surgically treated</div>
+        <div class="q-option">B) To establish a symmetry benchmark and functional goal for rehabilitation</div>
+        <div class="q-option">C) To check for signs of deep vein thrombosis in the unaffected leg</div>
+        <div class="q-option">D) Because the right limb was too painful to assess at initial consultation</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B)</strong> — The passage states the contralateral limb's strength provided "a useful functional benchmark for goal-setting and symmetry targets." This is standard practice post-TKA: the unaffected limb guides rehabilitation targets. The other options are not supported by the text.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q4 -->
+    <div class="question">
+      <div class="q-label">Q4 · Inferential</div>
+      <div class="q-text">What does the reference to impaired vasodilatation responses suggest about the physiological mechanism behind Mr Ngata's dizziness on standing?</div>
+      <div class="q-options">
+        <div class="q-option">A) His antihypertensive medication was causing paradoxical vasospasm</div>
+        <div class="q-option">B) His peripheral blood vessels failed to dilate sufficiently to maintain blood pressure on standing</div>
+        <div class="q-option">C) Cardiac output had been permanently reduced by the surgical procedure</div>
+        <div class="q-option">D) His COPD was limiting oxygen delivery to the peripheral vasculature</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B)</strong> — Under normal circumstances, peripheral vasodilatation and then reflex vasoconstriction maintain blood pressure on standing. In deconditioned patients, this regulatory response is blunted, leading to venous pooling in the lower limbs and a consequent drop in cerebral perfusion — causing dizziness. The passage attributes this specifically to inactivity, not to medication or cardiac/respiratory causes.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q5 -->
+    <div class="question">
+      <div class="q-label">Q5 · Vocabulary in context</div>
+      <div class="q-text">In this passage, "tenderness" (paragraph 2) most closely means:</div>
+      <div class="q-options">
+        <div class="q-option">A) Emotional distress reported by the patient about his surgical outcome</div>
+        <div class="q-option">B) Pain or discomfort elicited by applying pressure to a body part</div>
+        <div class="q-option">C) Generalised inflammation of the joint capsule and surrounding tissues</div>
+        <div class="q-option">D) Reduced range of motion due to scar tissue formation</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B)</strong> — In a clinical context, "tenderness" refers specifically to pain provoked by external palpation or pressure, not spontaneous pain. The passage describes it with the verb "palpation eliciting a verbal pain score of 6/10," confirming that tenderness here means pain on touch. This is a key OET vocabulary distinction: <em>pain</em> = spontaneous; <em>tenderness</em> = pain provoked by examination.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 3 — OET WRITING                                     -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<section class="section-block" id="section-3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="section-title-text">
+      <h2>OET Writing Task — Physiotherapy Referral Letter</h2>
+      <p>Case notes provided · Write a formal clinical referral letter · ~180–200 words</p>
+    </div>
+    <div class="timer-badge">⏱ 40 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="case-notes">
+      <div class="cn-title">Case Notes — PhysioFirst Clinic, Penrose, Auckland</div>
+      <strong>Pt:</strong> Mrs Aroha Parata &nbsp;|&nbsp; 52F &nbsp;|&nbsp; DOB: 14/03/1974<br>
+      <strong>Assessed:</strong> 18/06/2026 &nbsp;|&nbsp; Physiotherapist: L. Chirophysio<br>
+      <strong>Occupation:</strong> Retail assistant — 8-hour standing shifts, 5 days/week<br>
+      <br>
+      <strong>CC:</strong> L foot pain, 3/12 duration; worse first thing AM (&gt;10 min to resolve); ↑ with prolonged standing/walking<br>
+      <br>
+      <strong>Hx:</strong><br>
+      — Gradual onset L plantar heel pain; no precipitating trauma<br>
+      — BMI 31.4 &nbsp;|&nbsp; T2DM (diet-controlled; no confirmed neuropathy)<br>
+      — No prior L foot injury or surgery<br>
+      — Activity: ↓ walking for recreation 6/52 due to pain-avoidance; functional <strong>deconditioning</strong> noted<br>
+      <br>
+      <strong>O/E:</strong><br>
+      — Max tenderness: medial calcaneal tubercle + proximal plantar fascia (<strong>aponeurosis</strong>)<br>
+      — <strong>Metatarsal</strong> squeeze test: negative (rules out stress fracture / Morton's neuroma)<br>
+      — Gait analysis: excessive <strong>supination</strong> R &gt; L; reduced shock absorption observed<br>
+      — 1st MTP ROM: dorsiflexion 65°, plantarflexion 30° (within normal limits)<br>
+      — Silfverskiöld test: +ve (Achilles tightness, gastrocnemius-predominant)<br>
+      — No swelling, erythema, or haemarthrosis noted<br>
+      <br>
+      <strong>Rx to date (by physio):</strong><br>
+      — <strong>Thermotherapy</strong> (heated wheat bag 15 min prior to stretching) × 4/52 — partial pain relief only<br>
+      — Plantar fascia / Achilles stretching programme prescribed<br>
+      — Temporary prefabricated arch support trialled — minimal sustained benefit<br>
+      — Patient motivated; keen to return to full work duties without pain<br>
+      <br>
+      <strong>Goals:</strong> ↓ pain, RTW full duties, long-term orthotic &amp; footwear education
+    </div>
+
+    <div class="writing-task-box">
+      <strong>Writing Task</strong>
+      Using the information in the case notes above, write a <strong>referral letter</strong> to:<br><br>
+      <strong>Dr Sarah Chen</strong><br>
+      Podiatrist, Auckland Foot &amp; Ankle Clinic<br>
+      Level 2, 84 Remuera Road, Remuera, Auckland 1050<br><br>
+      Request a comprehensive podiatric assessment and management plan for Mrs Parata's left foot condition. In your letter, include:<br>
+      — Reason for referral and relevant clinical background<br>
+      — Key findings from your assessment (use appropriate clinical terminology)<br>
+      — Treatment already provided and its response<br>
+      — Specific questions or areas you would like Dr Chen to address<br><br>
+      <em>Write approximately 180–200 words. Use British English spelling throughout. Do not use bullet points in the letter itself.</em>
+    </div>
+
+    <details>
+      <summary>Show Self-Assessment Checklist (reveal after writing)</summary>
+      <div class="answer-box">
+        <div class="checklist">
+          <h4>Writing Self-Assessment Checklist — 10 Criteria</h4>
+          <ul>
+            <li>Letter begins with today's date, full addressee details, and an appropriate salutation (e.g., "Dear Dr Chen,")</li>
+            <li>Opening paragraph clearly states the reason for referral and names the patient with age, sex, and occupation</li>
+            <li>Relevant medical history (T2DM, BMI, occupational demands) mentioned concisely</li>
+            <li>Clinical findings described using accurate anatomical terminology ("medial calcaneal tubercle," "plantar fascia")</li>
+            <li><strong>Aponeurosis</strong> used correctly in context of the plantar fascia assessment findings</li>
+            <li><strong>Metatarsal</strong> squeeze test result documented with clinical interpretation (negative — ruling out stress fracture)</li>
+            <li><strong>Thermotherapy</strong> mentioned as a treatment modality with duration and patient response noted</li>
+            <li><strong>Supination</strong> abnormality described with its functional relevance to the patient's condition</li>
+            <li>Functional deconditioning noted as a consequence of activity avoidance due to pain</li>
+            <li>Polite, professional closing with a specific request (e.g., custom orthotics, footwear advice) and offer of further information</li>
+          </ul>
+        </div>
+        <p style="margin-top:0.8rem; font-size:0.85rem;"><strong>Model vocabulary use in the letter:</strong> "...maximal tenderness over the proximal plantar <strong>aponeurosis</strong> and medial calcaneal tubercle... the <strong>metatarsal</strong> squeeze test was negative, making stress fracture an unlikely cause... <strong>thermotherapy</strong> has provided only partial relief over four weeks... gait analysis revealed excessive <strong>supination</strong> on the right side compared with the left, which may be contributing to altered load distribution..."</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 4 — OET SPEAKING                                    -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+
+<section class="section-block" id="section-4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="section-title-text">
+      <h2>OET Speaking — Role Plays</h2>
+      <p>2 role plays · Practise with a partner or record yourself · Click to reveal model outlines</p>
+    </div>
+    <div class="timer-badge">⏱ 20 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Role Play 1 -->
+    <div class="role-play-card">
+      <h4>Role Play 1 — Outpatient Physiotherapy Clinic</h4>
+      <dl>
+        <dt>Setting</dt>
+        <dd>Physiotherapy outpatient clinic, Auckland. Three weeks post right ACL reconstruction.</dd>
+        <dt>Your role</dt>
+        <dd>Physiotherapist (you, the student). The patient card is read by your practice partner.</dd>
+        <dt>Patient card (give to partner)</dt>
+        <dd>You are Mr David Lee, 45M. You had ACL reconstruction surgery three weeks ago. You are worried because your left (unaffected) knee now feels stiff, and you wonder if something has gone wrong. You want to know how long rehabilitation will take and when you can return to social football.</dd>
+        <dt>Your tasks</dt>
+        <dd>
+          1. Explain what ACL <strong>rehabilitation</strong> involves and set realistic expectations.<br>
+          2. Reassure Mr Lee about his <strong>contralateral</strong> knee stiffness — explain why this commonly occurs.<br>
+          3. Explain the importance of strengthening his <strong>quadriceps</strong> on both sides.<br>
+          4. Address his question about returning to football.
+        </dd>
+      </dl>
+      <p><strong>Suggested opening:</strong> <em>"Good morning, Mr Lee. How has your knee been feeling since we last saw you? I also understand you have a concern about your other knee — I'm glad you mentioned it."</em></p>
+      <div class="key-phrases">
+        <span class="phrase">"Your rehabilitation programme is designed to..."</span>
+        <span class="phrase">"The contralateral knee — your left — can stiffen because..."</span>
+        <span class="phrase">"Strengthening your quadriceps on both sides will help..."</span>
+        <span class="phrase">"It's common to offload the unaffected limb and..."</span>
+        <span class="phrase">"We're typically looking at 9 to 12 months before return to..."</span>
+      </div>
+      <details>
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Model outline:</strong><br>
+          1. <em>Open:</em> Warm greeting; acknowledge patient's concerns about both knees; confirm he's comfortable.<br>
+          2. <em>Rehab explanation:</em> Describe the 5 phases of ACL rehabilitation — acute (swelling/pain control), range of motion, strength, neuromuscular control, sport-specific. Explain it typically takes 9–12 months to safely return to cutting/contact sport. <br>
+          3. <em>Contralateral stiffness:</em> Explain that after injury to one limb, patients instinctively offload it and bear more weight through the other side. This altered gait pattern, combined with reduced overall activity, causes the unaffected limb to stiffen. Reassure him it is not an injury.<br>
+          4. <em>Quadriceps importance:</em> Explain that quadriceps strength on the surgical side is the key benchmark for return-to-sport clearance (&gt;90% limb symmetry index). Also address bilateral strengthening to prevent compensatory overuse of the contralateral limb.<br>
+          5. <em>Close:</em> Address football goal positively; set next milestone (e.g., 6-week review). Invite questions.
+        </div>
+      </details>
+    </div>
+
+    <!-- Role Play 2 -->
+    <div class="role-play-card">
+      <h4>Role Play 2 — Hospital Inpatient Ward (Post-Cardiac Surgery)</h4>
+      <dl>
+        <dt>Setting</dt>
+        <dd>General surgical ward. Day 2 following coronary artery bypass graft (CABG) surgery.</dd>
+        <dt>Your role</dt>
+        <dd>Physiotherapist conducting first post-operative mobilisation assessment.</dd>
+        <dt>Patient card (give to partner)</dt>
+        <dd>You are Mrs Yuki Tanaka, 70F. You had open-heart surgery two days ago. You are anxious about getting up for the first time — you feel unsteady and are worried about falling. You have a long history of high blood pressure. You want to know if it is safe to stand up and what might happen.</dd>
+        <dt>Your tasks</dt>
+        <dd>
+          1. Explain the risk of <strong>orthostatic</strong> hypotension in plain language before standing.<br>
+          2. Relate her <strong>hypertension</strong> history and bed rest to her current cardiovascular response.<br>
+          3. Explain <strong>vasodilatation</strong> in simple terms — why blood vessels need to "open up" and why this may be sluggish.<br>
+          4. Describe your safety protocol (sit → dangle → stand with monitoring).
+        </dd>
+      </dl>
+      <p><strong>Suggested opening:</strong> <em>"Good morning, Mrs Tanaka. My name is Leo — I'm one of the physiotherapists. Today we're going to try to get you sitting up and, if you feel ready, standing for the first time. Before we do, I'd like to explain what might happen so you feel prepared."</em></p>
+      <div class="key-phrases">
+        <span class="phrase">"Because you have a history of high blood pressure..."</span>
+        <span class="phrase">"When we stand up, our blood vessels need to open up — we call this vasodilatation..."</span>
+        <span class="phrase">"Orthostatic hypotension just means a temporary drop in blood pressure..."</span>
+        <span class="phrase">"If you feel dizzy or lightheaded, please tell me immediately..."</span>
+        <span class="phrase">"We'll take this very slowly — sit first, then dangle your legs, then stand."</span>
+      </div>
+      <details>
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Model outline:</strong><br>
+          1. <em>Open:</em> Introduce yourself; confirm patient's name and how she feels today; acknowledge anxiety with empathy: <em>"It's completely understandable to feel a bit nervous — let's take this at your pace."</em><br>
+          2. <em>Rationale for mobilisation:</em> Explain early mobilisation is essential after cardiac surgery to prevent blood clots, chest complications, and muscle loss — reassure her the surgical team has cleared her to begin today.<br>
+          3. <em>Explain orthostatic hypotension:</em> Use plain language — <em>"When you've been lying flat for two days, sometimes when you first sit or stand, your blood pressure can drop temporarily. This can make you feel dizzy or lightheaded. It's called orthostatic hypotension."</em><br>
+          4. <em>Link to vasodilatation and hypertension:</em> Explain simply — <em>"Normally, the blood vessels in your legs open up and then quickly squeeze to keep blood going to your brain. After surgery and bed rest, this reflex can be a bit slow. Because you've had high blood pressure for a long time, the blood vessels may take a little longer to respond."</em><br>
+          5. <em>Safety protocol:</em> Describe step-by-step: check BP lying → sit upright (wait 2 min, recheck BP) → dangle legs over edge (wait 2 min) → stand with support (recheck BP). Explain what will trigger sitting back down (dizziness, BP drop &gt;20 mmHg, pallor).<br>
+          6. <em>Close:</em> Invite questions; reassure; <em>"You're doing wonderfully — let's take it one step at a time."</em>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<footer class="page-footer">
+  Week 7 OET Exam · 21 June 2026 · Leo · AUT Master of Physiotherapy Practice<br>
+  20 words tested across 4 sections · Cumulative pool: ~310 words
+</footer>
+
+</body>
+</html>
