@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 63 · 2026-06-23</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 63 · 23 Jun 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Neurological + Musculoskeletal · Signs &amp; Symptoms + Procedures</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">spondylolysis</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌspɒn.dɪˈlɒl.ɪ.sɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/spondylolysis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/spondylolysis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A stress fracture or defect in the pars interarticularis — a small section of bone connecting the upper and lower facet joints within a vertebra. Most common at L5, it can be unilateral or bilateral, and may progress to spondylolisthesis (forward vertebral slippage) if left unmanaged.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">脊椎弓解離（椎弓峽部缺損）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">lumbar spondylolysis</span>
+          <span class="colloc-item">bilateral spondylolysis</span>
+          <span class="colloc-item">L5 spondylolysis</span>
+          <span class="colloc-item">symptomatic spondylolysis</span>
+          <span class="colloc-item">spondylolysis repair</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mr. Chen, a 16-year-old competitive gymnast, was referred to physiotherapy with a confirmed diagnosis of bilateral L5 <strong>spondylolysis</strong>. He presents with activity-related low back pain and is currently managed conservatively with bracing and activity modification."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">spondylolytic (adj)</span>
+          <span class="related-item">spondylolisthesis (forward vertebral slip)</span>
+          <span class="related-item">pars defect (synonym)</span>
+          <span class="related-item">stress fracture (mechanism)</span>
+          <span class="related-item">spondylosis (degenerative — different condition)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">plexopathy</div>
+        <div class="card-meta">
+          <span class="ipa">/plekˈsɒp.ə.θi/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/plexopathy" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/plexopathy" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Damage or disease affecting a nerve plexus — a network of intersecting nerves. Most commonly involves the brachial plexus (supplying the arm and shoulder) or the lumbosacral plexus (supplying the lower limb). Causes include trauma, tumour compression, radiation injury, and inflammatory conditions. Presents with limb weakness, sensory loss, and pain in the distribution of the affected plexus.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">神經叢病變</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">brachial plexopathy</span>
+          <span class="colloc-item">lumbosacral plexopathy</span>
+          <span class="colloc-item">traumatic plexopathy</span>
+          <span class="colloc-item">radiation-induced plexopathy</span>
+          <span class="colloc-item">plexopathy secondary to</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mrs. Singh was referred with a diagnosis of left brachial <strong>plexopathy</strong> following a traction injury sustained during a motor vehicle accident. She presents with significant weakness of the left shoulder girdle and sensory loss along the C5–C6 dermatomal distribution."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">plexus (nerve network)</span>
+          <span class="related-item">brachial plexus (arm/shoulder)</span>
+          <span class="related-item">lumbosacral plexus (lower limb)</span>
+          <span class="related-item">neuropathy (broader term)</span>
+          <span class="related-item">radiculopathy (nerve root — different level)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">laminectomy</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌlæm.ɪˈnek.tə.mi/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/laminectomy" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/laminectomy" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A surgical procedure in which part or all of the lamina — the posterior arch of a vertebra — is removed to relieve pressure on the spinal cord or nerve roots. Commonly performed for lumbar spinal stenosis, herniated intervertebral discs, or spinal tumours. May be combined with spinal fusion for added stability.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">椎板切除術</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">lumbar laminectomy</span>
+          <span class="colloc-item">cervical laminectomy</span>
+          <span class="colloc-item">decompressive laminectomy</span>
+          <span class="colloc-item">laminectomy with fusion</span>
+          <span class="colloc-item">post-laminectomy rehabilitation</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mr. Thompson is referred post lumbar <strong>laminectomy</strong> at L3–L4 for rehabilitation. He underwent surgery six weeks ago and is progressing well, though he continues to report residual left leg weakness and intermittent pins and needles. Please assess and commence a graded strengthening programme."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">laminotomy (partial lamina removal)</span>
+          <span class="related-item">discectomy (disc removal)</span>
+          <span class="related-item">spinal decompression (functional goal)</span>
+          <span class="related-item">laminoplasty (lamina reshaping)</span>
+          <span class="related-item">lamina (posterior vertebral arch)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">iliopsoas</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌɪl.i.əʊˈsəʊ.æs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/iliopsoas" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/iliopsoas" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The combined muscle group formed by the iliacus and psoas major muscles. It is the primary hip flexor, originating from the lumbar vertebrae and iliac fossa, inserting onto the lesser trochanter of the femur. Tightness or weakness of the iliopsoas is a common clinical finding in low back pain, hip conditions, and postural dysfunction.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">髂腰肌</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">iliopsoas tightness</span>
+          <span class="colloc-item">iliopsoas weakness</span>
+          <span class="colloc-item">iliopsoas tendinopathy</span>
+          <span class="colloc-item">iliopsoas stretch</span>
+          <span class="colloc-item">iliopsoas release</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Assessment revealed marked bilateral <strong>iliopsoas</strong> tightness, consistent with a predominantly sedentary occupational posture. A structured hip flexor stretching and core stabilisation programme has been commenced to address the biomechanical imbalance contributing to his chronic low back pain."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">iliacus (component muscle)</span>
+          <span class="related-item">psoas major (component muscle)</span>
+          <span class="related-item">hip flexor (functional description)</span>
+          <span class="related-item">Thomas test (assessment for tightness)</span>
+          <span class="related-item">lesser trochanter (insertion point)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">apprehension</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌæp.rɪˈhen.ʃən/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/apprehension" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/apprehension" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">In clinical practice, apprehension has two distinct uses: (1) a patient's anxiety or fear regarding a movement, procedure, or diagnosis; (2) a positive apprehension sign during physical examination, where the patient expresses pain, muscle guarding, or fear of impending dislocation — most commonly elicited during the glenohumeral apprehension test for anterior shoulder instability at 90° abduction and external rotation.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">憂慮感；（理學檢查）恐懼徵象</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">positive apprehension sign</span>
+          <span class="colloc-item">glenohumeral apprehension test</span>
+          <span class="colloc-item">apprehension with shoulder abduction</span>
+          <span class="colloc-item">patient apprehension</span>
+          <span class="colloc-item">apprehension regarding</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "On examination, the patient demonstrated a positive <strong>apprehension</strong> sign at 90° of shoulder abduction and external rotation, consistent with anterior glenohumeral instability. She also expressed significant <strong>apprehension</strong> regarding return to overhead sporting activities and will benefit from graded exposure as part of her rehabilitation."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">apprehensive (adj)</span>
+          <span class="related-item">apprehension test (clinical test)</span>
+          <span class="related-item">anxiety (related — patient context)</span>
+          <span class="related-item">glenohumeral instability (associated condition)</span>
+          <span class="related-item">relocation test (follow-up test)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 63)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr. Liam Nguyen, a 17-year-old competitive swimmer, was referred to your physiotherapy department
+      following surgical management of L5 <span class="highlight">spondylolysis</span> with associated
+      grade I spondylolisthesis. He underwent decompressive <span class="highlight">laminectomy</span>
+      at L4–L5 eight weeks ago and has been cleared by his surgeon to commence active rehabilitation.
+      <br><br>
+      On initial physiotherapy assessment, Liam demonstrated marked bilateral <span class="highlight">iliopsoas</span>
+      tightness and weakness of the lumbar stabilisers, consistent with deconditioning following a prolonged
+      period of restricted activity. He expressed significant <span class="highlight">apprehension</span>
+      regarding trunk rotation and lumbar loading activities, and required reassurance that these movements
+      are safe within his current post-operative precautions.
+      <br><br>
+      In addition, he was referred to neurology for review of an incidental finding of left-sided upper
+      limb weakness noted on post-operative imaging, which has raised the possibility of a concurrent
+      brachial <span class="highlight">plexopathy</span>. Results of nerve conduction studies are pending.
+      <br><br>
+      Goals of physiotherapy include progressive lumbar stabilisation, hip flexor flexibility, gradual
+      return to aquatic training, and graded desensitisation to address movement apprehension.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When documenting post-surgical patients, always specify the
+      <em>procedure performed</em> (e.g. "decompressive laminectomy at L4–L5"), the <em>time since surgery</em>
+      (e.g. "eight weeks post-operatively"), and any <em>psychological barriers</em> (e.g. "apprehension
+      regarding lumbar loading"). Addressing both physical and psychosocial factors demonstrates thorough
+      clinical reasoning in OET Writing tasks.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 63 · 2026-06-23 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 神經 Neurological · 骨科 Musculoskeletal · Signs &amp; Symptoms · Procedures &amp; Interventions</p>
+</footer>
+
+</body>
+</html>
