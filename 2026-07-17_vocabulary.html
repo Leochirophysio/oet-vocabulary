@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 70 · 2026-07-17</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 70 · 17 Jul 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: 神經 Neurological · 骨科 Musculoskeletal</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">encephalitis</div>
+        <div class="card-meta">
+          <span class="ipa">/ɪnˌsɛf.əˈlaɪ.tɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/encephalitis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/encephalitis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Inflammation of the brain parenchyma, most commonly caused by viral infection (e.g. herpes simplex virus) or autoimmune processes. Presents with fever, altered consciousness, seizures, and focal neurological deficits; a medical emergency requiring urgent investigation and treatment.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">腦炎</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">viral encephalitis</span>
+          <span class="colloc-item">autoimmune encephalitis</span>
+          <span class="colloc-item">herpes simplex encephalitis</span>
+          <span class="colloc-item">acute encephalitis</span>
+          <span class="colloc-item">encephalitis with seizures</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mr. Patel was admitted to the neurology ward with suspected autoimmune <strong>encephalitis</strong>, presenting with a one-week history of behavioural change, fever, and two witnessed tonic-clonic seizures; MRI brain demonstrated T2 hyperintensity in the bilateral medial temporal lobes."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">encephalitic (adj)</span>
+          <span class="related-item">encephalopathy (brain dysfunction, broader)</span>
+          <span class="related-item">meningitis (inflammation of meninges)</span>
+          <span class="related-item">meningoencephalitis (combined)</span>
+          <span class="related-item">cerebritis (focal brain inflammation)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">meningism</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈmɛn.ɪn.dʒɪz.əm/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/meningism" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/meningism" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A clinical syndrome characterised by neck stiffness (nuchal rigidity), photophobia, and headache, suggesting irritation of the meninges. May occur in meningitis, subarachnoid haemorrhage, or encephalitis. Assessed by Kernig's and Brudzinski's signs on neurological examination.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">腦膜刺激症</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">signs of meningism</span>
+          <span class="colloc-item">positive meningism</span>
+          <span class="colloc-item">meningism on examination</span>
+          <span class="colloc-item">meningism without confirmed infection</span>
+          <span class="colloc-item">nuchal rigidity / meningism</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "On neurological examination, Mrs. Chen demonstrated marked <strong>meningism</strong> with positive Kernig's and Brudzinski's signs alongside severe photophobia; she was referred urgently to the emergency department for lumbar puncture and further management."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">meningismus (alternative term)</span>
+          <span class="related-item">nuchal rigidity (key feature)</span>
+          <span class="related-item">photophobia (feature)</span>
+          <span class="related-item">Kernig's sign (test)</span>
+          <span class="related-item">meninges (anatomical site)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">dysdiadochokinesia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌdɪs.daɪˌæd.ə.kəʊ.kɪˈniː.zi.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/dysdiadochokinesia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/dysdiadochokinesia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Impaired ability to perform rapid, rhythmic alternating movements (such as forearm pronation and supination), indicative of cerebellar dysfunction. Tested clinically by asking the patient to rapidly alternate between slapping the palm and dorsum of the hand on the thigh.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">輪替運動障礙</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">bilateral dysdiadochokinesia</span>
+          <span class="colloc-item">dysdiadochokinesia on testing</span>
+          <span class="colloc-item">cerebellar dysdiadochokinesia</span>
+          <span class="colloc-item">dysdiadochokinesia of the upper limbs</span>
+          <span class="colloc-item">dysdiadochokinesia and intention tremor</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Cerebellar function testing revealed bilateral <strong>dysdiadochokinesia</strong> and intention tremor in the upper limbs, consistent with the patient's diagnosis of spinocerebellar ataxia; physiotherapy was commenced to address coordination, balance, and upper limb functional deficits."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">adiadochokinesia (complete inability)</span>
+          <span class="related-item">diadochokinesia (normal alternating movement)</span>
+          <span class="related-item">dysmetria (overshooting on reaching)</span>
+          <span class="related-item">ataxia (broader cerebellar incoordination)</span>
+          <span class="related-item">cerebellar signs (clinical category)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">cruciate</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈkruː.si.ɪt/</span>
+          <span class="pos">adjective / noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/cruciate" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/cruciate" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Cross-shaped; in orthopaedics, refers to the cruciate ligaments of the knee — the anterior cruciate ligament (ACL) and posterior cruciate ligament (PCL) — which cross within the joint and provide anteroposterior and rotational stability to the knee.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">十字形的；十字韌帶</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">anterior cruciate ligament (ACL)</span>
+          <span class="colloc-item">posterior cruciate ligament (PCL)</span>
+          <span class="colloc-item">cruciate ligament tear</span>
+          <span class="colloc-item">cruciate reconstruction</span>
+          <span class="colloc-item">cruciate-deficient knee</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mr. Thompson sustained a complete rupture of the anterior <strong>cruciate</strong> ligament during a rugby tackle, confirmed on MRI; he has been referred to the orthopaedic surgeon for consideration of cruciate ligament reconstruction, with pre-operative physiotherapy commenced to restore full range of motion and quadriceps strength."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">ACL / PCL (abbreviations)</span>
+          <span class="related-item">collateral ligament (medial / lateral)</span>
+          <span class="related-item">ligamentous laxity</span>
+          <span class="related-item">Lachman test (ACL assessment)</span>
+          <span class="related-item">pivot shift (ACL instability sign)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">synovectomy</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌsɪn.əˈvɛk.tə.mi/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/synovectomy" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/synovectomy" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Surgical excision of the synovial membrane lining a joint, performed to treat conditions in which the synovium is chronically inflamed and hypertrophied, such as rheumatoid arthritis or pigmented villonodular synovitis, when conservative management has failed.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">滑膜切除術</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">arthroscopic synovectomy</span>
+          <span class="colloc-item">open synovectomy</span>
+          <span class="colloc-item">total synovectomy</span>
+          <span class="colloc-item">post-synovectomy rehabilitation</span>
+          <span class="colloc-item">synovectomy of the knee</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Following unsuccessful conservative management of rheumatoid arthritis affecting the right knee, Mrs. Ahmed underwent arthroscopic <strong>synovectomy</strong> and has been referred to physiotherapy for post-operative rehabilitation, focusing on restoring range of motion, reducing joint effusion, and rebuilding quadriceps strength."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">synovium / synovial membrane (tissue removed)</span>
+          <span class="related-item">synovitis (indication for surgery)</span>
+          <span class="related-item">arthroscopy (surgical approach)</span>
+          <span class="related-item">rheumatoid arthritis (common indication)</span>
+          <span class="related-item">arthroplasty (more extensive joint procedure)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 70)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr. James Liu, a 45-year-old male software engineer with no significant past medical history,
+      was admitted to the neurology ward following a one-week history of confusion, low-grade fever,
+      and progressive behavioural change. Initial assessment revealed <span class="highlight">meningism</span>
+      with nuchal rigidity and marked photophobia. Lumbar puncture findings were consistent with
+      autoimmune <span class="highlight">encephalitis</span>, and the patient was commenced on
+      intravenous immunoglobulin and high-dose corticosteroids.
+      <br><br>
+      On neurological examination by the physiotherapist, Mr. Liu demonstrated bilateral
+      <span class="highlight">dysdiadochokinesia</span> in the upper limbs, intention tremor,
+      and truncal ataxia, indicating significant cerebellar involvement. He was unable to maintain
+      standing balance unsupported and required maximum assistance for all transfers.
+      <br><br>
+      He has been referred to the inpatient neurorehabilitation team for assessment and commencement
+      of a structured rehabilitation programme. Treatment goals include improvement of upper limb
+      coordination, restoration of safe independent mobility, and patient and family education
+      regarding expected recovery trajectory.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When writing neurological referral letters, specify the
+      <em>neurological signs elicited</em> (e.g. "bilateral dysdiadochokinesia and intention tremor"),
+      the <em>functional impact</em> (e.g. "unable to maintain standing balance unsupported"), and the
+      <em>aetiology</em> (e.g. "autoimmune encephalitis"). Avoid vague terms such as "brain problems" or
+      "coordination issues" — precise clinical language is essential for OET Writing Task B.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 70 · 2026-07-17 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 神經 Neurological · 骨科 Musculoskeletal · Signs &amp; Symptoms · Procedures &amp; Interventions</p>
+</footer>
+
+</body>
+</html>
