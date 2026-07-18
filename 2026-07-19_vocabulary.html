@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 72 · 2026-07-19</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 72 · 19 Jul 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Musculoskeletal + Procedures &amp; Interventions</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">remodelling</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌriːˈmɒd.əl.ɪŋ/</span>
+          <span class="pos">noun / verb (gerund)</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/remodelling" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/remodeling" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The continuous physiological process by which bone or connective tissue is broken down (resorption) and rebuilt (formation) in response to mechanical loading, injury, or metabolic demand; a key phase in fracture healing and surgical recovery.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">重塑（骨骼／組織重塑）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">bone remodelling</span>
+          <span class="colloc-item">tissue remodelling</span>
+          <span class="colloc-item">adaptive remodelling</span>
+          <span class="colloc-item">cortical remodelling</span>
+          <span class="colloc-item">remodelling phase</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Serial radiographs at eight weeks post-fixation demonstrate progressive cortical <strong>remodelling</strong> at the fracture site, consistent with an appropriate healing response to axial loading."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">remodel (verb)</span>
+          <span class="related-item">resorption (breakdown phase)</span>
+          <span class="related-item">ossification (bone formation)</span>
+          <span class="related-item">Wolff's Law (mechanical adaptation)</span>
+          <span class="related-item">osteogenesis (bone growth)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">allograft</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈæl.ə.ɡrɑːft/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/allograft" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/allograft" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Tissue or bone transplanted from a genetically non-identical donor of the same species; commonly used in orthopaedic surgery for ligament reconstruction (e.g. ACL), bone defect filling, or cartilage repair when autogenous tissue is unavailable or insufficient.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">同種異體移植物；異體移植</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">bone allograft</span>
+          <span class="colloc-item">tendon allograft</span>
+          <span class="colloc-item">allograft reconstruction</span>
+          <span class="colloc-item">allograft versus autograft</span>
+          <span class="colloc-item">structural allograft</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient underwent anterior cruciate ligament reconstruction using a tibialis anterior tendon <strong>allograft</strong>, and has been referred for a structured rehabilitation programme commencing at six weeks post-operatively."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">autograft (from same patient)</span>
+          <span class="related-item">xenograft (cross-species graft)</span>
+          <span class="related-item">graft (general term)</span>
+          <span class="related-item">allogeneic (adj — same species)</span>
+          <span class="related-item">reconstruction (noun)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">ganglion</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈɡæŋ.ɡli.ən/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/ganglion" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/ganglion" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A benign, fluid-filled cystic swelling arising from a tendon sheath or joint capsule, most commonly presenting on the dorsal aspect of the wrist; may vary in size, cause localised discomfort or pressure symptoms, and occasionally resolve spontaneously.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">腱鞘囊腫；神經節囊腫</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">dorsal ganglion</span>
+          <span class="colloc-item">wrist ganglion</span>
+          <span class="colloc-item">ganglion cyst</span>
+          <span class="colloc-item">recurrent ganglion</span>
+          <span class="colloc-item">excision of ganglion</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "A firm, fluctuant <strong>ganglion</strong> cyst was identified on the dorsal aspect of the right wrist, measuring approximately 1.5 cm in diameter, with no associated neurovascular compromise or restriction of active range of motion."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">ganglia (plural)</span>
+          <span class="related-item">cyst (general term)</span>
+          <span class="related-item">fluctuant (adj — fluid-filled)</span>
+          <span class="related-item">aspiration (drainage treatment)</span>
+          <span class="related-item">excision (surgical removal)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">meniscectomy</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌmen.ɪˈsek.tə.mi/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/meniscectomy" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/meniscectomy" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Surgical removal of part (partial meniscectomy) or all (total meniscectomy) of the meniscus of the knee, typically performed arthroscopically to address meniscal tears that are not amenable to primary repair, aiming to relieve mechanical pain and locking.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">半月板切除術</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">partial meniscectomy</span>
+          <span class="colloc-item">arthroscopic meniscectomy</span>
+          <span class="colloc-item">total meniscectomy</span>
+          <span class="colloc-item">post-meniscectomy rehabilitation</span>
+          <span class="colloc-item">meniscectomy versus meniscal repair</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Following arthroscopic partial <strong>meniscectomy</strong> of the medial compartment, the patient has been referred for physiotherapy to address residual quadriceps inhibition and restore full weight-bearing tolerance over the next four to six weeks."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">meniscus (noun — the structure)</span>
+          <span class="related-item">meniscal repair (alternative surgery)</span>
+          <span class="related-item">arthroscopy (surgical approach)</span>
+          <span class="related-item">chondroprotection (cartilage preservation)</span>
+          <span class="related-item">medial / lateral compartment</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">chondroplasty</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈkɒn.drə.plæs.ti/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/chondroplasty" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/chondroplasty" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A surgical procedure to repair or smooth damaged articular cartilage, performed arthroscopically by shaving or contouring fibrillated or irregular cartilage surfaces within a joint; aims to reduce mechanical symptoms and slow articular deterioration.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">軟骨整形術；軟骨修復術</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">arthroscopic chondroplasty</span>
+          <span class="colloc-item">chondroplasty of the knee</span>
+          <span class="colloc-item">chondroplasty versus microfracture</span>
+          <span class="colloc-item">cartilage chondroplasty</span>
+          <span class="colloc-item">post-chondroplasty rehabilitation</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient underwent arthroscopic <strong>chondroplasty</strong> to address grade III chondral lesions on the medial femoral condyle, and physiotherapy is now recommended to restore range of motion and facilitate graded return to weight-bearing activity."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">chondromalacia (cartilage softening)</span>
+          <span class="related-item">articular cartilage (target tissue)</span>
+          <span class="related-item">microfracture (deeper cartilage repair)</span>
+          <span class="related-item">fibrillation (cartilage fraying)</span>
+          <span class="related-item">arthroplasty (joint replacement)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 72)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr. Carlos Reyes, a 32-year-old tradesman, is referred for postoperative physiotherapy following
+      arthroscopic partial <span class="highlight">meniscectomy</span> of the right knee, performed three
+      weeks ago for a complex medial meniscal tear. Intra-operatively, the surgeon also performed
+      localised <span class="highlight">chondroplasty</span> to grade II articular surface changes on the
+      medial femoral condyle, and excised a small intra-articular <span class="highlight">ganglion</span>
+      identified within the posterior joint recess.
+      <br><br>
+      The patient is currently partially weight-bearing with a single forearm crutch and reports
+      ongoing medial joint line tenderness with mild residual effusion. Active knee flexion is limited
+      to 95 degrees. Ongoing bone <span class="highlight">remodelling</span> at the chondral repair site
+      is expected over the coming three to six months; the surgeon has requested that physiotherapy
+      prioritise quadriceps activation and range-of-motion restoration prior to commencing progressive
+      loading exercises.
+      <br><br>
+      Goals of physiotherapy include full restoration of active range of motion, progressive
+      strengthening of the lower limb musculature, and a graduated return to full weight-bearing
+      and occupational duties. Please review and advise regarding suitability for hydrotherapy-based
+      rehabilitation at this stage.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When writing post-operative referral letters, specify the
+      <em>exact procedure performed</em> (e.g. "arthroscopic partial meniscectomy"), the
+      <em>current functional status</em> (e.g. "partially weight-bearing with single crutch"),
+      and <em>specific physiotherapy goals</em>. Avoid vague phrases such as "needs rehab" or
+      "surgery went well" — precision signals clinical competence in OET Writing tasks.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 72 · 2026-07-19 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 骨科 Musculoskeletal · Procedures &amp; Interventions · Signs &amp; Symptoms</p>
+</footer>
+
+</body>
+</html>
