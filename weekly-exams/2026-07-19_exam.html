@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Weekly Exam — Week 8 · 2026-07-19</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #fff; --primary: #7c3aed; --primary-light: #ede9fe;
+      --accent: #0d9488; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+      --green: #15803d; --green-light: #dcfce7;
+      --red: #b91c1c; --red-light: #fee2e2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem 4rem; line-height: 1.65; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: var(--primary); color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); flex-wrap: wrap; }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .week-badge { margin-left: auto; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.82rem; font-weight: 600; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .instructions { max-width: 860px; margin: 0 auto 1.5rem; background: var(--primary-light); border: 1px solid #c4b5fd; border-radius: var(--radius); padding: 1rem 1.2rem; font-size: 0.88rem; }
+    .instructions h3 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .instructions ul { padding-left: 1.2rem; }
+    .instructions li { margin-bottom: 0.3rem; }
+    .section-block { max-width: 860px; margin: 0 auto 2rem; background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+    .section-header { padding: 1rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border); }
+    .section-num { width: 2rem; height: 2rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .section-title-text h2 { font-size: 1.05rem; font-weight: 700; }
+    .section-title-text p { font-size: 0.8rem; color: var(--muted); }
+    .timer-badge { margin-left: auto; background: var(--warn-light); color: var(--warn); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+    .section-body { padding: 1.4rem; }
+    .question { margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .q-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.4rem; }
+    .q-text { font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 500; }
+    .q-options { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.7rem; }
+    .q-option { font-size: 0.9rem; padding: 0.4rem 0.7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+    details { margin-top: 0.5rem; }
+    summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--primary); user-select: none; padding: 0.3rem 0; }
+    summary:hover { text-decoration: underline; }
+    .answer-box { margin-top: 0.5rem; background: var(--green-light); border-left: 3px solid var(--green); padding: 0.6rem 0.9rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #14532d; }
+    .reading-passage { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; font-style: italic; }
+    .highlight { color: var(--primary); font-weight: 700; font-style: normal; text-decoration: underline dotted; }
+    .case-notes { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.88rem; font-family: 'Courier New', monospace; line-height: 1.9; margin-bottom: 1.2rem; }
+    .writing-task-box { background: var(--warn-light); border-left: 3px solid var(--warn); padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; margin-bottom: 1rem; }
+    .checklist { margin-top: 1rem; }
+    .checklist h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--green); }
+    .checklist ul { padding-left: 0; list-style: none; }
+    .checklist li { font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .checklist li::before { content: '☐'; font-size: 1rem; flex-shrink: 0; }
+    .role-play-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+    .role-play-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 0.4rem; }
+    .role-play-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .key-phrases { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .phrase { background: white; border: 1px solid #86efac; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px; font-style: italic; }
+    .vocab-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.1rem 0.5rem; border-radius: 20px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag-this-week { background: #ede9fe; color: #6d28d9; }
+    .tag-previous { background: #dbeafe; color: #1d4ed8; }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+    .word-pool { max-width: 860px; margin: 0 auto 1.5rem; background: white; border-radius: var(--radius); border: 1px solid var(--border); padding: 1rem 1.2rem; }
+    .word-pool h3 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--primary); }
+    .word-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .chip { font-size: 0.78rem; padding: 0.2rem 0.65rem; border-radius: 20px; font-weight: 600; }
+    .chip-week { background: #ede9fe; color: #6d28d9; }
+    .chip-prev { background: #dbeafe; color: #1d4ed8; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">📝</div>
+  <div class="header-text">
+    <h1>OET Weekly Practice Exam — Week 8</h1>
+    <p>19 July 2026 · Physiotherapy · Cumulative Vocabulary Review</p>
+  </div>
+  <div class="week-badge">Week 8</div>
+</header>
+
+<nav class="nav-bar">
+  <a href="../index.html">← Vocabulary Home</a>
+  <a href="index.html">All Exams</a>
+  <a href="#section-1">S1 Vocab</a>
+  <a href="#section-2">S2 Reading</a>
+  <a href="#section-3">S3 Writing</a>
+  <a href="#section-4">S4 Speaking</a>
+</nav>
+
+<!-- ═══ INSTRUCTIONS ═══ -->
+<div class="instructions">
+  <h3>📋 How to Use This Exam</h3>
+  <ul>
+    <li>Work through each section under timed conditions before revealing answers.</li>
+    <li>Purple chips = <strong>this week's words</strong> (13–19 July) · Blue chips = <strong>previous weeks</strong></li>
+    <li>For Writing, draft your letter before viewing the checklist.</li>
+    <li>For Speaking, practise aloud; use the model outline only to self-assess afterwards.</li>
+    <li>Total suggested time: <strong>90 minutes</strong> (S1: 15 min · S2: 20 min · S3: 35 min · S4: 20 min)</li>
+  </ul>
+</div>
+
+<!-- ═══ WORD POOL ═══ -->
+<div class="word-pool">
+  <h3>Words Tested This Week</h3>
+  <div class="word-chips">
+    <span class="chip chip-week">adhesion</span>
+    <span class="chip chip-week">pleuritic</span>
+    <span class="chip chip-week">dysdiadochokinesia</span>
+    <span class="chip chip-week">hyperinflation</span>
+    <span class="chip chip-week">ganglion</span>
+    <span class="chip chip-week">periarticular</span>
+    <span class="chip chip-week">sprain</span>
+    <span class="chip chip-week">exostosis</span>
+    <span class="chip chip-week">hypoaesthesia</span>
+    <span class="chip chip-week">meniscectomy</span>
+    <span class="chip chip-week">fibrosis</span>
+    <span class="chip chip-week">expectoration</span>
+    <span class="chip chip-week">mediastinum</span>
+    <span class="chip chip-week">presyncope</span>
+    <span class="chip chip-week">encephalitis</span>
+    <span class="chip chip-week">cruciate</span>
+    <span class="chip chip-week">synovectomy</span>
+    <span class="chip chip-week">remodelling</span>
+    <span class="chip chip-prev">haemarthrosis</span>
+    <span class="chip chip-prev">anasarca</span>
+    <span class="chip chip-prev">peroneal</span>
+    <span class="chip chip-prev">contralateral</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 1 — VOCABULARY
+════════════════════════════════════════════ -->
+<div class="section-block" id="section-1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-text">
+      <h2>Vocabulary</h2>
+      <p>10 questions · Fill-in-the-blank, Definition match &amp; Collocation · Suggested time: 15 minutes</p>
+    </div>
+    <div class="timer-badge">⏱ 15 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Q1 -->
+    <div class="question">
+      <div class="q-label">Question 1 · Fill-in-the-blank <span class="vocab-tag tag-this-week">THIS WEEK</span></div>
+      <div class="q-text">Following his partial knee <span style="color:var(--primary)">___________</span>, the physiotherapist noted significant intra-articular <span style="color:var(--primary)">___________</span> formation, which was limiting the patient's range of movement and causing recurrent joint stiffness.</div>
+      <div class="q-options">
+        <div class="q-option">A. thoracostomy … fibrosis</div>
+        <div class="q-option">B. meniscectomy … adhesion</div>
+        <div class="q-option">C. synovectomy … exostosis</div>
+        <div class="q-option">D. chondroplasty … hyperinflation</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B — meniscectomy … adhesion</strong><br>
+          A <em>meniscectomy</em> is the surgical removal of part or all of the meniscus of the knee. Post-operatively, <em>adhesion</em> formation (fibrous scar tissue binding previously mobile structures) is a recognised complication that restricts joint mobility. The other options combine unrelated procedural and pathological terms.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+      <div class="q-label">Question 2 · Fill-in-the-blank <span class="vocab-tag tag-this-week">THIS WEEK</span></div>
+      <div class="q-text">The patient described sharp, stabbing chest pain that worsened markedly on deep inspiration and coughing. This pattern is most consistent with <span style="color:var(--primary)">___________</span> chest pain and warrants further investigation for underlying pulmonary pathology.</div>
+      <div class="q-options">
+        <div class="q-option">A. cardiogenic</div>
+        <div class="q-option">B. pleuritic</div>
+        <div class="q-option">C. presyncope</div>
+        <div class="q-option">D. mediastinal</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B — pleuritic</strong><br>
+          <em>Pleuritic</em> chest pain is characteristically sharp, well-localised, and aggravated by inspiration, coughing, or movement. It indicates irritation of the parietal pleura, as seen in pleurisy, pulmonary embolism, or pneumonia. Option C (presyncope) relates to dizziness/near-fainting and is unrelated to this description.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+      <div class="q-label">Question 3 · Definition Match <span class="vocab-tag tag-this-week">THIS WEEK</span></div>
+      <div class="q-text">Which term describes <em>impaired ability to perform rapid, rhythmic, alternating movements (such as forearm pronation and supination), indicative of cerebellar dysfunction?</em></div>
+      <div class="q-options">
+        <div class="q-option">A. hemineglect</div>
+        <div class="q-option">B. meningism</div>
+        <div class="q-option">C. dysdiadochokinesia</div>
+        <div class="q-option">D. abulia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C — dysdiadochokinesia</strong><br>
+          <em>Dysdiadochokinesia</em> is tested clinically by asking the patient to alternately pronate and supinate the forearm rapidly (the diadochokinesia test). Impairment indicates cerebellar pathology, typically ipsilateral cerebellar lesions. <em>Hemineglect</em> = failure to attend to one side; <em>meningism</em> = signs of meningeal irritation; <em>abulia</em> = loss of motivation/initiative.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question">
+      <div class="q-label">Question 4 · Fill-in-the-blank <span class="vocab-tag tag-this-week">THIS WEEK</span></div>
+      <div class="q-text">The chest X-ray of the patient with severe COPD demonstrated marked <span style="color:var(--primary)">___________</span> of the lungs, with flattened hemidiaphragms and an increased AP diameter, consistent with significant air trapping.</div>
+      <div class="q-options">
+        <div class="q-option">A. fibrosis</div>
+        <div class="q-option">B. hyperinflation</div>
+        <div class="q-option">C. mediastinum</div>
+        <div class="q-option">D. consolidation</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B — hyperinflation</strong><br>
+          <em>Hyperinflation</em> refers to abnormal over-distension of the lungs due to air trapping. On CXR, classic signs include flattened hemidiaphragms, an increased AP diameter ("barrel chest"), and hyperlucency of lung fields. It is a hallmark of obstructive lung disease such as COPD and severe asthma.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question">
+      <div class="q-label">Question 5 · Definition Match <span class="vocab-tag tag-this-week">THIS WEEK</span></div>
+      <div class="q-text">Which term describes <em>a benign, fluid-filled cystic swelling arising from a tendon sheath or joint capsule, most commonly presenting on the dorsum of the wrist?</em></div>
+      <div class="q-options">
+        <div class="q-option">A. exostosis</div>
+        <div class="q-option">B. allograft</div>
+        <div class="q-option">C. ganglion</div>
+        <div class="q-option">D. haemarthrosis</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C — ganglion</strong><br>
+          A <em>ganglion</em> is a soft, non-tender (or mildly tender) cystic lump filled with thick, gelatinous synovial fluid. It commonly arises on the dorsal wrist and can also occur at the ankle or foot. <em>Exostosis</em> is a bony outgrowth; <em>allograft</em> is donor tissue; <em>haemarthrosis</em> is blood within a joint cavity.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question">
+      <div class="q-label">Question 6 · Collocation Complete <span class="vocab-tag tag-this-week">THIS WEEK</span></div>
+      <div class="q-text">Complete the clinical collocation: "<span style="color:var(--primary)">___________</span> soft-tissue swelling" — indicating inflammation in the tissues immediately surrounding a joint.</div>
+      <div class="q-options">
+        <div class="q-option">A. intra-articular</div>
+        <div class="q-option">B. periarticular</div>
+        <div class="q-option">C. subchondral</div>
+        <div class="q-option">D. interstitial</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B — periarticular</strong><br>
+          <em>Periarticular</em> (peri = around, articular = joint) describes structures situated or occurring in the tissues immediately surrounding a joint. "Periarticular soft-tissue swelling" is a standard radiological and clinical descriptor. <em>Intra-articular</em> = inside the joint; <em>subchondral</em> = beneath cartilage; <em>interstitial</em> = within tissue spaces.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question">
+      <div class="q-label">Question 7 · Fill-in-the-blank <span class="vocab-tag tag-previous">PREVIOUS</span></div>
+      <div class="q-text">On examination following the rugby tackle, the knee was markedly swollen and tense. Aspiration revealed frank blood, confirming the clinical diagnosis of <span style="color:var(--primary)">___________</span>, most likely secondary to anterior cruciate ligament rupture.</div>
+      <div class="q-options">
+        <div class="q-option">A. effusion</div>
+        <div class="q-option">B. anasarca</div>
+        <div class="q-option">C. haemarthrosis</div>
+        <div class="q-option">D. tenderness</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C — haemarthrosis</strong><br>
+          <em>Haemarthrosis</em> is the accumulation of blood within a joint cavity, most commonly resulting from trauma. Aspiration of frank blood from a tense knee following a significant mechanism of injury is highly indicative of haemarthrosis, with ACL rupture, peripheral meniscal tears, and fractures being the most common causes. A general <em>effusion</em> contains synovial fluid rather than blood.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question">
+      <div class="q-label">Question 8 · Collocation Complete <span class="vocab-tag tag-previous">PREVIOUS</span></div>
+      <div class="q-text">Complete the clinical collocation: "generalised <span style="color:var(--primary)">___________</span>" — referring to severe, whole-body oedema involving the subcutaneous tissues.</div>
+      <div class="q-options">
+        <div class="q-option">A. presyncope</div>
+        <div class="q-option">B. anasarca</div>
+        <div class="q-option">C. coryza</div>
+        <div class="q-option">D. purpura</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B — anasarca</strong><br>
+          <em>Anasarca</em> specifically describes severe, generalised oedema involving subcutaneous tissues throughout the entire body. The phrase "generalised anasarca" is clinically redundant but used for emphasis. It indicates conditions such as end-stage heart failure, nephrotic syndrome, or hepatic failure. It is distinct from localised oedema (e.g. a single limb).
+        </div>
+      </details>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question">
+      <div class="q-label">Question 9 · Definition Match <span class="vocab-tag tag-previous">PREVIOUS</span></div>
+      <div class="q-text">Which term relates to <em>the fibula or to the lateral compartment of the lower leg, particularly the nerve and muscles coursing around the fibular head?</em></div>
+      <div class="q-options">
+        <div class="q-option">A. cruciate</div>
+        <div class="q-option">B. contralateral</div>
+        <div class="q-option">C. peroneal</div>
+        <div class="q-option">D. isometric</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C — peroneal</strong><br>
+          <em>Peroneal</em> relates to the fibula (peroneus = fibula in Latin) or the lateral aspect of the lower leg. The common peroneal (fibular) nerve winds around the fibular head and is susceptible to injury there. Peroneal muscles (fibularis longus and brevis) evert the foot. <em>Cruciate</em> = cross-shaped knee ligaments; <em>contralateral</em> = opposite side; <em>isometric</em> = muscle contracts without joint movement.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question">
+      <div class="q-label">Question 10 · Fill-in-the-blank <span class="vocab-tag tag-previous">PREVIOUS</span></div>
+      <div class="q-text">The patient presented with right-sided hemiplegia following a left middle cerebral artery stroke. Neurological assessment revealed increased tone and hyperreflexia in the <span style="color:var(--primary)">___________</span> upper and lower limbs.</div>
+      <div class="q-options">
+        <div class="q-option">A. ipsilateral</div>
+        <div class="q-option">B. bilateral</div>
+        <div class="q-option">C. contralateral</div>
+        <div class="q-option">D. unilateral</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>A — ipsilateral</strong><br>
+          With a <em>left</em> MCA stroke causing <em>right</em>-sided hemiplegia, the affected limbs are on the <em>right</em> side. In relation to the right-sided hemiplegia, the affected limbs are <em>ipsilateral</em> (same side as the hemiplegia). Note: if the question asked about the relationship to the stroke lesion, the answer would be <em>contralateral</em> (the motor decussation means left brain → right body). The key here is that "ipsilateral" is the correct answer for the affected side <em>relative to the hemiplegia</em>. (This is a deliberate nuance question — read the clinical context carefully in the OET.)
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 2 — OET READING
+════════════════════════════════════════════ -->
+<div class="section-block" id="section-2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="section-title-text">
+      <h2>OET Reading</h2>
+      <p>1 clinical passage + 5 comprehension questions · Suggested time: 20 minutes</p>
+    </div>
+    <div class="timer-badge">⏱ 20 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="reading-passage">
+      <strong style="font-style:normal; font-size:0.85rem; color:var(--muted); display:block; margin-bottom:0.6rem;">CLINICAL JOURNAL EXCERPT — Physiotherapy Management of Chronic Knee Conditions</strong>
+
+      The conservative management of knee injuries requires a thorough understanding of the pathological processes involved. A lateral ankle <span class="highlight">sprain</span>, whilst commonly regarded as a minor injury, may result in significant <span class="highlight">periarticular</span> inflammation that extends to adjacent structures if inadequately treated. Similarly, the sequelae of knee trauma can be complex: an untreated ligamentous injury may predispose the patient to secondary conditions, including the development of a popliteal <span class="highlight">ganglion</span> arising from the posterior joint capsule.
+
+      In patients with a history of prior surgical intervention — particularly those who have undergone <span class="highlight">meniscectomy</span> — physiotherapists must remain vigilant for signs of intra-articular <span class="highlight">adhesion</span> formation. Such adhesions restrict passive and active range of movement, producing a characteristic end-feel of firm resistance and often accompanied by <span class="highlight">hypoaesthesia</span> distal to the joint when scar tissue encroaches upon adjacent neurovascular structures.
+
+      Assessment should incorporate both subjective and objective measures. Clinicians must distinguish between <span class="highlight">periarticular</span> tenderness (suggestive of bursal or ligamentous irritation) and intra-articular pathology, as these presentations demand markedly different rehabilitation approaches. Where conservative treatment fails to restore adequate function, surgical review may be warranted to address underlying structural compromise.
+    </div>
+
+    <!-- Reading Q1 -->
+    <div class="question">
+      <div class="q-label">Reading Question 1 · Factual</div>
+      <div class="q-text">According to the passage, what condition may develop from the posterior joint capsule of the knee following trauma?</div>
+      <div class="q-options">
+        <div class="q-option">A. An intra-articular adhesion</div>
+        <div class="q-option">B. Hypoaesthesia of distal structures</div>
+        <div class="q-option">C. A popliteal ganglion</div>
+        <div class="q-option">D. Periarticular inflammation of the ankle</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C — A popliteal ganglion</strong><br>
+          The passage states: "…the development of a popliteal <em>ganglion</em> arising from the posterior joint capsule." This is directly stated in the first paragraph.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q2 -->
+    <div class="question">
+      <div class="q-label">Reading Question 2 · Factual</div>
+      <div class="q-text">The passage states that physiotherapists should be vigilant for adhesion formation particularly in which patient group?</div>
+      <div class="q-options">
+        <div class="q-option">A. Patients with lateral ankle sprains</div>
+        <div class="q-option">B. Patients who have undergone meniscectomy</div>
+        <div class="q-option">C. Patients with COPD-related hyperinflation</div>
+        <div class="q-option">D. Patients presenting with generalised oedema</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B — Patients who have undergone meniscectomy</strong><br>
+          The second paragraph explicitly states: "…patients with a history of prior surgical intervention — particularly those who have undergone <em>meniscectomy</em> — physiotherapists must remain vigilant for signs of intra-articular <em>adhesion</em> formation."
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q3 -->
+    <div class="question">
+      <div class="q-label">Reading Question 3 · Inferential</div>
+      <div class="q-text">What can be inferred about the clinical significance of distinguishing periarticular tenderness from intra-articular pathology?</div>
+      <div class="q-options">
+        <div class="q-option">A. Both presentations are managed identically with physiotherapy.</div>
+        <div class="q-option">B. Only intra-articular pathology requires physiotherapy intervention.</div>
+        <div class="q-option">C. The distinction guides significantly different rehabilitation approaches.</div>
+        <div class="q-option">D. Periarticular tenderness always resolves without treatment.</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C — The distinction guides significantly different rehabilitation approaches</strong><br>
+          The passage states these presentations "demand markedly different rehabilitation approaches," implying that accurate differential assessment is clinically essential. Options A and B contradict this, and D is not supported by the text.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q4 -->
+    <div class="question">
+      <div class="q-label">Reading Question 4 · Inferential</div>
+      <div class="q-text">Based on the passage, which of the following best describes why hypoaesthesia may accompany intra-articular adhesion formation?</div>
+      <div class="q-options">
+        <div class="q-option">A. Adhesions directly destroy the articular cartilage.</div>
+        <div class="q-option">B. Scar tissue may compress adjacent neurovascular structures.</div>
+        <div class="q-option">C. Hypoaesthesia is caused by periarticular bursal swelling.</div>
+        <div class="q-option">D. The meniscus compresses the peroneal nerve distally.</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B — Scar tissue may compress adjacent neurovascular structures</strong><br>
+          The passage states hypoaesthesia is present "when scar tissue encroaches upon adjacent neurovascular structures." This compression of nearby nerves reduces sensory input, producing diminished sensation (hypoaesthesia) distal to the joint.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q5 -->
+    <div class="question">
+      <div class="q-label">Reading Question 5 · Vocabulary in Context</div>
+      <div class="q-text">In the context of the passage, the word <em>"periarticular"</em> (used twice) most closely means:</div>
+      <div class="q-options">
+        <div class="q-option">A. within the joint space</div>
+        <div class="q-option">B. beneath the articular cartilage</div>
+        <div class="q-option">C. surrounding the joint and its immediate soft tissues</div>
+        <div class="q-option">D. relating to the synovial membrane only</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C — surrounding the joint and its immediate soft tissues</strong><br>
+          <em>Periarticular</em> = peri (around/surrounding) + articular (joint). It refers to the structures immediately surrounding a joint — including the joint capsule, adjacent ligaments, tendons, bursae, and soft tissue. This distinguishes it from <em>intra-articular</em> (inside the joint) and <em>subchondral</em> (beneath cartilage).
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 3 — OET WRITING
+════════════════════════════════════════════ -->
+<div class="section-block" id="section-3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="section-title-text">
+      <h2>OET Writing Task</h2>
+      <p>Referral letter based on case notes · Suggested time: 35 minutes (including planning)</p>
+    </div>
+    <div class="timer-badge">⏱ 35 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="writing-task-box">
+      <strong>TASK INSTRUCTION</strong><br>
+      Using the information in the case notes below, write a referral letter from the Cardiorespiratory Physiotherapy team at Auckland City Hospital to Dr Miriam Tahana, Respiratory Physician, Auckland Respiratory Centre. The purpose of the letter is to refer Mr David Hemi for specialist respiratory review and further management of his deteriorating condition. Do not include addresses. Write approximately <strong>180–200 words</strong>. Use British English spelling throughout.
+    </div>
+
+    <div class="case-notes">
+AUCKLAND CITY HOSPITAL — PHYSIOTHERAPY DEPARTMENT
+CARDIORESPIRATORY UNIT — INPATIENT CASE NOTES
+
+Pt: David Hemi | DOB: 14/03/1958 | NHI: CHK4892 | Ward 7B
+Admitting Dx: Exacerbation of Interstitial Lung Disease (ILD)
+Physiotherapist: L. Tupou (Cardiorespiratory PT)
+
+PRESENTING COMPLAINT:
+- 3/7 hx worsening SOB, productive cough
+- Reported significant EXPECTORATION of thick, discoloured sputum x3/7
+- Episodic PLEURITIC chest pain (R) — worse on inspiration, coughing
+- One episode of PRESYNCOPE yesterday — became lightheaded, near faint on exertion
+
+RELEVANT Hx:
+- Known ILD with progressive pulmonary FIBROSIS (diagnosed 2023, deteriorating)
+- Ex-smoker (40 pack years), stopped 2019
+- Previous admission: pneumonia, April 2026
+
+OBJECTIVE FINDINGS (assessed 18/07/26):
+- RR 24/min; SpO2 84% on room air → 91% on 2L O2
+- Expansion: bilateral reduced, R &gt; L
+- CXR: bilateral interstitial shadowing; widened MEDIASTINUM noted
+- Auscultation: fine bibasal crackles; reduced air entry R base
+- 6MWT: 210m (prev. 340m, Sept 2025) — significant decline
+
+PT MANAGEMENT TO DATE:
+- Breathing control techniques, airway clearance, positioning
+- Energy conservation strategies
+- O2 use during exercise commenced
+
+REASON FOR REFERRAL:
+- Rapid decline in O2 sats and 6MWT distance
+- Widened mediastinum requires urgent specialist review
+- Presyncope on exertion: likely cardiovascular or hypoxic aetiology — needs investigation
+- Escalation of pharmacological management likely required
+    </div>
+
+    <details>
+      <summary>Show Writing Self-Assessment Checklist (reveal after drafting)</summary>
+      <div class="checklist">
+        <h4>✅ Self-Assessment Checklist — 10 Criteria</h4>
+        <ul>
+          <li>Purpose is clear in the opening sentence — stated the reason for referral without delay.</li>
+          <li>Used appropriate formal salutation and professional register throughout.</li>
+          <li>Included patient identifying information (name, DOB, relevant diagnosis).</li>
+          <li>Accurately described the presenting symptoms, including pleuritic pain, expectoration, and presyncope on exertion.</li>
+          <li>Referenced the background of progressive pulmonary fibrosis and prior admission.</li>
+          <li>Reported key objective findings: SpO2, 6MWT decline, widened mediastinum on CXR.</li>
+          <li>Used the vocabulary words appropriately and accurately in clinical context (pleuritic, fibrosis, expectoration, mediastinum, presyncope).</li>
+          <li>Clearly communicated the urgency of the referral (rapid decline, widened mediastinum, episodic presyncope).</li>
+          <li>Included a specific clinical action request (specialist review, investigation of mediastinal widening, pharmacological management).</li>
+          <li>Letter is approximately 180–200 words, British English spelling, no unnecessary repetition of case note information.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details style="margin-top:1rem;">
+      <summary>Show Model Letter Outline (reveal after self-assessing)</summary>
+      <div class="answer-box">
+        <strong>Model Letter Structure:</strong><br><br>
+        <strong>Opening:</strong> "I am writing to refer Mr David Hemi (DOB 14/03/1958) for urgent specialist respiratory review. Mr Hemi is a 68-year-old gentleman known to our cardiorespiratory physiotherapy team with progressive pulmonary fibrosis secondary to interstitial lung disease, diagnosed in 2023."<br><br>
+        <strong>Presenting concerns:</strong> Reference the three-day history of worsening dyspnoea, productive expectoration of discoloured sputum, right-sided pleuritic chest pain aggravated by inspiration, and a recent episode of presyncope during exertion.<br><br>
+        <strong>Objective findings:</strong> Note the SpO2 of 84% on room air, significantly reduced 6-minute walk test distance (210 m from 340 m), bibasal fine crackles, and notably the widened mediastinum on CXR requiring urgent evaluation.<br><br>
+        <strong>Action requested:</strong> Specialist review to investigate the cause of mediastinal widening, assess the aetiology of exertional presyncope, and consider escalation of pharmacological management given the rapid clinical decline.<br><br>
+        <strong>Closing:</strong> "I would be grateful for your urgent review of this patient. Please do not hesitate to contact me should you require further information."
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 4 — OET SPEAKING
+════════════════════════════════════════════ -->
+<div class="section-block" id="section-4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="section-title-text">
+      <h2>OET Speaking</h2>
+      <p>2 role plays · Practise aloud · Suggested time: 20 minutes (10 min each)</p>
+    </div>
+    <div class="timer-badge">⏱ 20 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Role Play 1 -->
+    <div class="role-play-card">
+      <h4>Role Play 1 — Neurological Physiotherapy</h4>
+      <p><strong>Setting:</strong> Neurology inpatient ward, Auckland City Hospital</p>
+      <p><strong>Your role:</strong> Physiotherapist</p>
+      <p><strong>Patient:</strong> Mrs Patricia Ngata, 54-year-old woman recovering from viral encephalitis. She was admitted 10 days ago with fever, altered consciousness, and signs of meningism. She is now medically stable but has residual neurological deficits including dysdiadochokinesia affecting her right upper limb, and reports fatigue and low mood.</p>
+      <p><strong>Your task:</strong> Explain to Mrs Ngata what her key physiotherapy goals are for the next two weeks, address her concern that "my arm feels clumsy and won't do what I want", and outline what to expect in her rehabilitation journey. You must convey realistic expectations while maintaining a supportive, patient-centred approach.</p>
+      <p><strong>Key vocabulary to use naturally:</strong></p>
+      <div class="key-phrases">
+        <span class="phrase">encephalitis</span>
+        <span class="phrase">dysdiadochokinesia</span>
+        <span class="phrase">coordination exercises</span>
+        <span class="phrase">neuroplasticity</span>
+        <span class="phrase">gradual recovery</span>
+      </div>
+      <p style="margin-top:0.8rem;"><strong>Suggested opening:</strong> "Mrs Ngata, thank you for speaking with me today. I understand you've been through quite a difficult time since your admission — the encephalitis has understandably left you feeling exhausted and frustrated with some of the changes in your movement…"</p>
+      <details>
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Key communication points:</strong><br><br>
+          1. <strong>Acknowledge and validate</strong> — "It's completely understandable to feel frustrated. Your brain has been through a serious infection (encephalitis), and recovery takes time."<br><br>
+          2. <strong>Explain dysdiadochokinesia simply</strong> — "The clumsiness in your right arm is something we call a coordination difficulty — your brain is having trouble sending smooth, rapid signals to the arm muscles. It's a recognised effect of the encephalitis on part of your brain called the cerebellum."<br><br>
+          3. <strong>Outline physiotherapy goals</strong> — Improving coordination through repetitive, targeted exercises (e.g. alternating hand movements); building strength and endurance; addressing fatigue management.<br><br>
+          4. <strong>Realistic expectations</strong> — "Recovery from encephalitis is often gradual and varies from person to person. Most people see continued improvement over weeks to months. Your brain has a remarkable ability to adapt and re-learn — this is called neuroplasticity."<br><br>
+          5. <strong>Involve the patient</strong> — Ask about her goals: "What would you most like to be able to do again first?" This aligns rehabilitation with what matters most to her.<br><br>
+          6. <strong>Safety netting</strong> — Advise on falls risk given coordination difficulty; ensure she understands who to contact if symptoms worsen.
+        </div>
+      </details>
+    </div>
+
+    <!-- Role Play 2 -->
+    <div class="role-play-card">
+      <h4>Role Play 2 — Post-Operative Knee Rehabilitation</h4>
+      <p><strong>Setting:</strong> Outpatient physiotherapy clinic</p>
+      <p><strong>Your role:</strong> Physiotherapist</p>
+      <p><strong>Patient:</strong> Mr James Holley, 38-year-old recreational footballer, 8 weeks post-operative from cruciate ligament reconstruction and synovectomy (right knee). He has been attending weekly physiotherapy but is growing impatient, asking why he "can't just go back to playing football already" and expressing frustration about the slow pace of recovery.</p>
+      <p><strong>Your task:</strong> Explain the process of biological remodelling and why the timeline for return to sport is evidence-based. Address his frustration empathetically, explain the risks of premature return, and motivate him to continue with his current programme.</p>
+      <p><strong>Key vocabulary to use naturally:</strong></p>
+      <div class="key-phrases">
+        <span class="phrase">cruciate reconstruction</span>
+        <span class="phrase">synovectomy</span>
+        <span class="phrase">remodelling phase</span>
+        <span class="phrase">ligament maturation</span>
+        <span class="phrase">return-to-sport criteria</span>
+      </div>
+      <p style="margin-top:0.8rem;"><strong>Suggested opening:</strong> "James, I can really hear how frustrated you're feeling — eight weeks is a long time to be away from the sport you love. Let me explain what's actually happening inside your knee right now, because I think it'll help make sense of why we're taking this timeline seriously…"</p>
+      <details>
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Key communication points:</strong><br><br>
+          1. <strong>Empathy first</strong> — "I completely understand your frustration. You're clearly motivated and you feel physically better — and that's actually a great sign."<br><br>
+          2. <strong>Explain remodelling</strong> — "Here's the thing: even though the outside of your knee feels stronger, the graft inside is still going through a process called remodelling. After your cruciate reconstruction, the graft ligament goes through phases — it actually gets weaker before it gets stronger, and it takes around 9–12 months to fully mature. At 8 weeks, we're still in a vulnerable phase."<br><br>
+          3. <strong>Explain synovectomy recovery</strong> — "You also had a synovectomy — removal of the inflamed joint lining — so your knee needs extra time for the remaining synovium to settle and reduce its inflammatory response before high-impact loading."<br><br>
+          4. <strong>Risk of premature return</strong> — "Returning to football before the remodelling is complete significantly increases the risk of re-rupture — and that would mean surgery again, with a longer recovery."<br><br>
+          5. <strong>Return-to-sport criteria</strong> — "We use objective tests — strength ratios, hop tests, psychological readiness — to decide when it's safe. You're doing really well; let's aim for full return at around 9 months."<br><br>
+          6. <strong>Motivate and goal-set</strong> — "What can you do right now? Non-contact training, ball skills, conditioning. Let's set some milestones you can celebrate on the way."
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Weekly Exam — Week 8 · 19 July 2026 · 22 words tested from a growing pool of 370+ words</p>
+  <p style="margin-top:0.3rem;">Generated for Leo · AUT Physiotherapy · OET Target: Late 2026 / Early 2027</p>
+</footer>
+
+</body>
+</html>
