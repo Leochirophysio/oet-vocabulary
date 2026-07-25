@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Weekly Exam — Week 9 · 2026-07-26</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #fff; --primary: #7c3aed; --primary-light: #ede9fe;
+      --accent: #0d9488; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+      --green: #15803d; --green-light: #dcfce7;
+      --red: #b91c1c; --red-light: #fee2e2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem 4rem; line-height: 1.65; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: var(--primary); color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); flex-wrap: wrap; }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .week-badge { margin-left: auto; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.82rem; font-weight: 600; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .instructions { max-width: 860px; margin: 0 auto 1.5rem; background: var(--primary-light); border: 1px solid #c4b5fd; border-radius: var(--radius); padding: 1rem 1.2rem; font-size: 0.88rem; }
+    .instructions h3 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .instructions ul { padding-left: 1.2rem; }
+    .instructions li { margin-bottom: 0.3rem; }
+    .section-block { max-width: 860px; margin: 0 auto 2rem; background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+    .section-header { padding: 1rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border); }
+    .section-num { width: 2rem; height: 2rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .section-title-text h2 { font-size: 1.05rem; font-weight: 700; }
+    .section-title-text p { font-size: 0.8rem; color: var(--muted); }
+    .timer-badge { margin-left: auto; background: var(--warn-light); color: var(--warn); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+    .section-body { padding: 1.4rem; }
+    .question { margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .q-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.4rem; }
+    .q-text { font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 500; }
+    .q-options { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.7rem; }
+    .q-option { font-size: 0.9rem; padding: 0.4rem 0.7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+    details { margin-top: 0.5rem; }
+    summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--primary); user-select: none; padding: 0.3rem 0; }
+    summary:hover { text-decoration: underline; }
+    .answer-box { margin-top: 0.5rem; background: var(--green-light); border-left: 3px solid var(--green); padding: 0.6rem 0.9rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #14532d; }
+    .reading-passage { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; font-style: italic; }
+    .highlight { color: var(--primary); font-weight: 700; font-style: normal; text-decoration: underline dotted; }
+    .case-notes { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.88rem; font-family: 'Courier New', monospace; line-height: 1.9; margin-bottom: 1.2rem; }
+    .writing-task-box { background: var(--warn-light); border-left: 3px solid var(--warn); padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; margin-bottom: 1rem; }
+    .checklist { margin-top: 1rem; }
+    .checklist h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--green); }
+    .checklist ul { padding-left: 0; list-style: none; }
+    .checklist li { font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .checklist li::before { content: '☐'; font-size: 1rem; flex-shrink: 0; }
+    .role-play-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+    .role-play-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 0.4rem; }
+    .role-play-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .key-phrases { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .phrase { background: white; border: 1px solid #86efac; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px; font-style: italic; }
+    .word-bank { display: flex; gap: 0.4rem; flex-wrap: wrap; margin: 0.5rem 0 0.8rem; }
+    .word-chip { background: var(--primary-light); color: var(--primary); font-size: 0.8rem; font-weight: 600; padding: 0.2rem 0.7rem; border-radius: 20px; border: 1px solid #c4b5fd; }
+    .word-chip.prev { background: #fef3c7; color: #78350f; border-color: #fde68a; }
+    .section-legend { font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="header-icon">📝</div>
+  <div class="header-text">
+    <h1>OET Weekly Practice Exam — Week 9</h1>
+    <p>Vocab · Reading · Writing · Speaking &nbsp;|&nbsp; 20 words tested · ~405-word pool</p>
+  </div>
+  <div class="week-badge">26 July 2026</div>
+</header>
+
+<nav class="nav-bar">
+  <a href="index.html">← All Exams</a>
+  <a href="../index.html">← Vocabulary Home</a>
+  <a href="#section1">1 Vocabulary</a>
+  <a href="#section2">2 Reading</a>
+  <a href="#section3">3 Writing</a>
+  <a href="#section4">4 Speaking</a>
+</nav>
+
+<!-- INSTRUCTIONS -->
+<div class="instructions">
+  <h3>📋 How to Use This Exam</h3>
+  <ul>
+    <li>Work through each section under timed conditions where possible.</li>
+    <li>Attempt every question before clicking <em>Show Answer</em>.</li>
+    <li>Words highlighted in <span style="color:var(--primary);font-weight:700;">purple</span> are this week's vocabulary; <span style="background:#fef3c7;padding:0 3px;border-radius:3px;font-size:0.85em;">amber</span> chips indicate previous-week words.</li>
+    <li>For the Writing section, complete the task in full then use the self-assessment checklist to evaluate your own response.</li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 1 — VOCABULARY
+══════════════════════════════════════════════════════ -->
+<section class="section-block" id="section1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-text">
+      <h2>Vocabulary</h2>
+      <p>10 questions · Fill-in-the-blank, definition match, and collocation</p>
+    </div>
+    <div class="timer-badge">⏱ 15 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="section-legend">
+      <span>Word source:</span>
+      <span class="word-chip">This week</span>
+      <span class="word-chip prev">Previous week</span>
+    </div>
+
+    <!-- Q1 Fill-in-the-blank: herniation (THIS WEEK) -->
+    <div class="question">
+      <div class="q-label">Q1 · Fill-in-the-Blank <span class="word-chip" style="margin-left:0.4rem;">herniation · Jul 22</span></div>
+      <div class="q-text">
+        "MRI of the lumbar spine confirmed a significant disc _______ at the L4–L5 level, with the extruded nuclear material compressing the left L5 nerve root."
+      </div>
+      <div class="q-options">
+        <div class="q-option">A) calcification</div>
+        <div class="q-option">B) herniation</div>
+        <div class="q-option">C) stenosis</div>
+        <div class="q-option">D) fusion</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B) herniation</strong> — A disc herniation occurs when the inner nucleus pulposus protrudes through a tear in the outer annulus fibrosus, potentially compressing adjacent nerve roots. "Calcification" refers to calcium deposits; "stenosis" is narrowing of a canal; "fusion" is surgical joining of vertebrae.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q2 Definition match: prehabilitation (THIS WEEK) -->
+    <div class="question">
+      <div class="q-label">Q2 · Definition Match <span class="word-chip" style="margin-left:0.4rem;">prehabilitation · Jul 22</span></div>
+      <div class="q-text">
+        Which term describes: <em>"A structured exercise and conditioning programme undertaken by a patient <strong>before</strong> a planned surgical procedure, with the aim of improving functional reserve and optimising postoperative recovery outcomes"?</em>
+      </div>
+      <div class="q-options">
+        <div class="q-option">A) rehabilitation</div>
+        <div class="q-option">B) mobilisation</div>
+        <div class="q-option">C) prehabilitation</div>
+        <div class="q-option">D) reconditioning</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) prehabilitation</strong> — "Prehabilitation" (or "prehab") specifically denotes pre-operative preparation through exercise. "Rehabilitation" occurs post-injury or post-surgery. "Mobilisation" refers to movement techniques. "Reconditioning" describes restoring fitness without the pre-operative connotation.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q3 Fill-in-the-blank: crepitations (THIS WEEK) -->
+    <div class="question">
+      <div class="q-label">Q3 · Fill-in-the-Blank <span class="word-chip" style="margin-left:0.4rem;">crepitations · Jul 25</span></div>
+      <div class="q-text">
+        "On auscultation of the lung bases, the physiotherapist noted bilateral fine _______, which, combined with the patient's elevated respiratory rate, raised concern for developing pulmonary oedema."
+      </div>
+      <div class="q-options">
+        <div class="q-option">A) stridor</div>
+        <div class="q-option">B) wheezes</div>
+        <div class="q-option">C) crepitations</div>
+        <div class="q-option">D) rhonchi</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) crepitations</strong> — Fine bilateral basal crepitations (also called crackles) heard on auscultation are a hallmark sign of pulmonary oedema, resulting from fluid in the alveoli. Stridor is a high-pitched inspiratory sound from upper airway obstruction. Wheezes indicate bronchospasm. Rhonchi arise from secretions in large airways.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q4 Definition match: discectomy (THIS WEEK) -->
+    <div class="question">
+      <div class="q-label">Q4 · Definition Match <span class="word-chip" style="margin-left:0.4rem;">discectomy · Jul 26</span></div>
+      <div class="q-text">
+        Which term describes: <em>"A surgical procedure involving the partial or complete removal of an intervertebral disc, most commonly performed to relieve pressure on a nerve root or the spinal cord"?</em>
+      </div>
+      <div class="q-options">
+        <div class="q-option">A) laminectomy</div>
+        <div class="q-option">B) arthrodesis</div>
+        <div class="q-option">C) foraminotomy</div>
+        <div class="q-option">D) discectomy</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>D) discectomy</strong> — A discectomy removes disc material compressing neural structures. A laminectomy removes part of the vertebral lamina to widen the spinal canal. Arthrodesis is the surgical fusion of a joint. Foraminotomy widens the intervertebral foramen to decompress a nerve root.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q5 Fill-in-the-blank: neuromobilisation (THIS WEEK) -->
+    <div class="question">
+      <div class="q-label">Q5 · Fill-in-the-Blank <span class="word-chip" style="margin-left:0.4rem;">neuromobilisation · Jul 26</span></div>
+      <div class="q-text">
+        "Following lumbar surgery, the physiotherapist initiated _______ techniques — including slider and tensioner neural mobilisations — to restore nerve root mobility and reduce ongoing radicular symptoms."
+      </div>
+      <div class="q-options">
+        <div class="q-option">A) neuromobilisation</div>
+        <div class="q-option">B) traction</div>
+        <div class="q-option">C) electrotherapy</div>
+        <div class="q-option">D) manipulation</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>A) neuromobilisation</strong> — Neuromobilisation (also known as neural mobilisation or neurodynamic therapy) uses specific limb movements to mobilise the nervous system within its connective tissue sheath. "Traction" applies a distraction force to the spine. "Manipulation" is a high-velocity technique applied to joints. "Electrotherapy" encompasses modalities such as TENS or ultrasound.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q6 Fill-in-the-blank: asterixis (THIS WEEK) -->
+    <div class="question">
+      <div class="q-label">Q6 · Fill-in-the-Blank <span class="word-chip" style="margin-left:0.4rem;">asterixis · Jul 24</span></div>
+      <div class="q-text">
+        "During the neurological examination, the clinician observed _______ — a brief, involuntary flapping tremor of the outstretched hands upon wrist extension — which may indicate hepatic or metabolic encephalopathy."
+      </div>
+      <div class="q-options">
+        <div class="q-option">A) chorea</div>
+        <div class="q-option">B) athetosis</div>
+        <div class="q-option">C) asterixis</div>
+        <div class="q-option">D) dystonia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) asterixis</strong> — Asterixis (sometimes called a "liver flap") is characterised by brief lapses in sustained posture, producing a flapping tremor. It is associated with hepatic encephalopathy, uraemia, and hypercapnia. Chorea is irregular, dance-like involuntary movements. Athetosis involves slow, writhing movements. Dystonia is a sustained muscle contraction causing abnormal postures.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q7 Fill-in-the-blank: synovectomy (PREVIOUS) -->
+    <div class="question">
+      <div class="q-label">Q7 · Fill-in-the-Blank <span class="word-chip prev" style="margin-left:0.4rem;">synovectomy · Jul 17</span></div>
+      <div class="q-text">
+        "After two years of persistent knee synovitis that was unresponsive to conservative physiotherapy and corticosteroid injections, the orthopaedic surgeon recommended a _______ to reduce joint inflammation."
+      </div>
+      <div class="q-options">
+        <div class="q-option">A) meniscectomy</div>
+        <div class="q-option">B) osteotomy</div>
+        <div class="q-option">C) synovectomy</div>
+        <div class="q-option">D) arthroscopy</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) synovectomy</strong> — A synovectomy is the surgical excision of the inflamed synovial membrane, performed when synovitis is refractory to conservative management. A meniscectomy removes part of the meniscus. An osteotomy cuts and realigns bone. An arthroscopy is a diagnostic or therapeutic procedure using a camera inside the joint — it is a method of access, not the specific procedure described.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q8 Definition match: fibrosis (PREVIOUS) -->
+    <div class="question">
+      <div class="q-label">Q8 · Definition Match <span class="word-chip prev" style="margin-left:0.4rem;">fibrosis · Jul 18</span></div>
+      <div class="q-text">
+        Which term describes: <em>"The pathological process of excess fibrous connective tissue forming in an organ or tissue as a reparative response to injury or inflammation, often resulting in functional impairment"?</em>
+      </div>
+      <div class="q-options">
+        <div class="q-option">A) necrosis</div>
+        <div class="q-option">B) fibrosis</div>
+        <div class="q-option">C) oedema</div>
+        <div class="q-option">D) hypertrophy</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B) fibrosis</strong> — Fibrosis is an excess accumulation of extracellular matrix components (mainly collagen), leading to scarring and stiffness. Pulmonary fibrosis and hepatic fibrosis are well-known examples. Necrosis is cell death. Oedema is excess interstitial fluid. Hypertrophy is an increase in cell size and organ volume.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q9 Collocation complete: meniscectomy (PREVIOUS) -->
+    <div class="question">
+      <div class="q-label">Q9 · Collocation Complete <span class="word-chip prev" style="margin-left:0.4rem;">meniscectomy · Jul 19</span></div>
+      <div class="q-text">
+        "Following an arthroscopic _______, the patient was commenced on a graduated weight-bearing programme and range-of-motion exercises within 24 hours of the procedure."
+      </div>
+      <div class="q-options">
+        <div class="q-option">A) meniscectomy</div>
+        <div class="q-option">B) appendectomy</div>
+        <div class="q-option">C) lobectomy</div>
+        <div class="q-option">D) tonsillectomy</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>A) meniscectomy</strong> — An arthroscopic meniscectomy is the surgical removal of all or part of a torn meniscus in the knee. It is commonly followed by early weight-bearing and physiotherapy to restore function. The other options are procedures on the appendix, lung lobe, and tonsils respectively — unrelated to knee rehabilitation.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q10 Collocation complete: oximetry (PREVIOUS) -->
+    <div class="question">
+      <div class="q-label">Q10 · Collocation Complete <span class="word-chip prev" style="margin-left:0.4rem;">oximetry · Jul 16</span></div>
+      <div class="q-text">
+        "Continuous pulse _______ was maintained throughout the patient's cardiorespiratory physiotherapy session to ensure that peripheral oxygen saturation remained above 92%."
+      </div>
+      <div class="q-options">
+        <div class="q-option">A) manometry</div>
+        <div class="q-option">B) spirometry</div>
+        <div class="q-option">C) tonometry</div>
+        <div class="q-option">D) oximetry</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>D) oximetry</strong> — Pulse oximetry (SpO₂) non-invasively measures peripheral oxygen saturation via a sensor applied to the finger or earlobe. Manometry measures pressure (e.g. oesophageal). Spirometry measures lung volumes and flow rates. Tonometry measures intraocular pressure.
+        </div>
+      </details>
+    </div>
+
+  </div><!-- /section-body -->
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 2 — OET READING
+══════════════════════════════════════════════════════ -->
+<section class="section-block" id="section2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="section-title-text">
+      <h2>OET Reading</h2>
+      <p>1 clinical passage (approx. 230 words) · 5 comprehension questions</p>
+    </div>
+    <div class="timer-badge">⏱ 20 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="word-bank">
+      <strong style="font-size:0.8rem;color:var(--muted);margin-right:0.3rem;">Embedded this week:</strong>
+      <span class="word-chip">herniation</span>
+      <span class="word-chip">calcification</span>
+      <span class="word-chip">hypomobility</span>
+      <span class="word-chip">prehabilitation</span>
+      <span class="word-chip">trochanteric</span>
+      <span class="word-chip">neuromobilisation</span>
+    </div>
+
+    <div class="reading-passage">
+      <strong style="font-style:normal;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);">Clinical Article Excerpt — Journal of Orthopaedic Physiotherapy, Vol. 14</strong><br><br>
+
+      Pre-operative <span class="highlight">prehabilitation</span> programmes have gained considerable traction in the management of patients awaiting lumbar disc surgery. Historically, clinicians delayed physiotherapy input until the postoperative period; however, emerging evidence suggests that targeted exercise prior to surgery may substantially improve recovery trajectories.
+
+      A recent retrospective audit conducted at a tertiary spinal unit reviewed outcomes for 78 patients with confirmed disc <span class="highlight">herniation</span> at the L4–L5 or L5–S1 level who underwent elective microdiscectomy. Preoperative imaging in 31% of cases additionally revealed peripheral <span class="highlight">calcification</span> within the annulus fibrosus, a finding associated with longer symptom duration. All participants demonstrated pre-operative lumbar <span class="highlight">hypomobility</span> on standardised segmental assessment, with mean lumbar flexion reduced to 42% of predicted normal values.
+
+      Postoperatively, a structured physiotherapy protocol was initiated within 48 hours of surgery. This included progressive neuromuscular strengthening, patient education, and — crucially — <span class="highlight">neuromobilisation</span> techniques targeting residual neural adhesions and mechanosensitivity along the sciatic pathway. Patients who had completed a formal <span class="highlight">prehabilitation</span> programme achieved independent ambulation on average 1.4 days earlier than those who had not.
+
+      Additionally, 14 patients presented with concurrent <span class="highlight">trochanteric</span> bursitis, complicating their rehabilitation by limiting single-leg stance and stair negotiation. A modified treatment plan, incorporating hip abductor strengthening and offloading strategies, was adopted for this subgroup. Overall patient satisfaction at 12-week follow-up was reported as high in 84% of participants.
+    </div>
+
+    <!-- Reading Q1 -->
+    <div class="question">
+      <div class="q-label">Reading Q1 · Factual</div>
+      <div class="q-text">According to the passage, what percentage of patients had additional calcification visible on preoperative imaging?</div>
+      <div class="q-options">
+        <div class="q-option">A) 14%</div>
+        <div class="q-option">B) 42%</div>
+        <div class="q-option">C) 31%</div>
+        <div class="q-option">D) 84%</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) 31%</strong> — The passage states that "preoperative imaging in 31% of cases additionally revealed peripheral calcification within the annulus fibrosus." 42% refers to the mean lumbar flexion value; 84% refers to patient satisfaction; 14 (not 14%) is the number of patients with trochanteric bursitis.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q2 -->
+    <div class="question">
+      <div class="q-label">Reading Q2 · Factual</div>
+      <div class="q-text">Which postoperative physiotherapy technique was specifically described as targeting "residual neural adhesions and mechanosensitivity"?</div>
+      <div class="q-options">
+        <div class="q-option">A) Neuromuscular strengthening</div>
+        <div class="q-option">B) Neuromobilisation</div>
+        <div class="q-option">C) Hip abductor strengthening</div>
+        <div class="q-option">D) Patient education</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B) Neuromobilisation</strong> — The passage explicitly states that neuromobilisation techniques targeted "residual neural adhesions and mechanosensitivity along the sciatic pathway." The other techniques mentioned serve different purposes within the rehabilitation protocol.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q3 -->
+    <div class="question">
+      <div class="q-label">Reading Q3 · Inferential</div>
+      <div class="q-text">What can be inferred about the clinical significance of preoperative hypomobility in these patients?</div>
+      <div class="q-options">
+        <div class="q-option">A) It was an unrelated incidental finding that did not affect treatment planning.</div>
+        <div class="q-option">B) It confirmed that all patients required emergency surgery before physiotherapy could begin.</div>
+        <div class="q-option">C) It indicated significant functional limitation prior to surgery, supporting the rationale for prehabilitation.</div>
+        <div class="q-option">D) It suggested patients had already completed a prehabilitation programme before assessment.</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) It indicated significant functional limitation prior to surgery, supporting the rationale for prehabilitation.</strong> — The passage describes all participants as having pre-operative lumbar hypomobility with lumbar flexion reduced to 42% of normal. This functional impairment, combined with the finding that prehabilitation improved outcomes, implies that addressing hypomobility before surgery is clinically meaningful.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q4 -->
+    <div class="question">
+      <div class="q-label">Reading Q4 · Inferential</div>
+      <div class="q-text">Why was a modified rehabilitation plan required for the 14 patients with concurrent trochanteric bursitis?</div>
+      <div class="q-options">
+        <div class="q-option">A) Their disc herniation was located at a different spinal level than other patients.</div>
+        <div class="q-option">B) Their hip condition limited their ability to perform weight-bearing and balance activities central to standard rehabilitation.</div>
+        <div class="q-option">C) They were unable to participate in neuromobilisation due to hip pain.</div>
+        <div class="q-option">D) Trochanteric bursitis required additional lumbar imaging before physiotherapy could commence.</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B) Their hip condition limited their ability to perform weight-bearing and balance activities central to standard rehabilitation.</strong> — The passage states that trochanteric bursitis "complicated their rehabilitation by limiting single-leg stance and stair negotiation," indicating that hip pain restricted activities integral to the standard protocol. The modified plan incorporated hip abductor strengthening and offloading strategies to address this.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q5 -->
+    <div class="question">
+      <div class="q-label">Reading Q5 · Vocabulary in Context</div>
+      <div class="q-text">In the context of the passage, the term <strong>"hypomobility"</strong> most closely means:</div>
+      <div class="q-options">
+        <div class="q-option">A) Complete absence of movement in the lumbar spine</div>
+        <div class="q-option">B) Excessive, unstable movement of the lumbar vertebrae</div>
+        <div class="q-option">C) Reduced range of movement in the lumbar spine compared to normal</div>
+        <div class="q-option">D) Involuntary muscle spasm preventing active movement</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) Reduced range of movement in the lumbar spine compared to normal.</strong> — The passage quantifies hypomobility as "mean lumbar flexion reduced to 42% of predicted normal values," confirming it refers to reduced — not absent — movement. "Hypo-" means below normal, distinguishing it from complete immobility ("ankylosed") or excessive movement ("hypermobility"/"instability").
+        </div>
+      </details>
+    </div>
+
+  </div><!-- /section-body -->
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 3 — OET WRITING
+══════════════════════════════════════════════════════ -->
+<section class="section-block" id="section3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="section-title-text">
+      <h2>OET Writing Task</h2>
+      <p>Referral letter · ~180–200 words recommended</p>
+    </div>
+    <div class="timer-badge">⏱ 45 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="word-bank">
+      <strong style="font-size:0.8rem;color:var(--muted);margin-right:0.3rem;">Words to demonstrate:</strong>
+      <span class="word-chip">discectomy</span>
+      <span class="word-chip">neuromobilisation</span>
+      <span class="word-chip">herniation</span>
+      <span class="word-chip">prehabilitation</span>
+      <span class="word-chip prev">fibrosis</span>
+    </div>
+
+    <!-- Case Notes -->
+    <div class="case-notes">
+<strong>CASE NOTES — Inpatient Physiotherapy</strong>
+<strong>Ward: Surgical Orthopaedics, Bay 4</strong>
+<strong>Date: 24 July 2026</strong>
+
+PATIENT:   MORRISON, Alan     DOB: 12/03/1971 (55 yrs)   MRN: 4471892
+CONSULTANT: Mr D. Harrington (Spinal Surgery)
+DIAGNOSIS:  L4–L5 disc herniation (confirmed MRI 10/07/2026)
+            — Nerve root compression: L5 bilat., moderate
+            — Annular calcification noted on imaging
+
+PROCEDURE:  Microdiscectomy L4–L5 (22/07/2026) — uncomplicated
+            Pre-op: completed 4-wk prehabilitation programme
+                   (core stability, aerobic conditioning, education)
+
+PMHx:       Hypertension (Rx: amlodipine 5 mg OD)
+            Mild pulmonary fibrosis (non-progressive; annual review)
+            Non-smoker. No known allergies.
+
+CURRENT STATUS (Day 2 post-op):
+  - Pain: 4/10 VAS at rest; 7/10 on movement
+  - Ambulating with frame; 10 m x2 today (limited by neuro sx)
+  - Residual left leg radiculopathy — L5 dermatomal distribution
+  - SLR positive left 40° (neural mechanosensitivity ++)
+  - Lumbar ROM severely restricted; significant hypomobility
+  - Wound: intact, no signs of infection
+  - Resp: clear; SpO₂ 97% on RA (monitoring given PMHx fibrosis)
+
+PHYSIO Rx TO DATE:
+  - Bed mobility, sit-to-stand transfers
+  - Early neuromobilisation (sliders) commenced Day 2 — tolerated
+  - Breathing exercises (preventive, given mild fibrosis PMHx)
+  - Patient education re: posture, lifting, activity pacing
+
+GOALS:
+  - Independent ambulation 50 m by discharge (est. Day 4–5)
+  - Establish HEP prior to discharge
+  - Handover to community physio for ongoing rehab
+
+DISCHARGE DESTINATION: Home (lives alone — 1-storey unit)
+                       Nearest physiotherapy: Eastlands Community Health Centre
+    </div>
+
+    <div class="writing-task-box">
+      <strong>TASK:</strong> Using the information in the case notes, write a referral letter to the <strong>Community Physiotherapy Team at Eastlands Community Health Centre</strong>.<br><br>
+      In your letter, you must:
+      <ul style="padding-left:1.2rem;margin-top:0.5rem;font-size:0.88rem;">
+        <li>Introduce the patient and the reason for referral</li>
+        <li>Summarise the relevant surgical and medical history</li>
+        <li>Describe the patient's current functional status and presenting problems</li>
+        <li>Outline the physiotherapy management completed to date</li>
+        <li>Clearly state the goals and priorities for ongoing community rehabilitation</li>
+      </ul>
+      <br>
+      <em>Address your letter to: <strong>The Community Physiotherapy Team, Eastlands Community Health Centre</strong></em><br>
+      <em>Write in the role of: the inpatient physiotherapist, <strong>Surgical Orthopaedics Ward</strong></em>
+    </div>
+
+    <!-- Self-assessment checklist (click to reveal) -->
+    <details>
+      <summary>Show Self-Assessment Checklist (reveal after completing your letter)</summary>
+      <div class="answer-box" style="background:white;border-left-color:var(--primary);">
+        <div class="checklist">
+          <h4>✅ OET Writing Self-Assessment — 10 Criteria</h4>
+          <ul>
+            <li>I have used an appropriate formal letter format (date, addressee, salutation, sign-off).</li>
+            <li>I introduced the patient clearly, including name, age, and reason for referral in the opening paragraph.</li>
+            <li>I accurately described the disc herniation diagnosis and the microdiscectomy procedure with the correct date.</li>
+            <li>I mentioned the completed prehabilitation programme and its relevance to the patient's recovery.</li>
+            <li>I communicated the ongoing radiculopathy and neural mechanosensitivity (positive SLR) accurately.</li>
+            <li>I explained that neuromobilisation has been commenced and was tolerated, so the community team knows to continue it.</li>
+            <li>I flagged the relevant medical history (mild pulmonary fibrosis, hypertension) that affects management.</li>
+            <li>I stated clear goals and priorities for the community physiotherapy programme.</li>
+            <li>I noted the patient's social context (lives alone, one-storey unit) to inform home exercise planning.</li>
+            <li>My letter is free of jargon addressed to the patient; all language is appropriate for a professional clinical reader.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+  </div><!-- /section-body -->
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 4 — OET SPEAKING
+══════════════════════════════════════════════════════ -->
+<section class="section-block" id="section4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="section-title-text">
+      <h2>OET Speaking</h2>
+      <p>2 role plays · 5 minutes each (3 min prep + 5 min interaction)</p>
+    </div>
+    <div class="timer-badge">⏱ 20 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- ROLE PLAY 1 -->
+    <div class="role-play-card">
+      <h4>Role Play 1 — Post-Discectomy Home Exercise Programme</h4>
+
+      <div class="word-bank" style="margin-bottom:0.7rem;">
+        <strong style="font-size:0.78rem;color:var(--muted);margin-right:0.3rem;">Target words:</strong>
+        <span class="word-chip">discectomy</span>
+        <span class="word-chip">neuromobilisation</span>
+        <span class="word-chip">hypomobility</span>
+      </div>
+
+      <p><strong>Setting:</strong> Surgical orthopaedics ward, day before discharge. You are the physiotherapist; the patient (interlocutor) is Alan Morrison, 55-year-old male, day 4 post lumbar microdiscectomy.</p>
+
+      <p><strong>Key Tasks:</strong></p>
+      <ul style="font-size:0.87rem;padding-left:1.2rem;margin-bottom:0.6rem;">
+        <li>Explain the purpose of the home exercise programme (HEP) and its importance after a discectomy.</li>
+        <li>Describe two to three specific exercises, including neuromobilisation (nerve gliding) exercises to address hypomobility and residual radicular symptoms.</li>
+        <li>Address the patient's concern: <em>"Will the exercises be painful? I'm worried about making things worse."</em></li>
+        <li>Explain what movements or activities to avoid and when to seek medical advice.</li>
+      </ul>
+
+      <p><strong>Suggested Opening:</strong> <em>"Mr Morrison, now that you're getting ready to go home tomorrow, I'd like to go through some exercises that will really help your recovery after the discectomy. Is that all right?"</em></p>
+
+      <div class="key-phrases">
+        <span class="phrase">"After a discectomy, it's important to…"</span>
+        <span class="phrase">"These nerve gliding exercises — we call them neuromobilisation — help to…"</span>
+        <span class="phrase">"Because your back has been quite stiff — what we call hypomobility — these gentle movements will…"</span>
+        <span class="phrase">"You should stop and contact us if you notice…"</span>
+        <span class="phrase">"That's a very understandable concern — let me reassure you that…"</span>
+      </div>
+
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Model Answer Outline:</strong>
+          <ol style="padding-left:1.2rem;margin-top:0.3rem;font-size:0.87rem;">
+            <li><strong>Opening:</strong> Acknowledge the patient's progress; explain the HEP is the next step in recovery from the discectomy.</li>
+            <li><strong>Exercise 1 — Walking:</strong> Begin with 10-minute walks three times daily, increasing duration gradually. Explain why: promotes circulation, prevents scar tissue adhesion, addresses post-operative hypomobility.</li>
+            <li><strong>Exercise 2 — Neuromobilisation (sciatic nerve slider):</strong> Sitting, gently extend knee while flexing foot, then return. Explain it helps restore nerve mobility after the surgery. Emphasise "no sharp, shooting pain" — mild tension is acceptable.</li>
+            <li><strong>Exercise 3 — Pelvic tilts / gentle core activation:</strong> Lying, flatten lumbar spine to bed; builds protective stability without loading the disc.</li>
+            <li><strong>Addressing concerns:</strong> Validate — "It's very natural to feel anxious." Distinguish between "therapeutic discomfort" (acceptable) and "pain worse than before surgery or new neurological symptoms" (stop and call). Use the phrase "listen to your body."</li>
+            <li><strong>Restrictions:</strong> Avoid lifting more than 5 kg, prolonged sitting &gt;30 min, bending and twisting simultaneously. Red flags: increased leg weakness, saddle anaesthesia, loss of bladder/bowel control — seek emergency help immediately.</li>
+            <li><strong>Closing:</strong> Confirm follow-up with community physiotherapy; invite questions; provide written HEP sheet.</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <!-- ROLE PLAY 2 -->
+    <div class="role-play-card">
+      <h4>Role Play 2 — Managing Breathlessness in a Patient with Valvular Heart Disease</h4>
+
+      <div class="word-bank" style="margin-bottom:0.7rem;">
+        <strong style="font-size:0.78rem;color:var(--muted);margin-right:0.3rem;">Target words:</strong>
+        <span class="word-chip">crepitations</span>
+        <span class="word-chip">diastolic</span>
+        <span class="word-chip">valvular</span>
+      </div>
+
+      <p><strong>Setting:</strong> Outpatient cardiorespiratory physiotherapy clinic. You are the physiotherapist; the patient (interlocutor) is Mrs Sandra Osei, 68-year-old female, referred for cardiac rehabilitation following an acute exacerbation of heart failure secondary to valvular heart disease.</p>
+
+      <p><strong>Key Tasks:</strong></p>
+      <ul style="font-size:0.87rem;padding-left:1.2rem;margin-bottom:0.6rem;">
+        <li>Explain what valvular heart disease is and why it caused her breathlessness, in simple terms.</li>
+        <li>Explain what crepitations are and why the medical team were listening to her lungs.</li>
+        <li>Introduce the concept of diastolic dysfunction in lay language if it comes up.</li>
+        <li>Address the patient's question: <em>"My doctor mentioned my diastolic something — what does that mean?"</em></li>
+        <li>Discuss the goals of her physiotherapy programme: pacing, breathlessness management, and graduated exercise.</li>
+      </ul>
+
+      <p><strong>Suggested Opening:</strong> <em>"Good morning, Mrs Osei. I'm Leo, one of the physiotherapists here. I understand you've had a difficult few weeks with your breathing — I'd like to talk through what's been happening and how we can work together to help. Is that OK?"</em></p>
+
+      <div class="key-phrases">
+        <span class="phrase">"Your heart has a valve — think of it like a door — that isn't closing properly…"</span>
+        <span class="phrase">"The crackling sounds the doctors heard in your lungs — called crepitations — are caused by…"</span>
+        <span class="phrase">"Diastolic refers to when the heart relaxes and fills with blood — when that's affected…"</span>
+        <span class="phrase">"We call this activity pacing — the idea is to…"</span>
+        <span class="phrase">"If you notice your breathing becomes much worse during exercise, please stop and…"</span>
+      </div>
+
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Model Answer Outline:</strong>
+          <ol style="padding-left:1.2rem;margin-top:0.3rem;font-size:0.87rem;">
+            <li><strong>Opening:</strong> Empathetic acknowledgement of the patient's experience; establish rapport before clinical discussion.</li>
+            <li><strong>Explaining valvular heart disease:</strong> Use the "door" analogy — "One of the valves in your heart, which acts like a door controlling blood flow, isn't functioning properly. This means blood can back up, and fluid can build up in your lungs." Avoid excessive medical jargon.</li>
+            <li><strong>Explaining crepitations:</strong> "The crackling sounds the doctor heard — called crepitations — are the sound of small amounts of fluid in the tiny air sacs of your lungs. That's why your breathing feels harder. The treatment you've had is helping drain that fluid."</li>
+            <li><strong>Explaining diastolic dysfunction (if raised):</strong> "Diastolic refers to the relaxation phase of your heartbeat — when your heart fills with blood. If the heart muscle is stiff, it doesn't fill as well, and that can make the whole system work harder. Your cardiologist is monitoring this closely."</li>
+            <li><strong>Physiotherapy goals:</strong> (a) Breathlessness management — diaphragmatic breathing, pursed-lip breathing for symptom control; (b) Activity pacing — break tasks into stages, rest before becoming breathless; (c) Graduated exercise — start with short, flat-surface walking and increase slowly using a perceived exertion scale (Borg RPE); (d) Monitoring — teach the patient to recognise worsening symptoms (increased ankle swelling, orthopnoea, sudden breathlessness) and when to seek urgent help.</li>
+            <li><strong>Closing:</strong> Summarise the plan; invite questions; provide written information on the cardiac rehab programme.</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+  </div><!-- /section-body -->
+</section>
+
+<footer class="page-footer">
+  Week 9 · Generated 26 July 2026 · OET Weekly Practice Series<br>
+  20 words tested across 4 sections · ~405-word cumulative pool<br>
+  <a href="index.html" style="color:var(--primary);">← Back to all exams</a>
+</footer>
+
+</body>
+</html>
