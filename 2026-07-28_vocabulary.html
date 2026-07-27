@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 81 · 2026-07-28</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    .badge-paeds     { background: #fff7ed; color: #c2410c; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 81 · 28 Jul 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Paediatric + Signs &amp; Symptoms</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">intussusception</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌɪn.tə.sʌsˈep.ʃən/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/intussusception" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/intussusception" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-paeds">小兒 Paediatric</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A condition in which one segment of the intestine telescopes or folds inward into an adjacent segment, causing bowel obstruction; the most common cause of acute intestinal obstruction in infants aged 6–36 months, most frequently affecting the ileocolic junction.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">腸套疊</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">ileocolic intussusception</span>
+          <span class="colloc-item">pneumatic reduction of intussusception</span>
+          <span class="colloc-item">intussusception recurrence</span>
+          <span class="colloc-item">spontaneous reduction</span>
+          <span class="colloc-item">surgical management of intussusception</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The 9-month-old male presented with a 6-hour history of episodic colicky abdominal pain and passage of blood-stained mucous stool; abdominal ultrasound confirmed ileocolic <strong>intussusception</strong>, and he was transferred to the paediatric surgery unit for pneumatic reduction under fluoroscopic guidance."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">intussuscipiens (outer segment)</span>
+          <span class="related-item">intussusceptum (inner segment)</span>
+          <span class="related-item">bowel obstruction</span>
+          <span class="related-item">volvulus (differential)</span>
+          <span class="related-item">pneumatic reduction (procedure)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">strabismus</div>
+        <div class="card-meta">
+          <span class="ipa">/strəˈbɪz.məs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/strabismus" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/strabismus" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-paeds">小兒 Paediatric</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A condition in which the two eyes are misaligned and do not point in the same direction simultaneously; commonly referred to as a squint; may be convergent (esotropia), divergent (exotropia), or vertical; if untreated in childhood, may lead to amblyopia (lazy eye).</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">斜視</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">convergent strabismus</span>
+          <span class="colloc-item">divergent strabismus</span>
+          <span class="colloc-item">intermittent strabismus</span>
+          <span class="colloc-item">congenital strabismus</span>
+          <span class="colloc-item">surgical correction of strabismus</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "During the 18-month developmental review, persistent convergent <strong>strabismus</strong> was noted in the left eye; the family was advised to seek urgent ophthalmological assessment to prevent the development of amblyopia."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">esotropia (inward turn)</span>
+          <span class="related-item">exotropia (outward turn)</span>
+          <span class="related-item">amblyopia (lazy eye — consequence)</span>
+          <span class="related-item">squint (lay term)</span>
+          <span class="related-item">ocular palsy (differential)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">rhinorrhoea</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌraɪ.nəˈrɪ.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/rhinorrhoea" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/rhinorrhea" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Excessive or persistent discharge of mucus from the nose; commonly called a 'runny nose'; may be associated with viral upper respiratory tract infection, allergic rhinitis, foreign body, or — in rare cases — a cerebrospinal fluid (CSF) leak following head trauma.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">鼻漏；流鼻水</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">profuse rhinorrhoea</span>
+          <span class="colloc-item">clear rhinorrhoea</span>
+          <span class="colloc-item">purulent rhinorrhoea</span>
+          <span class="colloc-item">persistent rhinorrhoea</span>
+          <span class="colloc-item">rhinorrhoea associated with</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The infant presented with a 4-day history of profuse clear <strong>rhinorrhoea</strong>, low-grade pyrexia, and mild respiratory distress; examination was consistent with viral upper respiratory tract infection, and parents were advised regarding symptomatic management."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">rhinitis (nasal inflammation)</span>
+          <span class="related-item">coryza (acute rhinitis — synonym)</span>
+          <span class="related-item">nasal discharge (lay term)</span>
+          <span class="related-item">nasal congestion (related symptom)</span>
+          <span class="related-item">rhinorrhoeal (adj)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">hepatosplenomegaly</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌhep.ə.tə.ˌspliː.nəʊˈmeg.ə.li/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/hepatosplenomegaly" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/hepatosplenomegaly" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+        <span class="badge badge-paeds">小兒 Paediatric</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Simultaneous enlargement of both the liver and the spleen beyond their normal sizes; a clinical sign detected on abdominal palpation that may indicate systemic infection, haematological disorders, metabolic disease, or malignancy; particularly significant in paediatric assessment.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">肝脾腫大</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">marked hepatosplenomegaly</span>
+          <span class="colloc-item">mild hepatosplenomegaly</span>
+          <span class="colloc-item">hepatosplenomegaly on palpation</span>
+          <span class="colloc-item">hepatosplenomegaly secondary to</span>
+          <span class="colloc-item">underlying hepatosplenomegaly</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "On abdominal examination, moderate <strong>hepatosplenomegaly</strong> was identified, with the liver palpable 3 cm below the right costal margin and the spleen tip palpable on inspiration; these findings were consistent with Epstein-Barr virus infection and haematological review was requested."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">hepatomegaly (liver enlargement only)</span>
+          <span class="related-item">splenomegaly (spleen enlargement only)</span>
+          <span class="related-item">organomegaly (organ enlargement — broader)</span>
+          <span class="related-item">hepatosplenic (adj)</span>
+          <span class="related-item">abdominal palpation (assessment method)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">enuresis</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌen.jʊˈriː.sɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/enuresis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/enuresis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-paeds">小兒 Paediatric</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Involuntary urination beyond the developmental age at which voluntary bladder control is expected; classified as nocturnal (bedwetting during sleep), diurnal (daytime wetting), or combined; further categorised as primary (continence never achieved) or secondary (wetting following at least six months of dryness).</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">遺尿症；尿床</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">nocturnal enuresis</span>
+          <span class="colloc-item">primary enuresis</span>
+          <span class="colloc-item">secondary enuresis</span>
+          <span class="colloc-item">monosymptomatic enuresis</span>
+          <span class="colloc-item">management of enuresis</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "James, a 6-year-old male, was referred to the paediatric continence physiotherapy service for assessment and management of primary nocturnal <strong>enuresis</strong>; his parents reported bedwetting on five to six nights per week despite appropriate fluid management and consistent toileting routines."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">bedwetting (lay term)</span>
+          <span class="related-item">urinary incontinence (broader term)</span>
+          <span class="related-item">nocturia (night voiding in adults)</span>
+          <span class="related-item">enuretic (adj)</span>
+          <span class="related-item">bladder alarm therapy (treatment)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 81)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Master Liam Chen, a 4-year-old male, was referred by his paediatrician to the continence
+      physiotherapy service for assessment and management of primary nocturnal
+      <span class="highlight">enuresis</span>. His parents reported that he had never achieved
+      consistent night-time dryness, experiencing bedwetting on four to five nights per week
+      despite appropriate fluid restriction in the evening and a regular toileting routine before bed.
+      <br><br>
+      Background history was notable for hospital admission at 8 months of age for ileocolic
+      <span class="highlight">intussusception</span>, which was successfully managed by pneumatic
+      reduction without surgical complication. He was otherwise meeting developmental milestones
+      and had no neurological concerns on file.
+      <br><br>
+      At the initial physiotherapy appointment, Liam presented with bilateral clear
+      <span class="highlight">rhinorrhoea</span> and nasal congestion, consistent with a concurrent
+      viral upper respiratory tract infection of two days' duration. Incidentally, on abdominal
+      examination, mild <span class="highlight">hepatosplenomegaly</span> was detected; the parents
+      were advised to follow up with their GP regarding this finding prior to the next appointment.
+      Additionally, persistent convergent <span class="highlight">strabismus</span> was noted in the
+      right eye, and ophthalmological review was recommended to exclude amblyopia.
+      <br><br>
+      Physiotherapy assessment identified a pattern consistent with primary monosymptomatic nocturnal
+      enuresis. A bladder diary was commenced and enuresis alarm therapy was initiated, with education
+      provided to both Liam and his parents regarding expected outcomes and adherence strategies.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When documenting paediatric referrals, always specify the child's <em>age</em>,
+      clarify whether enuresis is <em>primary or secondary</em>, note <em>incidental findings</em> alongside the main
+      complaint, and record any <em>recommended follow-up actions</em> clearly. Avoid ambiguous terms — use "bilateral clear rhinorrhoea"
+      not "runny nose," and "ileocolic intussusception" not simply "bowel problem."
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 81 · 2026-07-28 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 小兒 Paediatric · Signs &amp; Symptoms</p>
+</footer>
+
+</body>
+</html>
