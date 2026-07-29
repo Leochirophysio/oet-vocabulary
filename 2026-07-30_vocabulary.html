@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 83 · 2026-07-30</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 83 · 30 Jul 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Cardiopulmonary + Procedures &amp; Interventions</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">analgesia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌæn.əlˈdʒiː.zi.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/analgesia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/analgesia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The absence or reduction of pain sensation; the use of pharmacological agents or physical techniques to relieve pain without causing loss of consciousness.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">鎮痛；止痛</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">adequate analgesia</span>
+          <span class="colloc-item">post-operative analgesia</span>
+          <span class="colloc-item">multimodal analgesia</span>
+          <span class="colloc-item">administer analgesia</span>
+          <span class="colloc-item">analgesia prior to</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Adequate <strong>analgesia</strong> was administered thirty minutes prior to the physiotherapy session to facilitate effective coughing and deep breathing exercises without exacerbating the patient's post-thoracotomy incisional pain."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">analgesic (adj / noun — pain-relieving drug)</span>
+          <span class="related-item">analgaesia (alternative spelling)</span>
+          <span class="related-item">pain relief (lay term)</span>
+          <span class="related-item">anaesthesia (complete loss of sensation)</span>
+          <span class="related-item">WHO analgesic ladder</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">ventricular</div>
+        <div class="card-meta">
+          <span class="ipa">/venˈtrɪk.jʊ.lə/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/ventricular" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/ventricular" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to a ventricle; in cardiology, pertaining to the two lower chambers of the heart (left and right ventricles) that pump blood to the body and lungs respectively.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">心室的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">left ventricular function</span>
+          <span class="colloc-item">ventricular dysfunction</span>
+          <span class="colloc-item">ventricular ejection fraction</span>
+          <span class="colloc-item">right ventricular failure</span>
+          <span class="colloc-item">biventricular</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Echocardiography confirmed moderate left <strong>ventricular</strong> dysfunction with an ejection fraction of 38%, which was taken into account when prescribing the intensity of the patient's cardiac rehabilitation exercise programme."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">ventricle (noun — heart chamber)</span>
+          <span class="related-item">biventricular (both ventricles)</span>
+          <span class="related-item">ejection fraction (EF)</span>
+          <span class="related-item">atrial (upper heart chamber adj)</span>
+          <span class="related-item">ventricular tachycardia (VT)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">thromboprophylaxis</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌθrɒm.bəʊ.prəˈfɪ.læk.sɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/thromboprophylaxis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/thromboprophylaxis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Preventive pharmacological or mechanical measures taken to reduce the risk of blood clot (thrombus) formation in patients at increased risk, such as those post-surgery or with prolonged immobility.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">血栓預防治療</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">mechanical thromboprophylaxis</span>
+          <span class="colloc-item">pharmacological thromboprophylaxis</span>
+          <span class="colloc-item">thromboprophylaxis protocol</span>
+          <span class="colloc-item">adequate thromboprophylaxis</span>
+          <span class="colloc-item">thromboprophylaxis regimen</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "As part of the post-operative <strong>thromboprophylaxis</strong> protocol, the patient was commenced on active ankle exercises and fitted with graduated compression stockings, alongside low-molecular-weight heparin prescribed by the surgical team."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">thrombus (blood clot)</span>
+          <span class="related-item">thrombosis (clot formation)</span>
+          <span class="related-item">prophylaxis (prevention)</span>
+          <span class="related-item">anticoagulation (drug treatment)</span>
+          <span class="related-item">deep vein thrombosis (DVT)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">coronary</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈkɒr.ə.nər.i/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/coronary" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/coronary" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to the coronary arteries, which are the blood vessels supplying oxygenated blood to the heart muscle; also used informally to describe a myocardial infarction (heart attack).</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">冠狀動脈的；心臟的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">coronary artery disease</span>
+          <span class="colloc-item">coronary artery bypass graft</span>
+          <span class="colloc-item">coronary rehabilitation</span>
+          <span class="colloc-item">post-coronary event</span>
+          <span class="colloc-item">acute coronary syndrome</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mr. Nakamura was admitted following an acute <strong>coronary</strong> event and is now medically stable; he is referred for cardiac physiotherapy commencing with gentle mobilisation and activity grading as part of his phase II coronary rehabilitation programme."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">coronary artery disease (CAD)</span>
+          <span class="related-item">CABG (coronary artery bypass graft)</span>
+          <span class="related-item">myocardial infarction (MI / heart attack)</span>
+          <span class="related-item">angina (chest pain from coronary disease)</span>
+          <span class="related-item">ischaemia (reduced blood flow)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">oscillation</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌɒs.ɪˈleɪ.ʃən/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/oscillation" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/oscillation" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A repetitive back-and-forth or vibratory movement; in respiratory physiotherapy, high-frequency chest wall oscillation generates vibrations to loosen and mobilise mucus secretions, facilitating airway clearance.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">振盪；震動（胸腔物理治療技術）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">high-frequency chest wall oscillation</span>
+          <span class="colloc-item">airway oscillation</span>
+          <span class="colloc-item">oscillating positive expiratory pressure</span>
+          <span class="colloc-item">oscillation therapy</span>
+          <span class="colloc-item">oscillation device</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "High-frequency chest wall <strong>oscillation</strong> was initiated using a vest device to assist with secretion clearance in this patient with cystic fibrosis, as standard manual airway clearance techniques had proven insufficient in mobilising tenacious lower lobe secretions."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">oscillate (verb)</span>
+          <span class="related-item">oscillatory (adj)</span>
+          <span class="related-item">vibration (manual technique)</span>
+          <span class="related-item">autogenic drainage (related airway technique)</span>
+          <span class="related-item">airway clearance</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 83)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr. Dawit Bekele, a 61-year-old male with a known background of <span class="highlight">coronary</span>
+      artery disease, was admitted to the cardiothoracic ward following elective coronary artery bypass
+      grafting (CABG). He is referred to the physiotherapy department on post-operative day two for
+      respiratory management and early mobility.
+      <br><br>
+      On initial assessment, Mr. Bekele reported significant incisional pain at the sternal wound site,
+      limiting his ability to cough effectively. Adequate <span class="highlight">analgesia</span> was
+      administered by the nursing team thirty minutes prior to the physiotherapy session, which
+      subsequently enabled satisfactory chest expansion and productive coughing with minimal splinting
+      required.
+      <br><br>
+      High-frequency chest wall <span class="highlight">oscillation</span> was applied bilaterally to
+      assist in mobilising secretions from the lower lobes, where coarse crackles had been noted on
+      auscultation. The medical team confirmed that left <span class="highlight">ventricular</span>
+      function remained acceptable for graded physical activity, with an ejection fraction of 42% on
+      the most recent echocardiogram.
+      <br><br>
+      Mechanical <span class="highlight">thromboprophylaxis</span> — including bilateral graduated
+      compression stockings and active ankle pumping exercises — was reinforced during the session.
+      Mr. Bekele was subsequently assisted to sit out of bed and ambulate five metres with a physiotherapist
+      providing close supervision. Discharge home is anticipated within four to five days, at which point
+      he will be referred to the outpatient coronary rehabilitation programme.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When documenting cardiac rehabilitation referrals, always include
+      <em>current ventricular function / ejection fraction</em>, <em>operative procedure and date</em>,
+      and <em>current functional status</em>. Specify whether thromboprophylaxis is mechanical, pharmacological,
+      or both — this informs the receiving clinician's safety planning.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 83 · 2026-07-30 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 心肺 Cardiopulmonary · Procedures &amp; Interventions</p>
+</footer>
+
+</body>
+</html>
