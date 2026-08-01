@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Weekly Exam — Week 10 · 2026-08-02</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #fff; --primary: #7c3aed; --primary-light: #ede9fe;
+      --accent: #0d9488; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+      --green: #15803d; --green-light: #dcfce7;
+      --red: #b91c1c; --red-light: #fee2e2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem 4rem; line-height: 1.65; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: var(--primary); color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); flex-wrap: wrap; }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .week-badge { margin-left: auto; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.82rem; font-weight: 600; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .instructions { max-width: 860px; margin: 0 auto 1.5rem; background: var(--primary-light); border: 1px solid #c4b5fd; border-radius: var(--radius); padding: 1rem 1.2rem; font-size: 0.88rem; }
+    .instructions h3 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .instructions ul { padding-left: 1.2rem; }
+    .instructions li { margin-bottom: 0.3rem; }
+    .section-block { max-width: 860px; margin: 0 auto 2rem; background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+    .section-header { padding: 1rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border); }
+    .section-num { width: 2rem; height: 2rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .section-title-text h2 { font-size: 1.05rem; font-weight: 700; }
+    .section-title-text p { font-size: 0.8rem; color: var(--muted); }
+    .timer-badge { margin-left: auto; background: var(--warn-light); color: var(--warn); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+    .section-body { padding: 1.4rem; }
+    .question { margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .q-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.4rem; }
+    .q-text { font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 500; }
+    .q-options { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.7rem; }
+    .q-option { font-size: 0.9rem; padding: 0.4rem 0.7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+    details { margin-top: 0.5rem; }
+    summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--primary); user-select: none; padding: 0.3rem 0; }
+    summary:hover { text-decoration: underline; }
+    .answer-box { margin-top: 0.5rem; background: var(--green-light); border-left: 3px solid var(--green); padding: 0.6rem 0.9rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #14532d; }
+    .reading-passage { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; font-style: italic; }
+    .highlight { color: var(--primary); font-weight: 700; font-style: normal; text-decoration: underline dotted; }
+    .case-notes { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.88rem; font-family: 'Courier New', monospace; line-height: 1.9; margin-bottom: 1.2rem; }
+    .writing-task-box { background: var(--warn-light); border-left: 3px solid var(--warn); padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; margin-bottom: 1rem; }
+    .checklist { margin-top: 1rem; }
+    .checklist h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--green); }
+    .checklist ul { padding-left: 0; list-style: none; }
+    .checklist li { font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .checklist li::before { content: '☐'; font-size: 1rem; flex-shrink: 0; }
+    .role-play-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+    .role-play-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 0.4rem; }
+    .role-play-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .key-phrases { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .phrase { background: white; border: 1px solid #86efac; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px; font-style: italic; }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+    .word-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 0.1rem 0.5rem; border-radius: 10px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag-this { background: #dbeafe; color: #1e40af; }
+    .tag-prev { background: #fce7f3; color: #9d174d; }
+    .score-bar { max-width: 860px; margin: 0 auto 1.5rem; background: white; border-radius: var(--radius); box-shadow: var(--shadow); padding: 1rem 1.4rem; border: 1px solid var(--border); display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .score-item { text-align: center; }
+    .score-item .num { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+    .score-item .lbl { font-size: 0.75rem; color: var(--muted); }
+    .divider { width: 1px; height: 2.5rem; background: var(--border); }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="header-icon">📝</div>
+  <div class="header-text">
+    <h1>OET Weekly Practice Exam</h1>
+    <p>40 new words this week &middot; 4 sections &middot; Physiotherapy focus</p>
+  </div>
+  <div class="week-badge">Week 10 &mdash; 2 Aug 2026</div>
+</div>
+
+<nav class="nav-bar">
+  <a href="../index.html">← All Exams</a>
+  <a href="#section1">S1: Vocabulary</a>
+  <a href="#section2">S2: Reading</a>
+  <a href="#section3">S3: Writing</a>
+  <a href="#section4">S4: Speaking</a>
+</nav>
+
+<div class="score-bar">
+  <div class="score-item"><div class="num">40</div><div class="lbl">Words This Week</div></div>
+  <div class="divider"></div>
+  <div class="score-item"><div class="num">10</div><div class="lbl">Vocab Questions</div></div>
+  <div class="divider"></div>
+  <div class="score-item"><div class="num">5</div><div class="lbl">Reading MCQs</div></div>
+  <div class="divider"></div>
+  <div class="score-item"><div class="num">1</div><div class="lbl">Writing Task</div></div>
+  <div class="divider"></div>
+  <div class="score-item"><div class="num">2</div><div class="lbl">Role Plays</div></div>
+</div>
+
+<div class="instructions">
+  <h3>Instructions</h3>
+  <ul>
+    <li>Work through each section in order, or jump to a section using the navigation above.</li>
+    <li>Attempt each question before clicking <em>Show Answer</em>.</li>
+    <li><span class="word-tag tag-this">THIS WEEK</span> = new word from 26 Jul–2 Aug 2026 &nbsp;|&nbsp; <span class="word-tag tag-prev">PREVIOUS</span> = revision from earlier weeks.</li>
+    <li>Recommended time: Vocabulary 15 min · Reading 20 min · Writing 45 min · Speaking 20 min.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 1 — VOCABULARY
+═══════════════════════════════════════════════════════ -->
+<div class="section-block" id="section1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-text">
+      <h2>Vocabulary</h2>
+      <p>10 questions — 6 from this week, 4 revision &middot; Fill-in-blank, definition match &amp; collocation</p>
+    </div>
+    <div class="timer-badge">15 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Q1 -->
+    <div class="question">
+      <div class="q-label">Question 1 of 10 &middot; Fill-in-the-blank <span class="word-tag tag-this">THIS WEEK</span></div>
+      <div class="q-text">The physiotherapist performed __________ to restore gliding mobility to the median nerve following carpal tunnel decompression surgery.</div>
+      <div class="q-options">
+        <div class="q-option">A) nerve conduction testing</div>
+        <div class="q-option">B) neuromobilisation</div>
+        <div class="q-option">C) neurostimulation</div>
+        <div class="q-option">D) neuroprolotherapy</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) neuromobilisation</strong><br>Neuromobilisation (also called neural mobilisation or neurodynamic techniques) involves gentle movement exercises that restore the normal sliding and tensioning mechanics of peripheral nerves within their surrounding tissues. It is commonly used post-operatively to reduce neural adhesions and improve nerve excursion.</div>
+      </details>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+      <div class="q-label">Question 2 of 10 &middot; Definition match <span class="word-tag tag-this">THIS WEEK</span></div>
+      <div class="q-text">Which term describes an unpleasant, abnormal sensation — spontaneous or evoked — often characterised by a burning, electric, or crawling quality, distinct from normal pain?</div>
+      <div class="q-options">
+        <div class="q-option">A) paraesthesia</div>
+        <div class="q-option">B) hyperalgesia</div>
+        <div class="q-option">C) dysaesthesia</div>
+        <div class="q-option">D) allodynia</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) dysaesthesia</strong><br>Dysaesthesia refers to an unpleasant abnormal sensation, which may be spontaneous or stimulus-evoked. It differs from paraesthesia (pins and needles — not necessarily unpleasant) and allodynia (pain from a normally non-painful stimulus). It is commonly reported in polyneuropathy and central sensitisation.</div>
+      </details>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+      <div class="q-label">Question 3 of 10 &middot; Fill-in-the-blank <span class="word-tag tag-this">THIS WEEK</span></div>
+      <div class="q-text">Following total hip arthroplasty, the patient was commenced on low molecular weight heparin as __________ to reduce the risk of deep vein thrombosis during the early post-operative period.</div>
+      <div class="q-options">
+        <div class="q-option">A) anticoagulation maintenance</div>
+        <div class="q-option">B) thromboprophylaxis</div>
+        <div class="q-option">C) haemostasis therapy</div>
+        <div class="q-option">D) fibrinolytic treatment</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) thromboprophylaxis</strong><br>Thromboprophylaxis refers to preventive measures taken to reduce the risk of thrombus formation, particularly venous thromboembolism (VTE). In surgical patients, this typically involves pharmacological agents (e.g. LMWH, aspirin) and/or mechanical measures (e.g. compression stockings, early mobilisation).</div>
+      </details>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question">
+      <div class="q-label">Question 4 of 10 &middot; Fill-in-the-blank <span class="word-tag tag-this">THIS WEEK</span></div>
+      <div class="q-text">The patient demonstrated impaired __________, reporting significant difficulty sensing the movement of her lower limbs when her eyes were closed during balance assessment.</div>
+      <div class="q-options">
+        <div class="q-option">A) proprioception</div>
+        <div class="q-option">B) nociception</div>
+        <div class="q-option">C) kinaesthesia</div>
+        <div class="q-option">D) stereognosis</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) kinaesthesia</strong><br>Kinaesthesia is the sense of movement of body parts, derived from muscle spindle and joint receptor afferents. It differs from proprioception (static joint position sense) by specifically referring to the dynamic perception of motion. Impaired kinaesthesia is common in peripheral neuropathy, joint injury, and ageing.</div>
+      </details>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question">
+      <div class="q-label">Question 5 of 10 &middot; Fill-in-the-blank <span class="word-tag tag-this">THIS WEEK</span></div>
+      <div class="q-text">The treating physiotherapist applied __________ to deliver a corticosteroid preparation transdermally to the inflamed supraspinatus tendon, utilising ultrasound as the delivery mechanism.</div>
+      <div class="q-options">
+        <div class="q-option">A) iontophoresis</div>
+        <div class="q-option">B) phonophoresis</div>
+        <div class="q-option">C) electrophoresis</div>
+        <div class="q-option">D) shortwave diathermy</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) phonophoresis</strong><br>Phonophoresis (also called sonophoresis) uses therapeutic ultrasound to drive topical medications — typically anti-inflammatory agents such as corticosteroids — through the skin into underlying tissues. This distinguishes it from iontophoresis, which uses electrical current for the same purpose.</div>
+      </details>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question">
+      <div class="q-label">Question 6 of 10 &middot; Collocation complete <span class="word-tag tag-this">THIS WEEK</span></div>
+      <div class="q-text">The patient presented with lateral hip pain that was reproduced on palpation over the greater trochanter, consistent with a diagnosis of __________ bursitis.</div>
+      <div class="q-options">
+        <div class="q-option">A) iliotibial</div>
+        <div class="q-option">B) ischial</div>
+        <div class="q-option">C) trochanteric</div>
+        <div class="q-option">D) acetabular</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) trochanteric</strong><br>Trochanteric bursitis refers to inflammation of the bursa overlying the greater trochanter of the femur. It presents with lateral hip pain reproduced on direct palpation and may be related to iliotibial band tightness, hip abductor tendinopathy, or gluteal muscle imbalance. Note: current nomenclature often uses "greater trochanteric pain syndrome" (GTPS).</div>
+      </details>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question">
+      <div class="q-label">Question 7 of 10 &middot; Fill-in-the-blank <span class="word-tag tag-prev">PREVIOUS</span></div>
+      <div class="q-text">On auscultation of the lung bases, fine __________ were noted bilaterally at end-inspiration, raising clinical suspicion of pulmonary oedema in this post-cardiac-surgery patient.</div>
+      <div class="q-options">
+        <div class="q-option">A) wheeze</div>
+        <div class="q-option">B) crepitations</div>
+        <div class="q-option">C) friction rub</div>
+        <div class="q-option">D) stridor</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) crepitations</strong><br>Crepitations (also called crackles) are discontinuous, non-musical adventitious breath sounds heard on auscultation, typically at end-inspiration. Fine crepitations at the lung bases are characteristic of pulmonary oedema or early interstitial fibrosis, whereas coarser crepitations may indicate secretions in the airways.</div>
+      </details>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question">
+      <div class="q-label">Question 8 of 10 &middot; Definition match <span class="word-tag tag-prev">PREVIOUS</span></div>
+      <div class="q-text">Which term refers to the protrusion of an organ or tissue through an abnormal opening in the wall that normally contains it, most commonly applied to intervertebral disc pathology in physiotherapy?</div>
+      <div class="q-options">
+        <div class="q-option">A) calcification</div>
+        <div class="q-option">B) herniation</div>
+        <div class="q-option">C) fibrosis</div>
+        <div class="q-option">D) stenosis</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) herniation</strong><br>Herniation describes the protrusion of tissue beyond its normal anatomical boundary. In the spine, disc herniation occurs when the nucleus pulposus displaces through a tear in the annulus fibrosus, potentially compressing adjacent nerve roots or the spinal cord, producing radicular pain and neurological deficit.</div>
+      </details>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question">
+      <div class="q-label">Question 9 of 10 &middot; Definition match <span class="word-tag tag-prev">PREVIOUS</span></div>
+      <div class="q-text">Which term describes the surgical removal of all or part of the fibrocartilaginous structure within the knee joint that functions in load distribution, shock absorption, and joint stability?</div>
+      <div class="q-options">
+        <div class="q-option">A) synovectomy</div>
+        <div class="q-option">B) chondroplasty</div>
+        <div class="q-option">C) meniscectomy</div>
+        <div class="q-option">D) arthrodesis</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) meniscectomy</strong><br>Meniscectomy is the surgical removal of the meniscus (partial or total). The menisci are C-shaped fibrocartilage structures that distribute load across the tibiofemoral joint. Total meniscectomy significantly increases contact stress on articular cartilage and is associated with accelerated osteoarthritis — hence the preference for partial or meniscus-preserving surgery where possible.</div>
+      </details>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question">
+      <div class="q-label">Question 10 of 10 &middot; Collocation complete <span class="word-tag tag-prev">PREVIOUS</span></div>
+      <div class="q-text">The athlete sustained a complete rupture of the anterior __________ ligament during a non-contact deceleration manoeuvre, confirmed on MRI and requiring surgical reconstruction.</div>
+      <div class="q-options">
+        <div class="q-option">A) collateral</div>
+        <div class="q-option">B) cruciate</div>
+        <div class="q-option">C) annular</div>
+        <div class="q-option">D) coracoacromial</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) cruciate</strong><br>The anterior cruciate ligament (ACL) is an intra-articular, extrasynovial ligament of the knee that primarily resists anterior tibial translation and rotational forces. ACL rupture is common in sports requiring pivoting and deceleration. The "cruciate" name derives from the Latin <em>crux</em> (cross), as the ACL and PCL cross each other within the joint.</div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 2 — READING
+═══════════════════════════════════════════════════════ -->
+<div class="section-block" id="section2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="section-title-text">
+      <h2>OET Reading</h2>
+      <p>1 clinical passage (approx. 220 words) + 5 comprehension questions</p>
+    </div>
+    <div class="timer-badge">20 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="reading-passage">
+      <strong style="font-style:normal; display:block; margin-bottom:0.6rem; color:var(--text);">Clinical Article Excerpt: Rehabilitation Following Osteochondral Injury of the Knee</strong>
+
+      The management of <span class="highlight">osteochondral</span> injuries presents a significant clinical challenge in sports physiotherapy. These injuries involve damage to both the articular cartilage and the underlying <span class="highlight">subchondral</span> bone, and are frequently encountered following traumatic events, including <span class="highlight">hamstring</span> avulsions or torsional loading of the knee.
+
+      Following surgical intervention or conservative management, patients typically undergo a prescribed period of <span class="highlight">immobilisation</span> to facilitate tissue healing. During this phase, clinicians must monitor carefully for the onset of <span class="highlight">dysaesthesia</span>, which may signal peripheral nerve compromise arising from post-operative oedema or sustained positional loading. As progressive weight-bearing is reintroduced, <span class="highlight">intra-articular</span> effusion and pain levels must be systematically tracked to guide programme advancement.
+
+      Restoration of neuromuscular control — including proprioception and <span class="highlight">kinaesthesia</span> — is considered essential prior to return-to-sport clearance. Current evidence indicates that premature return to high-impact activities following osteochondral repair substantially elevates the risk of re-injury and accelerated joint degeneration. Physiotherapists therefore play a pivotal role in educating patients regarding realistic recovery timelines and ensuring adherence to a structured, evidence-based rehabilitation programme throughout the continuum of care.
+    </div>
+
+    <!-- Reading Q1 -->
+    <div class="question">
+      <div class="q-label">Reading Question 1 of 5 &middot; Factual</div>
+      <div class="q-text">According to the passage, which two structures are affected by an osteochondral injury?</div>
+      <div class="q-options">
+        <div class="q-option">A) Tendon and periosteum</div>
+        <div class="q-option">B) Articular cartilage and subchondral bone</div>
+        <div class="q-option">C) Synovial membrane and joint capsule</div>
+        <div class="q-option">D) Ligament and articular cartilage</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) Articular cartilage and subchondral bone</strong><br>The passage states: "These injuries involve damage to both the articular cartilage and the underlying subchondral bone." The prefix <em>osteo</em>- refers to bone and <em>chondral</em> refers to cartilage.</div>
+      </details>
+    </div>
+
+    <!-- Reading Q2 -->
+    <div class="question">
+      <div class="q-label">Reading Question 2 of 5 &middot; Factual</div>
+      <div class="q-text">What specific sign must clinicians monitor for during the immobilisation phase, according to the passage?</div>
+      <div class="q-options">
+        <div class="q-option">A) Muscular atrophy and loss of strength</div>
+        <div class="q-option">B) Deep vein thrombosis</div>
+        <div class="q-option">C) Dysaesthesia indicating peripheral nerve compromise</div>
+        <div class="q-option">D) Generalised joint contracture</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) Dysaesthesia indicating peripheral nerve compromise</strong><br>The passage explicitly states that clinicians must monitor "for the onset of dysaesthesia, which may signal peripheral nerve compromise arising from post-operative oedema or sustained positional loading."</div>
+      </details>
+    </div>
+
+    <!-- Reading Q3 -->
+    <div class="question">
+      <div class="q-label">Reading Question 3 of 5 &middot; Inferential</div>
+      <div class="q-text">What can be inferred about the consequences of premature return to high-impact sport following osteochondral repair?</div>
+      <div class="q-options">
+        <div class="q-option">A) It is acceptable if the patient reports minimal pain</div>
+        <div class="q-option">B) It substantially increases the risk of re-injury and joint degeneration</div>
+        <div class="q-option">C) It accelerates cartilage healing through mechanical stimulation</div>
+        <div class="q-option">D) It is recommended for younger patients with good compliance</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) It substantially increases the risk of re-injury and joint degeneration</strong><br>The passage directly states that "premature return to high-impact activities following osteochondral repair substantially elevates the risk of re-injury and accelerated joint degeneration," making B the correct inference supported by the text.</div>
+      </details>
+    </div>
+
+    <!-- Reading Q4 -->
+    <div class="question">
+      <div class="q-label">Reading Question 4 of 5 &middot; Inferential</div>
+      <div class="q-text">Based on the passage, what is the primary responsibility of physiotherapists in managing patients with osteochondral injuries?</div>
+      <div class="q-options">
+        <div class="q-option">A) Performing surgical repair and managing post-operative complications</div>
+        <div class="q-option">B) Prescribing analgesic and anti-inflammatory medications</div>
+        <div class="q-option">C) Educating patients and delivering structured evidence-based rehabilitation</div>
+        <div class="q-option">D) Determining whether a patient requires surgical intervention</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>C) Educating patients and delivering structured evidence-based rehabilitation</strong><br>The passage concludes that "physiotherapists play a pivotal role in educating patients regarding realistic recovery timelines and ensuring adherence to a structured, evidence-based rehabilitation programme." Options A and D describe surgical roles, and B describes a medical prescribing role.</div>
+      </details>
+    </div>
+
+    <!-- Reading Q5 -->
+    <div class="question">
+      <div class="q-label">Reading Question 5 of 5 &middot; Vocabulary in context</div>
+      <div class="q-text">In the passage, the phrase "intra-articular effusion" most closely refers to:</div>
+      <div class="q-options">
+        <div class="q-option">A) Swelling of the surrounding periarticular tendons</div>
+        <div class="q-option">B) Fluid accumulation within the joint cavity itself</div>
+        <div class="q-option">C) Calcification deposits within the joint space</div>
+        <div class="q-option">D) Subchondral bone marrow oedema</div>
+      </div>
+      <details><summary>Show Answer</summary>
+        <div class="answer-box"><strong>B) Fluid accumulation within the joint cavity itself</strong><br><em>Intra-articular</em> means "within the joint" (Latin: <em>intra</em> = within; <em>articular</em> = relating to a joint). <em>Effusion</em> refers to abnormal accumulation of fluid in a body cavity. Together, "intra-articular effusion" describes a joint effusion — excess fluid within the synovial joint space, commonly following trauma or inflammation.</div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 3 — WRITING
+═══════════════════════════════════════════════════════ -->
+<div class="section-block" id="section3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="section-title-text">
+      <h2>OET Writing Task</h2>
+      <p>Physiotherapy referral letter &middot; Based on the case notes below</p>
+    </div>
+    <div class="timer-badge">45 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="writing-task-box">
+      <strong>TASK:</strong> Using the case notes below, write a referral letter from <strong>Dr Sarah Williams (General Practitioner, Kauri Medical Centre, Auckland)</strong> to the <strong>Specialist Neurological Physiotherapy Service, Auckland City Hospital</strong>. Your letter should present Mrs Chen's current clinical condition and request specialist physiotherapy assessment and ongoing management. Write approximately <strong>180–200 words</strong>.<br><br>
+      <em>Use British English spelling. Do not invent information not present in the notes.</em>
+    </div>
+
+    <div class="case-notes">
+PATIENT:       Margaret Chen, 62F
+DOB:           12/03/1964
+NHI:           MJC4821
+GP:            Dr S. Williams — Kauri Medical Centre, Auckland
+Date:          02/08/2026
+
+PRESENTING DX: L4/L5 disc herniation — post-discectomy (08/06/2026)
+               + polyneuropathy lower limbs (pre-existing, T2DM-related)
+
+PMHx:          Type 2 DM (managed), HTN
+Medications:   Metformin 1g BD · Amlodipine 5mg OD
+               Corticosteroid (methylprednisolone) short course post-op — COMPLETED 25/06
+               Thromboprophylaxis (enoxaparin LMWH) — ceased Day 7 post-op per protocol
+
+POST-OP COURSE:
+  - Bed rest x2/52 → walking frame from Week 3
+  - Immobilisation period well tolerated; no wound complications
+  - Intra-articular inflammation settling on imaging (4/52 review)
+
+CURRENT PRESENTATION (02/08/2026):
+  - Residual dysaesthesia bilateral feet — burning / electric in character
+  - Neuromuscular deficits: ↓ kinaesthesia bilateral ankles on clinical testing
+  - Hamstring tightness: R > L; limits lumbar forward flexion to 50%
+  - Neuromobilisation (sciatic) commenced Week 4 by inpatient PT team
+
+GOALS:
+  - Restore independent ADLs
+  - ↓ neuropathic symptoms bilateral lower limbs
+  - Progress to community ambulation without aid
+
+REFERRAL REQUEST:
+  Specialist neurological physiotherapy assessment + ongoing management
+    </div>
+
+    <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1rem;"><strong>Key vocabulary to incorporate naturally:</strong>
+      <span class="word-tag tag-this">discectomy</span>
+      <span class="word-tag tag-this">polyneuropathy</span>
+      <span class="word-tag tag-this">thromboprophylaxis</span>
+      <span class="word-tag tag-this">dysaesthesia</span>
+      <span class="word-tag tag-this">kinaesthesia</span>
+      <span class="word-tag tag-this">immobilisation</span>
+      <span class="word-tag tag-this">neuromobilisation</span>
+    </p>
+
+    <details>
+      <summary>Show Self-Assessment Checklist (reveal after writing)</summary>
+      <div class="answer-box">
+        <div class="checklist">
+          <h4>Writing Self-Assessment Checklist — 10 Criteria</h4>
+          <ul>
+            <li>Correct letter format: date, recipient address, salutation, body paragraphs, closing, sender details</li>
+            <li>Opening paragraph clearly identifies the patient (name, age, diagnosis) and states the purpose of the referral</li>
+            <li>Relevant surgical and medical history summarised concisely (discectomy, polyneuropathy, T2DM)</li>
+            <li>Post-operative course conveyed accurately, including immobilisation and thromboprophylaxis details</li>
+            <li>Current neurological presentation described (dysaesthesia, kinaesthesia deficit, hamstring tightness)</li>
+            <li>Treatment to date is mentioned (neuromobilisation commenced by inpatient team)</li>
+            <li>Clear and specific referral request made (specialist neurological physiotherapy — not generic)</li>
+            <li>Patient goals referenced to demonstrate purposeful, patient-centred referral</li>
+            <li>British English spelling used throughout (e.g. <em>immobilisation</em>, <em>oedema</em>, <em>anaesthesia</em>)</li>
+            <li>Appropriate register: formal, professional, clinical — no colloquial language; sentence length controlled (no run-ons)</li>
+          </ul>
+        </div>
+
+        <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid #bbf7d0;">
+          <strong style="color:var(--green); font-size:0.88rem;">Model Letter Outline (key content only):</strong>
+          <p style="font-size:0.85rem; margin-top:0.5rem; line-height:1.8;">
+            <strong>Opening:</strong> "I am writing to refer Mrs Margaret Chen, a 62-year-old woman, for specialist neurological physiotherapy assessment and management following L4/L5 discectomy performed on 8 June 2026."<br>
+            <strong>History:</strong> Summarise pre-existing polyneuropathy (T2DM-related), surgical course, and completed thromboprophylaxis.<br>
+            <strong>Current status:</strong> Immobilisation period completed; residual bilateral foot dysaesthesia (burning quality); reduced kinaesthesia bilateral ankles; hamstring tightness R &gt; L limiting lumbar flexion.<br>
+            <strong>Treatment to date:</strong> Neuromobilisation of the sciatic nerve commenced at week four by the inpatient physiotherapy team.<br>
+            <strong>Request:</strong> Formal specialist neurological physiotherapy assessment with a view to an ongoing structured rehabilitation programme.<br>
+            <strong>Closing:</strong> Offer contact details; thank recipient for review.
+          </p>
+        </div>
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 4 — SPEAKING
+═══════════════════════════════════════════════════════ -->
+<div class="section-block" id="section4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="section-title-text">
+      <h2>OET Speaking</h2>
+      <p>2 role plays — Physiotherapy scenarios &middot; Practice speaking aloud</p>
+    </div>
+    <div class="timer-badge">20 min (10 min each)</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Role Play 1 -->
+    <div class="role-play-card">
+      <h4>Role Play 1 — Outpatient Physiotherapy Clinic</h4>
+      <p><strong>Setting:</strong> You are a physiotherapist seeing Mr Daniel Thompson (38M, office worker) for his first appointment. He was recently diagnosed with early-stage <strong>parkinsonism</strong> and referred by his neurologist. He is anxious and mentions that his voice has become noticeably quieter, affecting his ability to communicate at work.</p>
+      <p><strong>Your roles:</strong> Physiotherapist (you) + Examiner playing Mr Thompson</p>
+      <p><strong>Key task:</strong> Explain the role of physiotherapy in managing parkinsonism, address his concern about his voice (<strong>dysphonia</strong>), and outline the importance of assessing his <strong>kinaesthesia</strong> and movement quality.</p>
+      <p><strong>Suggested opening:</strong> <em>"Good morning, Mr Thompson. I'm Leo, your physiotherapist. I understand this has been a worrying time since your diagnosis — thank you for coming in today. How are you feeling?"</em></p>
+      <div class="key-phrases">
+        <span class="phrase">"Physiotherapy plays an important role in maintaining mobility and balance in parkinsonism..."</span>
+        <span class="phrase">"Regarding your voice, you may find it helpful to see a speech therapist alongside our sessions — that's a common concern with parkinsonism."</span>
+        <span class="phrase">"I'd like to assess your sense of movement, called kinaesthesia, as this is often affected early on."</span>
+        <span class="phrase">"Are there specific activities at work or at home that have become more difficult for you?"</span>
+        <span class="phrase">"Our aim is to help you maintain your quality of life and stay as active as possible."</span>
+      </div>
+      <details style="margin-top:0.7rem;"><summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Opening (rapport):</strong> Acknowledge diagnosis, normalise anxiety, invite patient to share concerns.<br><br>
+          <strong>Explain physiotherapy role:</strong> PT for parkinsonism focuses on gait retraining, balance, flexibility, fall prevention, and maintaining neuromuscular function. Use of cueing strategies (auditory, visual, tactile).<br><br>
+          <strong>Address dysphonia:</strong> Acknowledge concern empathically. Explain that dysphonia (reduced vocal volume and quality) is common and is primarily managed by speech-language therapy. Offer to co-ordinate referral. Mention that breathing exercises and postural work done in physiotherapy can complement voice therapy.<br><br>
+          <strong>Kinaesthesia assessment:</strong> Explain that you will assess his kinaesthesia (sense of movement) as part of the neurological screening — this helps identify how well proprioceptive and sensorimotor systems are functioning.<br><br>
+          <strong>Closing:</strong> Summarise plan, invite questions, provide reassurance that early intervention yields better outcomes.
+        </div>
+      </details>
+    </div>
+
+    <!-- Role Play 2 -->
+    <div class="role-play-card">
+      <h4>Role Play 2 — Hospital Ward, Post-Surgical</h4>
+      <p><strong>Setting:</strong> You are the ward physiotherapist at Auckland City Hospital. Mrs Aroha Patel (55F) underwent right knee <strong>arthrodesis</strong> (knee fusion) two days ago for end-stage osteoarthritis. She is uncertain about what movement is allowed, and is worried about "blood clots." She will be discharged in 48 hours.</p>
+      <p><strong>Your roles:</strong> Physiotherapist (you) + Examiner playing Mrs Patel</p>
+      <p><strong>Key task:</strong> Educate Mrs Patel on her <strong>immobilisation</strong> requirements and weight-bearing restrictions, explain <strong>thromboprophylaxis</strong> measures in place, and teach her a simple home exercise programme appropriate for her stage of recovery.</p>
+      <p><strong>Suggested opening:</strong> <em>"Good afternoon, Mrs Patel. I'm Leo from the physiotherapy team. I've come to help you understand what to expect as you recover from your knee operation, and to do some exercises with you before you go home. Is this a good time?"</em></p>
+      <div class="key-phrases">
+        <span class="phrase">"Following arthrodesis, your knee will remain in a fixed position permanently — I want to explain what that means for your day-to-day life."</span>
+        <span class="phrase">"Your team has started you on injections to prevent blood clots — this is called thromboprophylaxis. It's routine after this type of surgery."</span>
+        <span class="phrase">"During the immobilisation period, it's important not to put full weight through the leg until the surgeon gives the all-clear."</span>
+        <span class="phrase">"These ankle pumping exercises will help keep blood moving and reduce swelling in your foot."</span>
+        <span class="phrase">"Do you have someone at home who can help you manage stairs and getting in and out of the bathroom?"</span>
+      </div>
+      <details style="margin-top:0.7rem;"><summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Opening (rapport + consent):</strong> Greet warmly, confirm timing is appropriate, establish rapport.<br><br>
+          <strong>Explain arthrodesis outcome:</strong> The knee joint has been surgically fused — this eliminates pain but permanently prevents knee bending. Normalise this outcome; focus on functional gains (pain relief, stability).<br><br>
+          <strong>Immobilisation and weight-bearing:</strong> Explain non-weight-bearing or toe-touch weight-bearing (per surgeon order). Describe use of crutches/frame. Clarify immobilisation period (typically 6–12 weeks with cast or brace).<br><br>
+          <strong>Thromboprophylaxis education:</strong> Address her blood clot concern empathically. Explain that the medical team has started enoxaparin (anticlotting injection) — this is thromboprophylaxis. Teach her to recognise DVT signs (calf swelling, redness, warmth) and when to seek help.<br><br>
+          <strong>Home exercise programme:</strong> Ankle pumps (10x hourly), static quadriceps contractions, deep breathing exercises, elevation of limb. Written instructions offered.<br><br>
+          <strong>Discharge planning:</strong> Assess home environment, stairs, equipment needs. Confirm follow-up plan.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-footer">
+  <p>OET Weekly Exam &mdash; Week 10 &middot; 2 August 2026 &middot; Leo's OET Preparation Programme</p>
+  <p style="margin-top:0.3rem;">Words tested this week: neuromobilisation · dysaesthesia · thromboprophylaxis · kinaesthesia · phonophoresis · trochanteric · osteochondral · subchondral · hamstring · immobilisation · intra-articular · dysphonia · parkinsonism · arthrodesis · polyneuropathy · discectomy · corticosteroid</p>
+</div>
+
+</body>
+</html>
