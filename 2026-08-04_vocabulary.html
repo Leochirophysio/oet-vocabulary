@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 88 · 2026-08-04</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    .badge-paeds     { background: #fff7ed; color: #c2410c; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 88 · 04 Aug 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Paediatric + Signs &amp; Symptoms</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">perinatal</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌper.ɪˈneɪ.t(ə)l/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/perinatal" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/perinatal" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-paeds">小兒 Paediatric</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to the period immediately before and after birth; conventionally defined as from 22 weeks of gestation to seven days after delivery. Used to describe conditions, injuries, or events occurring during this critical developmental window.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">圍產期的、圍生期的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">perinatal asphyxia</span>
+          <span class="colloc-item">perinatal hypoxia</span>
+          <span class="colloc-item">perinatal injury</span>
+          <span class="colloc-item">perinatal period</span>
+          <span class="colloc-item">perinatal outcome</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The infant was referred for developmental physiotherapy assessment following a documented history of <strong>perinatal</strong> asphyxia, with Apgar scores of 3 at one minute and 6 at five minutes of life."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">antenatal / prenatal (before birth)</span>
+          <span class="related-item">postnatal (after birth)</span>
+          <span class="related-item">intrapartum (during labour)</span>
+          <span class="related-item">neonatal (first 28 days)</span>
+          <span class="related-item">perinatology (noun — the specialty)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">gestational</div>
+        <div class="card-meta">
+          <span class="ipa">/dʒesˈteɪ.ʃ(ə)n.əl/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/gestational" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/gestational" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-paeds">小兒 Paediatric</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to the period of gestation — the development of the fetus in the uterus from fertilisation to birth. In paediatric practice, "gestational age" expresses how far along a pregnancy is, and "corrected gestational age" is used to adjust developmental expectations in premature infants.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">妊娠的、胎齡的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">gestational age</span>
+          <span class="colloc-item">corrected gestational age</span>
+          <span class="colloc-item">gestational diabetes</span>
+          <span class="colloc-item">gestational hypertension</span>
+          <span class="colloc-item">gestational week</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The infant was born at 29 weeks <strong>gestational</strong> age and is currently being reviewed at a corrected age of four months; developmental milestones are being assessed accordingly."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">gestation (noun)</span>
+          <span class="related-item">corrected age / adjusted age</span>
+          <span class="related-item">prematurity (born before 37 weeks)</span>
+          <span class="related-item">term (40 weeks gestation)</span>
+          <span class="related-item">antenatal (adj — before birth)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">regurgitation</div>
+        <div class="card-meta">
+          <span class="ipa">/rɪˌɡɜː.dʒɪˈteɪ.ʃ(ə)n/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/regurgitation" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/regurgitation" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-paeds">小兒 Paediatric</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The passive backward flow of stomach contents into the oesophagus or mouth without the forceful muscular effort of vomiting. In infants, it is a common manifestation of gastro-oesophageal reflux. In cardiology, it refers to the backward flow of blood through a defective heart valve.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">逆流、反流；（嬰兒）溢奶</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">frequent regurgitation</span>
+          <span class="colloc-item">post-feed regurgitation</span>
+          <span class="colloc-item">acid regurgitation</span>
+          <span class="colloc-item">mitral regurgitation</span>
+          <span class="colloc-item">symptomatic regurgitation</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The parents reported persistent post-feed <strong>regurgitation</strong> associated with marked irritability and back-arching, consistent with symptomatic gastro-oesophageal reflux disease requiring further medical review."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">regurgitate (verb)</span>
+          <span class="related-item">reflux (clinical / lay term)</span>
+          <span class="related-item">GORD (gastro-oesophageal reflux disease)</span>
+          <span class="related-item">vomiting (forceful — contrast)</span>
+          <span class="related-item">aspiration (complication)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">exertional</div>
+        <div class="card-meta">
+          <span class="ipa">/ɪɡˈzɜː.ʃ(ə)n.əl/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/exertional" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/exertional" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Occurring during or brought on by physical effort or exercise; used to describe symptoms that appear specifically with activity rather than at rest. Commonly paired with dyspnoea, chest pain, or headache to describe effort-related complaints.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">運動性的、勞力性的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">exertional dyspnoea</span>
+          <span class="colloc-item">exertional chest pain</span>
+          <span class="colloc-item">exertional angina</span>
+          <span class="colloc-item">exertional headache</span>
+          <span class="colloc-item">exertional intolerance</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mr. Tran reported <strong>exertional</strong> chest tightness occurring after climbing one flight of stairs, which resolved within five minutes of rest and was not accompanied by diaphoresis or radiation to the arm."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">exertion (noun)</span>
+          <span class="related-item">exercise-induced (synonym)</span>
+          <span class="related-item">on exertion (clinical phrase)</span>
+          <span class="related-item">effort-related</span>
+          <span class="related-item">postexertional (after exertion)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">prodromal</div>
+        <div class="card-meta">
+          <span class="ipa">/prəʊˈdrəʊ.m(ə)l/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/prodromal" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/prodromal" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to the early warning stage of a disease, occurring before the characteristic or full-blown symptoms appear. Prodromal symptoms serve as early indicators that a condition is developing or that a relapse is imminent.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">前驅期的、先兆的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">prodromal symptoms</span>
+          <span class="colloc-item">prodromal phase</span>
+          <span class="colloc-item">prodromal period</span>
+          <span class="colloc-item">prodromal headache</span>
+          <span class="colloc-item">prodromal stage</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient described a <strong>prodromal</strong> phase of generalised fatigue and diffuse myalgia persisting for 48 hours prior to the onset of frank joint swelling and erythema, consistent with the early inflammatory stage of this condition."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">prodrome / prodromes (noun)</span>
+          <span class="related-item">premonitory (synonym)</span>
+          <span class="related-item">aura (migraine-specific)</span>
+          <span class="related-item">precursor symptoms</span>
+          <span class="related-item">early warning signs</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 88)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Baby Aroha, a three-month-old female born at 31 weeks <span class="highlight">gestational</span> age
+      (corrected age: six weeks), was referred to the paediatric physiotherapy team for assessment
+      and management of feeding difficulties and positional concerns.
+      <br><br>
+      Her mother reported frequent post-feed <span class="highlight">regurgitation</span> occurring after
+      nearly every feed, associated with distress and extension of the neck and trunk. A diagnosis of
+      gastro-oesophageal reflux disease had been confirmed by the neonatology team prior to discharge.
+      Background history was notable for a <span class="highlight">perinatal</span> course complicated by
+      respiratory distress syndrome requiring 18 days of ventilatory support.
+      <br><br>
+      On assessment, Aroha demonstrated mild axial hypotonia and asymmetrical head positioning with
+      a right-sided preference. The physiotherapy programme will focus on positioning strategies to
+      reduce <span class="highlight">regurgitation</span> events, tummy time facilitation, and parental
+      education regarding developmental expectations at her corrected <span class="highlight">gestational</span> age.
+      <br><br>
+      The parents were counselled regarding <span class="highlight">prodromal</span> signs of feed intolerance
+      — including persistent irritability, arching, and reduced wet nappies — and were advised to seek
+      prompt medical review should these features escalate or if <span class="highlight">exertional</span>
+      distress during feeding was noted.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When writing paediatric referrals, always document
+      <em>corrected gestational age</em> for premature infants rather than chronological age alone,
+      and specify whether milestones are being assessed against corrected or actual age.
+      Use precise clinical language: "post-feed regurgitation" rather than "spitting up."
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 88 · 2026-08-04 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 小兒 Paediatric · Signs &amp; Symptoms</p>
+</footer>
+
+</body>
+</html>
