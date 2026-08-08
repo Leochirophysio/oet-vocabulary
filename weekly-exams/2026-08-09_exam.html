@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Weekly Exam — Week 11 · 2026-08-09</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #fff; --primary: #7c3aed; --primary-light: #ede9fe;
+      --accent: #0d9488; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+      --green: #15803d; --green-light: #dcfce7;
+      --red: #b91c1c; --red-light: #fee2e2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem 4rem; line-height: 1.65; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: var(--primary); color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); flex-wrap: wrap; }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .week-badge { margin-left: auto; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.82rem; font-weight: 600; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .instructions { max-width: 860px; margin: 0 auto 1.5rem; background: var(--primary-light); border: 1px solid #c4b5fd; border-radius: var(--radius); padding: 1rem 1.2rem; font-size: 0.88rem; }
+    .instructions h3 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .instructions ul { padding-left: 1.2rem; }
+    .instructions li { margin-bottom: 0.3rem; }
+    .section-block { max-width: 860px; margin: 0 auto 2rem; background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+    .section-header { padding: 1rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border); }
+    .section-num { width: 2rem; height: 2rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .section-title-text h2 { font-size: 1.05rem; font-weight: 700; }
+    .section-title-text p { font-size: 0.8rem; color: var(--muted); }
+    .timer-badge { margin-left: auto; background: var(--warn-light); color: var(--warn); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+    .section-body { padding: 1.4rem; }
+    .question { margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .q-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.4rem; }
+    .q-text { font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 500; }
+    .q-options { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.7rem; }
+    .q-option { font-size: 0.9rem; padding: 0.4rem 0.7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+    details { margin-top: 0.5rem; }
+    summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--primary); user-select: none; padding: 0.3rem 0; }
+    summary:hover { text-decoration: underline; }
+    .answer-box { margin-top: 0.5rem; background: var(--green-light); border-left: 3px solid var(--green); padding: 0.6rem 0.9rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #14532d; }
+    .reading-passage { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; font-style: italic; }
+    .highlight { color: var(--primary); font-weight: 700; font-style: normal; text-decoration: underline dotted; }
+    .case-notes { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.88rem; font-family: 'Courier New', monospace; line-height: 1.9; margin-bottom: 1.2rem; }
+    .writing-task-box { background: var(--warn-light); border-left: 3px solid var(--warn); padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; margin-bottom: 1rem; }
+    .checklist { margin-top: 1rem; }
+    .checklist h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--green); }
+    .checklist ul { padding-left: 0; list-style: none; }
+    .checklist li { font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .checklist li::before { content: '☐'; font-size: 1rem; flex-shrink: 0; }
+    .role-play-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+    .role-play-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 0.4rem; }
+    .role-play-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .key-phrases { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .phrase { background: white; border: 1px solid #86efac; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px; font-style: italic; }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+    .word-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 10px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag-this-week { background: #ede9fe; color: #6d28d9; }
+    .tag-previous { background: #dbeafe; color: #1d4ed8; }
+    .passage-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.5rem; font-style: normal; }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-icon">📝</div>
+  <div class="header-text">
+    <h1>OET Weekly Practice Exam</h1>
+    <p>9 August 2026 · Vocabulary · Reading · Writing · Speaking</p>
+  </div>
+  <span class="week-badge">Week 11</span>
+</header>
+
+<nav class="nav-bar">
+  <a href="index.html">← All Exams</a>
+  <a href="../index.html">Vocabulary Home</a>
+  <a href="#section-1">S1: Vocab</a>
+  <a href="#section-2">S2: Reading</a>
+  <a href="#section-3">S3: Writing</a>
+  <a href="#section-4">S4: Speaking</a>
+</nav>
+
+<div class="instructions">
+  <h3>Instructions</h3>
+  <ul>
+    <li>This exam covers <strong>25 new words from this week</strong> (2–6 August) plus words from all previous weeks.</li>
+    <li>Attempt each section under timed conditions, then click <em>Show Answer</em> to check.</li>
+    <li>Purple tags = THIS WEEK · Blue tags = PREVIOUS WEEKS</li>
+    <li>Section 3 (Writing): write your letter fully before revealing the checklist.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 1 — VOCABULARY
+═══════════════════════════════════════════════════ -->
+<div class="section-block" id="section-1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-text">
+      <h2>Vocabulary</h2>
+      <p>10 questions · 6 from this week · 4 from previous weeks</p>
+    </div>
+    <span class="timer-badge">⏱ 15 min</span>
+  </div>
+  <div class="section-body">
+
+    <!-- Q1 -->
+    <div class="question">
+      <div class="q-label">Question 1 · Fill in the Blank <span class="word-tag tag-this-week">THIS WEEK · immobilisation</span></div>
+      <div class="q-text">The orthopaedic team advised complete ___ of the wrist for six weeks following the distal radius fracture, using a below-elbow plaster cast.</div>
+      <div class="q-options">
+        <div class="q-option">A) mobilisation</div>
+        <div class="q-option">B) immobilisation</div>
+        <div class="q-option">C) manipulation</div>
+        <div class="q-option">D) traction</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B) immobilisation</strong> — Immobilisation refers to preventing movement of a body part to promote healing, typically following fractures or ligament injuries. Mobilisation (A) is the opposite. Manipulation (C) refers to passive joint movement. Traction (D) involves applying a pulling force.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+      <div class="q-label">Question 2 · Fill in the Blank <span class="word-tag tag-this-week">THIS WEEK · metatarsalgia</span></div>
+      <div class="q-text">The 42-year-old marathon runner presented with diffuse forefoot pain aggravated by prolonged running, consistent with a diagnosis of ___ secondary to overuse and inappropriate footwear.</div>
+      <div class="q-options">
+        <div class="q-option">A) plantar fasciitis</div>
+        <div class="q-option">B) Morton's neuroma</div>
+        <div class="q-option">C) metatarsalgia</div>
+        <div class="q-option">D) hallux valgus</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) metatarsalgia</strong> — Metatarsalgia is a broad term for pain and inflammation in the metatarsal region of the foot (the ball of the foot). Plantar fasciitis (A) affects the heel and plantar arch. Morton's neuroma (B) causes neuralgia between toes. Hallux valgus (D) is a bony deformity of the great toe.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+      <div class="q-label">Question 3 · Fill in the Blank <span class="word-tag tag-this-week">THIS WEEK · myocardial</span></div>
+      <div class="q-text">The 12-lead electrocardiogram revealed ST-segment elevation in leads II, III, and aVF, confirming an acute inferior ___ infarction requiring emergency percutaneous coronary intervention.</div>
+      <div class="q-options">
+        <div class="q-option">A) hepatic</div>
+        <div class="q-option">B) renal</div>
+        <div class="q-option">C) myocardial</div>
+        <div class="q-option">D) pulmonary</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) myocardial</strong> — Myocardial refers to the muscular tissue of the heart (myocardium). Myocardial infarction (MI) is the clinical term for a heart attack. The prefix <em>myo-</em> means muscle; <em>cardial</em> relates to the heart.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question">
+      <div class="q-label">Question 4 · Fill in the Blank <span class="word-tag tag-previous">PREVIOUS · hamstring</span></div>
+      <div class="q-text">The 26-year-old sprinter was referred to physiotherapy following a grade II ___ strain sustained at the proximal musculotendinous junction, presenting with localised posterior thigh tenderness and reduced knee flexion strength.</div>
+      <div class="q-options">
+        <div class="q-option">A) quadriceps</div>
+        <div class="q-option">B) hamstring</div>
+        <div class="q-option">C) gastrocnemius</div>
+        <div class="q-option">D) adductor</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B) hamstring</strong> — The hamstrings (biceps femoris, semimembranosus, semitendinosus) run along the posterior thigh. They are the most commonly strained muscle group in sprinting athletes. The clue "posterior thigh" and "knee flexion" localises the injury to the hamstring group.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question">
+      <div class="q-label">Question 5 · Fill in the Blank <span class="word-tag tag-previous">PREVIOUS · osteochondral</span></div>
+      <div class="q-text">MRI imaging of the left ankle identified a grade III ___ lesion on the medial talar dome, accounting for the patient's persistent joint pain and mechanical clicking following a previous inversion sprain.</div>
+      <div class="q-options">
+        <div class="q-option">A) intraosseous</div>
+        <div class="q-option">B) periosteal</div>
+        <div class="q-option">C) osteochondral</div>
+        <div class="q-option">D) cortical</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) osteochondral</strong> — An osteochondral lesion involves both bone (<em>osteo-</em>) and cartilage (<em>chondral</em>). These lesions of the talus frequently result from ankle sprains. Intraosseous (A) refers to within the bone itself. Periosteal (B) relates to the bone's outer membrane. Cortical (D) refers to the dense outer layer of bone.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question">
+      <div class="q-label">Question 6 · Definition Match <span class="word-tag tag-this-week">THIS WEEK · echolalia</span></div>
+      <div class="q-text">Which term describes the involuntary, automatic repetition of words or phrases spoken by another person, commonly observed in patients with autism spectrum disorder, Tourette syndrome, or aphasia?</div>
+      <div class="q-options">
+        <div class="q-option">A) dysphasia</div>
+        <div class="q-option">B) echolalia</div>
+        <div class="q-option">C) apraxia</div>
+        <div class="q-option">D) dysarthria</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B) echolalia</strong> — From the Greek <em>echo</em> (repetition) and <em>lalia</em> (speech). Dysphasia (A) is impaired language comprehension or expression. Apraxia (C) is the inability to perform purposeful movements despite intact motor function. Dysarthria (D) is slurred or unclear speech due to motor dysfunction.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question">
+      <div class="q-label">Question 7 · Definition Match <span class="word-tag tag-previous">PREVIOUS · dysaesthesia</span></div>
+      <div class="q-text">Which term describes an unpleasant abnormal sensation — either spontaneous or evoked — often reported by patients as burning, tingling, or an electric-shock quality, associated with peripheral neuropathy or spinal cord pathology?</div>
+      <div class="q-options">
+        <div class="q-option">A) paraesthesia</div>
+        <div class="q-option">B) hyperalgesia</div>
+        <div class="q-option">C) dysaesthesia</div>
+        <div class="q-option">D) allodynia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C) dysaesthesia</strong> — Dysaesthesia (<em>dys-</em> = abnormal; <em>aesthesia</em> = sensation) is specifically unpleasant and often burning. Paraesthesia (A) includes both pleasant and unpleasant abnormal sensations (e.g. "pins and needles"). Hyperalgesia (B) is an exaggerated response to painful stimuli. Allodynia (D) is pain from stimuli that are not normally painful (e.g. light touch).
+        </div>
+      </details>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question">
+      <div class="q-label">Question 8 · Definition Match <span class="word-tag tag-this-week">THIS WEEK · acromioclavicular</span></div>
+      <div class="q-text">Which term refers to the joint formed between the acromion process of the scapula and the lateral end of the clavicle, commonly injured in contact sports and falls onto an outstretched hand?</div>
+      <div class="q-options">
+        <div class="q-option">A) glenohumeral</div>
+        <div class="q-option">B) sternoclavicular</div>
+        <div class="q-option">C) coracoclavicular</div>
+        <div class="q-option">D) acromioclavicular</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>D) acromioclavicular</strong> — The acromioclavicular (AC) joint is a synovial joint at the top of the shoulder. AC joint sprains are graded I–VI using the Rockwood classification. The glenohumeral (A) joint is the main ball-and-socket shoulder joint. The sternoclavicular (B) joint is at the medial clavicle. Coracoclavicular (C) refers to the ligaments connecting the coracoid process to the clavicle.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question">
+      <div class="q-label">Question 9 · Collocation Complete <span class="word-tag tag-this-week">THIS WEEK · iliotibial</span></div>
+      <div class="q-text">Complete the clinical collocation: "iliotibial ___ syndrome" — a common overuse condition causing lateral knee pain in runners and cyclists.</div>
+      <div class="q-options">
+        <div class="q-option">A) tract</div>
+        <div class="q-option">B) band</div>
+        <div class="q-option">C) ligament</div>
+        <div class="q-option">D) tendon</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B) band</strong> — "Iliotibial band syndrome" (ITBS) is the correct clinical term. The iliotibial band (ITB) is a thick band of fascia running along the lateral thigh from the iliac crest to the tibia. Although "tract" (A) is anatomically used (tractus iliotibialis), in clinical practice the term "band" is standard when describing the syndrome.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question">
+      <div class="q-label">Question 10 · Collocation Complete <span class="word-tag tag-previous">PREVIOUS · strabismus</span></div>
+      <div class="q-text">Complete the clinical collocation: "convergent ___" — a condition in which one or both eyes turn inward, also known as esotropia, commonly detected in paediatric ophthalmological assessments.</div>
+      <div class="q-options">
+        <div class="q-option">A) strabismus</div>
+        <div class="q-option">B) nystagmus</div>
+        <div class="q-option">C) ptosis</div>
+        <div class="q-option">D) diplopia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>A) strabismus</strong> — Convergent strabismus (esotropia) is one of two main forms; the other is divergent strabismus (exotropia). Nystagmus (B) is involuntary rhythmic eye movement. Ptosis (C) is drooping of the eyelid. Diplopia (D) is double vision, which may be a symptom of strabismus.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 2 — READING
+═══════════════════════════════════════════════════ -->
+<div class="section-block" id="section-2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="section-title-text">
+      <h2>OET Reading</h2>
+      <p>Clinical article excerpt · 5 comprehension questions</p>
+    </div>
+    <span class="timer-badge">⏱ 20 min</span>
+  </div>
+  <div class="section-body">
+
+    <div class="reading-passage">
+      <div class="passage-title">Clinical Case Summary — Acute Coronary Syndrome</div>
+      <p>Mr. David Pearce, a 58-year-old non-smoking accountant with a background of hypertension and hypercholesterolaemia, presented to the emergency department following a 90-minute episode of central chest pain radiating to his left arm. He reported a two-day <span class="highlight">prodromal</span> period of increasing fatigue and mild jaw discomfort, which he had attributed to stress. His wife noted that similar episodes had occurred during physical activity over the preceding three weeks, suggesting a pattern of <span class="highlight">exertional</span> angina that had been escalating in frequency.</p>
+      <br>
+      <p>On initial assessment, an <span class="highlight">electrocardiogram</span> demonstrated ST-segment elevation in the anterior leads (V1–V4), prompting activation of the hospital's primary percutaneous coronary intervention pathway. Troponin I levels were markedly elevated at 4.2 ng/mL, confirming acute <span class="highlight">myocardial</span> infarction. Echocardiography revealed anterior wall hypokinesis with an ejection fraction of 38%, consistent with significant left ventricular dysfunction.</p>
+      <br>
+      <p>Emergency coronary angiography identified a 95% occlusion of the left anterior descending artery. Successful <span class="highlight">angioplasty</span> with drug-eluting stent insertion restored normal coronary blood flow (TIMI grade 3). Post-procedurally, the patient was commenced on dual antiplatelet therapy and a high-intensity statin. A <span class="highlight">pulmonary</span> embolism was excluded via CT pulmonary angiography. Cardiac rehabilitation was recommended as part of his discharge planning, with physiotherapy involvement to supervise graded exercise reconditioning.</p>
+    </div>
+
+    <!-- Reading Q1 -->
+    <div class="question">
+      <div class="q-label">Question 1 · Factual</div>
+      <div class="q-text">According to the case summary, what diagnostic test confirmed the acute myocardial infarction in addition to elevated troponin levels?</div>
+      <div class="q-options">
+        <div class="q-option">A) Echocardiography showing reduced ejection fraction</div>
+        <div class="q-option">B) CT pulmonary angiography</div>
+        <div class="q-option">C) An electrocardiogram demonstrating ST-segment elevation</div>
+        <div class="q-option">D) Coronary angiography identifying arterial occlusion</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C)</strong> — The passage states: "an <em>electrocardiogram</em> demonstrated ST-segment elevation in the anterior leads (V1–V4), prompting activation of the primary PCI pathway." The ECG plus elevated troponin confirmed the diagnosis. Echocardiography (A) revealed ventricular dysfunction but was not mentioned as a confirmatory test for MI.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q2 -->
+    <div class="question">
+      <div class="q-label">Question 2 · Factual</div>
+      <div class="q-text">What intervention was performed to restore coronary blood flow in Mr. Pearce?</div>
+      <div class="q-options">
+        <div class="q-option">A) Thrombolytic therapy with alteplase</div>
+        <div class="q-option">B) Emergency coronary artery bypass grafting</div>
+        <div class="q-option">C) Angioplasty with drug-eluting stent insertion</div>
+        <div class="q-option">D) Cardioversion under general anaesthesia</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C)</strong> — The passage explicitly states "Successful <em>angioplasty</em> with drug-eluting stent insertion restored normal coronary blood flow (TIMI grade 3)." Angioplasty involves inflating a balloon catheter to open a blocked artery, often followed by stent placement.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q3 -->
+    <div class="question">
+      <div class="q-label">Question 3 · Inferential</div>
+      <div class="q-text">What can be inferred from the description of Mr. Pearce's "prodromal period" of fatigue and jaw discomfort in the two days before presentation?</div>
+      <div class="q-options">
+        <div class="q-option">A) These symptoms were unrelated to the myocardial infarction</div>
+        <div class="q-option">B) The patient had a prior diagnosis of temporomandibular disorder</div>
+        <div class="q-option">C) Early warning symptoms of myocardial ischaemia can present atypically before a full infarction</div>
+        <div class="q-option">D) Jaw pain is pathognomonic for posterior myocardial infarction</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C)</strong> — The word "prodromal" indicates symptoms that precede a full-blown disease episode. This passage illustrates that cardiac ischaemia may first present with atypical symptoms (fatigue, jaw pain) before a definitive MI. This is a key clinical education point: prodromal symptoms are early indicators. Option D is incorrect as jaw pain is not pathognomonic (uniquely specific) to posterior MI.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q4 -->
+    <div class="question">
+      <div class="q-label">Question 4 · Inferential</div>
+      <div class="q-text">What does the description of "exertional angina escalating in frequency" suggest about the clinical course of Mr. Pearce's condition prior to admission?</div>
+      <div class="q-options">
+        <div class="q-option">A) The patient had stable angina that was well-controlled with medication</div>
+        <div class="q-option">B) His coronary artery disease was likely progressing, indicating unstable angina</div>
+        <div class="q-option">C) Exertional angina is a normal finding in men over 50</div>
+        <div class="q-option">D) The symptoms were primarily due to deconditioning rather than coronary artery disease</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B)</strong> — Angina that increases in frequency and occurs at lower thresholds of exertion is characteristic of unstable angina (a type of acute coronary syndrome), indicating progressive coronary artery disease. This escalating pattern is clinically significant and distinguishes unstable from stable angina, which would be predictable and consistent in its triggers.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q5 -->
+    <div class="question">
+      <div class="q-label">Question 5 · Vocabulary in Context</div>
+      <div class="q-text">In the final paragraph, a "pulmonary embolism was excluded." In this context, what does "pulmonary" most precisely refer to?</div>
+      <div class="q-options">
+        <div class="q-option">A) Relating to the muscular walls of the heart</div>
+        <div class="q-option">B) Relating to the lungs and their blood supply</div>
+        <div class="q-option">C) Relating to the systemic arterial circulation</div>
+        <div class="q-option">D) Relating to the pericardium</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B)</strong> — "Pulmonary" derives from the Latin <em>pulmo</em> (lung). A pulmonary embolism is a blood clot in the pulmonary arteries (the arteries supplying the lungs). CT pulmonary angiography is the gold-standard imaging to rule it out. Pulmonary embolism was excluded because its symptoms (chest pain, dyspnoea) can mimic acute MI.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 3 — WRITING
+═══════════════════════════════════════════════════ -->
+<div class="section-block" id="section-3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="section-title-text">
+      <h2>OET Writing Task</h2>
+      <p>Physiotherapy referral letter · ~180–200 words</p>
+    </div>
+    <span class="timer-badge">⏱ 45 min</span>
+  </div>
+  <div class="section-body">
+
+    <div class="writing-task-box">
+      <strong>Task:</strong> Using the case notes below, write a referral letter to <strong>Dr. Sandra Lim, General Practitioner, Newtown Medical Centre</strong>. You are the treating physiotherapist at Auckland City Hospital Outpatient Physiotherapy Department. The purpose of the letter is to provide a clinical update on Mr. Thomas Harding's progress and request GP review regarding ongoing pain management, as the patient may benefit from a corticosteroid injection.
+    </div>
+
+    <div class="case-notes">
+PATIENT:  Thomas Harding, DOB 12/03/1978 (48 y/o male)<br>
+REFERRAL DATE:  09/08/2026<br>
+DIAGNOSIS:  Grade II L acromioclavicular joint sprain (2/52 post-injury)<br>
+GP:  Dr. Sandra Lim, Newtown Medical Centre<br>
+<br>
+SUBJECTIVE:<br>
+- MOI: fell off bicycle onto L shoulder (outstretched hand) 14/07/26<br>
+- C/O: persistent L shoulder pain 6/10 at rest, 8/10 with overhead activity<br>
+- Functional limitation: unable to reach overhead, difficulty dressing<br>
+- Reports dysaesthesia along L arm (burning quality) — possible involvement of suprascapular nerve<br>
+- Has not returned to work (desk job) due to pain with keyboard use<br>
+<br>
+OBJECTIVE:<br>
+- AC joint step deformity visible on inspection<br>
+- Tenderness ++  over AC joint; Scarf test +ve<br>
+- Active R/O: flexion 70° (N: 180°), abduction 65° (N: 180°), ER 20° (N: 90°)<br>
+- L arm currently in sling — partial weight-bearing on L UL only for ADLs<br>
+- O/E: pain limits full assessment; rotator cuff power 3/5 L<br>
+<br>
+PHYSIOTHERAPY MANAGEMENT TO DATE (4 sessions):<br>
+- Education re: acromioclavicular joint anatomy and healing timeline<br>
+- Immobilisation: sling use during day; review at 6/52<br>
+- Gentle pendular exercises commenced<br>
+- Phonophoresis applied to AC joint (×3 sessions) — minimal improvement in pain<br>
+- Hamstring stretching programme commenced for L lower limb stiffness (co-existing complaint)<br>
+<br>
+REASON FOR REFERRAL:<br>
+- Ongoing significant pain despite conservative physio Rx<br>
+- ? corticosteroid injection to L AC joint — may facilitate active rehabilitation<br>
+- Request: GP review + pain management plan<br>
+    </div>
+
+    <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1rem;">Write your referral letter now. When finished, click below to review the self-assessment checklist.</p>
+
+    <details>
+      <summary>Show Self-Assessment Checklist (reveal after writing)</summary>
+      <div class="checklist">
+        <h4>Self-Assessment Checklist — OET Writing Criteria</h4>
+        <ul>
+          <li>Appropriate letter format: date, recipient address, salutation (Dear Dr. Lim), sign-off</li>
+          <li>Purpose of letter stated clearly in the opening sentence (clinical update + request for GP review)</li>
+          <li>Patient identified with full name, age, and relevant diagnosis (<em>acromioclavicular joint sprain</em>)</li>
+          <li>Mechanism of injury included and described concisely</li>
+          <li>Key presenting symptoms communicated accurately, including the <em>dysaesthesia</em> along the left arm</li>
+          <li>Physiotherapy management to date summarised, including <em>immobilisation</em> and use of <em>phonophoresis</em></li>
+          <li>Functional limitations relevant to the GP's decision-making included (occupation, ADL difficulty)</li>
+          <li>Specific request stated clearly: GP review and consideration of <em>corticosteroid</em> injection to the AC joint</li>
+          <li>Appropriate register throughout: formal, professional, third-person (no excessive medical jargon or overly casual language)</li>
+          <li>Letter is 180–200 words, free of grammatical errors, uses British English spelling throughout</li>
+        </ul>
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 4 — SPEAKING
+═══════════════════════════════════════════════════ -->
+<div class="section-block" id="section-4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="section-title-text">
+      <h2>OET Speaking</h2>
+      <p>2 role plays · 5 minutes each</p>
+    </div>
+    <span class="timer-badge">⏱ 10 min</span>
+  </div>
+  <div class="section-body">
+
+    <!-- ROLE PLAY 1 -->
+    <div class="role-play-card">
+      <h4>Role Play 1 — Neurological Rehabilitation Setting</h4>
+      <p><strong>Setting:</strong> Inpatient neurological rehabilitation unit, Auckland City Hospital</p>
+      <p><strong>Your role:</strong> Physiotherapist</p>
+      <p><strong>Patient role:</strong> Mrs. Yuki Tanaka, 62-year-old woman, three weeks post-left hemisphere stroke. Her adult daughter is accompanying her.</p>
+      <p><strong>Key task:</strong> Explain Mrs. Tanaka's communication difficulties (echolalia, reduced psychosocial engagement) to her daughter, and outline the multidisciplinary rehabilitation plan and realistic goals. Address the daughter's anxiety about her mother's recovery.</p>
+      <p><strong>Vocabulary to use:</strong>
+        <span class="word-tag tag-this-week">echolalia</span>
+        <span class="word-tag tag-this-week">psychosocial</span>
+        <span class="word-tag tag-this-week">contraindication</span>
+      </p>
+      <p><strong>Suggested opening:</strong> <em>"Mrs. Tanaka's daughter, thank you for joining us today. I wanted to take some time to explain what we've been observing and what our rehabilitation team is planning going forward…"</em></p>
+      <div class="key-phrases">
+        <span class="phrase">"one of the speech patterns we're seeing is called echolalia, which means…"</span>
+        <span class="phrase">"the psychosocial aspects of recovery are just as important as the physical…"</span>
+        <span class="phrase">"there are no contraindications to commencing rehabilitation at this stage…"</span>
+        <span class="phrase">"our multidisciplinary team, which includes speech therapy, occupational therapy, and physiotherapy…"</span>
+        <span class="phrase">"recovery from stroke is gradual — small improvements week by week are meaningful…"</span>
+      </div>
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Opening:</strong> Introduce yourself and acknowledge the daughter's concern. Establish rapport and check understanding.<br><br>
+          <strong>Explanation of echolalia:</strong> Define in plain language — "Your mother sometimes repeats back words or phrases that we say to her. This is called echolalia and is a recognised feature of certain types of aphasia after stroke. It does not mean she cannot understand, and it often improves with speech therapy."<br><br>
+          <strong>Psychosocial dimension:</strong> "Stroke recovery is not only physical. The psychosocial impact — that is, how the experience affects your mother emotionally, her sense of self, and her social connections — is something we address with the whole team, including psychology and social work."<br><br>
+          <strong>Rehabilitation plan:</strong> Outline physiotherapy goals (mobility, transfers, safe ambulation) and confirm no contraindications to active rehab at this stage.<br><br>
+          <strong>Closing:</strong> Invite questions, provide written information, confirm next family meeting date.
+        </div>
+      </details>
+    </div>
+
+    <!-- ROLE PLAY 2 -->
+    <div class="role-play-card">
+      <h4>Role Play 2 — Outpatient Musculoskeletal Setting</h4>
+      <p><strong>Setting:</strong> Outpatient physiotherapy clinic</p>
+      <p><strong>Your role:</strong> Physiotherapist</p>
+      <p><strong>Patient role:</strong> Mr. James Kovacs, 29-year-old competitive cyclist, six weeks post-acromioclavicular joint injury. He is keen to return to racing and is frustrated by his slow progress.</p>
+      <p><strong>Key task:</strong> Explain the current rehabilitation stage, clarify when it will be safe to return to competitive cycling, advise on the importance of progressive weight-bearing through the upper limb, and address his impatience regarding the timeline.</p>
+      <p><strong>Vocabulary to use:</strong>
+        <span class="word-tag tag-this-week">acromioclavicular</span>
+        <span class="word-tag tag-this-week">immobilisation</span>
+        <span class="word-tag tag-this-week">weight-bearing</span>
+      </p>
+      <p><strong>Suggested opening:</strong> <em>"Mr. Kovacs, thanks for coming in today. I can see from my notes that you've been making good progress since your injury six weeks ago. Let's talk about where things are at and what the next steps look like…"</em></p>
+      <div class="key-phrases">
+        <span class="phrase">"the acromioclavicular joint has gone through an important healing phase over the last six weeks…"</span>
+        <span class="phrase">"now that the immobilisation phase is complete, we can begin loading the joint more progressively…"</span>
+        <span class="phrase">"weight-bearing through the arm — such as in a press-up or handlebar position — needs to be reintroduced gradually…"</span>
+        <span class="phrase">"returning to racing before the joint is fully rehabilitated puts you at risk of re-injury…"</span>
+        <span class="phrase">"I'd expect you to be back on the bike within four to six weeks, provided we follow the programme…"</span>
+      </div>
+      <details style="margin-top:0.8rem;">
+        <summary>Show Model Answer Outline</summary>
+        <div class="answer-box">
+          <strong>Opening:</strong> Acknowledge the patient's frustration empathetically. Validate his goals (return to racing) while setting realistic expectations.<br><br>
+          <strong>Current status:</strong> "The initial immobilisation phase is complete and the acromioclavicular joint has healed to the point where we can begin the strengthening and functional restoration phase."<br><br>
+          <strong>Weight-bearing progression:</strong> Explain that the cycling position requires upper limb weight-bearing through the handlebars, and this must be reintroduced gradually to avoid re-injury. Start with closed-chain exercises before returning to the bike.<br><br>
+          <strong>Timeline:</strong> Provide an evidence-based return-to-sport timeline. Explain that competitive racing (high vibration, potential falls) requires full functional restoration — typically 10–12 weeks post-injury for grade II AC joint sprains.<br><br>
+          <strong>Closing:</strong> Give a home exercise programme, book review in two weeks, encourage questions. Use motivational interviewing to maintain engagement.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<footer class="page-footer">
+  <p>OET Weekly Exam · Week 11 · 9 August 2026 · Generated automatically</p>
+  <p style="margin-top:0.4rem;">Words tested this week: immobilisation · metatarsalgia · myocardial · echolalia · acromioclavicular · iliotibial · prodromal · exertional · angioplasty · electrocardiogram · pulmonary · weight-bearing · corticosteroid · phonophoresis · psychosocial · contraindication (reading &amp; writing)</p>
+  <p style="margin-top:0.4rem;"><a href="index.html" style="color:var(--primary);">← Back to All Exams</a></p>
+</footer>
+
+</body>
+</html>
