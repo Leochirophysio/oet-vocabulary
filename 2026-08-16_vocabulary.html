@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 93 · 2026-08-16</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 93 · 16 Aug 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Musculoskeletal + Procedures &amp; Interventions</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">syndesmosis</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌsɪn.dezˈməʊ.sɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/syndesmosis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/syndesmosis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A type of slightly movable fibrous joint in which two bones are held together by interosseous ligamentous tissue; the distal tibiofibular syndesmosis is clinically significant in high ankle sprains, where disruption results in widening of the ankle mortise and instability.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">韌帶聯合</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">distal tibiofibular syndesmosis</span>
+          <span class="colloc-item">syndesmosis injury</span>
+          <span class="colloc-item">syndesmosis sprain</span>
+          <span class="colloc-item">syndesmosis instability</span>
+          <span class="colloc-item">syndesmosis repair</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Stress radiographs confirmed disruption of the distal tibiofibular <strong>syndesmosis</strong> with 3 mm diastasis; the patient was referred for operative fixation and subsequent physiotherapy rehabilitation."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">syndesmotic (adj)</span>
+          <span class="related-item">amphiarthrosis (slightly movable joint)</span>
+          <span class="related-item">diastasis (abnormal separation)</span>
+          <span class="related-item">ankle mortise</span>
+          <span class="related-item">high ankle sprain</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">autograft</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈɔː.tə.ɡrɑːft/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/autograft" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/autograft" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A surgical graft consisting of tissue transplanted from one anatomical site to another within the same individual's body; commonly used in ligament reconstruction (e.g. hamstring or patellar tendon autograft for ACL repair) and bone grafting procedures.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">自體移植（自體組織移植）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">hamstring autograft</span>
+          <span class="colloc-item">patellar tendon autograft</span>
+          <span class="colloc-item">bone-tendon-bone autograft</span>
+          <span class="colloc-item">autograft harvest</span>
+          <span class="colloc-item">autograft reconstruction</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Mr Nguyen underwent ACL reconstruction using a quadruple-strand hamstring <strong>autograft</strong>; post-operative physiotherapy should include monitoring of donor site morbidity at the pes anserinus alongside the standard ligament rehabilitation protocol."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">allograft (from a donor)</span>
+          <span class="related-item">xenograft (from an animal)</span>
+          <span class="related-item">autologous (adj)</span>
+          <span class="related-item">graft harvest</span>
+          <span class="related-item">donor site morbidity</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">intervertebral</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌɪn.tə.ˈvɜː.tɪ.brəl/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/intervertebral" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/intervertebral" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Situated or occurring between adjacent vertebral bodies; most commonly used to describe the intervertebral disc—the fibrocartilaginous structure that acts as a shock absorber—and the intervertebral foramen, through which spinal nerve roots exit the vertebral canal.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">椎間的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">intervertebral disc</span>
+          <span class="colloc-item">intervertebral foramen</span>
+          <span class="colloc-item">intervertebral disc herniation</span>
+          <span class="colloc-item">intervertebral disc degeneration</span>
+          <span class="colloc-item">intervertebral joint</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "MRI of the lumbar spine demonstrated L4/5 <strong>intervertebral</strong> disc herniation with moderate right foraminal compromise, consistent with the patient's reported right L5 dermatomal distribution of pain and paraesthesia."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">discogenic (adj — disc origin)</span>
+          <span class="related-item">nucleus pulposus (inner disc)</span>
+          <span class="related-item">annulus fibrosus (outer disc ring)</span>
+          <span class="related-item">radiculopathy (nerve root compression)</span>
+          <span class="related-item">foraminal stenosis</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">plica</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈplaɪ.kə/</span>
+          <span class="pos">noun (plural: plicae)</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/plica" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/plica" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A fold of synovial membrane within a joint, most commonly encountered in the knee as a remnant of the embryological synovial septum; when a plica becomes thickened and fibrotic through overuse or trauma, it may impinge on articular surfaces, causing anterior or medial knee pain known as plica syndrome.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">滑膜皺襞</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">medial plica</span>
+          <span class="colloc-item">synovial plica</span>
+          <span class="colloc-item">plica syndrome</span>
+          <span class="colloc-item">symptomatic plica</span>
+          <span class="colloc-item">plica resection</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Arthroscopic assessment identified a thickened medial <strong>plica</strong> impinging upon the medial femoral condyle during knee flexion; plica resection was performed and the patient has been referred for post-operative physiotherapy to restore full range of motion."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">plicae (plural)</span>
+          <span class="related-item">synovial fold (synonym)</span>
+          <span class="related-item">plica syndrome (condition)</span>
+          <span class="related-item">synovectomy (surgical removal)</span>
+          <span class="related-item">arthroscopy (diagnostic/treatment)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">extracorporeal</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌek.strə.kɔːˈpɔː.ri.əl/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/extracorporeal" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/extracorporeal" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Occurring or applied outside the living body; in physiotherapy, most commonly refers to extracorporeal shockwave therapy (ESWT), a non-invasive treatment using high-energy acoustic waves delivered through the skin to stimulate tissue healing and reduce pain in chronic musculoskeletal conditions.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">體外的（體外衝擊波治療）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">extracorporeal shockwave therapy</span>
+          <span class="colloc-item">radial extracorporeal shockwave</span>
+          <span class="colloc-item">focused extracorporeal shockwave</span>
+          <span class="colloc-item">extracorporeal treatment</span>
+          <span class="colloc-item">extracorporeal application</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Given the patient's 12-month history of recalcitrant insertional Achilles tendinopathy unresponsive to conservative management, a referral for <strong>extracorporeal</strong> shockwave therapy has been arranged as the next line of treatment prior to surgical consideration."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">ESWT (abbreviation)</span>
+          <span class="related-item">shockwave therapy (shortened form)</span>
+          <span class="related-item">non-invasive (characteristic)</span>
+          <span class="related-item">tendinopathy (common indication)</span>
+          <span class="related-item">phonophoresis (related electrotherapy)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 93)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr Santos, a 32-year-old recreational rugby player, is referred to your physiotherapy department
+      following ACL reconstruction performed using a patellar tendon <span class="highlight">autograft</span>.
+      Pre-operative arthroscopic assessment also identified a symptomatic medial <span class="highlight">plica</span>
+      in the same knee, which was resected during the same operative session.
+      <br><br>
+      His rehabilitation has progressed appropriately through the initial phase; however, he reports
+      persistent anterior knee pain localised to the autograft donor site, consistent with reactive
+      patellar tendinopathy. Conservative management over the preceding eight weeks—including
+      eccentric loading and manual therapy—has yielded limited improvement.
+      <br><br>
+      As the tendinopathic donor site is impeding progression to the strength and conditioning phase
+      of his ACL protocol, a course of <span class="highlight">extracorporeal</span> shockwave therapy
+      has been arranged. It is anticipated that this will reduce tendon irritability and allow full
+      engagement with the rehabilitation programme.
+      <br><br>
+      Please note an incidental finding of mild L5/S1 <span class="highlight">intervertebral</span> disc
+      degeneration on pre-operative MRI; this is currently asymptomatic and does not require active
+      physiotherapy intervention at this time.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When a patient has multiple concurrent pathologies, address each one explicitly and clearly state which requires active management and which is being monitored ("currently asymptomatic — does not require active intervention"). This demonstrates clinical reasoning and prevents the receiving clinician from missing secondary diagnoses.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 93 · 2026-08-16 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 骨科 Musculoskeletal · Procedures &amp; Interventions · Signs &amp; Symptoms</p>
+</footer>
+
+</body>
+</html>
