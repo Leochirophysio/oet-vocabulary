@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 95 · 2026-08-22</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 95 · 22 Aug 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Paediatric + Signs &amp; Symptoms</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">laryngomalacia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌlær.ɪŋ.ɡəʊ.məˈleɪ.ʃiə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/laryngomalacia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/laryngomalacia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Congenital softening of the supraglottic laryngeal structures, causing inspiratory stridor and noisy breathing in infants; the most common cause of stridor in neonates, typically resolving spontaneously by 18–24 months of age.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">喉軟化症</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">congenital laryngomalacia</span>
+          <span class="colloc-item">mild laryngomalacia</span>
+          <span class="colloc-item">laryngomalacia with feeding difficulties</span>
+          <span class="colloc-item">laryngomalacia causing stridor</span>
+          <span class="colloc-item">severe laryngomalacia requiring supraglottoplasty</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "This six-week-old infant was referred for physiotherapy assessment following a diagnosis of <strong>laryngomalacia</strong>, presenting with progressive inspiratory stridor, feeding difficulties, and inadequate weight gain requiring urgent multidisciplinary input."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">tracheomalacia (trachea)</span>
+          <span class="related-item">bronchomalacia (bronchi)</span>
+          <span class="related-item">stridor (resulting symptom)</span>
+          <span class="related-item">supraglottoplasty (surgical fix)</span>
+          <span class="related-item">laryngomalacic (adj)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">pertussis</div>
+        <div class="card-meta">
+          <span class="ipa">/pəˈtʌs.ɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/pertussis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/pertussis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A highly contagious bacterial respiratory infection caused by Bordetella pertussis, characterised by paroxysmal coughing fits followed by a high-pitched inspiratory whoop; also known as whooping cough; particularly dangerous in unvaccinated infants under six months.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">百日咳</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">confirmed pertussis</span>
+          <span class="colloc-item">pertussis in infants</span>
+          <span class="colloc-item">pertussis vaccination</span>
+          <span class="colloc-item">pertussis paroxysm</span>
+          <span class="colloc-item">whooping cough (pertussis)</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The three-month-old infant was admitted with confirmed <strong>pertussis</strong>, requiring supportive chest physiotherapy for secretion clearance and close monitoring for apnoeic episodes and oxygen desaturation."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">whooping cough (common name)</span>
+          <span class="related-item">Bordetella pertussis (causative organism)</span>
+          <span class="related-item">paroxysmal cough (hallmark symptom)</span>
+          <span class="related-item">apnoea (complication in infants)</span>
+          <span class="related-item">DTP vaccination (prevention)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">opisthotonus</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌɒp.ɪsˈθɒt.ə.nəs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/opisthotonus" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/opisthotonus" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A condition of extreme hyperextension and backward arching of the head, neck, and spine due to severe spasm of the extensor muscles; a serious neurological sign seen in meningitis, tetanus, severe kernicterus, and hypoxic-ischaemic encephalopathy in neonates.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">角弓反張</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">neonatal opisthotonus</span>
+          <span class="colloc-item">opisthotonus in meningitis</span>
+          <span class="colloc-item">opisthotonus and rigidity</span>
+          <span class="colloc-item">opisthotonus posture</span>
+          <span class="colloc-item">severe opisthotonus</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "On neurological assessment, the neonate exhibited <strong>opisthotonus</strong> with marked truncal rigidity and intermittent tonic spasms, consistent with the preceding diagnosis of hypoxic-ischaemic encephalopathy."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">hypertonia (elevated muscle tone)</span>
+          <span class="related-item">decerebrate posturing (brainstem)</span>
+          <span class="related-item">decorticate posturing (cortical)</span>
+          <span class="related-item">meningism (meningeal irritation)</span>
+          <span class="related-item">kernicterus (neonatal bilirubin)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">stertor</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈstɜː.tər/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/stertor" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/stertor" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A loud, snoring-like respiratory noise produced by partial obstruction at the level of the nasopharynx or oropharynx (upper airway); commonly heard in infants with nasal congestion, adenoidal hypertrophy, or reduced pharyngeal tone; distinct from stridor, which originates at the larynx or trachea.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">鼾聲呼吸（上呼吸道阻塞音）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">audible stertor</span>
+          <span class="colloc-item">nasal stertor</span>
+          <span class="colloc-item">stertor at rest</span>
+          <span class="colloc-item">positional stertor</span>
+          <span class="colloc-item">stertor and stridor</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The infant presented with persistent audible <strong>stertor</strong> and mouth breathing at rest, prompting referral for assessment of adenoidal hypertrophy and positioning advice to optimise upper airway patency."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">stridor (laryngeal/tracheal noise)</span>
+          <span class="related-item">stertorous (adj)</span>
+          <span class="related-item">snoring (lay term)</span>
+          <span class="related-item">upper airway obstruction</span>
+          <span class="related-item">rhonchi (lower airway secretion sounds)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">macroglossia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌmæk.rəˈɡlɒs.i.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/macroglossia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/macroglossia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Abnormal enlargement of the tongue beyond the confines of the dental arch; may cause feeding difficulties, dysphagia, speech impairment, and upper airway compromise; associated with Down syndrome (trisomy 21), hypothyroidism, and Beckwith-Wiedemann syndrome.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">巨舌症</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">congenital macroglossia</span>
+          <span class="colloc-item">macroglossia in Down syndrome</span>
+          <span class="colloc-item">macroglossia causing dysphagia</span>
+          <span class="colloc-item">macroglossia and speech delay</span>
+          <span class="colloc-item">macroglossia management</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The eight-month-old presented with <strong>macroglossia</strong> secondary to trisomy 21, resulting in persistent dysphagia and poor weight gain, warranting a multidisciplinary feeding assessment involving physiotherapy, speech therapy, and dietetics."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">microglossia (antonym — small tongue)</span>
+          <span class="related-item">glossoptosis (tongue falling back)</span>
+          <span class="related-item">ankyloglossia (tongue-tie)</span>
+          <span class="related-item">Pierre Robin sequence</span>
+          <span class="related-item">dysphagia (resulting symptom)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 95)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Baby Mei, a three-month-old female, was referred to the paediatric physiotherapy service by her neonatologist
+      following a prolonged admission for confirmed <span class="highlight">pertussis</span>, complicated by
+      frequent apnoeic episodes and oxygen desaturation requiring high-flow oxygen support.
+      <br><br>
+      On clinical examination, she demonstrated audible <span class="highlight">stertor</span> at rest and
+      mild <span class="highlight">laryngomalacia</span> identified on nasendoscopy, with the combination of
+      upper and lower airway involvement contributing significantly to her feeding difficulties and inadequate
+      weight gain. She was noted to adopt an extended neck posture during feeds, consistent with compensatory
+      airway positioning rather than early <span class="highlight">opisthotonus</span>.
+      <br><br>
+      Physiotherapy aims include optimising secretion clearance via supported positioning and gentle manual
+      techniques, providing structured guidance on feeding positioning to minimise aspiration risk, and
+      educating her parents on signs of respiratory deterioration requiring urgent medical review. Liaison
+      with the neonatal dietitian and speech therapist is recommended to address <span class="highlight">macroglossia</span>-related
+      feeding concerns, as tongue bulk was noted to impede effective latch and feed efficiency.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> In paediatric referral letters, always specify the infant's age in weeks or months,
+      name the causative diagnosis and its complications separately, and clearly outline the <em>multidisciplinary team</em> involved.
+      Avoid using lay terms (e.g. "whooping cough") without first providing the clinical term (e.g. "pertussis").
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 95 · 2026-08-22 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: Signs &amp; Symptoms · Paediatric · 心肺 Cardiopulmonary · 神經 Neurological</p>
+</footer>
+
+</body>
+</html>
