@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Weekly Exam — Week 12 · 2026-09-13</title>
+  <style>
+    :root {
+      --bg: #f0f4f8; --card: #fff; --primary: #7c3aed; --primary-light: #ede9fe;
+      --accent: #0d9488; --warn: #b45309; --warn-light: #fef3c7;
+      --text: #1e2a38; --muted: #64748b; --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07); --radius: 12px;
+      --green: #15803d; --green-light: #dcfce7;
+      --red: #b91c1c; --red-light: #fee2e2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 2rem 1rem 4rem; line-height: 1.65; }
+    .page-header { max-width: 860px; margin: 0 auto 2rem; background: var(--primary); color: white; border-radius: var(--radius); padding: 1.6rem 2rem; display: flex; align-items: center; gap: 1.2rem; box-shadow: var(--shadow); flex-wrap: wrap; }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .week-badge { margin-left: auto; background: rgba(255,255,255,0.18); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.82rem; font-weight: 600; }
+    .nav-bar { max-width: 860px; margin: 0 auto 1.4rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .nav-bar a { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.3rem 0.8rem; border: 1px solid var(--border); border-radius: 20px; background: white; }
+    .instructions { max-width: 860px; margin: 0 auto 1.5rem; background: var(--primary-light); border: 1px solid #c4b5fd; border-radius: var(--radius); padding: 1rem 1.2rem; font-size: 0.88rem; }
+    .instructions h3 { font-size: 0.9rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .instructions ul { padding-left: 1.2rem; }
+    .instructions li { margin-bottom: 0.3rem; }
+    .section-block { max-width: 860px; margin: 0 auto 2rem; background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
+    .section-header { padding: 1rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid var(--border); }
+    .section-num { width: 2rem; height: 2rem; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .section-title-text h2 { font-size: 1.05rem; font-weight: 700; }
+    .section-title-text p { font-size: 0.8rem; color: var(--muted); }
+    .timer-badge { margin-left: auto; background: var(--warn-light); color: var(--warn); font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 20px; white-space: nowrap; }
+    .section-body { padding: 1.4rem; }
+    .question { margin-bottom: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .q-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.4rem; }
+    .q-text { font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 500; }
+    .q-options { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.7rem; }
+    .q-option { font-size: 0.9rem; padding: 0.4rem 0.7rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+    details { margin-top: 0.5rem; }
+    summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--primary); user-select: none; padding: 0.3rem 0; }
+    summary:hover { text-decoration: underline; }
+    .answer-box { margin-top: 0.5rem; background: var(--green-light); border-left: 3px solid var(--green); padding: 0.6rem 0.9rem; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #14532d; }
+    .reading-passage { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.2rem; font-style: italic; }
+    .highlight { color: var(--primary); font-weight: 700; font-style: normal; text-decoration: underline dotted; }
+    .case-notes { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; font-size: 0.88rem; font-family: 'Courier New', monospace; line-height: 1.9; margin-bottom: 1.2rem; }
+    .writing-task-box { background: var(--warn-light); border-left: 3px solid var(--warn); padding: 0.8rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.9rem; margin-bottom: 1rem; }
+    .checklist { margin-top: 1rem; }
+    .checklist h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--green); }
+    .checklist ul { padding-left: 0; list-style: none; }
+    .checklist li { font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .checklist li::before { content: '☐'; font-size: 1rem; flex-shrink: 0; }
+    .role-play-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+    .role-play-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--green); margin-bottom: 0.4rem; }
+    .role-play-card p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .key-phrases { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .phrase { background: white; border: 1px solid #86efac; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px; font-style: italic; }
+    .word-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 0.1rem 0.5rem; border-radius: 10px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag-this { background: #dbeafe; color: #1d4ed8; }
+    .tag-prev { background: #fce7f3; color: #9d174d; }
+    .page-footer { max-width: 860px; margin: 2rem auto 0; text-align: center; font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-icon">📋</div>
+  <div class="header-text">
+    <h1>OET Practice Exam — Week 12</h1>
+    <p>13 September 2026 · Physiotherapy · 485-word pool · 10 words tested</p>
+  </div>
+  <div class="week-badge">Week 12</div>
+</header>
+
+<nav class="nav-bar">
+  <a href="index.html">← All Exams</a>
+  <a href="#section-1">1 Vocabulary</a>
+  <a href="#section-2">2 Reading</a>
+  <a href="#section-3">3 Writing</a>
+  <a href="#section-4">4 Speaking</a>
+</nav>
+
+<div class="instructions">
+  <h3>📌 How to use this exam</h3>
+  <ul>
+    <li>Work through each section under timed conditions before revealing answers.</li>
+    <li>Words marked <span class="word-tag tag-this">THIS WEEK</span> are from 2–3 Sept 2026 · <span class="word-tag tag-prev">PREVIOUS</span> words are from earlier sessions.</li>
+    <li>Section 1: 10 min · Section 2: 15 min · Section 3: 25 min · Section 4: 10 min per role play.</li>
+    <li>Total recommended time: ~60 minutes.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 1 — VOCABULARY                                      -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="section-block" id="section-1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="section-title-text">
+      <h2>Vocabulary</h2>
+      <p>10 questions — 6 from this week · 4 from previous weeks</p>
+    </div>
+    <div class="timer-badge">⏱ 10 min</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Q1 -->
+    <div class="question">
+      <div class="q-label">Question 1 · Fill-in-the-blank <span class="word-tag tag-this">THIS WEEK</span> — proning</div>
+      <div class="q-text">The ICU physiotherapist coordinated the ________ procedure for the patient with severe ARDS, carefully monitoring oxygen saturations throughout the 16-hour session.</div>
+      <div class="q-options">
+        <div class="q-option">A. mobilisation</div>
+        <div class="q-option">B. proning</div>
+        <div class="q-option">C. suctioning</div>
+        <div class="q-option">D. repositioning</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B. proning</strong> — Proning refers to placing a patient in the prone (face-down) position, a technique used in ARDS management to improve oxygenation by recruiting dependent lung segments. It is a distinctly specific procedure requiring a coordinated team, distinguishing it from the other general options.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question">
+      <div class="q-label">Question 2 · Fill-in-the-blank <span class="word-tag tag-this">THIS WEEK</span> — supraspinatus</div>
+      <div class="q-text">MRI findings confirmed a full-thickness tear of the ________ tendon, with significant retraction and fatty infiltration of the muscle belly.</div>
+      <div class="q-options">
+        <div class="q-option">A. infraspinatus</div>
+        <div class="q-option">B. subscapularis</div>
+        <div class="q-option">C. supraspinatus</div>
+        <div class="q-option">D. teres minor</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C. supraspinatus</strong> — The supraspinatus is the most commonly torn rotator cuff tendon; its tendon passes through the subacromial space and is vulnerable to impingement and degeneration. Full-thickness tears with retraction are a hallmark finding described in orthopaedic MRI reports.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question">
+      <div class="q-label">Question 3 · Fill-in-the-blank <span class="word-tag tag-prev">PREVIOUS</span> — weight-bearing</div>
+      <div class="q-text">Following open reduction and internal fixation of the distal tibia, the surgical team prescribed non-________ status for six weeks to allow adequate bone healing.</div>
+      <div class="q-options">
+        <div class="q-option">A. load-tolerating</div>
+        <div class="q-option">B. weight-bearing</div>
+        <div class="q-option">C. ambulatory</div>
+        <div class="q-option">D. stance-phase</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B. weight-bearing</strong> — "Non-weight-bearing" is standard clinical terminology prescribing that no body weight be borne through the affected limb. This is distinct from "non-ambulatory," which would imply the patient cannot walk at all rather than walk with an assistive device unloading the limb.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question">
+      <div class="q-label">Question 4 · Fill-in-the-blank <span class="word-tag tag-this">THIS WEEK</span> — festination</div>
+      <div class="q-text">The physiotherapist observed marked ________ during the timed-up-and-go test, with the patient taking progressively shorter and faster steps that were increasingly difficult to arrest.</div>
+      <div class="q-options">
+        <div class="q-option">A. bradykinesia</div>
+        <div class="q-option">B. festination</div>
+        <div class="q-option">C. ataxia</div>
+        <div class="q-option">D. scissoring</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B. festination</strong> — Festination is the characteristic Parkinsonian gait pattern of progressively accelerating, short, shuffling steps, as the patient attempts to "catch up" with their displaced centre of gravity. Bradykinesia describes slowness of movement broadly; ataxia refers to incoordination from cerebellar dysfunction; scissoring is seen in spastic diplegia.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question">
+      <div class="q-label">Question 5 · Fill-in-the-blank <span class="word-tag tag-prev">PREVIOUS</span> — contraindication</div>
+      <div class="q-text">Active deep vein thrombosis is an absolute ________ to manual lymphatic drainage, as the technique could potentially dislodge a thrombus and precipitate a pulmonary embolism.</div>
+      <div class="q-options">
+        <div class="q-option">A. precaution</div>
+        <div class="q-option">B. adverse effect</div>
+        <div class="q-option">C. contraindication</div>
+        <div class="q-option">D. indication</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C. contraindication</strong> — A contraindication is a condition that renders a particular treatment inadvisable or unsafe. "Absolute contraindication" means the treatment must never be used in that situation. A precaution (B) implies caution is warranted but the treatment may still proceed; an adverse effect (B) describes a harmful outcome that has already occurred.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question">
+      <div class="q-label">Question 6 · Definition match <span class="word-tag tag-this">THIS WEEK</span> — inotrope</div>
+      <div class="q-text">Which term describes a pharmacological agent that alters the contractility of the myocardium, used in haemodynamically unstable patients to improve cardiac output?</div>
+      <div class="q-options">
+        <div class="q-option">A. vasopressor</div>
+        <div class="q-option">B. chronotrope</div>
+        <div class="q-option">C. inotrope</div>
+        <div class="q-option">D. diuretic</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C. inotrope</strong> — An inotrope acts on the force of myocardial contraction (inotropy). A vasopressor (A) acts primarily on vascular tone; a chronotrope (B) alters heart rate; a diuretic (D) promotes urine output to reduce fluid load. ICU physiotherapists must understand inotrope dependency when planning exercise and mobilisation.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question">
+      <div class="q-label">Question 7 · Definition match <span class="word-tag tag-this">THIS WEEK</span> — biofeedback</div>
+      <div class="q-text">Which term describes a therapeutic technique in which real-time physiological data (such as muscle activation signals or pressure readings) are provided to the patient to facilitate voluntary control of a body function?</div>
+      <div class="q-options">
+        <div class="q-option">A. neurostimulation</div>
+        <div class="q-option">B. proprioceptive training</div>
+        <div class="q-option">C. biofeedback</div>
+        <div class="q-option">D. augmented feedback</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C. biofeedback</strong> — Biofeedback specifically denotes the use of instrumented, real-time measurement of a physiological parameter fed back to the patient (e.g., EMG-based biofeedback for pelvic floor or rotator cuff activation). Augmented feedback (D) is broader and includes verbal or visual cues not requiring instrumentation.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question">
+      <div class="q-label">Question 8 · Definition match <span class="word-tag tag-prev">PREVIOUS</span> — pulmonary</div>
+      <div class="q-text">Which adjective describes structures, functions, or conditions relating to the lungs?</div>
+      <div class="q-options">
+        <div class="q-option">A. pleural</div>
+        <div class="q-option">B. pulmonary</div>
+        <div class="q-option">C. thoracic</div>
+        <div class="q-option">D. bronchial</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B. pulmonary</strong> — "Pulmonary" derives from the Latin <em>pulmo</em> (lung) and refers specifically to the lungs themselves (e.g., pulmonary oedema, pulmonary embolism, pulmonary rehabilitation). "Pleural" refers to the pleural membranes; "thoracic" to the whole chest cavity; "bronchial" to the bronchi specifically.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question">
+      <div class="q-label">Question 9 · Collocation complete <span class="word-tag tag-this">THIS WEEK</span> — decompensation</div>
+      <div class="q-text">Complete the clinical collocation: "The patient experienced acute cardiac _______."</div>
+      <div class="q-options">
+        <div class="q-option">A. dysfunction</div>
+        <div class="q-option">B. failure</div>
+        <div class="q-option">C. decompensation</div>
+        <div class="q-option">D. insufficiency</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C. decompensation</strong> — "Cardiac decompensation" is a specific clinical term describing the acute deterioration of cardiac function where compensatory mechanisms are no longer adequate to maintain adequate output. While "cardiac failure" is also valid English, "decompensation" carries the precise clinical implication of a previously compensated state breaking down — the word you are expected to recognise and use in OET clinical writing.
+        </div>
+      </details>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question">
+      <div class="q-label">Question 10 · Collocation complete <span class="word-tag tag-prev">PREVIOUS</span> — gluteal</div>
+      <div class="q-text">Complete the clinical collocation: "The physiotherapist prescribed a progressive _______ strengthening programme to address hip abductor weakness."</div>
+      <div class="q-options">
+        <div class="q-option">A. hamstring</div>
+        <div class="q-option">B. quadriceps</div>
+        <div class="q-option">C. adductor</div>
+        <div class="q-option">D. gluteal</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>D. gluteal</strong> — The gluteal muscles (gluteus maximus, medius, and minimus) are the primary hip abductors and extensors. A "gluteal strengthening programme" specifically targets these muscles, which is the clinically appropriate response to hip abductor weakness — a common finding in conditions such as Trendelenburg gait, hip osteoarthritis, and post-arthroplasty rehabilitation.
+        </div>
+      </details>
+    </div>
+
+  </div><!-- /section-body -->
+</div><!-- /section-block -->
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 2 — READING                                         -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="section-block" id="section-2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="section-title-text">
+      <h2>OET Reading</h2>
+      <p>Clinical article excerpt · 5 comprehension questions</p>
+    </div>
+    <div class="timer-badge">⏱ 15 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="reading-passage">
+      <strong style="font-style:normal; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em; color:#64748b;">Clinical Article Excerpt — ICU Physiotherapy Practice</strong><br><br>
+
+      The integration of early physiotherapy into intensive care management has evolved considerably over the past decade, particularly for patients with acute respiratory failure. A central intervention in this context is <span class="highlight">proning</span>, the deliberate repositioning of a mechanically ventilated patient into the prone position to recruit dependent lung segments and improve the ventilation-perfusion ratio. Evidence from multi-centre trials consistently supports its use in moderate-to-severe ARDS, with sessions typically lasting 16 hours or more.
+
+      <br><br>
+
+      Patients who undergo <span class="highlight">proning</span> frequently present with concurrent haemodynamic instability. Many are receiving vasoactive support, including <span class="highlight">inotrope</span> infusions titrated to maintain adequate cardiac output. The physiotherapist must therefore conduct a thorough haemodynamic assessment prior to any active rehabilitation attempt, recognising that exertion may precipitate acute <span class="highlight">decompensation</span> in a cardiovascular system already operating at its physiological limits.
+
+      <br><br>
+
+      Physical access to the patient is further complicated by invasive lines, including <span class="highlight">percutaneous</span> vascular catheters and drain tubes traversing the <span class="highlight">thoracic</span> cavity. Safe positioning requires meticulous communication between nursing, medical, and physiotherapy staff to avoid inadvertent displacement of these devices. Rehabilitation goals in this cohort are therefore initially modest — maintaining joint range of motion, preventing pressure injuries, and facilitating early weaning from mechanical ventilation through breathing exercises and secretion clearance.
+
+      <br><br>
+
+      As patients stabilise, physiotherapy progresses to assisted sitting, supported standing, and — where clinically safe — ambulation with appropriate monitoring. This stepwise approach reflects best practice for ICU-acquired weakness prevention and long-term functional recovery.
+    </div>
+
+    <!-- Reading Q1 -->
+    <div class="question">
+      <div class="q-label">Reading Question 1 · Factual</div>
+      <div class="q-text">According to the passage, what is the primary physiological rationale for proning in ARDS?</div>
+      <div class="q-options">
+        <div class="q-option">A. To reduce the risk of pressure injuries over the sacrum</div>
+        <div class="q-option">B. To facilitate removal of bronchial secretions via gravity drainage</div>
+        <div class="q-option">C. To recruit dependent lung segments and improve the ventilation-perfusion ratio</div>
+        <div class="q-option">D. To prevent aspiration of gastric contents during mechanical ventilation</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C.</strong> The passage explicitly states proning aims to "recruit dependent lung segments and improve the ventilation-perfusion ratio." The other options describe other clinical benefits or rationales not mentioned in the passage.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q2 -->
+    <div class="question">
+      <div class="q-label">Reading Question 2 · Factual</div>
+      <div class="q-text">According to the passage, how long do proning sessions typically last?</div>
+      <div class="q-options">
+        <div class="q-option">A. 4 to 6 hours</div>
+        <div class="q-option">B. 8 to 12 hours</div>
+        <div class="q-option">C. 16 hours or more</div>
+        <div class="q-option">D. 24 hours continuously</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C.</strong> The passage states sessions "typically lasting 16 hours or more." This reflects current clinical guidelines from landmark trials such as PROSEVA.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q3 -->
+    <div class="question">
+      <div class="q-label">Reading Question 3 · Inferential</div>
+      <div class="q-text">Why does the author emphasise "meticulous communication" when positioning patients with percutaneous catheters and thoracic drains?</div>
+      <div class="q-options">
+        <div class="q-option">A. Because the physiotherapist is solely responsible for securing all vascular lines</div>
+        <div class="q-option">B. Because dislodgement of these devices during repositioning could cause serious patient harm</div>
+        <div class="q-option">C. Because nursing staff are not trained to assist with proning procedures</div>
+        <div class="q-option">D. Because thoracic drains must be clamped before any repositioning occurs</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B.</strong> The passage states that "safe positioning requires meticulous communication…to avoid inadvertent displacement of these devices." The inference is that displacement of invasive lines in critically ill patients would be a serious safety event. Options A and C misattribute sole responsibility; option D is a specific clinical action not mentioned in the text.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q4 -->
+    <div class="question">
+      <div class="q-label">Reading Question 4 · Inferential</div>
+      <div class="q-text">What does the passage imply about why early rehabilitation goals in the ICU are "initially modest"?</div>
+      <div class="q-options">
+        <div class="q-option">A. Physiotherapists in the ICU lack the specialised training for complex rehabilitation</div>
+        <div class="q-option">B. Patients on mechanical ventilation are sedated and cannot participate in any active exercise</div>
+        <div class="q-option">C. The severity of haemodynamic instability and presence of invasive lines limit what can safely be attempted</div>
+        <div class="q-option">D. ICU patients are expected to recover fully without physiotherapy intervention</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>C.</strong> The passage describes haemodynamic instability (inotrope use, risk of decompensation) and the physical complexity of invasive lines as key constraints on rehabilitation. Together, these imply modest initial goals are driven by patient safety rather than capability limitations of the clinician.
+        </div>
+      </details>
+    </div>
+
+    <!-- Reading Q5 -->
+    <div class="question">
+      <div class="q-label">Reading Question 5 · Vocabulary in context</div>
+      <div class="q-text">In the context of the passage, the word "decompensation" (paragraph 2) most closely means:</div>
+      <div class="q-options">
+        <div class="q-option">A. A gradual improvement in cardiac function in response to treatment</div>
+        <div class="q-option">B. An acute deterioration in which the body's compensatory mechanisms are overwhelmed</div>
+        <div class="q-option">C. A stable but reduced level of cardiac output maintained indefinitely</div>
+        <div class="q-option">D. The cessation of inotrope infusion once haemodynamic targets are met</div>
+      </div>
+      <details>
+        <summary>Show Answer</summary>
+        <div class="answer-box">
+          <strong>B.</strong> In context, "acute decompensation" describes a sudden worsening of a cardiovascular system "already operating at its physiological limits." The word implies that previously adequate compensatory mechanisms can no longer maintain sufficient function — matching option B precisely.
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 3 — WRITING                                         -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="section-block" id="section-3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="section-title-text">
+      <h2>OET Writing Task</h2>
+      <p>Referral letter from physiotherapist case notes · ~180–200 words</p>
+    </div>
+    <div class="timer-badge">⏱ 25 min</div>
+  </div>
+  <div class="section-body">
+
+    <div class="writing-task-box">
+      <strong>Task:</strong> Using the case notes below, write a referral letter from the treating physiotherapist to the Neurology Outpatient Department at Auckland City Hospital. The purpose of the referral is to request specialist review of worsening motor and emotional symptoms in a patient with known Parkinson's disease. Write in British English, approximately 180–200 words, in formal letter format. Do <em>not</em> include letterhead, date, or address blocks — begin directly with the salutation.
+    </div>
+
+    <div class="case-notes">
+PATIENT: Ngata, Henry (DOB: 12/03/1952) · NHI: CHE7842<br>
+DIAGNOSIS: Idiopathic Parkinson's disease (dx 2019) — currently Hoehn &amp; Yahr Stage 3<br>
+REFERRING CLINICIAN: L. Chirophysio, Physiotherapist, AUT Community Rehab<br>
+<br>
+PRESENTING CONCERNS (updated 10/09/2026):<br>
+— <strong>Festination</strong> worsening ↑ significantly over past 6 wks; TUG test now 22 sec (prev. 14 sec)<br>
+— Freezing of gait episodes: 4–5/day (up from 1–2/day at June review)<br>
+— Falls ×3 in past month; no fractures sustained<br>
+— Emotional <strong>lability</strong>: episodes of unprovoked crying/laughing, new onset since July 2026<br>
+— Sleep disturbance: REM sleep behaviour disorder suspected (partner reports acting out dreams)<br>
+<br>
+CURRENT PHYSIO MANAGEMENT:<br>
+— <strong>Biofeedback</strong>-assisted gait retraining (2×/wk) — partial improvement in stride length<br>
+— <strong>Gluteal</strong> + hip stabiliser strengthening (×3/wk home programme)<br>
+— <strong>Weight-bearing</strong> balance training on foam surface — ongoing<br>
+— LSVT BIG programme (cycle 2 completed 08/2026)<br>
+<br>
+CURRENT MEDICATIONS: Levodopa/carbidopa 100/25mg TDS · Rasagiline 1mg OD<br>
+CONCERNS: Lability new onset — ? medication-related · ? disease progression<br>
+REQUEST: Neurologist review re: disease stage, medication optimisation, lability aetiology
+    </div>
+
+    <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1rem;">Write your letter before opening the checklist below.</p>
+
+    <details>
+      <div class="checklist">
+        <h4>✅ Self-Assessment Checklist (reveal after writing)</h4>
+        <ul>
+          <li>Opened with an appropriate formal salutation (e.g., "Dear Dr / Dear Colleague")</li>
+          <li>Identified the patient clearly: full name, date of birth, and NHI or equivalent identifier</li>
+          <li>Stated the purpose of the referral clearly in the opening sentence</li>
+          <li>Accurately reported the worsening festination with supporting objective data (TUG score)</li>
+          <li>Described the emotional lability as new onset and noted uncertainty about its cause</li>
+          <li>Summarised the current physiotherapy management programme concisely</li>
+          <li>Included relevant medication information to assist the receiving clinician</li>
+          <li>Used at least 3 of the target vocabulary words accurately in clinical context</li>
+          <li>Maintained formal, professional register throughout — no colloquial language</li>
+          <li>Closed with an appropriate formal sign-off and an offer of further information if required</li>
+        </ul>
+      </div>
+    </details>
+
+    <details style="margin-top:1rem;">
+      <summary>Show Model Answer Outline</summary>
+      <div class="answer-box">
+        <strong>Model structure:</strong><br>
+        <em>Salutation:</em> "Dear Dr [surname]," or "Dear Neurologist,"<br><br>
+        <em>Paragraph 1 — Purpose + patient ID:</em> State you are writing to request specialist neurological review for Henry Ngata (DOB 12/03/1952), a 74-year-old male with known Parkinson's disease, under your physiotherapy care at AUT Community Rehab.<br><br>
+        <em>Paragraph 2 — Deterioration:</em> Describe the significant worsening of festination (TUG 14→22 sec), increased freezing of gait (4–5 episodes/day), and three falls in the past month. Introduce the new onset of emotional lability since July 2026.<br><br>
+        <em>Paragraph 3 — Current management &amp; medications:</em> Summarise the biofeedback-assisted gait retraining, gluteal/hip strengthening programme, weight-bearing balance training, and completed LSVT BIG cycle. Note current levodopa/carbidopa and rasagiline regimen.<br><br>
+        <em>Paragraph 4 — Specific request:</em> Request review of disease stage, consideration of medication optimisation, and clarification of the aetiology of the emotional lability (medication-related versus disease progression).<br><br>
+        <em>Close:</em> "Please do not hesitate to contact me should you require further information. I look forward to your specialist input."
+      </div>
+    </details>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SECTION 4 — SPEAKING                                        -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="section-block" id="section-4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="section-title-text">
+      <h2>OET Speaking</h2>
+      <p>2 role plays · Practice with a study partner or aloud solo</p>
+    </div>
+    <div class="timer-badge">⏱ 5 min prep + 5 min each</div>
+  </div>
+  <div class="section-body">
+
+    <!-- Role Play 1 -->
+    <div class="role-play-card">
+      <h4>Role Play 1 — Rotator Cuff Rehabilitation</h4>
+      <p><strong>Setting:</strong> Outpatient musculoskeletal physiotherapy clinic</p>
+      <p><strong>Your role:</strong> Physiotherapist</p>
+      <p><strong>Patient role:</strong> 48-year-old office worker, 6 weeks post-operative supraspinatus tendon repair, anxious about return to work and frustrated by slow progress</p>
+      <p><strong>Key task:</strong> Explain the current stage of healing, introduce biofeedback-assisted rotator cuff activation exercises, address the patient's concerns about timeline, and provide realistic expectations for return to full function.</p>
+      <p><strong>Target vocabulary to use:</strong>
+        <span class="word-tag tag-this">THIS WEEK</span>
+        <strong>supraspinatus</strong>, <strong>biofeedback</strong>
+      </p>
+      <div class="key-phrases">
+        <span class="phrase">"The supraspinatus tendon that was repaired…"</span>
+        <span class="phrase">"We'll use biofeedback to help you re-learn…"</span>
+        <span class="phrase">"At six weeks post-op, the tendon is still maturing…"</span>
+        <span class="phrase">"I understand your frustration — let me explain what's happening…"</span>
+        <span class="phrase">"The biofeedback device will give you real-time information about…"</span>
+      </div>
+    </div>
+
+    <details>
+      <summary>Show Role Play 1 — Model Answer Outline</summary>
+      <div class="answer-box">
+        <strong>Opening:</strong> Greet the patient warmly; acknowledge their frustration empathetically before moving to explanation.<br><br>
+        <strong>Education (supraspinatus):</strong> Explain that the supraspinatus tendon repair is still in the proliferative phase of healing at six weeks — collagen fibres are laying down but not yet mature enough for high-load activity. Use simple analogies (e.g., "like a new scar that is still forming").<br><br>
+        <strong>Introducing biofeedback:</strong> Explain that you will attach small sensors to the shoulder muscles. The screen or audio cue will show the patient in real time whether they are correctly activating the supraspinatus without compensating with the upper trapezius. This allows precise, safe muscle re-education.<br><br>
+        <strong>Timeline:</strong> Honestly address that return to full desk work is typically 3 months; heavy lifting 6 months. Frame this positively — progression is happening, just not yet visible.<br><br>
+        <strong>Close:</strong> Summarise the plan, confirm understanding, invite questions, and agree on a home exercise programme.
+      </div>
+    </details>
+
+    <!-- Role Play 2 -->
+    <div class="role-play-card" style="margin-top:1.2rem;">
+      <h4>Role Play 2 — Parkinson's Disease Gait Clinic</h4>
+      <p><strong>Setting:</strong> Neurological physiotherapy outpatient clinic</p>
+      <p><strong>Your role:</strong> Physiotherapist</p>
+      <p><strong>Patient role:</strong> 71-year-old retired teacher with Parkinson's disease, reporting that she has started shuffling and "can't stop herself" when walking. She is embarrassed about recent tearfulness in public (emotional lability) and attributes it to stress.</p>
+      <p><strong>Key task:</strong> Explain festination clearly, normalise the emotional lability as a neurological symptom rather than a personal failing, and introduce strategies to manage freezing and festination. Arrange onward referral to neurology for the lability.</p>
+      <p><strong>Target vocabulary to use:</strong>
+        <span class="word-tag tag-this">THIS WEEK</span>
+        <strong>festination</strong>, <strong>lability</strong>
+      </p>
+      <div class="key-phrases">
+        <span class="phrase">"What you're experiencing is called festination…"</span>
+        <span class="phrase">"The tearfulness you're noticing is a neurological symptom called lability…"</span>
+        <span class="phrase">"This is not a reflection of your emotional state — it's the Parkinson's…"</span>
+        <span class="phrase">"We can use auditory cues — counting or music — to regulate your steps…"</span>
+        <span class="phrase">"I'd like to refer you to the neurologist to discuss the lability further…"</span>
+      </div>
+    </div>
+
+    <details>
+      <summary>Show Role Play 2 — Model Answer Outline</summary>
+      <div class="answer-box">
+        <strong>Opening:</strong> Create a safe, unhurried atmosphere. Acknowledge how distressing both the gait changes and the tearfulness must be for the patient.<br><br>
+        <strong>Explaining festination:</strong> In simple terms: "When Parkinson's affects the brain's ability to regulate walking, the steps can get faster and shorter — almost like you're chasing your own centre of gravity. This is called festination, and it's very common." Validate that it is not clumsiness or lack of effort.<br><br>
+        <strong>Normalising lability:</strong> "The crying you've been experiencing in public is called emotional lability. It's caused by changes in the brain pathways that regulate emotional expression — it doesn't mean you are more upset or stressed than usual. Many people with Parkinson's experience this, and it's important your neurologist knows about it."<br><br>
+        <strong>Practical strategies for festination:</strong> Auditory cueing (metronome or rhythmic music), floor marking/visual cues, "stop, reset, restart" technique, attentional strategies.<br><br>
+        <strong>Onward referral:</strong> Explain you will write to the neurologist about the lability. Emphasise this is coordinated care, not a sign of something dangerous.<br><br>
+        <strong>Close:</strong> Summarise strategies; agree on follow-up; ensure patient feels supported and not alone.
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<footer class="page-footer">
+  <p>Week 12 · 13 September 2026 · OET Physiotherapy · 485-word pool · 10 words tested</p>
+  <p style="margin-top:0.3rem;"><a href="index.html" style="color:var(--primary);">← Back to all exams</a></p>
+</footer>
+
+</body>
+</html>
