@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 99 · 2026-09-16</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 99 · 16 Sep 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Cardiopulmonary + Signs &amp; Symptoms</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">vasovagal</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌveɪ.zəʊˈveɪ.ɡəl/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/vasovagal" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/vasovagal" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to or caused by simultaneous stimulation of the vagus nerve producing vasodilation and bradycardia, leading to a sudden fall in blood pressure and transient loss of consciousness; characteristically triggered by emotional stress, pain, or prolonged standing.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">血管迷走神經性（的）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">vasovagal syncope</span>
+          <span class="colloc-item">vasovagal episode</span>
+          <span class="colloc-item">vasovagal response</span>
+          <span class="colloc-item">vasovagal reflex</span>
+          <span class="colloc-item">vasovagal collapse</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient experienced a <strong>vasovagal</strong> episode during the initial standing tolerance assessment, with sudden pallor, diaphoresis, and a transient loss of consciousness lasting approximately 10 seconds; the session was discontinued and a medical review was requested."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">syncope (resulting event)</span>
+          <span class="related-item">neurocardiogenic syncope (synonym)</span>
+          <span class="related-item">vagal (adjective root)</span>
+          <span class="related-item">bradycardia (associated sign)</span>
+          <span class="related-item">presyncope (near-faint)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">capillary</div>
+        <div class="card-meta">
+          <span class="ipa">/kəˈpɪl.ər.i/</span>
+          <span class="pos">noun / adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/capillary" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/capillary" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The smallest blood vessels in the body, forming a network between arterioles and venules that enables exchange of oxygen, nutrients, and metabolic waste between blood and surrounding tissues; clinically assessed via capillary refill time (CRT) to evaluate peripheral perfusion.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">微血管（毛細血管）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">capillary refill time</span>
+          <span class="colloc-item">capillary bed</span>
+          <span class="colloc-item">prolonged capillary refill</span>
+          <span class="colloc-item">capillary leak</span>
+          <span class="colloc-item">capillary blood glucose</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Assessment of the right lower limb revealed a <strong>capillary</strong> refill time of 4 seconds, indicating compromised peripheral perfusion; the findings were documented and the treating physician notified for urgent review."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">arteriole (feeding vessel)</span>
+          <span class="related-item">venule (draining vessel)</span>
+          <span class="related-item">microcirculation (broader system)</span>
+          <span class="related-item">CRT (abbreviation)</span>
+          <span class="related-item">peripheral perfusion (clinical goal)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">thrombosis</div>
+        <div class="card-meta">
+          <span class="ipa">/θrɒmˈbəʊ.sɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/thrombosis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/thrombosis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">The formation of a blood clot (thrombus) within a blood vessel, obstructing blood flow; occurs in veins (venous thrombosis, most commonly deep vein thrombosis) or arteries (arterial thrombosis); a major risk in immobile post-operative patients and a key physiotherapy red flag.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">血栓症</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">deep vein thrombosis</span>
+          <span class="colloc-item">venous thrombosis</span>
+          <span class="colloc-item">arterial thrombosis</span>
+          <span class="colloc-item">thrombosis risk factors</span>
+          <span class="colloc-item">thrombosis prophylaxis</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "In light of the patient's prolonged post-operative immobility and unilateral calf swelling with localised warmth, deep vein <strong>thrombosis</strong> was suspected; physiotherapy was withheld pending Doppler ultrasound confirmation and anticoagulation review."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">thrombus (the clot itself)</span>
+          <span class="related-item">embolism (displaced clot)</span>
+          <span class="related-item">thrombotic (adjective)</span>
+          <span class="related-item">DVT (abbreviation)</span>
+          <span class="related-item">anticoagulation (treatment)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">bronchial</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈbrɒŋ.ki.əl/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/bronchial" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/bronchial" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to or affecting the bronchi — the two main airways that branch from the trachea into each lung and subdivide into smaller bronchioles; used to describe breath sounds heard on auscultation, anatomical structures, and disease processes of the large airways.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">支氣管（性）的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">bronchial breath sounds</span>
+          <span class="colloc-item">bronchial tree</span>
+          <span class="colloc-item">bronchial hyperresponsiveness</span>
+          <span class="colloc-item">bronchial secretions</span>
+          <span class="colloc-item">bronchial asthma</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Auscultation of the chest revealed <strong>bronchial</strong> breath sounds over the right lower lobe with increased vocal resonance and dullness to percussion, findings consistent with lobar consolidation as confirmed on the chest radiograph."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">bronchus (singular noun)</span>
+          <span class="related-item">bronchi (plural noun)</span>
+          <span class="related-item">bronchiole (smaller airway)</span>
+          <span class="related-item">trachea (main airway above)</span>
+          <span class="related-item">alveolar (relating to air sacs)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">polycythaemia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌpɒl.i.saɪˈθiː.mi.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/polycythaemia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/polycythemia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">An abnormal increase in the number of red blood cells in the blood, resulting in elevated haematocrit and blood viscosity; secondary polycythaemia is a compensatory response to chronic hypoxaemia, commonly seen in patients with severe COPD or chronic cardiopulmonary conditions.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">紅血球增多症</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">secondary polycythaemia</span>
+          <span class="colloc-item">polycythaemia vera</span>
+          <span class="colloc-item">compensatory polycythaemia</span>
+          <span class="colloc-item">polycythaemia rubra vera</span>
+          <span class="colloc-item">polycythaemia management</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient's recent blood results were notable for secondary <strong>polycythaemia</strong> with a haematocrit of 58%, attributed to longstanding hypoxaemia in the context of severe COPD; haematology review was arranged prior to commencement of a supervised pulmonary rehabilitation programme."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">erythrocytosis (synonym)</span>
+          <span class="related-item">polycythaemia vera (primary form)</span>
+          <span class="related-item">haematocrit (measurement)</span>
+          <span class="related-item">hyperviscosity (consequence)</span>
+          <span class="related-item">thrombosis risk (complication)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 99)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr. David Faleolo, a 61-year-old male with a background of severe COPD (FEV1 38% predicted)
+      and secondary <span class="highlight">polycythaemia</span>, was referred to the cardiopulmonary
+      physiotherapy team for pulmonary rehabilitation following a recent exacerbation requiring
+      hospitalisation.
+      <br><br>
+      On initial assessment, auscultation revealed <span class="highlight">bronchial</span> breath sounds
+      with reduced air entry bilaterally at the bases, and <span class="highlight">capillary</span> refill
+      time was measured at 3 seconds in both hands, consistent with his known chronic hypoxaemia.
+      SpO2 at rest was 88% on room air, improving to 94% on 2 L/min supplemental oxygen.
+      <br><br>
+      During the stand-to-sit transfer component of the assessment, the patient reported light-headedness
+      and near-collapse; this was consistent with a <span class="highlight">vasovagal</span> response,
+      likely precipitated by orthostatic stress and breath-holding. The session was suspended, the
+      patient returned to the supine position, and observations were monitored until he returned to baseline.
+      <br><br>
+      Of note, the patient's right calf circumference was 3 cm greater than the left, with localised
+      warmth and tenderness on palpation, raising clinical concern for deep vein
+      <span class="highlight">thrombosis</span>. Physiotherapy was withheld pending urgent Doppler
+      ultrasound and haematology review given his elevated thrombotic risk secondary to polycythaemia.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When documenting a clinical incident (e.g. a vasovagal episode), always record the <em>trigger</em>, <em>patient response</em>, <em>action taken</em>, and <em>outcome</em>. For suspected DVT, document the <em>asymmetry</em>, <em>clinical signs</em>, and <em>decision to withhold</em> physiotherapy pending investigation — this demonstrates safe clinical reasoning in OET writing tasks.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 99 · 2026-09-16 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 心肺 Cardiopulmonary · Signs &amp; Symptoms</p>
+</footer>
+
+</body>
+</html>
