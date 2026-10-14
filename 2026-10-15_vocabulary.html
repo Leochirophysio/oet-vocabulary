@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 102 · 2026-10-15</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 102 · 15 Oct 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Paediatric + Signs &amp; Symptoms</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">acrocyanosis</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌæk.rəʊ.saɪ.əˈnəʊ.sɪs/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/acrocyanosis" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/acrocyanosis" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A benign condition characterised by persistent bluish-purple discolouration of the hands and feet, commonly observed in neonates immediately after birth; caused by vasomotor instability and reduced peripheral perfusion rather than central hypoxia.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">肢端發紺</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">neonatal acrocyanosis</span>
+          <span class="colloc-item">benign acrocyanosis</span>
+          <span class="colloc-item">peripheral acrocyanosis</span>
+          <span class="colloc-item">persistent acrocyanosis</span>
+          <span class="colloc-item">acrocyanosis at birth</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The neonate displayed transient <strong>acrocyanosis</strong> of the hands and feet immediately following delivery; given the absence of central cyanosis and a normal oxygen saturation on pulse oximetry, no intervention was required and the finding resolved within 48 hours."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">cyanosis (central — more serious)</span>
+          <span class="related-item">peripheral cyanosis (synonym)</span>
+          <span class="related-item">acral cyanosis (synonym)</span>
+          <span class="related-item">vasomotor instability</span>
+          <span class="related-item">perfusion (blood flow)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">surfactant</div>
+        <div class="card-meta">
+          <span class="ipa">/sɜːˈfæk.tənt/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/surfactant" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/surfactant" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-cardio">心肺 Cardiopulmonary</span>
+        <span class="badge badge-proc">Procedures &amp; Interventions</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A complex mixture of phospholipids and proteins produced by type II alveolar cells that reduces surface tension within the alveoli, preventing their collapse on exhalation; deficiency of surfactant in premature infants leads to respiratory distress syndrome (RDS).</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">表面活性劑（肺泡表面活性物質）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">surfactant deficiency</span>
+          <span class="colloc-item">exogenous surfactant</span>
+          <span class="colloc-item">surfactant replacement therapy</span>
+          <span class="colloc-item">pulmonary surfactant</span>
+          <span class="colloc-item">surfactant administration</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The premature infant born at 28 weeks gestation received exogenous <strong>surfactant</strong> replacement therapy via endotracheal instillation within two hours of birth, resulting in a significant improvement in oxygenation and a reduction in ventilator requirements."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">phospholipid (component)</span>
+          <span class="related-item">atelectasis (collapse — antonym effect)</span>
+          <span class="related-item">respiratory distress syndrome / RDS</span>
+          <span class="related-item">alveoli (air sacs)</span>
+          <span class="related-item">prematurity (cause of deficiency)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">obtundation</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌɒb.tʌnˈdeɪ.ʃən/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/obtundation" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/obtundation" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A state of reduced consciousness in which the patient is less alert and responsive than normal; the patient is difficult to arouse but responds to stimulation. More severe than lethargy but less severe than stupor or coma.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">意識鈍化；反應遲鈍</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">mild obtundation</span>
+          <span class="colloc-item">moderate obtundation</span>
+          <span class="colloc-item">obtundation on presentation</span>
+          <span class="colloc-item">obtundation following head injury</span>
+          <span class="colloc-item">signs of obtundation</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "On arrival to the emergency department, the 7-year-old male demonstrated <strong>obtundation</strong> with a Glasgow Coma Scale score of 11 following a reported fall from a height; neurological observations were commenced hourly and urgent CT imaging was arranged."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">lethargy (less severe — drowsiness)</span>
+          <span class="related-item">stupor (more severe — minimal response)</span>
+          <span class="related-item">coma (most severe — unresponsive)</span>
+          <span class="related-item">level of consciousness / LOC</span>
+          <span class="related-item">GCS (Glasgow Coma Scale)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">amblyopia</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌæm.bliˈəʊ.pi.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/amblyopia" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/amblyopia" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-neuro">神經 Neurological</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Reduced visual acuity in one or both eyes that is not fully correctable with spectacles alone; commonly called "lazy eye," it results from abnormal visual development in early childhood due to strabismus, significant refractive error, or visual deprivation.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">弱視（懶惰眼）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">strabismic amblyopia</span>
+          <span class="colloc-item">refractive amblyopia</span>
+          <span class="colloc-item">amblyopia treatment</span>
+          <span class="colloc-item">amblyopia screening</span>
+          <span class="colloc-item">deprivation amblyopia</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The 4-year-old female was referred to paediatric ophthalmology following detection of left <strong>amblyopia</strong> at routine vision screening; spectacle correction and occlusion patching therapy have been prescribed to stimulate visual development in the affected eye."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">lazy eye (lay term)</span>
+          <span class="related-item">strabismus (squint — common cause)</span>
+          <span class="related-item">visual acuity (sharpness of vision)</span>
+          <span class="related-item">anisometropia (unequal refractive error)</span>
+          <span class="related-item">amblyopic (adj)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">urticaria</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌɜː.tɪˈkeə.ri.ə/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/urticaria" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/urticaria" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A skin condition characterised by raised, erythematous, intensely pruritic wheals (hives) that appear suddenly on the skin as a result of an allergic or non-allergic reaction; individual wheals typically resolve within 24 hours, though the condition may recur.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">蕁麻疹（風疹）</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">acute urticaria</span>
+          <span class="colloc-item">chronic urticaria</span>
+          <span class="colloc-item">urticarial rash</span>
+          <span class="colloc-item">urticaria and angioedema</span>
+          <span class="colloc-item">allergic urticaria</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient developed widespread <strong>urticaria</strong> over the trunk and upper limbs within 30 minutes of commencing aquatic physiotherapy; the session was terminated immediately, the patient was assessed for signs of anaphylaxis, and the treating physician was notified."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">hives (lay term)</span>
+          <span class="related-item">angioedema (deeper tissue swelling)</span>
+          <span class="related-item">pruritus (itching)</span>
+          <span class="related-item">anaphylaxis (severe allergic reaction)</span>
+          <span class="related-item">urticarial (adj)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 102)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Baby Mei, a female neonate born at 30 weeks gestation via emergency caesarean section, was
+      admitted to the neonatal intensive care unit following delivery.
+      <br><br>
+      At birth, the infant displayed <span class="highlight">acrocyanosis</span> of the extremities,
+      with preserved central colour and an oxygen saturation of 95% on room air. Central cyanosis was
+      excluded. She was noted to have laboured respirations consistent with <span class="highlight">surfactant</span>
+      deficiency, and exogenous surfactant replacement therapy was administered via endotracheal tube
+      within the first hour of life, with subsequent improvement in her respiratory status and ventilator
+      weaning commenced over the following 48 hours.
+      <br><br>
+      On day 5 of admission, nursing staff reported a period of <span class="highlight">obtundation</span>
+      lasting approximately 20 minutes, during which the infant was difficult to rouse. Urgent cranial
+      ultrasound was performed to exclude intraventricular haemorrhage. Following stabilisation, a
+      physiotherapy referral was made to address positioning, developmental handling, and respiratory
+      support during the ongoing admission.
+      <br><br>
+      The family was counselled regarding the infant's prognosis and the importance of early developmental
+      follow-up, including paediatric ophthalmology review to screen for <span class="highlight">amblyopia</span>
+      and retinopathy of prematurity as she approaches term-corrected age.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> In paediatric referral letters, always document the <em>corrected gestational age</em>,
+      specify <em>central vs peripheral</em> findings (e.g. central cyanosis vs acrocyanosis), and use precise
+      clinical timelines (e.g. "within the first hour of life," "day 5 of admission"). Avoid ambiguous phrases
+      such as "the baby was a bit blue" — use graded, specific clinical language.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 102 · 2026-10-15 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: Signs &amp; Symptoms · 心肺 Cardiopulmonary · 神經 Neurological · Paediatric</p>
+</footer>
+
+</body>
+</html>
