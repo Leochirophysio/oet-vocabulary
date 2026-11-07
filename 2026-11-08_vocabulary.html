@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OET Vocabulary — Day 103 · 2026-11-08</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --primary: #1a6fa8;
+      --primary-light: #e8f2fa;
+      --accent: #0d9488;
+      --accent-light: #e6f7f5;
+      --warn: #b45309;
+      --warn-light: #fef3c7;
+      --text: #1e2a38;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+    /* ── Header ── */
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .header-icon { font-size: 2.4rem; }
+    .header-text h1 { font-size: 1.35rem; font-weight: 700; }
+    .header-text p  { font-size: 0.88rem; opacity: 0.85; margin-top: 0.2rem; }
+    .day-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    /* ── Nav ── */
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 1.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
+      transition: background 0.15s;
+    }
+    .nav-bar a:hover { background: var(--primary-light); }
+    /* ── Category badges ── */
+    .badges { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .badge {
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .badge-cardio    { background: #fee2e2; color: #b91c1c; }
+    .badge-msk       { background: #dbeafe; color: #1d4ed8; }
+    .badge-neuro     { background: #ede9fe; color: #6d28d9; }
+    .badge-signs     { background: #fef9c3; color: #92400e; }
+    .badge-proc      { background: #dcfce7; color: #15803d; }
+    .badge-patient   { background: #fce7f3; color: #9d174d; }
+    /* ── Cards ── */
+    .cards-grid {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .vocab-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .card-header {
+      background: var(--primary-light);
+      padding: 1rem 1.4rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-num {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .card-word {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0.15rem 0;
+      line-height: 1.2;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.3rem;
+    }
+    .ipa {
+      font-family: 'Courier New', monospace;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: white;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .pos {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .dict-link {
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dict-link:hover { text-decoration: underline; }
+    .card-body { padding: 1.2rem 1.4rem; }
+    .field { margin-bottom: 0.95rem; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .field-content { font-size: 0.92rem; }
+    .chinese { font-size: 1.05rem; font-weight: 600; color: var(--primary); }
+    .colloc-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .colloc-item {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-style: italic;
+    }
+    .example-sentence {
+      background: var(--warn-light);
+      border-left: 3px solid var(--warn);
+      padding: 0.65rem 0.9rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.91rem;
+      font-style: italic;
+      color: #44310a;
+    }
+    .related-list { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .related-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    /* ── Scenario ── */
+    .scenario-box {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--primary);
+      overflow: hidden;
+    }
+    .scenario-header {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scenario-body {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.93rem;
+    }
+    .scenario-text {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      font-style: italic;
+      line-height: 1.8;
+      border: 1px solid var(--border);
+    }
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+      font-style: normal;
+      text-decoration: underline dotted;
+    }
+    .scenario-note {
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    /* ── Footer ── */
+    .page-footer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      .card-word { font-size: 1.3rem; }
+      .page-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>OET Medical Vocabulary</h1>
+    <p>Occupational English Test — Physiotherapy Preparation</p>
+  </div>
+  <div class="day-badge">Day 103 · 08 Nov 2026</div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-bar">
+  <a href="index.html">← All Days</a>
+  <span style="font-size:0.82rem;color:var(--muted);">Today: Musculoskeletal + Signs &amp; Symptoms</span>
+</nav>
+
+<!-- ═══ VOCABULARY CARDS ═══ -->
+<div class="cards-grid">
+
+  <!-- Card 1 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 1 of 5</div>
+        <div class="card-word">sesamoid</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈses.ə.mɔɪd/</span>
+          <span class="pos">adjective / noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/sesamoid" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/sesamoid" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A small, oval bone embedded within a tendon, typically located over a bony prominence at a joint. Sesamoid bones protect tendons from compressive forces and improve the mechanical advantage of the muscles they serve. The patella is the largest sesamoid bone in the body.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">籽骨</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">sesamoid bone</span>
+          <span class="colloc-item">sesamoid stress fracture</span>
+          <span class="colloc-item">bipartite sesamoid</span>
+          <span class="colloc-item">sesamoiditis</span>
+          <span class="colloc-item">tibial sesamoid</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Plain radiograph confirmed a stress fracture of the tibial <strong>sesamoid</strong> of the right hallux, consistent with the patient's reported plantar pain on weight-bearing and push-off phase of gait."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">sesamoiditis (inflammation)</span>
+          <span class="related-item">bipartite sesamoid (congenital variant)</span>
+          <span class="related-item">patella (largest sesamoid)</span>
+          <span class="related-item">tendon (embedding structure)</span>
+          <span class="related-item">hallux (great toe)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 2 of 5</div>
+        <div class="card-word">radicular</div>
+        <div class="card-meta">
+          <span class="ipa">/rəˈdɪk.jʊ.lər/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/radicular" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/radicular" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to or arising from a spinal nerve root; describes pain, paraesthesia, weakness, or other neurological signs that radiate along the distribution of a compressed or irritated nerve root.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">神經根性的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">radicular pain</span>
+          <span class="colloc-item">radicular symptoms</span>
+          <span class="colloc-item">radicular pattern</span>
+          <span class="colloc-item">upper limb radicular pain</span>
+          <span class="colloc-item">radicular distribution</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "The patient presented with right-sided <strong>radicular</strong> pain radiating from the lumbar spine to the lateral aspect of the lower leg and dorsum of the foot, consistent with an L5 nerve root irritation secondary to disc herniation at L4/5."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">radiculopathy (noun — disease of nerve root)</span>
+          <span class="related-item">radiculitis (inflammation of nerve root)</span>
+          <span class="related-item">dermatomal (relating to dermatome)</span>
+          <span class="related-item">sciatica (L4–S1 radicular pain)</span>
+          <span class="related-item">referred pain (non-dermatomal)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 3 of 5</div>
+        <div class="card-word">trophic</div>
+        <div class="card-meta">
+          <span class="ipa">/ˈtrɒf.ɪk/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/trophic" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/trophic" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to the nourishment and maintenance of tissues; used clinically to describe characteristic changes in skin, hair, and nails that result from impaired nerve supply or circulation, as seen in conditions such as Complex Regional Pain Syndrome (CRPS) and peripheral neuropathy.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">營養性的；神經營養的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">trophic changes</span>
+          <span class="colloc-item">trophic skin changes</span>
+          <span class="colloc-item">trophic ulcer</span>
+          <span class="colloc-item">trophic oedema</span>
+          <span class="colloc-item">dystrophic changes</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "On examination of the right hand, notable <strong>trophic</strong> changes were observed, including shiny, atrophic skin, brittle nails, and altered hair growth, alongside allodynia and vasomotor instability, raising clinical suspicion of Complex Regional Pain Syndrome Type I."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">dystrophic (impaired nourishment)</span>
+          <span class="related-item">atrophic (wasting)</span>
+          <span class="related-item">CRPS (Complex Regional Pain Syndrome)</span>
+          <span class="related-item">autonomic (nervous system)</span>
+          <span class="related-item">vasomotor (relating to blood vessel tone)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 4 of 5</div>
+        <div class="card-word">derangement</div>
+        <div class="card-meta">
+          <span class="ipa">/dɪˈreɪndʒ.mənt/</span>
+          <span class="pos">noun</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/derangement" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/derangement" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">A disruption or disorganisation of normal anatomical structure or joint mechanics; most commonly applied in orthopaedics as "internal derangement," referring to disorders of intra-articular structures such as the menisci, ligaments, or articular cartilage, which cause pain, instability, locking, or restricted movement.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">內部結構紊亂；關節損傷</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">internal derangement</span>
+          <span class="colloc-item">internal derangement of the knee (IDK)</span>
+          <span class="colloc-item">joint derangement</span>
+          <span class="colloc-item">meniscal derangement</span>
+          <span class="colloc-item">patellofemoral derangement</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "MRI of the right knee confirmed internal <strong>derangement</strong> with a posterior horn medial meniscus tear and associated joint effusion; the patient was referred to physiotherapy for conservative management prior to any surgical consideration."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">disruption (synonym)</span>
+          <span class="related-item">instability (consequence)</span>
+          <span class="related-item">effusion (associated finding)</span>
+          <span class="related-item">meniscal tear (common cause)</span>
+          <span class="related-item">locking (symptom of loose body)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="vocab-card">
+    <div class="card-header">
+      <div>
+        <div class="card-num">Word 5 of 5</div>
+        <div class="card-word">neurovascular</div>
+        <div class="card-meta">
+          <span class="ipa">/ˌnjʊə.rəʊˈvæs.kjʊ.lər/</span>
+          <span class="pos">adjective</span>
+          <a class="dict-link" href="https://dictionary.cambridge.org/dictionary/english/neurovascular" target="_blank">🔊 Cambridge</a>
+          <a class="dict-link" href="https://www.merriam-webster.com/medical/neurovascular" target="_blank">📖 M-W Medical</a>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge badge-signs">Signs &amp; Symptoms</span>
+        <span class="badge badge-msk">骨科 Musculoskeletal</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <div class="field-label">Medical Definition</div>
+        <div class="field-content">Relating to or involving both the nervous system and the blood vessels; used clinically when assessing distal sensation, circulation, and movement — particularly in the context of trauma, compartment syndrome, fracture management, or post-surgical monitoring.</div>
+      </div>
+      <div class="field">
+        <div class="field-label">繁體中文</div>
+        <div class="chinese">神經血管的</div>
+      </div>
+      <div class="field">
+        <div class="field-label">Common Collocations</div>
+        <div class="colloc-list">
+          <span class="colloc-item">neurovascular status</span>
+          <span class="colloc-item">neurovascular assessment</span>
+          <span class="colloc-item">neurovascular compromise</span>
+          <span class="colloc-item">neurovascular bundle</span>
+          <span class="colloc-item">distal neurovascular checks</span>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">OET Clinical Example</div>
+        <div class="example-sentence">
+          "Following application of the below-knee backslab, hourly distal <strong>neurovascular</strong> checks were documented, assessing capillary refill time, skin colour, sensation, and active movement of the toes to identify early signs of compartment syndrome."
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">Related Words</div>
+        <div class="related-list">
+          <span class="related-item">vascular (blood vessel)</span>
+          <span class="related-item">neurological (nerve)</span>
+          <span class="related-item">peripheral circulation</span>
+          <span class="related-item">compartment syndrome (complication)</span>
+          <span class="related-item">ischaemia (reduced blood flow)</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</div><!-- /cards-grid -->
+
+<!-- ═══ CLINICAL SCENARIO ═══ -->
+<div class="scenario-box">
+  <div class="scenario-header">
+    ✍️ OET Writing Task — Clinical Scenario (Day 103)
+  </div>
+  <div class="scenario-body">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;">
+      Read the scenario below. Notice how today's vocabulary is used in a realistic OET-style referral context.
+      Highlighted words are from today's list.
+    </p>
+    <div class="scenario-text">
+      Mr. James Tran, a 42-year-old male construction worker, was referred to the physiotherapy
+      outpatient department following a work-related injury to his right lower limb sustained
+      three weeks prior.
+      <br><br>
+      The patient presented with right-sided lumbar spine pain with <span class="highlight">radicular</span>
+      symptoms extending to the lateral calf and dorsum of the foot in a dermatomal distribution
+      consistent with L5 nerve root involvement. MRI confirmed disc herniation at L4/5 with moderate
+      foraminal stenosis. Additionally, he reported ongoing right forefoot pain localised to the first
+      metatarsophalangeal joint, with imaging demonstrating a stress fracture of the fibular
+      <span class="highlight">sesamoid</span>.
+      <br><br>
+      Of note, examination of the right lower limb revealed early <span class="highlight">trophic</span>
+      skin changes over the dorsum of the foot, including altered skin texture and reduced hair
+      growth, alongside vasomotor instability. <span class="highlight">Neurovascular</span> status of
+      the right foot was assessed and documented as intact, with capillary refill time of 2 seconds,
+      sensation within normal limits to light touch in all dermatomes, and preserved active toe
+      movement.
+      <br><br>
+      Goals of physiotherapy include pain management, nerve root mobilisation, graduated weight-bearing
+      rehabilitation for the <span class="highlight">sesamoid</span> fracture, and monitoring of
+      <span class="highlight">trophic</span> changes for signs of Complex Regional Pain Syndrome.
+      A gradual return-to-work programme has been discussed with the patient.
+    </div>
+    <p class="scenario-note">
+      📌 <strong>OET Writing Tip:</strong> When documenting neurological involvement, specify both the
+      <em>distribution</em> (e.g. "L5 dermatomal pattern") and the <em>nature</em> of symptoms
+      (e.g. "radicular pain" vs "referred pain"). Document neurovascular checks with objective findings —
+      capillary refill time, sensation, and movement — rather than simply stating "circulation intact."
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <p>OET Vocabulary Card · Day 103 · 2026-11-08 · Prepared for Leo · AUT Master of Physiotherapy Practice</p>
+  <p style="margin-top:0.3rem;">Categories covered today: 骨科 Musculoskeletal · Signs &amp; Symptoms</p>
+</footer>
+
+</body>
+</html>
